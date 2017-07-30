@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>大育英帝国Minecraft计划</title>
 	<link href="css/mdui.css" rel="stylesheet" type="text/css">
 	<link href="css/mdui.min.css" rel="stylesheet" type="text/css">
@@ -11,7 +12,7 @@
 	<script type="text/javascript"></script>
 </head>
 
-<body class="mdui-bottom-nav-fixed mdui-theme-accent-teal" style="background-image: url('images/background.jpg'); background-attachment: fixed; background-size: cover;">
+<body class="mdui-theme-primary-teal mdui-theme-accent-teal" style="background-image: url('images/background.jpg'); background-attachment: fixed; background-size: cover;">
 	<table width="100%" height="11.7%">
 		<th align="left" valign="top">
 			<div class="mdui-title">
@@ -114,28 +115,35 @@
 		</th>
 		<th align="right" valign="top" width="27%">
 			<a class="mdui-ripple" href="javascript:void(0);" onclick="mdui.dialog({
-  																													content: 'QQ群：652369699',
-  																													buttons: [
-    																												{
-      																													text: '取消'
-    																												},
-    																												{
-																														text: '打开群链接',
-      																													onClick: function(inst){
-        																													window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4')
-      																													}
-    																												}
-  																													]
-																													});">
+  																					content: 'QQ群：652369699',
+  																					buttons: [
+    																				{text: '取消'
+    																				},
+    																				{text: '打开群链接',
+      																				onClick: function(inst){
+        																			window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4')
+      																				}
+    																				}
+  																					]
+																					});">
 				<div class="mdui-ripple mdui-shadow-5"><img class="mdui-img-rounded mdui-hoverable" src="images/qrcode.jpg" width="100%" /></div>
 			</a>
 		</th>
 	</table>
 	<p class=" mdui-text-right mdui-text-color-white" align="right">建议使用Chrome浏览</p>
-	<div class="mdui-bottom-nav mdui-bottom-nav-scroll-hide mdui-color-teal">
+	<div class="mdui-fab-wrapper" mdui-fab="{trigger: 'hover'}">
+		<button class="mdui-fab mdui-ripple mdui-fab-fixed mdui-color-theme-accent">
+    <i class="mdui-icon material-icons">add</i>
+  </button>
+		<div class="mdui-fab-dial">
+			<button class="mdui-fab mdui-ripple mdui-color-light-blue-accent" onclick="mdui.snackbar({message: '敬请期待'});" mdui-tooltip="{content: '地图'}"><i class="mdui-icon material-icons">map</i></button>
+			<button class="mdui-fab mdui-ripple mdui-color-red-accent" onclick="window.location='photo.html'" mdui-tooltip="{content: '图片'}"><i class="mdui-icon material-icons">image</i></button>
+			<button class="mdui-fab mdui-ripple mdui-color-amber-accent" onclick="window.location='http://jnyuyingmc.top'" mdui-tooltip="{content: '主页'}"><i class="mdui-icon material-icons">home</i></button>
+		</div>
+	</div>
+	<div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-bottom-nav-scroll-hide  mdui-color-teal">
 		<div class="mdui-center mdui-valign">
-			<p><span>Copyright&nbsp;©&nbsp;</span>
-				<time>2017</time><span>&nbsp;大育英帝国Minecraft计划项目组</span></p>
+			<p><span>Copyright</span><i class="mdui-icon material-icons">copyright</i><time>2017</time><span>&nbsp;大育英帝国Minecraft计划项目组</span></p>
 		</div>
 	</div>
 </body>
