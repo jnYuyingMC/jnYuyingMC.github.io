@@ -25,7 +25,9 @@
 	<table width="100%">
 		<th align="left" valign="top">
 			<div class="mdui-typo-display-1">
-				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;济南育英中学创建于1913年，至今已有104年之久，如今，育英这所有着悠久历史和深厚文化底蕴的百年老校已发展成为济南市规模最大、教育成绩最卓越、全市乃至全省一流的初级中学。作为已经毕业，离开母校的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。</p>
+				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾...目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、vrview等。感谢所有人对本项目的支持与帮助，大育英帝国Minecraft计划，敬请期待。</p>
+				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;济南育英中学创建于1913年，至今已有104年之久，如今，育英这所有着悠久历史和深厚文化底蕴的百年老校已发展成为济南市规模最大、教育成绩最卓越、全市乃至全省一流的初级中学。作为已经毕业，离开母校的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;David_ryh</p>
+				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;神经元</p>
 				<div class="mdui-table-fluid">
 					<table class="mdui-table mdui-table-hoverable mdui-shadow-10 mdui-typo">
 						<tr>
@@ -72,7 +74,7 @@
 							<li>导演</li>
 							<li>服务器维护</li>
 						</ul>
-						<li>建筑组【已关闭】</li>
+						<li>建筑组</li>
 						<li>美术组：</li>
 						<ul>
 							<li>分镜</li>
@@ -81,7 +83,6 @@
 						</ul>
 						<li>渲染组</li>
 					</ul>
-					<p>&nbsp;&nbsp;&nbsp;&nbsp;急缺编剧分镜，招纳贴图绘制及动画师，动画采用Cinema 4D制作。有意者请戳二维码入群。</p>
 				</div>
 			</div>
 		</th>
@@ -233,8 +234,10 @@
 		</section>
 	</div>
 	<div class="mdui-typo-display-1">
+		<p class="mdui-text-color-white" align="center">大育英帝国学生会<small>宣传部</small></p>
 		<p class="mdui-text-color-white" align="center">辣条视频工作室</p>
 		<p class="mdui-text-color-white" align="center">山东省实验中学<small>(本校)</small>无人机社</p>
+		<p class="mdui-text-color-white" align="center">山东省实验中学<small>(本校)</small>化学社<small>外联部</small></p>
 		<p class="mdui-text-color-white" align="center">联合制作</p>
 	</div>
 	<div>
@@ -248,9 +251,23 @@
     <i class="mdui-icon material-icons">add</i>
   </button>
 		<div class="mdui-fab-dial">
-			<button class="mdui-fab mdui-ripple mdui-color-light-blue-accent" onclick="mdui.snackbar({
-  																						message: '即将上线...敬请期待'
-																						});" mdui-tooltip="{content: '地图'}"><i class="mdui-icon material-icons">maps</i></button>
+			<button class="mdui-fab mdui-ripple mdui-color-light-blue-accent" onclick="mdui.dialog({
+  																					content: '请选择提供商：\n 某不存在的公司提供的API在某些国家或地区不可用；\n 本项目仅使用第三方网站720云公开提供的、免费的服务，此站的任何行为与本站无关。',
+  																					buttons: [
+																					{text: '取消'
+    																				},
+    																				{text: 'Google API',
+      																				onClick: function(inst){
+        																			mdui.snackbar({message: '敬请期待...'});
+      																				}
+																					},
+																					{text: '720云',
+      																				onClick: function(inst){
+        																			mdui.snackbar({message: '敬请期待...'});
+      																				}
+    																				}
+  																					]
+																					});"; mdui-tooltip="{content: '地图'}"><i class="mdui-icon material-icons">maps</i></button>
 			<button class="mdui-fab mdui-ripple mdui-color-red-accent" onclick="window.location='photo.html'" mdui-tooltip="{content: '图片'}"><i class="mdui-icon material-icons">image</i></button>
 			<button class="mdui-fab mdui-ripple mdui-color-amber-accent" onclick="window.location='index.html'" mdui-tooltip="{content: '主页'}"><i class="mdui-icon material-icons">home</i></button>
 		</div>
