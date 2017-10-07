@@ -28,6 +28,12 @@ function choose() {
                 onClick: function(list) {
                     window.open('http://720yun.com/t/85o8ljnaercdxln604');
                 }
+            },
+            {
+                text: '打开主站',
+                onClick: function(list) {
+                    window.open('http://www.jnyuyingmc.top');
+                }
             }
         ]
     });
