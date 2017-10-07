@@ -6,19 +6,19 @@ function choose() {
         cssClass: 'mdui-text-color-theme mdui-typo',
         buttons: [
             {
-                text: '自建源',
+                text: '自建源（测试版）',
                 onClick: function(list) {
                     window.open('http://mc.jnyuyingmc.top:666/yymc/vrview/examples/yuying');
                 }
             },
             {
-                text: 'Github',
+                text: 'Github（测试版）',
                 onClick: function(list) {
                     window.open('http://www.jnyuyingmc.top/vrview/examples/yuying');
                 }
             },
             {
-                text: 'YouTube',
+                text: 'YouTube（测试版）',
                 onClick: function(list) {
                     window.open('https://www.youtube.com/watch?v=yJPJqXbNLg4');
                 }
