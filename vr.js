@@ -8,27 +8,27 @@ function choose() {
             {
                 text: '自建源',
                 onClick: function(list) {
-                    window.location='http://mc.jnyuyingmc.top:666/yymc/vrview/examples/yuying';
+                    window.open('http://mc.jnyuyingmc.top:666/yymc/vrview/examples/yuying');
                 }
             },
             {
                 text: 'Github',
                 onClick: function(list) {
-                    window.location='http://www.jnyuyingmc.top/vrview/examples/yuying';
+                    window.open('http://www.jnyuyingmc.top/vrview/examples/yuying');
                 }
             },
             {
                 text: 'YouTube',
                 onClick: function(list) {
-                    window.location='https://www.youtube.com/watch?v=yJPJqXbNLg4';
+                    window.open('https://www.youtube.com/watch?v=yJPJqXbNLg4');
                 }
             },
             {
                 text: '720yun',
                 onClick: function(list) {
-                    window.location='http://720yun.com/t/85o8ljnaercdxln604';
+                    window.open('http://720yun.com/t/85o8ljnaercdxln604');
                 }
             }
         ]
-    })
+    });
 }
