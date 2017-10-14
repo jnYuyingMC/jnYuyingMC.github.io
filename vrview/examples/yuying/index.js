@@ -16,29 +16,143 @@ var vrView;
 
 // All the scenes for the experience
 var scenes = {
-  playground: {
-    image: 'playground.jpg',
-    preview: 'playground-preview.jpg',
- /*   hotspots: {
-      whaleLeft: {
-        pitch: 0,
-        yaw: 20,
-        radius: 0.05,
-        distance: 1
+  garden: {
+    image: 'garden.webp',
+    preview: 'garden-preview.webp',
+    hotspots: {
+      playground: {
+        pitch: -3,
+        yaw: 10,
+        radius: 0.1,
+        distance: 3
       },
-      whaleRight: {
-        pitch: 0,
-        yaw: 340,
-        radius: 0.05,
-        distance: 1
-      },
-      dolphins: {
-        pitch: 0,
-        yaw: 320,
-        radius: 0.05,
-        distance: 1
+      hall: {
+        pitch: 14,
+        yaw: -45,
+        radius: 0.1,
+        distance: 3
       }
-    }*/
+    }
+  },
+  playground: {
+    image: 'playground.webp',
+    preview: 'playground-preview.webp',
+    hotspots: {
+      garden: {
+        pitch: 0,
+        yaw: -170,
+        radius: 0.1,
+        distance: 3
+      },
+      gym: {
+        pitch: -12,
+        yaw: -100,
+        radius: 0.1,
+        distance: 3
+      },
+      hall: {
+        pitch: 13,
+        yaw: -120,
+        radius: 0.1,
+        distance: 3
+      },
+      statue: {
+        pitch: -15,
+        yaw: -70,
+        radius: 0.1,
+        distance: 3
+      }
+    }
+  },
+  gym: {
+    image: 'gym.webp',
+    preview: 'gym-preview.webp',
+    hotspots: {
+      playground: {
+        pitch: -5,
+        yaw: 100,
+        radius: 0.1,
+        distance: 3
+      }
+    }
+  },
+  hall: {
+    image: 'hall.webp',
+    preview: 'hall-preview.webp',
+    hotspots: {
+      garden: {
+        pitch: 2,
+        yaw: -120,
+        radius: 0.1,
+        distance: 3
+      },
+      playground: {
+        pitch: 2,
+        yaw: 120,
+        radius: 0.1,
+        distance: 3
+      },
+      statue: {
+        pitch: 2,
+        yaw: 100,
+        radius: 0.1,
+        distance: 3
+      }
+    }
+  },
+  statue: {
+    image: 'statue.webp',
+    preview: 'statue-preview.webp',
+    hotspots: {
+      hall: {
+        pitch: 29,
+        yaw: 20,
+        radius: 0.1,
+        distance: 3
+      },
+      playground: {
+        pitch: 13,
+        yaw: -75,
+        radius: 0.1,
+        distance: 3
+      },
+      gym: {
+        pitch: 0,
+        yaw: 28,
+        radius: 0.1,
+        distance: 3
+      },
+      top: {
+        pitch: 26,
+        yaw: -175,
+        radius: 0.1,
+        distance: 3
+      }
+    }
+  },
+  top: {
+    image: 'top.webp',
+    preview: 'top-preview.webp',
+    hotspots: {
+      statue: {
+        pitch: -30,
+        yaw: -90,
+        radius: 0.1,
+        distance: 3
+      },
+      gym: {
+        pitch: -16,
+        yaw: -78,
+        radius: 0.1,
+        distance: 3
+      },
+      hall: {
+        pitch: 8,
+        yaw: -78,
+        radius: 0.1,
+        distance: 3
+      }
+    }
   }
 };
 
@@ -53,14 +167,14 @@ function onLoad() {
 
   vrView.on('ready', onVRViewReady);
   vrView.on('modechange', onModeChange);
-  //vrView.on('click', onHotspotClick);
+  vrView.on('click', onHotspotClick);
   vrView.on('error', onVRViewError);
   vrView.on('getposition', onGetPosition);
 }
 
 function onVRViewReady(e) {
   console.log('onVRViewReady');
-  loadScene('playground');
+  loadScene('garden');
 }
 
 function onModeChange(e) {
@@ -72,13 +186,13 @@ function onGetPosition(e) {
 
 }
 
-/*function onHotspotClick(e) {
+function onHotspotClick(e) {
   vrView.getPosition()
   console.log('onHotspotClick', e.id);
   if (e.id) {
     loadScene(e.id);
   }
-}*/
+}
 
 function loadScene(id) {
   console.log('loadScene', id);
@@ -92,7 +206,7 @@ function loadScene(id) {
   });
 
   // Add all the hotspots for the scene
-  /*var newScene = scenes[id];
+  var newScene = scenes[id];
   var sceneHotspots = Object.keys(newScene.hotspots);
   for (var i = 0; i < sceneHotspots.length; i++) {
     var hotspotKey = sceneHotspots[i];
@@ -104,7 +218,7 @@ function loadScene(id) {
       radius: hotspot.radius,
       distance: hotspot.distance
     });
-  }*/
+  }
 }
 
 function onVRViewError(e) {
