@@ -18,7 +18,7 @@ function choose() {
                 }
             },
             {
-                text: 'YouTube（测试版）',
+                text: 'YouTube',
                 onClick: function(list) {
                     window.open('https://youtu.be/l9ow1rA80oY');
                 }
