@@ -20,7 +20,7 @@ function choose() {
             {
                 text: 'YouTube（测试版）',
                 onClick: function(list) {
-                    window.open('https://www.youtube.com/watch?v=yJPJqXbNLg4');
+                    window.open('https://youtu.be/l9ow1rA80oY');
                 }
             },
             {
