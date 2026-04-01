@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>图片库 - 大育英帝国 Minecraft 计划</title>
   <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="icon" href="favicon.ico">
   <style>
@@ -90,6 +91,10 @@
       top: 1rem;
       right: 1rem;
       z-index: 1000;
+      overflow: visible;
+    }
+    .theme-dropdown mdui-menu {
+      min-width: 160px;
     }
 
     .site-footer {
@@ -104,6 +109,7 @@
 
     /* Dark mode overrides */
     .mdui-theme-dark { background: #121212; }
+    .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
     @media (max-width: 600px) {
@@ -115,9 +121,19 @@
 <body>
 
   <!-- Theme Toggle -->
-  <mdui-button-icon class="theme-toggle" id="themeToggle" title="切换主题">
-    <mdui-icon-dark-mode id="themeIcon"></mdui-icon-dark-mode>
-  </mdui-button-icon>
+  <div class="theme-toggle">
+    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="切换主题">
+        <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
+        <span id="themeLabel">跟随系统</span>
+      </mdui-button>
+      <mdui-menu selects="single" value="system" id="themeMenu">
+        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
 
   <!-- Header -->
   <section class="page-header">
@@ -194,47 +210,53 @@
     </div>
   </footer>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "tslib": "https://unpkg.com/tslib@2/tslib.es6.js",
-      "lit": "https://unpkg.com/lit/index.js",
-      "lit/decorators/custom-element.js": "https://unpkg.com/lit/decorators/custom-element.js",
-      "@mdui/shared/icons/shared/style.js": "https://unpkg.com/@mdui/shared/icons/shared/style.js",
-      "@mdui/shared/icons/shared/svg-tag.js": "https://unpkg.com/@mdui/shared/icons/shared/svg-tag.js"
-    }
-  }
-  </script>
+  <!-- FAB Navigation -->
+  <div style="position:fixed;bottom:2rem;right:2rem;z-index:1000;display:flex;flex-direction:column;gap:0.75rem;align-items:center;">
+    <mdui-fab href="index.html"><mdui-icon name="home" slot="icon"></mdui-icon></mdui-fab>
+    <mdui-fab href="#"><mdui-icon name="photo_library" slot="icon"></mdui-icon></mdui-fab>
+    <mdui-fab href="vr.html"><mdui-icon name="panorama" slot="icon"></mdui-icon></mdui-fab>
+  </div>
+
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
-  <script type="module">
-    import './lib/mdui/icons/dark-mode.js';
-    import './lib/mdui/icons/light-mode.js';
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
-    // Dark mode
+    // Dark mode: dropdown with light/dark/system
     const html = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    let manualOverride = null;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeMenu = document.getElementById('themeMenu');
 
-    function applyTheme(dark) {
+    function applyTheme(mode) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const themeLabel = document.getElementById('themeLabel');
+      let dark;
+      if (mode === 'system') {
+        dark = mq.matches;
+        themeIcon.setAttribute('name', 'settings_suggest');
+        themeLabel.textContent = '跟随系统';
+      } else if (mode === 'dark') {
+        dark = true;
+        themeIcon.setAttribute('name', 'dark_mode');
+        themeLabel.textContent = '暗色模式';
+      } else {
+        dark = false;
+        themeIcon.setAttribute('name', 'light_mode');
+        themeLabel.textContent = '亮色模式';
+      }
       html.classList.toggle('mdui-theme-dark', dark);
-      icon.outerHTML = dark
-        ? '<mdui-icon-light-mode id="themeIcon"></mdui-icon-light-mode>'
-        : '<mdui-icon-dark-mode id="themeIcon"></mdui-icon-dark-mode>';
     }
 
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    applyTheme(mq.matches);
+    let savedMode = localStorage.getItem('theme-mode') || 'system';
+    themeMenu.value = savedMode;
+    applyTheme(savedMode);
 
-    mq.addEventListener('change', e => {
-      if (manualOverride === null) applyTheme(e.matches);
+    themeMenu.addEventListener('change', () => {
+      savedMode = themeMenu.value;
+      localStorage.setItem('theme-mode', savedMode);
+      applyTheme(savedMode);
     });
 
-    toggle.addEventListener('click', () => {
-      manualOverride = !html.classList.contains('mdui-theme-dark');
-      applyTheme(manualOverride);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (savedMode === 'system') applyTheme('system');
     });
 
     // GLightbox

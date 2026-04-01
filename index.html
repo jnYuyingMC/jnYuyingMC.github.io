@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大育英帝国 Minecraft 计划</title>
   <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="icon" href="favicon.ico">
   <style>
@@ -287,15 +288,25 @@
     .mdui-theme-dark .timeline-card .date {
       color: #aaa;
     }
+    .mdui-theme-dark .timeline-card .event {
+      color: #e0e0e0;
+    }
+    .mdui-theme-dark .embed-card .embed-label {
+      color: #ccc;
+    }
     .mdui-theme-dark .member-card .status { background: #2e3b3a; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
-    /* Theme toggle button */
+    /* Theme toggle */
     .theme-toggle {
       position: fixed;
       top: 1rem;
       right: 1rem;
       z-index: 1000;
+      overflow: visible;
+    }
+    .theme-dropdown mdui-menu {
+      min-width: 160px;
     }
 
     /* Tabs */
@@ -306,9 +317,19 @@
 <body>
 
   <!-- Theme Toggle -->
-  <mdui-button-icon class="theme-toggle" id="themeToggle" title="切换主题">
-    <mdui-icon-dark-mode id="themeIcon"></mdui-icon-dark-mode>
-  </mdui-button-icon>
+  <div class="theme-toggle">
+    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="切换主题">
+        <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
+        <span id="themeLabel">跟随系统</span>
+      </mdui-button>
+      <mdui-menu selects="single" value="system" id="themeMenu">
+        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -328,7 +349,7 @@
   <!-- About -->
   <div class="section" id="about">
     <div class="section-title">
-      <mdui-icon-info></mdui-icon-info> 项目简介
+      <mdui-icon name="info"></mdui-icon> 项目简介
     </div>
     <div class="desc-card">
       本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。
@@ -354,7 +375,7 @@
   <!-- Team -->
   <div class="section" id="team">
     <div class="section-title">
-      <mdui-icon-group></mdui-icon-group> 核心成员
+      <mdui-icon name="group"></mdui-icon> 核心成员
     </div>
     <div class="member-grid">
       <div class="member-card">
@@ -387,7 +408,7 @@
   <!-- Timeline -->
   <div class="section" id="timeline">
     <div class="section-title">
-      <mdui-icon-timeline></mdui-icon-timeline> 项目时间线
+      <mdui-icon name="timeline"></mdui-icon> 项目时间线
     </div>
     <div class="timeline">
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.1</div><div class="event">计划启动 — 服务器启动，建筑开始</div></div></div>
@@ -401,6 +422,7 @@
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.9.10</div><div class="event">算力大幅升级，全面渲染开始</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.4</div><div class="event">VR 平台上线</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.12</div><div class="event">渲染全部完成</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2018.11.2</div><div class="event">60FPS 21:9 重制版发布</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2026.4.1</div><div class="event">AI Agent 辅助完成网页革新（David_ryh）</div></div></div>
     </div>
   </div>
@@ -408,17 +430,16 @@
   <!-- Videos -->
   <div class="section" id="media">
     <div class="section-title">
-      <mdui-icon-play-circle></mdui-icon-play-circle> 视频
+      <mdui-icon name="play_circle"></mdui-icon> 视频
     </div>
-    <div class="embed-grid">
-      <div class="embed-card">
-        <iframe height="400" src="//player.bilibili.com/player.html?isOutside=true&aid=16040184&bvid=BV17x411j7Uu&cid=26168724&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
-        <div class="embed-label">先发版本</div>
-      </div>
-      <div class="embed-card">
-        <iframe height="400" src="//player.bilibili.com/player.html?isOutside=true&aid=35147613&bvid=BV1Fb411w7Bn&cid=61582854&p=1" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
-        <div class="embed-label">60FPS 21:9 重制版</div>
-      </div>
+    <div style="margin-bottom: 1rem;">
+      <mdui-segmented-button-group selects="single" id="videoSelector">
+        <mdui-segmented-button value="v1" selected>先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v2">60FPS 21:9 重制版</mdui-segmented-button>
+      </mdui-segmented-button-group>
+    </div>
+    <div class="embed-card">
+      <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -426,7 +447,7 @@
   <!-- Photos -->
   <div class="section" id="photos">
     <div class="section-title">
-      <mdui-icon-photo-library></mdui-icon-photo-library> <a href="photo.html" style="color:inherit; text-decoration:none;">图片库</a>
+      <mdui-icon name="photo_library"></mdui-icon> <a href="photo.html" style="color:inherit; text-decoration:none;">图片库</a>
     </div>
     <div class="photo-grid" id="gallery">
       <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
@@ -495,66 +516,69 @@
   </footer>
 
   <!-- FAB Navigation -->
-  <mdui-speed-dial style="position:fixed;bottom:2rem;right:2rem;z-index:1000;">
-    <mdui-button-icon slot="trigger"><mdui-icon-navigation></mdui-icon-navigation></mdui-button-icon>
-    <mdui-fab href="#"><mdui-icon-home slot="icon"></mdui-icon-home></mdui-fab>
-    <mdui-fab href="photo.html"><mdui-icon-photo-library slot="icon"></mdui-icon-photo-library></mdui-fab>
-    <mdui-fab href="vr.html"><mdui-icon-panorama slot="icon"></mdui-icon-panorama></mdui-fab>
-  </mdui-speed-dial>
+  <div style="position:fixed;bottom:2rem;right:2rem;z-index:1000;display:flex;flex-direction:column;gap:0.75rem;align-items:center;">
+    <mdui-fab href="index.html"><mdui-icon name="home" slot="icon"></mdui-icon></mdui-fab>
+    <mdui-fab href="photo.html"><mdui-icon name="photo_library" slot="icon"></mdui-icon></mdui-fab>
+    <mdui-fab href="vr.html"><mdui-icon name="panorama" slot="icon"></mdui-icon></mdui-fab>
+  </div>
 
-  <script type="importmap">
-  {
-    "imports": {
-      "tslib": "https://unpkg.com/tslib@2/tslib.es6.js",
-      "lit": "https://unpkg.com/lit/index.js",
-      "lit/decorators/custom-element.js": "https://unpkg.com/lit/decorators/custom-element.js",
-      "@mdui/shared/icons/shared/style.js": "https://unpkg.com/@mdui/shared/icons/shared/style.js",
-      "@mdui/shared/icons/shared/svg-tag.js": "https://unpkg.com/@mdui/shared/icons/shared/svg-tag.js"
-    }
-  }
-  </script>
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
-  <script type="module">
-    import './lib/mdui/icons/info.js';
-    import './lib/mdui/icons/group.js';
-    import './lib/mdui/icons/timeline.js';
-    import './lib/mdui/icons/play-circle.js';
-    import './lib/mdui/icons/photo-library.js';
-    import './lib/mdui/icons/home.js';
-    import './lib/mdui/icons/panorama.js';
-    import './lib/mdui/icons/navigation.js';
-    import './lib/mdui/icons/dark-mode.js';
-    import './lib/mdui/icons/light-mode.js';
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
-    // Dark mode: follow system preference, allow manual toggle
+    // Dark mode: dropdown with light/dark/system
     const html = document.documentElement;
-    const toggle = document.getElementById('themeToggle');
-    const icon = document.getElementById('themeIcon');
-    let manualOverride = null;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeMenu = document.getElementById('themeMenu');
 
-    function applyTheme(dark) {
+    function applyTheme(mode) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const themeLabel = document.getElementById('themeLabel');
+      let dark;
+      if (mode === 'system') {
+        dark = mq.matches;
+        themeIcon.setAttribute('name', 'settings_suggest');
+        themeLabel.textContent = '跟随系统';
+      } else if (mode === 'dark') {
+        dark = true;
+        themeIcon.setAttribute('name', 'dark_mode');
+        themeLabel.textContent = '暗色模式';
+      } else {
+        dark = false;
+        themeIcon.setAttribute('name', 'light_mode');
+        themeLabel.textContent = '亮色模式';
+      }
       html.classList.toggle('mdui-theme-dark', dark);
-      icon.outerHTML = dark
-        ? '<mdui-icon-light-mode id="themeIcon"></mdui-icon-light-mode>'
-        : '<mdui-icon-dark-mode id="themeIcon"></mdui-icon-dark-mode>';
     }
 
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
-    applyTheme(mq.matches);
+    // Load saved preference
+    let savedMode = localStorage.getItem('theme-mode') || 'system';
+    themeMenu.value = savedMode;
+    applyTheme(savedMode);
 
-    mq.addEventListener('change', e => {
-      if (manualOverride === null) applyTheme(e.matches);
+    themeMenu.addEventListener('change', () => {
+      savedMode = themeMenu.value;
+      localStorage.setItem('theme-mode', savedMode);
+      applyTheme(savedMode);
     });
 
-    toggle.addEventListener('click', () => {
-      manualOverride = !html.classList.contains('mdui-theme-dark');
-      applyTheme(manualOverride);
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (savedMode === 'system') applyTheme('system');
     });
 
     // GLightbox
     const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+
+    // Video source selector
+    const videoUrls = {
+      v1: '//player.bilibili.com/player.html?isOutside=true&aid=16040184&bvid=BV17x411j7Uu&cid=26168724&p=1&autoplay=0',
+      v2: '//player.bilibili.com/player.html?isOutside=true&aid=35147613&bvid=BV1Fb411w7Bn&cid=61582854&p=1&autoplay=0'
+    };
+    const videoFrame = document.getElementById('videoFrame');
+    const videoSelector = document.getElementById('videoSelector');
+    videoFrame.src = videoUrls.v1;
+    videoSelector.addEventListener('change', () => {
+      videoFrame.src = videoUrls[videoSelector.value] || '';
+    });
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
