@@ -92,9 +92,30 @@
       right: 1rem;
       z-index: 1000;
       overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .mdui-theme-dark .theme-toggle {
+      background: rgba(40,40,40,0.85);
     }
     .theme-dropdown mdui-menu {
       min-width: 160px;
+    }
+    .fab-nav {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      z-index: 1000;
+      display: flex;
+      gap: 0.25rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      padding: 0.25rem;
+    }
+    .mdui-theme-dark .fab-nav {
+      background: rgba(40,40,40,0.85);
     }
 
     .site-footer {
@@ -211,10 +232,10 @@
   </footer>
 
   <!-- FAB Navigation -->
-  <div style="position:fixed;bottom:2rem;right:2rem;z-index:1000;display:flex;flex-direction:column;gap:0.75rem;align-items:center;">
-    <mdui-fab href="index.html"><mdui-icon name="home" slot="icon"></mdui-icon></mdui-fab>
-    <mdui-fab href="#"><mdui-icon name="photo_library" slot="icon"></mdui-icon></mdui-fab>
-    <mdui-fab href="vr.html"><mdui-icon name="panorama" slot="icon"></mdui-icon></mdui-fab>
+  <div class="fab-nav">
+    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="#" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
