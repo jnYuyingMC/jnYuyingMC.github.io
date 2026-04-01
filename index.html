@@ -1,281 +1,650 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-	<meta charset="utf-8">
-	<title>大育英帝国Minecraft计划</title>
-	<link href="css/mdui.css" rel="stylesheet" type="text/css">
-	<link href="css/mdui.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="css/timeline.css" />
-	<script type="text/javascript" src="js/mdui.js"></script>
-	<script type="text/javascript" src="js/mdui.min.js"></script>
-	<script type="text/javascript"></script>
-	<script type="text/javascript" src="vr.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大育英帝国 Minecraft 计划</title>
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root {
+      --mdui-color-primary: #00897b;
+      --mdui-color-on-primary: #ffffff;
+      --mdui-color-primary-container: #a7f3d0;
+      --mdui-color-surface: #fdfcff;
+      --mdui-color-surface-variant: #ece4e0;
+    }
+
+    body {
+      background: #f5f5f5;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/background.jpg') center/cover no-repeat;
+      filter: brightness(0.45);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 2rem;
+      max-width: 800px;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+    .hero-logo {
+      width: 100px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Sections */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--mdui-color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Description cards */
+    .desc-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      margin-bottom: 1.5rem;
+      line-height: 1.9;
+      font-size: 1rem;
+      color: #333;
+    }
+    .desc-card .author {
+      display: block;
+      margin-top: 1rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    /* Member cards */
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .member-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.8rem;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .member-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .member-card mdui-avatar {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 1rem;
+    }
+    .member-card .name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .member-card .role {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 0.8rem;
+    }
+    .member-card .status {
+      display: inline-block;
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      background: #e0f2f1;
+      color: #00897b;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #00897b, #a7f3d0);
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -33px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00897b;
+      border: 3px solid #a7f3d0;
+      box-shadow: 0 0 0 3px rgba(0,137,123,0.15);
+    }
+    .timeline-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .timeline-card .date {
+      font-size: 0.85rem;
+      color: #00897b;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-card .event {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Embeds section */
+    .embed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .embed-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+    .embed-card iframe {
+      width: 100%;
+      border: none;
+    }
+    .embed-card .embed-label {
+      padding: 1rem 1.2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* Photo gallery */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .photo-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 16/10;
+      background: #eee;
+      text-decoration: none;
+      color: inherit;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .photo-card:hover img {
+      transform: scale(1.05);
+    }
+    .photo-card .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 0.8rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #263238;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      line-height: 2;
+    }
+    .site-footer a {
+      color: #a7f3d0;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero { min-height: 55vh; }
+      .section { padding: 2rem 1rem; }
+    }
+
+    /* Dark mode overrides */
+    .mdui-theme-dark {
+      --mdui-color-surface: #1c1b1f;
+      --mdui-color-surface-variant: #49454f;
+    }
+    .mdui-theme-dark body { background: #121212; }
+    .mdui-theme-dark .desc-card,
+    .mdui-theme-dark .member-card,
+    .mdui-theme-dark .timeline-card,
+    .mdui-theme-dark .embed-card {
+      background: #1e1e1e;
+      color: #e0e0e0;
+    }
+    .mdui-theme-dark .desc-card .author,
+    .mdui-theme-dark .member-card .role,
+    .mdui-theme-dark .member-card .status,
+    .mdui-theme-dark .timeline-card .date {
+      color: #aaa;
+    }
+    .mdui-theme-dark .timeline-card .event {
+      color: #e0e0e0;
+    }
+    .mdui-theme-dark .embed-card .embed-label {
+      color: #ccc;
+    }
+    .mdui-theme-dark .member-card .status { background: #2e3b3a; }
+    .mdui-theme-dark .site-footer { background: #0d1117; }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .mdui-theme-dark .theme-toggle {
+      background: rgba(40,40,40,0.85);
+    }
+    .theme-dropdown mdui-menu {
+      min-width: 160px;
+    }
+    .fab-nav {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      z-index: 1000;
+      display: flex;
+      gap: 0.25rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      padding: 0.25rem;
+    }
+    .mdui-theme-dark .fab-nav {
+      background: rgba(40,40,40,0.85);
+    }
+
+    /* Tabs */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
 </head>
+<body>
 
-<body class="mdui-theme-primary-teal mdui-theme-accent-teal" style="background-image: url('images/background.jpg'); background-attachment: fixed; background-size: cover;">
-	<table width="100%" height="11.7%">
-		<th align="left" valign="top">
-			<div class="mdui-title">
-				<h1>大育英帝国Minecraft计划</h1>
-			</div>
-		</th>
-		<th align="right"><img class="mdui-img-rounded mdui-shadow-5" src="images/logo.png" height="11.7%" /></th>
-	</table>
-	<div class="mdui-divider"></div>
-	<table width="100%">
-		<th align="left" valign="top">
-			<div class="mdui-typo-display-1">
-				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾...目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、vrview等。感谢所有人对本项目的支持与帮助，大育英帝国Minecraft计划，敬请期待。</p>
-				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;济南育英中学创建于1913年，至今已有104年之久，如今，育英这所有着悠久历史和深厚文化底蕴的百年老校已发展成为济南市规模最大、教育成绩最卓越、全市乃至全省一流的初级中学。作为已经毕业，离开母校的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;David_ryh</p>
-				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;神经元</p>
-				<p class="mdui-text-color-white">&nbsp; &nbsp; &nbsp; &nbsp;济南育英中学是一所拥有百年历史积淀，文化气息浓厚的一流名校，送走了一批又一批优秀莘莘学子远走高飞。今年暑期，历届从育英毕业的优秀毕业生们汇聚在一起，为大育英的104岁华诞奉上了属于他们自己创造的生日礼物。他们以Minecraft为载体，耗时进三个月，最终将母校育英完美的展现在游戏中。经后期制作，分镜，渲染等多道工序，最终于2017年11月5日胜利完工。小小的一张地图，凝聚了无数育英学子对他们母校的热爱。他们用这种方式，为母校庆生，祝育英的未来更加辉煌！&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;——&nbsp;张司旻</p>
-				<div class="mdui-table-fluid">
-					<table class="mdui-table mdui-table-hoverable mdui-shadow-10 mdui-typo">
-						<tr>
-							<th colspan="3">核心成员</th>
-						</tr>
-						<tr>
-							<th>职务</th>
-							<th>ID</th>
-							<th>邮箱</th>
-							<th>现状</th>
-						</tr>
-						<tr>
-							<td>导(wan) 演(neng)</td>
-							<td>Neuron</td>
-							<td>
-								<div class="mdui-typo"><a class="mdui-btn mdui-ripple" href="mailto:lizliyuan123456@yeah.net">liyuan123456@yeah.net</a></div>
-							</td>
-							<td>高二</td>
-						</tr>
-						<tr>
-							<td>服务器管理、建筑、美术</td>
-							<td>David_ryh</td>
-							<td>
-								<div class="mdui-typo"><a class="mdui-btn mdui-ripple" href="mailto:neskdavid123@163.com">neskdavid123@163.com</a></div>
-							</td>
-							<td>高一，住校</td>
-						</tr>
-						<tr>
-							<td>服务器管理、建筑、美术</td>
-							<td>于小乐</td>
-							<td>
-								<div class="mdui-typo"><a class="mdui-btn mdui-ripple" href="mailto:yulele28@126.com">yulele28@126.com</a></div>
-							</td>
-							<td>准备中考</td>
-						</tr>
-					</table>
-				</div>
-				<p>&nbsp;</p>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="切换主题">
+        <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
+        <span id="themeLabel">跟随系统</span>
+      </mdui-button>
+      <mdui-menu selects="single" value="system" id="themeMenu">
+        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
 
-				<div class="mdui-typo mdui-text-color-white">
-					<ul>
-						<li>核心组：</li>
-						<ul>
-							<li>导演</li>
-							<li>服务器维护</li>
-						</ul>
-						<li>建筑组</li>
-						<li>美术组：</li>
-						<ul>
-							<li>分镜</li>
-							<li>贴图(包括皮肤及物品)</li>
-							<li>动画</li>
-						</ul>
-						<li>渲染组</li>
-					</ul>
-				</div>
-			</div>
-		</th>
-		<th align="right" valign="top" width="27%">
-			<a class="mdui-ripple" href="javascript:void(0);" onclick="mdui.dialog({
-  																					content: 'QQ群：652369699',
-  																					buttons: [
-    																				{text: '取消'
-    																				},
-    																				{text: '打开群链接',
-      																				onClick: function(inst){
-        																			window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4');
-      																				}
-    																				}
-  																					]
-																					});">
-				<div class="mdui-ripple mdui-shadow-5"><img class="mdui-img-rounded mdui-hoverable" src="images/qrcode.jpg" width="100%" /></div>
-			</a>
-			<p>&nbsp;</p>
-			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=832051663&auto=1&height=430"></iframe>
-			<p>&nbsp;</p>
-			<embed height="415" width="544" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=16040184&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
-		</th>
-	</table>
-	<div>
-		<section id="cd-timeline" class="cd-container">
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">计划启动</span>
-					</div>
-					<p></p>
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">服务器启动，建筑开始</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017.7.1</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">建筑工作大范围开始</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017.7.16</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">域名注册，网站开放访问</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017.7.27</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">核心组成员于小乐肉身翻墙跑路不知所踪</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017.7.28</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span class="mdui-chip-title">建筑组按(ka)时(dian)完成任务</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017.7.31</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;存档导出，服务器关闭&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-8-3</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;于小乐回归，开始制作&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-8-13</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;航拍计划开始&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-8-22</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;算力大幅度升级，全面渲染开始&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-9-10</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;VR平台上线&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-10-04</time>
-				</div>
-			</div>
-			<div class="cd-timeline-block mdui-typo">
-				<div class="cd-timeline-img">
-					<button class="mdui-btn mdui-btn-icon mdui-color-theme-accent mdui-ripple mdui-center mdui-valign"></button>
-				</div>
-				<div class="cd-timeline-content">
-					<div class="mdui-chip">
-						<span>&nbsp;&nbsp;渲染全部完成&nbsp;&nbsp;</span>
-					</div>
-					<p></p>
-					<time class="cd-date">2017-10-12</time>
-				</div>
-			</div>
-		</section>
-	</div>
-	<div class="mdui-typo-display-1">
-		<p class="mdui-text-color-white" align="center">大育英帝国学生会<small>宣传部</small></p>
-		<p class="mdui-text-color-white" align="center">辣条视频工作室</p>
-		<p class="mdui-text-color-white" align="center">联合制作</p>
-	</div>
-	<div>
-		<p class=" mdui-text-right mdui-text-color-white" align="right">建议使用Chrome浏览</p>
-		<p class=" mdui-text-right mdui-text-color-white" align="right">网页框架：<a href="http://www.mdui.org">www.mdui.org</a></p>
-		<p class=" mdui-text-right"><a href="http://github.com"><img class="mdui-img-rounded" src="images/github.png" width="2%" style="float:center" /></a></p>
-		<p class=" mdui-text-right mdui-text-color-white" align="right">时间线方案修改自：<a href="http://www.helloweba.com">helloweba.com</a></p>
-	</div>
-	<div class="mdui-fab-wrapper" mdui-fab="{trigger: 'hover'}">
-		<button class="mdui-fab mdui-ripple mdui-fab-fixed mdui-color-theme-accent">
-    <i class="mdui-icon material-icons">add</i>
-  </button>
-		<div class="mdui-fab-dial">
-			<button class="mdui-fab mdui-ripple mdui-color-light-blue-accent" onclick="choose();"; mdui-tooltip="{content: 'VR'}"><i class="mdui-icon material-icons">maps</i></button>
-			<button class="mdui-fab mdui-ripple mdui-color-red-accent" onclick="window.location='photo.html'" mdui-tooltip="{content: '图片'}"><i class="mdui-icon material-icons">image</i></button>
-			<button class="mdui-fab mdui-ripple mdui-color-amber-accent" onclick="window.location='index.html'" mdui-tooltip="{content: '主页'}"><i class="mdui-icon material-icons">home</i></button>
-		</div>
-	</div>
-	<div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-bottom-nav-scroll-hide  mdui-color-teal">
-		<div class="mdui-center mdui-valign">
-			<p><span>Copyright</span><i class="mdui-icon material-icons">copyright</i>
-				<time>2017</time><span>&nbsp;大育英帝国Minecraft计划项目组</span></p>
-		</div>
-	</div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <img class="hero-logo" src="images/logo.png" alt="Logo">
+      <h1>大育英帝国 Minecraft 计划</h1>
+      <p>用像素方块重建百年校园，以热爱致敬母校济南育英中学</p>
+      <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <mdui-button href="#about" variant="tonal">了解项目</mdui-button>
+        <mdui-button href="#photos" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">查看图片</mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">正片 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">重制版 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <div class="section" id="about">
+    <div class="section-title">
+      <mdui-icon name="info"></mdui-icon> 项目简介
+    </div>
+    <div class="desc-card">
+      本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。
+      目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。
+      感谢所有人对本项目的支持与帮助。
+    </div>
+    <div class="desc-card">
+      济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。
+      作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。
+      <span class="author">—— David_ryh</span>
+    </div>
+    <div class="desc-card">
+      谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。
+      <span class="author">—— 神经元</span>
+    </div>
+    <div class="desc-card">
+      他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。
+      小小的一张地图，凝聚了无数育英学子对他们母校的热爱。
+      <span class="author">—— 张司旻</span>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="section" id="team">
+    <div class="section-title">
+      <mdui-icon name="group"></mdui-icon> 核心成员
+    </div>
+    <div class="member-grid">
+      <div class="member-card">
+        <mdui-avatar style="background:#e0f2f1; color:#00897b; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">N</mdui-avatar>
+        <div class="name">Neuron（神经元）</div>
+        <div class="role">导演 / 万能</div>
+        <div class="status">高二</div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:lizliyuan123456@yeah.net" style="color:#00897b; text-decoration:none;">lizliyuan123456@yeah.net</a></div>
+      </div>
+      <div class="member-card">
+        <mdui-avatar style="background:#fce4ec; color:#c62828; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">D</mdui-avatar>
+        <div class="name">David_ryh</div>
+        <div class="role">服务器管理 / 建筑 / 美术</div>
+        <div class="status">高一，住校</div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:neskdavid123@163.com" style="color:#00897b; text-decoration:none;">neskdavid123@163.com</a></div>
+      </div>
+      <div class="member-card">
+        <mdui-avatar style="background:#e8eaf6; color:#283593; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">乐</mdui-avatar>
+        <div class="name">于小乐</div>
+        <div class="role">服务器管理 / 建筑 / 美术</div>
+        <div class="status">准备中考</div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:yulele28@126.com" style="color:#00897b; text-decoration:none;">yulele28@126.com</a></div>
+      </div>
+    </div>
+    <!-- Team Structure -->
+    <div class="section-title" style="margin-top:2rem;">
+      <mdui-icon name="account_tree"></mdui-icon> 团队架构
+    </div>
+    <div style="display:grid; grid-template-columns:1fr auto; gap:1.5rem; align-items:start;">
+      <div class="desc-card" style="margin-bottom:0;">
+        <div style="margin-bottom:0.8rem;">
+          <strong style="color:var(--mdui-color-primary);">核心组</strong>
+          <span style="color:#666;"> — 导演、服务器维护</span>
+        </div>
+        <div style="margin-bottom:0.8rem;">
+          <strong style="color:var(--mdui-color-primary);">建筑组</strong>
+        </div>
+        <div style="margin-bottom:0.8rem;">
+          <strong style="color:var(--mdui-color-primary);">美术组</strong>
+          <span style="color:#666;"> — 分镜、贴图（包括皮肤及物品）、动画</span>
+        </div>
+        <div>
+          <strong style="color:var(--mdui-color-primary);">渲染组</strong>
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <img src="images/qrcode.jpg" alt="项目组群二维码" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg">
+        <div style="font-size:0.8rem; color:#888; margin-top:0.4rem;">扫码加入交流群</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="section" id="timeline">
+    <div class="section-title">
+      <mdui-icon name="timeline"></mdui-icon> 项目时间线
+    </div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.1</div><div class="event">计划启动 — 服务器启动，建筑开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.16</div><div class="event">建筑工作大范围开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.27</div><div class="event">域名注册，网站开放访问</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.28</div><div class="event">核心组成员于小乐"跑路" 🫠</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.31</div><div class="event">建筑组按(卡)时(点)完成任务</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.3</div><div class="event">存档导出，服务器关闭</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.13</div><div class="event">于小乐回归，开始后期制作</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.22</div><div class="event">航拍计划开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.9.10</div><div class="event">算力大幅升级，全面渲染开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.4</div><div class="event">VR 平台上线</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.12</div><div class="event">渲染全部完成</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.11.5</div><div class="event">正片发布</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2018.11.2</div><div class="event">60FPS 21:9 重制版发布</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2026.4.1</div><div class="event">AI Agent 辅助完成网页革新（David_ryh）</div></div></div>
+    </div>
+  </div>
+
+  <!-- Videos -->
+  <div class="section" id="media">
+    <div class="section-title">
+      <mdui-icon name="play_circle"></mdui-icon> 视频
+    </div>
+    <div style="margin-bottom: 1rem;">
+      <mdui-segmented-button-group selects="single" id="videoSelector">
+        <mdui-segmented-button value="v1" selected>先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v2">60FPS 21:9 重制版</mdui-segmented-button>
+      </mdui-segmented-button-group>
+    </div>
+    <div class="embed-card">
+      <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+
+  <!-- Photos -->
+  <div class="section" id="photos">
+    <div class="section-title">
+      <mdui-icon name="photo_library"></mdui-icon> <a href="photo.html" style="color:inherit; text-decoration:none;">图片库</a>
+    </div>
+    <div class="photo-grid" id="gallery">
+      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
+        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy">
+        <div class="photo-overlay">俯视渲染图 · 2017-08-04</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22">
+        <img src="photolib/snow.jpg" alt="雪" loading="lazy">
+        <div class="photo-overlay">雪 · 2017-08-22</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-garden.jpg" data-gallery="photos" data-desc="4K Garden · 2017-07-25">
+        <img src="photolib/4K-garden.jpg" alt="4K Garden" loading="lazy">
+        <div class="photo-overlay">4K Garden · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-4.jpg" data-gallery="photos" data-desc="4K-4 · 2017-07-25">
+        <img src="photolib/4K-4.jpg" alt="4K-4" loading="lazy">
+        <div class="photo-overlay">4K-4 · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-3.jpg" data-gallery="photos" data-desc="4K-3 · 2017-07-25">
+        <img src="photolib/4K-3.jpg" alt="4K-3" loading="lazy">
+        <div class="photo-overlay">4K-3 · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-31.png" data-gallery="photos" data-desc="2017-07-31">
+        <img src="photolib/2017-07-31.png" alt="07-31" loading="lazy">
+        <div class="photo-overlay">2017-07-31</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-27.png" data-gallery="photos" data-desc="2017-07-27">
+        <img src="photolib/2017-07-27.png" alt="07-27" loading="lazy">
+        <div class="photo-overlay">2017-07-27</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-21.png" data-gallery="photos" data-desc="2017-07-21">
+        <img src="photolib/2017-07-21.png" alt="07-21" loading="lazy">
+        <div class="photo-overlay">2017-07-21</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-19.png" data-gallery="photos" data-desc="2017-07-19">
+        <img src="photolib/2017-07-19.png" alt="07-19" loading="lazy">
+        <div class="photo-overlay">2017-07-19</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-14.png" data-gallery="photos" data-desc="2017-07-14">
+        <img src="photolib/2017-07-14.png" alt="07-14" loading="lazy">
+        <div class="photo-overlay">2017-07-14</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-13.png" data-gallery="photos" data-desc="2017-07-13">
+        <img src="photolib/2017-07-13.png" alt="07-13" loading="lazy">
+        <div class="photo-overlay">2017-07-13</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-11.png" data-gallery="photos" data-desc="2017-07-11">
+        <img src="photolib/2017-07-11.png" alt="07-11" loading="lazy">
+        <div class="photo-overlay">2017-07-11</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- QR Code Dialog -->
+  <mdui-dialog id="qrDialog" headline="QQ群：652369699" style="--md-dialog-headline-size: 1rem;">
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('qrDialog').open = false">取消</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank'); document.getElementById('qrDialog').open = false;">打开群链接</mdui-button>
+  </mdui-dialog>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">
+      大育英帝国学生会 宣传部 × 辣条视频工作室
+    </div>
+    <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div style="margin-top: 0.5rem;">
+      <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
+        <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
+      </a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
+    </div>
+  </footer>
+
+  <!-- FAB Navigation -->
+  <div class="fab-nav">
+    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="photo.html" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+  </div>
+
+  <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    // Dark mode: dropdown with light/dark/system
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeMenu = document.getElementById('themeMenu');
+
+    function applyTheme(mode) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const themeLabel = document.getElementById('themeLabel');
+      let dark;
+      if (mode === 'system') {
+        dark = mq.matches;
+        themeIcon.setAttribute('name', 'settings_suggest');
+        themeLabel.textContent = '跟随系统';
+      } else if (mode === 'dark') {
+        dark = true;
+        themeIcon.setAttribute('name', 'dark_mode');
+        themeLabel.textContent = '暗色模式';
+      } else {
+        dark = false;
+        themeIcon.setAttribute('name', 'light_mode');
+        themeLabel.textContent = '亮色模式';
+      }
+      html.classList.toggle('mdui-theme-dark', dark);
+    }
+
+    // Load saved preference
+    let savedMode = localStorage.getItem('theme-mode') || 'system';
+    themeMenu.value = savedMode;
+    applyTheme(savedMode);
+
+    themeMenu.addEventListener('change', () => {
+      savedMode = themeMenu.value;
+      localStorage.setItem('theme-mode', savedMode);
+      applyTheme(savedMode);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (savedMode === 'system') applyTheme('system');
+    });
+
+    // GLightbox
+    const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+
+    // QR code dialog
+    document.getElementById('qrCodeImg').addEventListener('click', () => {
+      document.getElementById('qrDialog').open = true;
+    });
+
+    // Video source selector
+    const videoUrls = {
+      v1: '//player.bilibili.com/player.html?isOutside=true&aid=16040184&bvid=BV17x411j7Uu&cid=26168724&p=1&autoplay=0',
+      v2: '//player.bilibili.com/player.html?isOutside=true&aid=35147613&bvid=BV1Fb411w7Bn&cid=61582854&p=1&autoplay=0'
+    };
+    const videoFrame = document.getElementById('videoFrame');
+    const videoSelector = document.getElementById('videoSelector');
+    videoFrame.src = videoUrls.v1;
+    videoSelector.addEventListener('change', () => {
+      videoFrame.src = videoUrls[videoSelector.value] || '';
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
-
 </html>

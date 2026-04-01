@@ -1,256 +1,287 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <title>图片库--大育英帝国Minecraft计划</title>
-    <link href="css/mdui.css" rel="stylesheet" type="text/css">
-    <link href="css/mdui.min.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/mdui.js"></script>
-    <script type="text/javascript" src="js/mdui.min.js"></script>
-    <script type="text/javascript"></script>
-    <script type="text/javascript" src="vr.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片库 - 大育英帝国 Minecraft 计划</title>
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    :root {
+      --mdui-color-primary: #00897b;
+      --mdui-color-on-primary: #ffffff;
+      --mdui-color-primary-container: #a7f3d0;
+      --mdui-color-surface: #fdfcff;
+      --mdui-color-surface-variant: #ece4e0;
+    }
+    body { background: #f5f5f5; }
+
+    .page-header {
+      position: relative;
+      min-height: 40vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('images/background.jpg') center/cover no-repeat;
+      filter: brightness(0.45);
+    }
+    .page-header-content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      padding: 2rem;
+    }
+    .page-header-content h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .photo-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .photo-card {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 16/10;
+      background: #eee;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .photo-card:hover img { transform: scale(1.05); }
+    .photo-card .photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.6rem 0.8rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    .mdui-theme-dark .theme-toggle {
+      background: rgba(40,40,40,0.85);
+    }
+    .theme-dropdown mdui-menu {
+      min-width: 160px;
+    }
+    .fab-nav {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1rem;
+      z-index: 1000;
+      display: flex;
+      gap: 0.25rem;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      padding: 0.25rem;
+    }
+    .mdui-theme-dark .fab-nav {
+      background: rgba(40,40,40,0.85);
+    }
+
+    .site-footer {
+      background: #263238;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      line-height: 2;
+    }
+    .site-footer a { color: #a7f3d0; text-decoration: none; }
+
+    /* Dark mode overrides */
+    .mdui-theme-dark { background: #121212; }
+    .mdui-theme-dark body { background: #121212; }
+    .mdui-theme-dark .site-footer { background: #0d1117; }
+
+    @media (max-width: 600px) {
+      .page-header-content h1 { font-size: 1.6rem; }
+      .page-header { min-height: 30vh; }
+    }
+  </style>
 </head>
+<body>
 
-<body class="mdui-theme-primary-teal mdui-theme-accent-teal mdui-bottom-nav-fixed">
-    <div class="mdui-toolbar mdui-color-theme">
-        <span class="mdui-typo-title">大育英帝国Minecraft计划</span><small>图片库</small>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="切换主题">
+        <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
+        <span id="themeLabel">跟随系统</span>
+      </mdui-button>
+      <mdui-menu selects="single" value="system" id="themeMenu">
+        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1>图片库</h1>
+      <div style="margin-top:1rem;">
+        <mdui-button href="index.html" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">返回首页</mdui-button>
+      </div>
     </div>
-    <div class="mdui-fab-wrapper" mdui-fab="{trigger: 'hover'}">
-        <button class="mdui-fab mdui-ripple mdui-fab-fixed mdui-color-theme-accent">
-            <i class="mdui-icon material-icons">add</i>
-        </button>
-        <div class="mdui-fab-dial">
-           <button class="mdui-fab mdui-ripple mdui-color-light-blue-accent" onclick="choose();"; mdui-tooltip="{content: 'VR'}"><i class="mdui-icon material-icons">maps</i></button>
-            <button class="mdui-fab mdui-ripple mdui-color-red-accent" onclick="window.location='photo.html'" mdui-tooltip="{content: '图片'}"><i class="mdui-icon material-icons">image</i></button>
-            <button class="mdui-fab mdui-ripple mdui-color-amber-accent" onclick="window.location='index.html'" mdui-tooltip="{content: '主页'}"><i class="mdui-icon material-icons">home</i></button>
-        </div>
+  </section>
+
+  <!-- Photos -->
+  <div class="photo-section">
+    <div class="photo-grid">
+      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
+        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy">
+        <div class="photo-overlay">俯视渲染图 · 2017-08-04</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22">
+        <img src="photolib/snow.jpg" alt="雪" loading="lazy">
+        <div class="photo-overlay">雪 · 2017-08-22</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-garden.jpg" data-gallery="photos" data-desc="4K Garden · 2017-07-25">
+        <img src="photolib/4K-garden.jpg" alt="4K Garden" loading="lazy">
+        <div class="photo-overlay">4K Garden · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-4.jpg" data-gallery="photos" data-desc="4K-4 · 2017-07-25">
+        <img src="photolib/4K-4.jpg" alt="4K-4" loading="lazy">
+        <div class="photo-overlay">4K-4 · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/4K-3.jpg" data-gallery="photos" data-desc="4K-3 · 2017-07-25">
+        <img src="photolib/4K-3.jpg" alt="4K-3" loading="lazy">
+        <div class="photo-overlay">4K-3 · 2017-07-25</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-31.png" data-gallery="photos" data-desc="2017-07-31">
+        <img src="photolib/2017-07-31.png" alt="07-31" loading="lazy">
+        <div class="photo-overlay">2017-07-31</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-27.png" data-gallery="photos" data-desc="2017-07-27">
+        <img src="photolib/2017-07-27.png" alt="07-27" loading="lazy">
+        <div class="photo-overlay">2017-07-27</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-21.png" data-gallery="photos" data-desc="2017-07-21">
+        <img src="photolib/2017-07-21.png" alt="07-21" loading="lazy">
+        <div class="photo-overlay">2017-07-21</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-19.png" data-gallery="photos" data-desc="2017-07-19">
+        <img src="photolib/2017-07-19.png" alt="07-19" loading="lazy">
+        <div class="photo-overlay">2017-07-19</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-14.png" data-gallery="photos" data-desc="2017-07-14">
+        <img src="photolib/2017-07-14.png" alt="07-14" loading="lazy">
+        <div class="photo-overlay">2017-07-14</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-13.png" data-gallery="photos" data-desc="2017-07-13">
+        <img src="photolib/2017-07-13.png" alt="07-13" loading="lazy">
+        <div class="photo-overlay">2017-07-13</div>
+      </a>
+      <a class="photo-card glightbox" href="photolib/2017-07-11.png" data-gallery="photos" data-desc="2017-07-11">
+        <img src="photolib/2017-07-11.png" alt="07-11" loading="lazy">
+        <div class="photo-overlay">2017-07-11</div>
+      </a>
     </div>
-    <div class="mdui-container">
-        <div class="mdui-row-xs-3 mdui-row-sm-4 mdui-row-md-5 mdui-grid-list">
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/snow.jpg" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-08-22</div>
-                            <div class="mdui-grid-tile-subtitle">雪</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/snow.jpg');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/yuying.jpg" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-08-04</div>
-                            <div class="mdui-grid-tile-subtitle">俯视渲染图</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/yuying.jpg');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-31.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-31</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-31.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-27.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-27</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-27.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/4K-garden.jpg" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-25</div>
-                            <div class="mdui-grid-tile-subtitle">4K-garden</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/4K-garden.jpg');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/4K-4.jpg" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-25</div>
-                            <div class="mdui-grid-tile-subtitle">4K-4</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/4K-4.jpg');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/4K-3.jpg" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-25</div>
-                            <div class="mdui-grid-tile-subtitle">4K-3</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/4K-3.jpg');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-21.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-21</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-21.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-19.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-19</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-19.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-14 (2).png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-14</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-14 (2).png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-14.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-14</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-14.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-13 (3).png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-13</div>
-                            <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">videocam</i></div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-7-13-video.mp4');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-13 (2).png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-13</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-13 (2).png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-13.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-13</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-13.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-14.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-14</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-14.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mdui-col">
-                <div class="mdui-grid-tile">
-                    <img src="photolib/2017-07-11.png" />
-                    <div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
-                        <div class="mdui-grid-tile-text">
-                            <div class="mdui-grid-tile-title"><i class="mdui-icon material-icons">date_range</i>2017-07-11</div>
-                        </div>
-                        <div class="mdui-grid-tile-buttons">
-                            <button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="window.open('photolib/2017-07-11.png');"><i class="mdui-icon material-icons" mdui-tooltip="{content: '打开'}">link</i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div style="margin-top: 0.5rem;">
+      <a href="index.html">返回首页</a> &middot; <a href="https://github.com/jnYuyingMC" target="_blank">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
     </div>
-    <div class="mdui-bottom-nav mdui-bottom-nav-text-auto mdui-bottom-nav-scroll-hide  mdui-color-teal">
-        <div class="mdui-center mdui-valign">
-            <p><span>Copyright</span>
-                <p><i class="mdui-icon material-icons">copyright</i>
-                    <time>2017</time><span>&nbsp;大育英帝国Minecraft计划项目组</span></p>
-        </div>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
     </div>
+  </footer>
+
+  <!-- FAB Navigation -->
+  <div class="fab-nav">
+    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="#" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+  </div>
+
+  <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    // Dark mode: dropdown with light/dark/system
+    const html = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeMenu = document.getElementById('themeMenu');
+
+    function applyTheme(mode) {
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const themeLabel = document.getElementById('themeLabel');
+      let dark;
+      if (mode === 'system') {
+        dark = mq.matches;
+        themeIcon.setAttribute('name', 'settings_suggest');
+        themeLabel.textContent = '跟随系统';
+      } else if (mode === 'dark') {
+        dark = true;
+        themeIcon.setAttribute('name', 'dark_mode');
+        themeLabel.textContent = '暗色模式';
+      } else {
+        dark = false;
+        themeIcon.setAttribute('name', 'light_mode');
+        themeLabel.textContent = '亮色模式';
+      }
+      html.classList.toggle('mdui-theme-dark', dark);
+    }
+
+    let savedMode = localStorage.getItem('theme-mode') || 'system';
+    themeMenu.value = savedMode;
+    applyTheme(savedMode);
+
+    themeMenu.addEventListener('change', () => {
+      savedMode = themeMenu.value;
+      localStorage.setItem('theme-mode', savedMode);
+      applyTheme(savedMode);
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      if (savedMode === 'system') applyTheme('system');
+    });
+
+    // GLightbox
+    const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+  </script>
 </body>
-
 </html>
