@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-04-01 (Evening) — UI Refinements / UI 迭代优化
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Added team structure section (核心组 / 建筑组 / 美术组 / 渲染组) with structured card layout / 新增团队架构板块
+- Added group QR code in team section with dialog popup / 群二维码 + 弹窗
+- Added GitHub logo icon next to footer GitHub link / Footer GitHub 链接旁添加图标
+- Hero section: replaced VR links with Bilibili video links (正片 + 重制版) / Hero 区链接替换为 B 站正片与重制版
+- VR page: restored self-hosted source and GitHub VR options with deprecation dialogs / VR 页恢复自建源与 GitHub VR，附弃用提示弹窗
+- Added Google VR View official reference and link in GitHub VR card / GitHub VR 卡片引用 Google 官方说明
+- Unified all VR card buttons to `variant="tonal"` style / 统一 VR 卡片按钮风格
+- Added `open_in_new` icon to all external links across three pages / 所有外链添加新窗口图标
+- Added timeline entry: 2017.11.5 正片发布 / Timeline 新增正片发布条目
+- Created `CHANGELOG.md` for future AI agent reference / 创建变更日志
+- Updated `README.md` with VR removal and legacy cleanup notes / 更新 README
+
 ## 2026-04-01 (Afternoon) — AI Agent Site Overhaul / AI Agent 网页革新
 
 Led by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。

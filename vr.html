@@ -165,9 +165,9 @@
 
     <div class="vr-card">
       <div class="vr-card-body">
-        <h3>720yun VR 全景</h3>
+        <h3>720云 VR 全景</h3>
         <p>在线沉浸式浏览育英校园全景，支持鼠标拖拽、手机陀螺仪交互。</p>
-        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" variant="filled">前往 720yun</mdui-button>
+        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" variant="tonal">前往 720云 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
 
@@ -175,11 +175,40 @@
       <div class="vr-card-body">
         <h3>YouTube VR 视频</h3>
         <p>育英 Minecraft 计划 VR 演示视频，支持 360° 全景播放。</p>
-        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" variant="filled">前往 YouTube</mdui-button>
+        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" variant="tonal">前往 YouTube <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+      </div>
+    </div>
+
+    <div class="vr-card">
+      <div class="vr-card-body">
+        <h3>自建源</h3>
+        <p>原自建 VR 服务器托管的全景浏览。</p>
+        <mdui-button variant="tonal" id="btnSelfHosted">查看自建源</mdui-button>
+      </div>
+    </div>
+
+    <div class="vr-card">
+      <div class="vr-card-body">
+        <h3>GitHub VR</h3>
+        <p>基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架的 GitHub Pages 部署版本。VR View 可将 360° 图片和视频转化为交互式体验：手机倾斜切换视角、Cardboard 眼镜沉浸式浏览、电脑端鼠标拖拽旋转。</p>
+        <mdui-button variant="tonal" id="btnGithubVr">前往 GitHub VR</mdui-button>
       </div>
     </div>
 
   </div>
+
+  <!-- Self-hosted Dialog -->
+  <mdui-dialog id="selfHostedDialog" headline="自建源不可用">
+    由于原始服务器已停止维护，该访问源已不再可用。
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('selfHostedDialog').open = false">知道了</mdui-button>
+  </mdui-dialog>
+
+  <!-- GitHub VR Dialog -->
+  <mdui-dialog id="githubVrDialog" heading="兼容性提示">
+    该页面基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架构建，此框架自 2018 年 12 月起已停止维护。我们无法保证您的浏览体验，建议使用上方的 720云或 YouTube VR 替代。
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('githubVrDialog').open = false">取消</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('vrview/examples/yuying/index.html','_blank'); document.getElementById('githubVrDialog').open = false;">仍然前往</mdui-button>
+  </mdui-dialog>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -188,7 +217,7 @@
       <a href="index.html">返回首页</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code</a> (Xiaomi MiMo V2 Pro)
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
     </div>
   </footer>
 
@@ -238,6 +267,16 @@
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (savedMode === 'system') applyTheme('system');
+    });
+
+    // Self-hosted VR dialog
+    document.getElementById('btnSelfHosted').addEventListener('click', () => {
+      document.getElementById('selfHostedDialog').open = true;
+    });
+
+    // GitHub VR dialog
+    document.getElementById('btnGithubVr').addEventListener('click', () => {
+      document.getElementById('githubVrDialog').open = true;
     });
   </script>
 </body>

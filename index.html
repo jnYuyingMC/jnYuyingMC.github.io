@@ -361,8 +361,8 @@
       <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <mdui-button href="#about" variant="tonal">了解项目</mdui-button>
         <mdui-button href="#photos" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">查看图片</mdui-button>
-        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">YouTube VR</mdui-button>
-        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">720yun VR</mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">正片 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">重制版 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
   </section>
@@ -443,7 +443,7 @@
         </div>
       </div>
       <div style="text-align:center;">
-        <img src="images/qrcode.jpg" alt="项目组群二维码" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12);">
+        <img src="images/qrcode.jpg" alt="项目组群二维码" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg">
         <div style="font-size:0.8rem; color:#888; margin-top:0.4rem;">扫码加入交流群</div>
       </div>
     </div>
@@ -466,6 +466,7 @@
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.9.10</div><div class="event">算力大幅升级，全面渲染开始</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.4</div><div class="event">VR 平台上线</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.12</div><div class="event">渲染全部完成</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.11.5</div><div class="event">正片发布</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2018.11.2</div><div class="event">60FPS 21:9 重制版发布</div></div></div>
       <div class="timeline-item"><div class="timeline-card"><div class="date">2026.4.1</div><div class="event">AI Agent 辅助完成网页革新（David_ryh）</div></div></div>
     </div>
@@ -545,6 +546,12 @@
     </div>
   </div>
 
+  <!-- QR Code Dialog -->
+  <mdui-dialog id="qrDialog" headline="QQ群：652369699" style="--md-dialog-headline-size: 1rem;">
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('qrDialog').open = false">取消</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank'); document.getElementById('qrDialog').open = false;">打开群链接</mdui-button>
+  </mdui-dialog>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">
@@ -553,11 +560,11 @@
     <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
       <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
-        <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub
+        <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
       </a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2</a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code</a> (Xiaomi MiMo V2 Pro)
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
     </div>
   </footer>
 
@@ -613,6 +620,11 @@
 
     // GLightbox
     const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+
+    // QR code dialog
+    document.getElementById('qrCodeImg').addEventListener('click', () => {
+      document.getElementById('qrDialog').open = true;
+    });
 
     // Video source selector
     const videoUrls = {
