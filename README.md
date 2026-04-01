@@ -11,7 +11,7 @@
 - **视觉重设计 / Visual Redesign**: 全屏 Hero、卡片布局、时间线、响应式 / Full-screen Hero, cards, timeline, responsive
 - **图标方案 / Icons**: Material Icons（`<mdui-icon name="xxx">` + Google Fonts CSS）
 - **VR 链接 / VR Links**: Hero 区添加 YouTube VR / 720yun VR 直达按钮 / Direct buttons in Hero section
-- **自建 VR 下线 / Self-hosted VR Removed**: 移除原自建 VR 页面与 GitHub VR 页面，所用框架已停止维护 / Removed self-hosted and GitHub VR pages; the framework is no longer maintained
+- **自建 VR 下线 / Self-hosted VR Removed**: 移除原自建 VR 页面 / Removed self-hosted VR page
 - **暗色模式 / Dark Mode**: 支持亮色/暗色/跟随系统三种模式，文字按钮切换，跨页面持久化 / Light, dark, and system mode with text-button toggle, persisted via localStorage
 - **图片库独立页 / Photo Gallery**: `photo.html` 升级至 MDUI v2，GLightbox 灯箱 + 暗色模式 / Upgraded with lightbox and dark mode support
 - **视频切换 / Video Switcher**: 分段按钮选择视频源，关闭自动播放 / Segmented button to switch video sources, autoplay disabled
