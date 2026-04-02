@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-04-02 — Local Video & Legacy VR / 本地视频 & 旧版 VR 页面
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Added local video (`photolib/2017-7-13-video.mp4`) to video section via native `<video>` with `nodownload` / 视频板块新增本地施工纪录视频，禁用下载
+- Video section now supports Bilibili iframe + local video switching via segmented buttons / 视频板块支持 B 站 iframe 与本地视频切换
+
 ## 2026-04-02 — Legacy VR Page Redesign / 旧版 VR 页面重构
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。

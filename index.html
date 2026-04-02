@@ -479,12 +479,21 @@
     </div>
     <div style="margin-bottom: 1rem;">
       <mdui-segmented-button-group selects="single" id="videoSelector">
-        <mdui-segmented-button value="v1" selected>先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v1">先发版本</mdui-segmented-button>
         <mdui-segmented-button value="v2">60FPS 21:9 重制版</mdui-segmented-button>
+        <mdui-segmented-button value="v3">施工纪录</mdui-segmented-button>
       </mdui-segmented-button-group>
     </div>
-    <div class="embed-card">
-      <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
+    <div class="embed-card" id="videoCard" style="display:none;">
+      <div id="bilibiliWrapper">
+        <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
+      </div>
+      <div id="localVideoWrapper" style="display:none;">
+        <video id="localVideo" controls controlsList="nodownload noremoteplayback" disablePictureInPicture style="width:100%; display:block; border-radius:16px 16px 0 0;">
+          <source src="photolib/2017-7-13-video.mp4" type="video/mp4">
+          您的浏览器不支持视频播放。
+        </video>
+      </div>
     </div>
   </div>
 
@@ -633,9 +642,22 @@
     };
     const videoFrame = document.getElementById('videoFrame');
     const videoSelector = document.getElementById('videoSelector');
-    videoFrame.src = videoUrls.v1;
+    const videoCard = document.getElementById('videoCard');
+    const bilibiliWrapper = document.getElementById('bilibiliWrapper');
+    const localVideoWrapper = document.getElementById('localVideoWrapper');
+
     videoSelector.addEventListener('change', () => {
-      videoFrame.src = videoUrls[videoSelector.value] || '';
+      const val = videoSelector.value;
+      if (!val) { videoCard.style.display = 'none'; return; }
+      videoCard.style.display = '';
+      if (val === 'v3') {
+        bilibiliWrapper.style.display = 'none';
+        localVideoWrapper.style.display = 'block';
+      } else {
+        bilibiliWrapper.style.display = 'block';
+        localVideoWrapper.style.display = 'none';
+        videoFrame.src = videoUrls[val] || '';
+      }
     });
 
     // Smooth scroll
