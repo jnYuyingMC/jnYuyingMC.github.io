@@ -7,7 +7,7 @@
 - **框架升级 / Framework**: MDUI v1 → MDUI v2（Material Design 3）
 - **页面整合 / Single Page**: `index.html` 整合原三页内容，`photo.html` 独立保留 / Merged into single page, photo gallery kept as standalone
 - **图片灯箱 / Lightbox**: GLightbox 替代新窗口打开 / GLightbox replaces new-tab image viewing
-- **视频更新 / Videos**: Flash → Bilibili iframe，新增 60FPS 21:9 重制版 / Added 60FPS 21:9 remastered edition
+- **视频更新 / Videos**: Flash → Bilibili iframe + 本地视频，新增 60FPS 21:9 重制版 / Bilibili iframe + local video, added 60FPS 21:9 remastered
 - **视觉重设计 / Visual Redesign**: 全屏 Hero、卡片布局、时间线、响应式 / Full-screen Hero, cards, timeline, responsive
 - **图标方案 / Icons**: Material Icons（`<mdui-icon name="xxx">` + Google Fonts CSS）
 - **VR 链接 / VR Links**: Hero 区添加 B 站正片与重制版直达按钮 / Bilibili video links in Hero section
