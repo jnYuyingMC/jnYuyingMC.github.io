@@ -20,6 +20,7 @@
 - **团队架构 / Team Structure**: 新增团队分组板块（核心组/建筑组/美术组/渲染组）+ 群二维码 / Structured team groups with QR code
 - **外链标识 / External Link Icons**: 所有外部链接添加 `open_in_new` 图标 / Open-in-new icon on all external links
 - **GitHub Logo**: Footer GitHub 链接旁显示 GitHub 图标 / GitHub icon next to footer link
+- **旧版 VR 美化 / Legacy VR Page**: `vrview/examples/yuying/index.html` 引入主站配色、主题切换、导航按钮、Footer / Legacy VR page styled with main-site theme, toggle, nav, and footer
 
 ## 技术栈 / Tech Stack
 
