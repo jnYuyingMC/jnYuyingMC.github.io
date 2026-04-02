@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-04-02 — Credits Page / 开源引用页
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Created `credits.html` listing all open source dependencies with license info and links / 新建独立开源引用页，列出所有依赖项目及许可证
+- Added "开源引用" link to footer of all 4 pages / 全站 4 个页面 footer 添加开源引用链接
+- Also fixed legacy VR footer to link directly to Google VR View archive repo / 旧版 VR 页 footer 修正为直接链接至 archive 仓库
+
 ## 2026-04-02 — Local Video & Legacy VR / 本地视频 & 旧版 VR 页面
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
@@ -105,6 +113,7 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 
 ```
 ├── index.html          # Main page / 主页面
+├── credits.html        # Open source credits / 开源引用
 ├── photo.html          # Photo gallery / 图片库
 ├── vr.html             # VR panorama (external links) / VR 全景
 ├── vrview/             # Google VR View framework (legacy, preserved) / 遗留 VR 框架

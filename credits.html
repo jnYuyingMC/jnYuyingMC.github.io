@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VR 全景 - 大育英帝国 Minecraft 计划</title>
+  <title>开源引用 - 大育英帝国 Minecraft 计划</title>
   <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="icon" href="favicon.ico">
@@ -45,37 +45,68 @@
       letter-spacing: 2px;
     }
 
-    .vr-section {
-      max-width: 1100px;
+    .credits-section {
+      max-width: 900px;
       margin: 0 auto;
       padding: 2.5rem 1.5rem;
     }
 
-    .vr-card {
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--mdui-color-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .credit-card {
       background: #fff;
       border-radius: 16px;
-      overflow: hidden;
+      padding: 1.8rem 2rem;
       box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
+      margin-bottom: 1.2rem;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .vr-card-body {
-      padding: 1.5rem 2rem 2rem;
+    .credit-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     }
-    .vr-card h3 {
-      font-size: 1.3rem;
+    .credit-card h3 {
+      font-size: 1.25rem;
       font-weight: 600;
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.3rem;
       color: #333;
     }
-    .vr-card p {
+    .credit-card p {
       color: #666;
       line-height: 1.7;
-      margin: 0 0 1rem;
+      margin: 0 0 0.8rem;
     }
-    .vr-card mdui-button {
-      margin-right: 0.5rem;
+    .credit-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.8rem;
+    }
+    .license-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: #e0f2f1;
+      color: #00897b;
+    }
+    .usage-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      background: #f3e5f5;
+      color: #7b1fa2;
     }
 
     .theme-toggle {
@@ -90,9 +121,6 @@
     }
     .mdui-theme-dark .theme-toggle {
       background: rgba(40,40,40,0.85);
-    }
-    .theme-dropdown mdui-menu {
-      min-width: 160px;
     }
     .fab-nav {
       position: fixed;
@@ -122,9 +150,11 @@
 
     .mdui-theme-dark { background: #121212; }
     .mdui-theme-dark body { background: #121212; }
-    .mdui-theme-dark .vr-card { background: #1e1e1e; }
-    .mdui-theme-dark .vr-card h3 { color: #e0e0e0; }
-    .mdui-theme-dark .vr-card p { color: #aaa; }
+    .mdui-theme-dark .credit-card {
+      background: #1e1e1e;
+    }
+    .mdui-theme-dark .credit-card h3 { color: #e0e0e0; }
+    .mdui-theme-dark .credit-card p { color: #aaa; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
     @media (max-width: 600px) {
@@ -137,7 +167,7 @@
 
   <!-- Theme Toggle -->
   <div class="theme-toggle">
-    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+    <mdui-dropdown placement="bottom-end">
       <mdui-button slot="trigger" variant="text" title="切换主题">
         <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
         <span id="themeLabel">跟随系统</span>
@@ -153,71 +183,75 @@
   <!-- Header -->
   <section class="page-header">
     <div class="page-header-content">
-      <h1>VR 全景</h1>
-      <div style="margin-top:1rem;">
-        <mdui-button href="index.html" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">返回首页</mdui-button>
-      </div>
+      <h1>开源引用</h1>
     </div>
   </section>
 
-  <!-- VR Content -->
-  <div class="vr-section">
+  <!-- Credits -->
+  <div class="credits-section">
 
-    <div class="vr-card">
-      <div class="vr-card-body">
-        <h3>720云 VR 全景</h3>
-        <p>在线沉浸式浏览育英校园全景，支持鼠标拖拽、手机陀螺仪交互。</p>
-        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" variant="tonal">前往 720云 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+    <div class="section-title">
+      <mdui-icon name="code"></mdui-icon> 项目依赖
+    </div>
+
+    <div class="credit-card">
+      <h3>MDUI v2</h3>
+      <p>Material Design 3 前端框架，基于 Web Components，提供按钮、卡片、对话框、菜单等 UI 组件，是本站所有页面的核心框架。</p>
+      <div class="credit-meta">
+        <span class="license-badge">MIT</span>
+        <span class="usage-badge">全站</span>
+        <a href="https://www.mdui.org" target="_blank" style="color:#00897b; text-decoration:none;">官网 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <a href="https://github.com/zdhxionin/mdui" target="_blank" style="color:#00897b; text-decoration:none;">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
-    <div class="vr-card">
-      <div class="vr-card-body">
-        <h3>YouTube VR 视频</h3>
-        <p>育英 Minecraft 计划 VR 演示视频，支持 360° 全景播放。</p>
-        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" variant="tonal">前往 YouTube <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+    <div class="credit-card">
+      <h3>GLightbox</h3>
+      <p>纯 JavaScript 图片灯箱库，支持响应式缩放、键盘导航和触摸滑动，用于本站图片库的点击放大浏览。</p>
+      <div class="credit-meta">
+        <span class="license-badge">MIT</span>
+        <span class="usage-badge">index.html · photo.html</span>
+        <a href="https://biati-digital.github.io/glightbox/" target="_blank" style="color:#00897b; text-decoration:none;">官网 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <a href="https://github.com/biati-digital/glightbox" target="_blank" style="color:#00897b; text-decoration:none;">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
-    <div class="vr-card">
-      <div class="vr-card-body">
-        <h3>自建源</h3>
-        <p>原自建 VR 服务器托管的全景浏览。</p>
-        <mdui-button variant="tonal" id="btnSelfHosted">查看自建源</mdui-button>
+    <div class="credit-card">
+      <h3>Material Icons</h3>
+      <p>Google 提供的开源图标集，涵盖 2000+ 遵循 Material Design 规范的图标，本站通过 Google Fonts CSS 加载并在各页面中使用。</p>
+      <div class="credit-meta">
+        <span class="license-badge">Apache 2.0</span>
+        <span class="usage-badge">全站</span>
+        <a href="https://fonts.google.com/icons" target="_blank" style="color:#00897b; text-decoration:none;">图标库 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
-    <div class="vr-card">
-      <div class="vr-card-body">
-        <h3>GitHub VR</h3>
-        <p>基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架的 GitHub Pages 部署版本。VR View 可将 360° 图片和视频转化为交互式体验：手机倾斜切换视角、Cardboard 眼镜沉浸式浏览、电脑端鼠标拖拽旋转。开源仓库：<a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">googlearchive/vrview <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a></p>
-        <mdui-button variant="tonal" id="btnGithubVr">前往 GitHub VR</mdui-button>
+    <div class="credit-card">
+      <h3>Google VR View</h3>
+      <p>Google 开源的 360° 全景浏览框架，可将全景图片和视频转化为交互式 VR 体验。该框架自 2018 年 12 月起停止维护，本站保留了基于此框架的旧版 VR 页面作为遗留资源。</p>
+      <div class="credit-meta">
+        <span class="license-badge">Apache 2.0</span>
+        <span class="usage-badge">vrview/ (Legacy)</span>
+        <a href="https://support.google.com/cardboard/answer/6383058" target="_blank" style="color:#00897b; text-decoration:none;">官方文档 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">GitHub (Archived) <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
   </div>
 
-  <!-- Self-hosted Dialog -->
-  <mdui-dialog id="selfHostedDialog" headline="自建源不可用">
-    由于原始服务器已停止维护，该访问源已不再可用。
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('selfHostedDialog').open = false">知道了</mdui-button>
-  </mdui-dialog>
-
-  <!-- GitHub VR Dialog -->
-  <mdui-dialog id="githubVrDialog" heading="兼容性提示">
-    该页面基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架构建，此框架自 2018 年 12 月起已停止维护。我们无法保证您的浏览体验，建议使用上方的 720云或 YouTube VR 替代。
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('githubVrDialog').open = false">取消</mdui-button>
-    <mdui-button slot="action" variant="text" onclick="window.open('vrview/examples/yuying/index.html','_blank'); document.getElementById('githubVrDialog').open = false;">仍然前往</mdui-button>
-  </mdui-dialog>
-
   <!-- Footer -->
   <footer class="site-footer">
+    <div style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">
+      大育英帝国学生会 宣传部 × 辣条视频工作室
+    </div>
     <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
-      <a href="index.html">返回首页</a>
+      <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
+        <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
+      </a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
     </div>
   </footer>
 
@@ -225,12 +259,12 @@
   <div class="fab-nav">
     <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
     <mdui-button-icon href="photo.html" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="#" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script>
-    // Dark mode: dropdown with light/dark/system
+    // Dark mode
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
     const themeMenu = document.getElementById('themeMenu');
@@ -267,16 +301,6 @@
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (savedMode === 'system') applyTheme('system');
-    });
-
-    // Self-hosted VR dialog
-    document.getElementById('btnSelfHosted').addEventListener('click', () => {
-      document.getElementById('selfHostedDialog').open = true;
-    });
-
-    // GitHub VR dialog
-    document.getElementById('btnGithubVr').addEventListener('click', () => {
-      document.getElementById('githubVrDialog').open = true;
     });
   </script>
 </body>
