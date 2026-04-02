@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-04-02 — Legacy VR Page Redesign / 旧版 VR 页面重构
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Redesigned `vrview/examples/yuying/index.html` with full main-site theming / 旧版 VR 页面引入主站配色与整体设计
+- Added project logo, info card with usage instructions and Google VR View docs link / 添加 Logo、使用说明卡片及官方文档链接
+- Added theme toggle (light/dark), persisted via localStorage / 添加暗色模式切换按钮，localStorage 持久化
+- Added FAB navigation (Home / VR) matching main site / 添加与主站一致的 FAB 导航
+- Added footer consistent with main site (org name, copyright, GitHub logo, tech stack) / Footer 与主站统一
+- Navigation buttons upgraded to `variant="tonal"` with Material Icons / 导航按钮改为 tonal 风格 + 图标
+- All external links marked with `open_in_new` icon / 所有外链添加新窗口图标
+- Preserved Google VR View dependencies (`../style.css`, `vrview.js`, `index.js`) untouched / 未改动 VR View 框架文件
+
 ## 2026-04-01 (Evening) — UI Refinements / UI 迭代优化
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
@@ -87,6 +100,8 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 ├── index.html          # Main page / 主页面
 ├── photo.html          # Photo gallery / 图片库
 ├── vr.html             # VR panorama (external links) / VR 全景
+├── vrview/             # Google VR View framework (legacy, preserved) / 遗留 VR 框架
+│   └── examples/yuying/index.html  # Legacy VR page / 旧版 VR 页面
 ├── README.md           # Project description / 项目说明
 ├── CHANGELOG.md        # Changelog (this file) / 变更日志
 ├── favicon.ico         # Site icon / 网站图标

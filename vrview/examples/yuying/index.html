@@ -5,69 +5,248 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8" />
     <link href="../style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" href="https://jnyuyingmc.github.io/favicon.ico">
     <style>
+      :root {
+        --mdui-color-primary: #00897b;
+        --mdui-color-on-primary: #ffffff;
+        --mdui-color-primary-container: #a7f3d0;
+      }
+
       body {
-        background: #263238;
+        background: #f5f5f5;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       }
+
+      /* Header */
       .vr-header {
         background: linear-gradient(135deg, #00897b, #004d40);
         color: #fff;
         text-align: center;
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
+      }
+      .vr-header img {
+        width: 72px;
+        height: 72px;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        margin-bottom: 0.8rem;
       }
       .vr-header h1 {
-        font-size: 1.4rem;
-        margin: 0 0 0.3rem;
-        font-weight: 600;
+        font-size: 1.6rem;
+        margin: 0 0 0.4rem;
+        font-weight: 700;
         letter-spacing: 1px;
       }
       .vr-header p {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         margin: 0;
-        opacity: 0.8;
+        opacity: 0.85;
       }
       .vr-badge {
         display: inline-block;
         background: rgba(255,255,255,0.15);
         border-radius: 20px;
-        padding: 0.2rem 0.8rem;
-        font-size: 0.75rem;
+        padding: 0.25rem 0.9rem;
+        font-size: 0.8rem;
         margin-top: 0.6rem;
       }
+
+      /* VR viewer wrapper — override ../style.css only for this container */
       #vrview {
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
       }
-      .vr-footer {
-        text-align: center;
-        padding: 1rem;
-        color: rgba(255,255,255,0.5);
-        font-size: 0.8rem;
+
+      /* Info card */
+      .info-section {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
       }
-      .vr-footer a {
+      .info-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+        line-height: 1.8;
+        font-size: 0.95rem;
+        color: #333;
+      }
+      .info-card .section-label {
+        color: var(--mdui-color-primary);
+        font-weight: 600;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      /* Navigation */
+      .vr-nav {
+        text-align: center;
+        padding: 1rem 1rem 2rem;
+      }
+
+      /* Footer */
+      .site-footer {
+        background: #263238;
+        color: rgba(255,255,255,0.7);
+        text-align: center;
+        padding: 2rem 1rem;
+        font-size: 0.9rem;
+        line-height: 2;
+      }
+      .site-footer a {
         color: #a7f3d0;
         text-decoration: none;
       }
-      .vr-footer a:hover {
-        text-decoration: underline;
+
+      /* Theme toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 1000;
+        background: rgba(255,255,255,0.85);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      }
+      .theme-toggle mdui-button {
+        min-width: auto;
+      }
+
+      /* FAB Navigation */
+      .fab-nav {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1rem;
+        z-index: 1000;
+        display: flex;
+        gap: 0.25rem;
+        background: rgba(255,255,255,0.85);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        padding: 0.25rem;
+      }
+
+      /* Dark mode */
+      .mdui-theme-dark body { background: #121212; }
+      .mdui-theme-dark .info-card {
+        background: #1e1e1e;
+        color: #e0e0e0;
+      }
+      .mdui-theme-dark .site-footer { background: #0d1117; }
+      .mdui-theme-dark .theme-toggle { background: rgba(40,40,40,0.85); }
+      .mdui-theme-dark .fab-nav { background: rgba(40,40,40,0.85); }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .vr-header { padding: 1.5rem 1rem; }
+        .vr-header img { width: 56px; height: 56px; }
+        .vr-header h1 { font-size: 1.3rem; }
       }
     </style>
   </head>
   <body>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+      <mdui-button-icon icon="dark_mode" id="themeToggleBtn" title="切换主题"></mdui-button-icon>
+    </div>
+
+    <!-- Header -->
     <div class="vr-header">
+      <img src="https://jnyuyingmc.github.io/images/logo.png" alt="Logo">
       <h1>大育英帝国 Minecraft 计划</h1>
       <p>360° VR 全景漫游 · Google VR View</p>
       <span class="vr-badge">Legacy / 已停止维护</span>
     </div>
+
+    <!-- VR Viewer (Google VR View — do not modify) -->
     <div id="vrview"></div>
-    <div class="vr-footer">
-      <a href="https://jnyuyingmc.github.io/vr.html">返回 VR 页面</a> &middot;
-      <a href="https://jnyuyingmc.github.io/">返回首页</a>
+
+    <!-- Info -->
+    <div class="info-section">
+      <div class="info-card">
+        <div class="section-label">
+          <mdui-icon name="panorama"></mdui-icon> 使用说明
+        </div>
+        <p style="margin:0;">
+          此页面基于 <strong>Google VR View</strong> 框架构建，已停止维护。
+          手机端可倾斜设备切换视角，电脑端可鼠标拖拽旋转查看 360° 全景。
+        </p>
+        <div style="margin-top:1rem; font-size:0.85rem; color:#888;">
+          <a href="https://support.google.com/cardboard/answer/6383058" target="_blank" style="color:#00897b; text-decoration:none;">
+            Google VR View 官方文档 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon>
+          </a>
+        </div>
+      </div>
     </div>
+
+    <!-- Navigation -->
+    <div class="vr-nav">
+      <mdui-button href="https://jnyuyingmc.github.io/vr.html" variant="tonal" style="margin:0 0.5rem;">
+        <mdui-icon name="arrow_back" slot="icon"></mdui-icon> 返回 VR 页面
+      </mdui-button>
+      <mdui-button href="https://jnyuyingmc.github.io/" variant="tonal" style="margin:0 0.5rem;">
+        <mdui-icon name="home" slot="icon"></mdui-icon> 返回首页
+      </mdui-button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">
+        大育英帝国学生会 宣传部 × 辣条视频工作室
+      </div>
+      <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+      <div style="margin-top: 0.5rem;">
+        <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
+          <img src="https://jnyuyingmc.github.io/images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
+        </a>
+      </div>
+      <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
+        Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        &middot; VR by <a href="https://support.google.com/cardboard/answer/6383058" target="_blank">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+      </div>
+    </footer>
+
+    <!-- FAB Navigation -->
+    <div class="fab-nav">
+      <mdui-button-icon href="https://jnyuyingmc.github.io/" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+      <mdui-button-icon href="https://jnyuyingmc.github.io/vr.html" title="VR"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+    </div>
+
+    <!-- MDUI (for theme toggle & buttons only — VR View untouched) -->
+    <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+
+    <!-- Google VR View (unchanged) -->
     <script src="../../build/vrview.js"></script>
     <script src="index.js"></script>
+
+    <script>
+      // Simple dark mode toggle
+      const html = document.documentElement;
+      const themeBtn = document.getElementById('themeToggleBtn');
+      let isDark = localStorage.getItem('theme-mode') === 'dark' ||
+        (!localStorage.getItem('theme-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      function applyDark(dark) {
+        html.classList.toggle('mdui-theme-dark', dark);
+        themeBtn.setAttribute('icon', dark ? 'light_mode' : 'dark_mode');
+      }
+      applyDark(isDark);
+
+      themeBtn.addEventListener('click', () => {
+        isDark = !isDark;
+        localStorage.setItem('theme-mode', isDark ? 'dark' : 'light');
+        applyDark(isDark);
+      });
+    </script>
   </body>
 </html>
