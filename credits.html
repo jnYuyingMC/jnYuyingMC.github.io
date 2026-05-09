@@ -20,6 +20,7 @@
       --mdui-color-surface-variant: #ece4e0;
     }
     /* 页面主体 */
+    html, body { overflow-x: hidden; max-width: 100%; }
     body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
 
     /* 页面头部 */
@@ -162,7 +163,7 @@
     .site-footer a { color: #a7f3d0; text-decoration: none; }
 
     /* 暗色模式覆盖 */
-    .mdui-theme-dark { background: #121212; }
+    .mdui-theme-dark { background: #121212; overflow-x: hidden; }
     .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .credit-card {
       background: #1e1e1e;
@@ -174,13 +175,14 @@
     /* 响应式适配 */
     @media (max-width: 600px) {
       .page-header-content h1 { font-size: 1.6rem; }
-      .page-header { min-height: 30vh; }
-      .credits-section { padding: 1.5rem 1rem; }
-      .section-title { font-size: 1.3rem; }
-      .credit-card { padding: 1.2rem 1.2rem; }
+      .page-header { min-height: 25vh; }
+      .credits-section { padding: 1.2rem 1rem; }
+      .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
+      .credit-card { padding: 1rem; margin-bottom: 0.8rem; }
       .credit-card h3 { font-size: 1.1rem; }
-      .credit-card p { font-size: 0.9rem; }
-      .credit-meta { gap: 0.5rem; }
+      .credit-card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
+      .credit-meta { gap: 0.5rem; margin-top: 0.5rem; }
+      .site-footer { padding: 1.5rem 1rem; }
       .theme-toggle #themeLabel { display: none; }
       .theme-toggle mdui-button { min-width: auto; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
@@ -289,6 +291,9 @@
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
       Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
     </div>
   </footer>
 

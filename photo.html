@@ -22,6 +22,7 @@
     }
 
     /* 页面主体 */
+    html, body { overflow-x: hidden; max-width: 100%; }
     body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
 
     /* 页面头部 */
@@ -140,17 +141,18 @@
     .site-footer a { color: #a7f3d0; text-decoration: none; }
 
     /* Dark mode overrides */
-    .mdui-theme-dark { background: #121212; }
+    .mdui-theme-dark { background: #121212; overflow-x: hidden; }
     .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
     /* 响应式 */
     @media (max-width: 600px) {
       .page-header-content h1 { font-size: 1.6rem; }
-      .page-header { min-height: 30vh; }
-      .photo-section { padding: 1.5rem 1rem; }
+      .page-header { min-height: 25vh; }
+      .photo-section { padding: 1.2rem 1rem; }
       .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.6rem; }
       .photo-card .photo-overlay { font-size: 0.75rem; padding: 0.4rem 0.6rem; }
+      .site-footer { padding: 1.5rem 1rem; }
       .theme-toggle #themeLabel { display: none; }
       .theme-toggle mdui-button { min-width: auto; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
@@ -251,6 +253,9 @@
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
       Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
     </div>
   </footer>
 

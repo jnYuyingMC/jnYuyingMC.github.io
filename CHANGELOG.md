@@ -14,6 +14,11 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 - `unsupported.html`: card/browser-grid adapts to 2-column on small screens / 不支持提示页浏览器网格改为两列
 - Added 380px breakpoint for very narrow devices (index.html, photo.html) / 新增 380px 断点适配极窄设备
 - FAB navigation tightened spacing on mobile / FAB 导航移动端间距收紧
+- Fixed horizontal scroll overflow on mobile: `overflow-x: hidden` on html/body + all pages / 修复移动端横向溢出：html/body 添加 overflow-x: hidden
+- Vertical spacing reduced across all pages (hero, sections, cards, timeline, footer) / 全站纵向间距精简
+- Video segmented buttons wrapped in scrollable container to fix mobile overflow / 视频分段按钮包裹滚动容器修复移动端溢出
+- Video button order: YouTube moved next to Bilibili (same video, different platform) / YouTube 移至 Bilibili 旁（同一视频不同平台）
+- Added IPv6 support notice in footer of all 4 pages / 全站 4 页 footer 新增 IPv6 支持提醒
 
 ## 2026-05-09 — Browser Compatibility & Video / 浏览器兼容 & 视频更新
 

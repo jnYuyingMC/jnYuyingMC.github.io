@@ -22,6 +22,10 @@
     }
 
     /* Body styles */
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
     body {
       background: #f5f5f5;
       font-family: "Noto Sans SC", sans-serif;
@@ -270,23 +274,29 @@
 
     /* Responsive */
     @media (max-width: 600px) {
-      .hero { min-height: 55vh; }
-      .hero-content h1 { font-size: 1.8rem; letter-spacing: 0; }
+      .section, .hero-content, .photo-grid, .member-grid, .embed-grid, .timeline {
+        max-width: 100%;
+      }
+      .hero { min-height: 50vh; }
+      .hero-content h1 { font-size: 1.8rem; letter-spacing: 0; margin-bottom: 0.5rem; }
       .hero-content p { font-size: 0.95rem; }
-      .hero-logo { width: 72px; }
-      .section { padding: 2rem 1rem; }
-      .section-title { font-size: 1.3rem; }
-      .desc-card { padding: 1.2rem; font-size: 0.95rem; }
-      .member-grid { grid-template-columns: 1fr; }
+      .hero-logo { width: 64px; margin-bottom: 1rem; }
+      .section { padding: 1.5rem 1rem; }
+      .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
+      .desc-card { padding: 1rem; font-size: 0.95rem; margin-bottom: 1rem; }
+      .member-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .member-card { padding: 1.2rem; }
+      .member-card mdui-avatar, .member-card [style*="width:64px"] { width: 48px !important; height: 48px !important; font-size: 1.1rem !important; }
       .timeline { padding-left: 28px; }
+      .timeline-item { margin-bottom: 1.2rem; }
       .timeline-item::before { left: -21px; width: 10px; height: 10px; }
+      .timeline-card { padding: 0.8rem 1rem; }
       .embed-grid { grid-template-columns: 1fr; }
       .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .site-footer { padding: 1.5rem 1rem; }
       .theme-toggle #themeLabel { display: none; }
       .theme-toggle mdui-button { min-width: auto; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
-      mdui-segmented-button-group { overflow-x: auto; }
-      mdui-segmented-button { font-size: 0.75rem; white-space: nowrap; }
     }
     @media (max-width: 380px) {
       .hero-content h1 { font-size: 1.5rem; }
@@ -298,6 +308,7 @@
     .mdui-theme-dark {
       --mdui-color-surface: #1c1b1f;
       --mdui-color-surface-variant: #49454f;
+      overflow-x: hidden;
     }
     .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .desc-card,
@@ -527,12 +538,12 @@
     <div class="section-title">
       <mdui-icon name="play_circle"></mdui-icon> 视频
     </div>
-    <div style="margin-bottom: 1rem;">
-      <mdui-segmented-button-group selects="single" id="videoSelector">
+    <div style="margin-bottom: 1rem; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
+      <mdui-segmented-button-group selects="single" id="videoSelector" style="display:inline-flex; min-width:max-content;">
         <mdui-segmented-button value="v1">Bilibili 先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v4">YouTube 先发版本</mdui-segmented-button>
         <mdui-segmented-button value="v2">60FPS 21:9 重制版</mdui-segmented-button>
         <mdui-segmented-button value="v3">施工纪录</mdui-segmented-button>
-        <mdui-segmented-button value="v4">YouTube 先发版本</mdui-segmented-button>
       </mdui-segmented-button-group>
     </div>
     <div class="embed-card" id="videoCard" style="display:none;">
@@ -628,6 +639,9 @@
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
       Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
     </div>
   </footer>
 
