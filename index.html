@@ -371,7 +371,13 @@
       <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <mdui-button href="#about" variant="tonal">了解项目</mdui-button>
         <mdui-button href="#photos" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">查看图片</mdui-button>
-        <mdui-button href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">正片 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-dropdown trigger="hover" placement="bottom-start">
+          <mdui-button slot="trigger" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">正片 <mdui-icon name="arrow_drop_down" slot="icon"></mdui-icon></mdui-button>
+          <mdui-menu>
+            <mdui-menu-item href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank">Bilibili <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
+            <mdui-menu-item href="https://youtu.be/KZ5w7Looohk" target="_blank">YouTube <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
+          </mdui-menu>
+        </mdui-dropdown>
         <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">重制版 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
