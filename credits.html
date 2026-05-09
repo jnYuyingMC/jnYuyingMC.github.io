@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.ico">
   <style>
+    /* 变量 */
     :root {
       --mdui-color-primary: #00897b;
       --mdui-color-on-primary: #ffffff;
@@ -18,8 +19,10 @@
       --mdui-color-surface: #fdfcff;
       --mdui-color-surface-variant: #ece4e0;
     }
+    /* 页面主体 */
     body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
 
+    /* 页面头部 */
     .page-header {
       position: relative;
       min-height: 40vh;
@@ -48,12 +51,14 @@
       letter-spacing: 2px;
     }
 
+    /* 引用区域 */
     .credits-section {
       max-width: 900px;
       margin: 0 auto;
       padding: 2.5rem 1.5rem;
     }
 
+    /* 区域标题 */
     .section-title {
       font-size: 1.6rem;
       font-weight: 600;
@@ -64,6 +69,7 @@
       gap: 0.5rem;
     }
 
+    /* 引用卡片 */
     .credit-card {
       background: #fff;
       border-radius: 16px;
@@ -94,6 +100,7 @@
       align-items: center;
       margin-top: 0.8rem;
     }
+    /* 许可/用途标签 */
     .license-badge {
       display: inline-block;
       padding: 0.2rem 0.7rem;
@@ -112,6 +119,7 @@
       color: #7b1fa2;
     }
 
+    /* 主题切换 */
     .theme-toggle {
       position: fixed;
       top: 1rem;
@@ -125,6 +133,7 @@
     .mdui-theme-dark .theme-toggle {
       background: rgba(40,40,40,0.85);
     }
+    /* FAB 导航 */
     .fab-nav {
       position: fixed;
       bottom: 1.5rem;
@@ -141,6 +150,7 @@
       background: rgba(40,40,40,0.85);
     }
 
+    /* 页脚 */
     .site-footer {
       background: #263238;
       color: rgba(255,255,255,0.7);
@@ -151,6 +161,7 @@
     }
     .site-footer a { color: #a7f3d0; text-decoration: none; }
 
+    /* 暗色模式覆盖 */
     .mdui-theme-dark { background: #121212; }
     .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .credit-card {
@@ -160,11 +171,14 @@
     .mdui-theme-dark .credit-card p { color: #aaa; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
+    /* 响应式适配 */
     @media (max-width: 600px) {
       .page-header-content h1 { font-size: 1.6rem; }
       .page-header { min-height: 30vh; }
     }
   </style>
+  <!--[if IE]><script>window.location.href='unsupported.html';</script><![endif]-->
+  <script>if(document.documentMode)window.location.href='unsupported.html';</script>
 </head>
 <body>
 
@@ -265,9 +279,16 @@
       </a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
   </footer>
+
+  <!-- Old Site Dialog -->
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面">
+    您即将离开当前网站，前往旧版页面。旧版页面可能已停止维护，体验与当前版本不同。
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm">确定</mdui-button>
+  </mdui-dialog>
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
@@ -315,6 +336,16 @@
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (savedMode === 'system') applyTheme('system');
+    });
+
+    // Old site link
+    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('oldSiteDialog').open = true;
+    });
+    document.getElementById('oldSiteConfirm').addEventListener('click', function() {
+      window.open('http://www.jnyuyingmc.top/original/', '_blank');
+      document.getElementById('oldSiteDialog').open = false;
     });
   </script>
 </body>

@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-09 — Browser Compatibility & Video / 浏览器兼容 & 视频更新
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Added YouTube video embed to video section in `index.html` (segmented button switching) / 视频板块新增 YouTube 版本，分段按钮切换
+- Local video (施工纪录) now auto-pauses when switching tabs or scrolling out of view / 本地视频切换选项卡或滚出屏幕时自动暂停
+- Created `unsupported.html` standalone browser compatibility warning page / 新建浏览器不支持提示页
+- IE11 detection via `document.documentMode` in `<head>`, redirects to `unsupported.html` / 通过 `document.documentMode` 检测 IE11 并跳转
+- IE10 and below detection via conditional comments `<!--[if IE]>` / IE10 及以下通过条件注释检测
+- Minimum supported browsers: Chrome 102+, Edge 102+, Firefox 106+, Opera 88+, Safari 16.4+ / 最低支持浏览器版本
+- Added "旧版页面" link to footer of all 4 pages with confirmation dialog / 全站 4 个页面 footer 添加旧版页面链接，附确认弹窗
+- Added old site link to `unsupported.html` for IE users / `unsupported.html` 新增旧版页面入口
+
 ## 2026-04-02 — Credits Page / 开源引用页
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。

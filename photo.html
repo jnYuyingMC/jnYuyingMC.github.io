@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="icon" href="favicon.ico">
   <style>
+    /* CSS 变量 */
     :root {
       --mdui-color-primary: #00897b;
       --mdui-color-on-primary: #ffffff;
@@ -19,8 +20,11 @@
       --mdui-color-surface: #fdfcff;
       --mdui-color-surface-variant: #ece4e0;
     }
+
+    /* 页面主体 */
     body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
 
+    /* 页面头部 */
     .page-header {
       position: relative;
       min-height: 40vh;
@@ -49,6 +53,7 @@
       letter-spacing: 2px;
     }
 
+    /* 照片画廊 */
     .photo-section {
       max-width: 1200px;
       margin: 0 auto;
@@ -89,6 +94,7 @@
       font-size: 0.85rem;
     }
 
+    /* 主题切换 */
     .theme-toggle {
       position: fixed;
       top: 1rem;
@@ -105,6 +111,7 @@
     .theme-dropdown mdui-menu {
       min-width: 160px;
     }
+    /* FAB 导航 */
     .fab-nav {
       position: fixed;
       bottom: 1.5rem;
@@ -121,6 +128,7 @@
       background: rgba(40,40,40,0.85);
     }
 
+    /* 页脚 */
     .site-footer {
       background: #263238;
       color: rgba(255,255,255,0.7);
@@ -136,11 +144,14 @@
     .mdui-theme-dark body { background: #121212; }
     .mdui-theme-dark .site-footer { background: #0d1117; }
 
+    /* 响应式 */
     @media (max-width: 600px) {
       .page-header-content h1 { font-size: 1.6rem; }
       .page-header { min-height: 30vh; }
     }
   </style>
+  <!--[if IE]><script>window.location.href='unsupported.html';</script><![endif]-->
+  <script>if(document.documentMode)window.location.href='unsupported.html';</script>
 </head>
 <body>
 
@@ -169,7 +180,7 @@
     </div>
   </section>
 
-  <!-- Photos -->
+  <!-- Photo Gallery -->
   <div class="photo-section">
     <div class="photo-grid">
       <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
@@ -230,9 +241,16 @@
       <a href="index.html">返回首页</a> &middot; <a href="https://github.com/jnYuyingMC" target="_blank">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro)
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
   </footer>
+
+  <!-- Old Site Dialog -->
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面">
+    您即将离开当前网站，前往旧版页面。旧版页面可能已停止维护，体验与当前版本不同。
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm">确定</mdui-button>
+  </mdui-dialog>
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
@@ -244,7 +262,7 @@
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
-    // Dark mode: dropdown with light/dark/system
+    // Theme toggle
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
     const themeMenu = document.getElementById('themeMenu');
@@ -285,6 +303,16 @@
 
     // GLightbox
     const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+
+    // Old site link handler
+    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('oldSiteDialog').open = true;
+    });
+    document.getElementById('oldSiteConfirm').addEventListener('click', function() {
+      window.open('http://www.jnyuyingmc.top/original/', '_blank');
+      document.getElementById('oldSiteDialog').open = false;
+    });
   </script>
 </body>
 </html>

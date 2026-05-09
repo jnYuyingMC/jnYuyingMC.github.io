@@ -21,6 +21,10 @@
 - **外链标识 / External Link Icons**: 所有外部链接添加 `open_in_new` 图标 / Open-in-new icon on all external links
 - **GitHub Logo**: Footer GitHub 链接旁显示 GitHub 图标 / GitHub icon next to footer link
 - **旧版 VR 美化 / Legacy VR Page**: `vrview/examples/yuying/index.html` 引入主站配色、主题切换、导航按钮、Footer / Legacy VR page styled with main-site theme, toggle, nav, and footer
+- **YouTube 视频 / YouTube Video**: 视频板块新增 YouTube 嵌入版本 / Added YouTube embed to video section
+- **视频自动暂停 / Video Auto-pause**: 本地视频切换选项卡或离开屏幕时自动暂停 / Local video auto-pauses on tab switch or scroll out of view
+- **浏览器兼容检测 / Browser Compatibility**: IE11 及以下自动跳转至不支持提示页 (`unsupported.html`) / IE11 and below auto-redirect to unsupported browser page
+- **旧版页面入口 / Legacy Site Link**: 全站 footer 新增旧版页面链接，附确认弹窗；不支持提示页亦提供旧版入口 / Old site link added to footer with confirmation dialog and to unsupported page
 
 ## 技术栈 / Tech Stack
 

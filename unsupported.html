@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器不受支持 — 大育英帝国 Minecraft 计划</title>
+  <style>
+    /* 重置 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* 布局 */
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      font-family: "Noto Sans SC", sans-serif;
+      padding: 2rem;
+    }
+    /* 卡片 */
+    .card {
+      max-width: 520px;
+      width: 100%;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    /* 图标 */
+    .icon { font-size: 56px; color: #ff9800; margin-bottom: 1rem; }
+    /* 排版 */
+    h1 { font-size: 1.5rem; color: #333; margin-bottom: 0.5rem; }
+    p { color: #666; line-height: 1.8; margin-bottom: 1.5rem; }
+    /* 浏览器网格 */
+    .browser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .browser-grid a {
+      display: block;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      background: #f0f0f0;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .browser-grid a:hover { background: #e0e0e0; }
+    /* 备注 */
+    .note { font-size: 0.8rem; color: #999; margin-top: 1rem; }
+
+    /* 弹窗遮罩 */
+    .dialog-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+    .dialog-overlay.active { display: flex; }
+    /* 弹窗卡片 */
+    .dialog {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+    .dialog h2 { font-size: 1.2rem; color: #333; margin-bottom: 0.8rem; }
+    .dialog p { color: #666; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .dialog-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+    .dialog-actions button {
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .btn-cancel { background: #f0f0f0; color: #333; }
+    .btn-confirm { background: #00897b; color: #fff; }
+  </style>
+</head>
+<body>
+  <!-- 浏览器警告卡片 -->
+  <div class="card">
+    <div class="icon">&#9888;</div>
+    <h1>浏览器不受支持</h1>
+    <p>您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：</p>
+    <div class="browser-grid">
+      <a href="https://www.google.com/chrome/" target="_blank" rel="noopener">Chrome 102+</a>
+      <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">Edge 102+</a>
+      <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener">Firefox 106+</a>
+      <a href="https://www.opera.com/" target="_blank" rel="noopener">Opera 88+</a>
+    </div>
+    <p class="note">macOS 用户也可使用 Safari 16.4+</p>
+    <p class="note">如您想要访问旧版页面，请 <a href="#" id="oldSiteLink" style="color:#00897b; text-decoration:none;">点击这里</a></p>
+  </div>
+
+  <!-- 旧版页面弹窗 -->
+  <div class="dialog-overlay" id="oldSiteDialog">
+    <div class="dialog">
+      <h2>建议安装新浏览器</h2>
+      <p>为了获得最佳浏览体验，我们强烈建议您安装现代浏览器。旧版页面可能无法正常显示部分功能。<br><br>您确定仍然前往旧版页面吗？</p>
+      <div class="dialog-actions">
+        <button class="btn-cancel" id="dialogCancel">取消</button>
+        <button class="btn-confirm" id="dialogConfirm">仍然前往</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('oldSiteDialog').classList.add('active');
+    });
+    document.getElementById('dialogCancel').addEventListener('click', function() {
+      document.getElementById('oldSiteDialog').classList.remove('active');
+    });
+    document.getElementById('dialogConfirm').addEventListener('click', function() {
+      window.open('http://www.jnyuyingmc.top/original/', '_blank');
+      document.getElementById('oldSiteDialog').classList.remove('active');
+    });
+    document.getElementById('oldSiteDialog').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
