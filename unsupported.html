@@ -53,6 +53,15 @@
     /* 备注 */
     .note { font-size: 0.8rem; color: #999; margin-top: 1rem; }
 
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .card { padding: 1.5rem; border-radius: 16px; }
+      .icon { font-size: 40px; }
+      h1 { font-size: 1.2rem; }
+      .browser-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .browser-grid a { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
+    }
+
     /* 弹窗遮罩 */
     .dialog-overlay {
       display: none;

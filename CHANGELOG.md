@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-05-09 — Mobile Responsive / 移动端适配
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Theme toggle hides label text on mobile, icon-only saves horizontal space / 移动端主题切换隐藏文字，仅显示图标
+- `index.html`: hero logo/text, section titles, description cards, timeline, photo grid, video selector all scaled down / 首页各板块字号与间距缩小
+- `index.html`: team member grid and team structure grid switch to single column on mobile / 团队成员与架构改为单列
+- `index.html`: segmented video buttons shrink font + horizontal scroll / 视频分段按钮缩小字号并可横滑
+- `photo.html`: photo grid column min-width reduced from 260px to 140px / 图片库列宽从 260px 缩至 140px
+- `vr.html`: VR card padding and text sizes reduced / VR 卡片内边距与字号缩小
+- `credits.html`: credit card padding and text sizes reduced / 引用卡片内边距与字号缩小
+- `unsupported.html`: card/browser-grid adapts to 2-column on small screens / 不支持提示页浏览器网格改为两列
+- Added 380px breakpoint for very narrow devices (index.html, photo.html) / 新增 380px 断点适配极窄设备
+- FAB navigation tightened spacing on mobile / FAB 导航移动端间距收紧
+
 ## 2026-05-09 — Browser Compatibility & Video / 浏览器兼容 & 视频更新
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
