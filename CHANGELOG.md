@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-05-09 — Remove VR Module / 移除 VR 模块
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- Deleted entire `vrview/` directory (41 files, ~43 MB): Google VR View framework, Three.js, panoramic images (.webp), and related assets / 删除 `vrview/` 目录全部 41 个文件（约 43 MB），包括 Google VR View 框架、Three.js、全景图片等
+- VR content has been moved to a separate dedicated repository / VR 内容已迁移至独立仓库维护
+
 ## 2026-05-09 — Mobile Responsive / 移动端适配
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
@@ -149,8 +156,6 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 ├── credits.html        # Open source credits / 开源引用
 ├── photo.html          # Photo gallery / 图片库
 ├── vr.html             # VR panorama (external links) / VR 全景
-├── vrview/             # Google VR View framework (legacy, preserved) / 遗留 VR 框架
-│   └── examples/yuying/index.html  # Legacy VR page / 旧版 VR 页面
 ├── README.md           # Project description / 项目说明
 ├── CHANGELOG.md        # Changelog (this file) / 变更日志
 ├── favicon.ico         # Site icon / 网站图标

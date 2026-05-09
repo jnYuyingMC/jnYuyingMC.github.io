@@ -14,15 +14,14 @@ Static HTML website for "大育英帝国 Minecraft 计划" (Da Yuying Empire Min
 
 ## Architecture
 
-### Pages (4 main + 1 legacy)
+### Pages (4 main)
 
 | File | Role |
 |------|------|
 | `index.html` | Main page: Hero, About, Team, Timeline, Videos, Photos (single-page scroll) |
 | `photo.html` | Photo gallery with GLightbox lightbox |
-| `vr.html` | VR panorama hub (external links + legacy VR entry) |
+| `vr.html` | VR panorama hub (external links) |
 | `credits.html` | Open-source dependency attribution |
-| `vrview/examples/yuying/index.html` | Legacy 360° VR panorama viewer (Google VR View) |
 
 ### Dependencies (all CDN)
 
@@ -37,10 +36,6 @@ Static HTML website for "大育英帝国 Minecraft 计划" (Da Yuying Empire Min
 - **Navigation**: Fixed FAB bar (bottom-right) on all pages with Home/Photos/VR buttons. Fixed theme toggle dropdown (top-right).
 - **Color scheme**: Primary teal `#00897b`, container `#a7f3d0`. Dark mode backgrounds `#121212`/`#1e1e1e`, footer `#0d1117`.
 - **Responsive**: Media query at `max-width: 600px`. Grid layouts use `auto-fit`/`auto-fill` with `minmax()`.
-
-### VR View (Legacy)
-
-The `vrview/` directory is a preserved copy of Google's archived VR View framework (`googlearchive/vrview`). The custom VR experience in `vrview/examples/yuying/` defines 6 panoramic scenes connected by 3D hotspots. Do not modify framework files in `vrview/build/`.
 
 ## Editing Guidelines
 
