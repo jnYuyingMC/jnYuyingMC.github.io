@@ -12,6 +12,7 @@
 - **图标方案 / Icons**: Material Icons（`<mdui-icon name="xxx">` + Google Fonts CSS）
 - **VR 链接 / VR Links**: Hero 区添加 B 站正片与重制版直达按钮 / Bilibili video links in Hero section
 - **自建 VR / Self-hosted VR**: VR 页保留自建源与 GitHub VR 入口，附弃用提示弹窗 / Self-hosted and GitHub VR options kept with deprecation dialogs
+- **VR 模块移除 / VR Module Removed**: 删除 `vrview/` 目录（41 文件，~43 MB），VR 内容迁移至独立仓库维护 / Removed `vrview/` directory (41 files, ~43 MB), VR content moved to a separate repository
 - **暗色模式 / Dark Mode**: 支持亮色/暗色/跟随系统三种模式，文字按钮切换，跨页面持久化 / Light, dark, and system mode with text-button toggle, persisted via localStorage
 - **图片库独立页 / Photo Gallery**: `photo.html` 升级至 MDUI v2，GLightbox 灯箱 + 暗色模式 / Upgraded with lightbox and dark mode support
 - **视频切换 / Video Switcher**: 分段按钮选择视频源，关闭自动播放 / Segmented button to switch video sources, autoplay disabled
@@ -20,7 +21,7 @@
 - **团队架构 / Team Structure**: 新增团队分组板块（核心组/建筑组/美术组/渲染组）+ 群二维码 / Structured team groups with QR code
 - **外链标识 / External Link Icons**: 所有外部链接添加 `open_in_new` 图标 / Open-in-new icon on all external links
 - **GitHub Logo**: Footer GitHub 链接旁显示 GitHub 图标 / GitHub icon next to footer link
-- **旧版 VR 美化 / Legacy VR Page**: `vrview/examples/yuying/index.html` 引入主站配色、主题切换、导航按钮、Footer / Legacy VR page styled with main-site theme, toggle, nav, and footer
+- **旧版 VR 美化 / Legacy VR Page**: 曾为 `vrview/examples/yuying/index.html` 引入主站配色、主题切换、导航按钮、Footer，现已随 VR 模块移除 / Legacy VR page was styled with main-site theme; now removed with VR module
 - **YouTube 视频 / YouTube Video**: 视频板块新增 YouTube 嵌入版本 / Added YouTube embed to video section
 - **视频自动暂停 / Video Auto-pause**: 本地视频切换选项卡或离开屏幕时自动暂停 / Local video auto-pauses on tab switch or scroll out of view
 - **浏览器兼容检测 / Browser Compatibility**: IE11 及以下自动跳转至不支持提示页 (`unsupported.html`) / IE11 and below auto-redirect to unsupported browser page
