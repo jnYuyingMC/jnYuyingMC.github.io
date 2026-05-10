@@ -1,3 +1,52 @@
-# Mac OS
+# === OS-specific ===
 
-**/.DS_Store
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.fuse_hidden*
+.nfs*
+
+# === Editors / IDE ===
+
+# VS Code (keep .vscode/settings.json for Live Server config)
+.vscode/*
+!.vscode/settings.json
+
+# JetBrains
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*.un~
+Session.vim
+
+# Emacs
+*~
+\#*\#
+.dir-locals.el
+
+# === Misc ===
+
+*.log
+*.tmp
+*.bak
+node_modules/
