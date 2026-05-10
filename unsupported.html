@@ -6,22 +6,33 @@
   <title>浏览器不受支持 — 大育英帝国 Minecraft 计划</title>
   <style>
     /* 重置 */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    /* 布局 */
-    html, body { overflow-x: hidden; max-width: 100%; }
+    * { margin: 0; padding: 0; }
+    /* 布局 — 用 display:table 兼容 IE8+ */
+    html, body { overflow-x: hidden; width: 100%; }
     body {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      text-align: center;
       background: #f5f5f5;
-      font-family: "Noto Sans SC", sans-serif;
-      padding: 2rem;
+      font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      padding: 2rem 1rem;
+    }
+    /* 居中容器 — IE8+ 兼容 */
+    .center-wrap {
+      display: table;
+      width: 100%;
+      min-height: 80vh;
+    }
+    .center-cell {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
     }
     /* 卡片 */
     .card {
       max-width: 520px;
       width: 100%;
+      margin: 0 auto;
       background: #fff;
       border-radius: 20px;
       padding: 2.5rem;
@@ -33,88 +44,105 @@
     /* 排版 */
     h1 { font-size: 1.5rem; color: #333; margin-bottom: 0.5rem; }
     p { color: #666; line-height: 1.8; margin-bottom: 1.5rem; }
-    /* 浏览器网格 */
-    .browser-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-    .browser-grid a {
-      display: block;
-      padding: 0.7rem 1rem;
+    /* 浏览器链接 */
+    .browser-link {
+      display: inline-block;
+      padding: 0.7rem 1.2rem;
+      margin: 0.3rem 0.25rem;
       border-radius: 12px;
       background: #f0f0f0;
       color: #333;
       text-decoration: none;
       font-size: 0.9rem;
-      transition: background 0.2s;
+      line-height: 1.4;
     }
-    .browser-grid a:hover { background: #e0e0e0; }
+    .browser-link:hover { background: #e0e0e0; }
     /* 备注 */
     .note { font-size: 0.8rem; color: #999; margin-top: 1rem; }
+    .note a { color: #00897b; text-decoration: none; }
+    .note a:hover { text-decoration: underline; }
 
     /* 响应式 */
     @media (max-width: 480px) {
       .card { padding: 1.5rem; border-radius: 16px; }
       .icon { font-size: 40px; }
       h1 { font-size: 1.2rem; }
-      .browser-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-      .browser-grid a { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
+      .browser-link { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
     }
 
     /* 弹窗遮罩 */
     .dialog-overlay {
       display: none;
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.4);
       z-index: 100;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
     }
-    .dialog-overlay.active { display: flex; }
+    .dialog-overlay.active {
+      display: block;
+    }
+    /* 弹窗垂直居中辅助 */
+    .dialog-helper {
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
     /* 弹窗卡片 */
     .dialog {
+      display: inline-block;
+      vertical-align: middle;
       background: #fff;
       border-radius: 16px;
       padding: 2rem;
       max-width: 400px;
       width: 90%;
       box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      text-align: left;
     }
     .dialog h2 { font-size: 1.2rem; color: #333; margin-bottom: 0.8rem; }
     .dialog p { color: #666; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem; }
-    .dialog-actions { display: flex; justify-content: flex-end; gap: 0.5rem; }
+    .dialog-actions { text-align: right; }
     .dialog-actions button {
+      display: inline-block;
       padding: 0.5rem 1.2rem;
       border-radius: 20px;
       border: none;
       font-size: 0.9rem;
       cursor: pointer;
+      margin-left: 0.5rem;
     }
     .btn-cancel { background: #f0f0f0; color: #333; }
     .btn-confirm { background: #00897b; color: #fff; }
   </style>
 </head>
 <body>
-  <!-- 浏览器警告卡片 -->
-  <div class="card">
-    <div class="icon">&#9888;</div>
-    <h1>浏览器不受支持</h1>
-    <p>您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：</p>
-    <div class="browser-grid">
-      <a href="https://www.google.com/chrome/" target="_blank" rel="noopener">Chrome 102+</a>
-      <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener">Edge 102+</a>
-      <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener">Firefox 106+</a>
-      <a href="https://www.opera.com/" target="_blank" rel="noopener">Opera 88+</a>
+  <!-- 居中容器 -->
+  <div class="center-wrap">
+    <div class="center-cell">
+      <!-- 浏览器警告卡片 -->
+      <div class="card">
+        <div class="icon">&#9888;</div>
+        <h1>浏览器不受支持</h1>
+        <p>您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：</p>
+        <p id="uaInfo" style="font-size:0.85rem; color:#999; margin-bottom:1rem;"></p>
+        <div style="margin-bottom:1.5rem;">
+          <a href="https://www.google.com/chrome/" target="_blank" rel="noopener" class="browser-link">Chrome 102+</a>
+          <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener" class="browser-link">Edge 102+</a>
+          <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener" class="browser-link">Firefox 106+</a>
+          <a href="https://www.opera.com/" target="_blank" rel="noopener" class="browser-link">Opera 88+</a>
+          <a href="https://browser.360.cn/" target="_blank" rel="noopener" class="browser-link">360 极速浏览器</a>
+        </div>
+        <p class="note">macOS 用户也可使用 Safari 16.4+</p>
+        <p class="note">如您正在使用 Windows XP / 2003 / Vista / 7 / 8.x，请下载 <a href="https://github.com/win32ss/supermium" target="_blank" rel="noopener">Supermium Browser</a></p>
+        <p class="note">如您想要访问旧版页面，请 <a href="#" id="oldSiteLink">点击这里</a></p>
+      </div>
     </div>
-    <p class="note">macOS 用户也可使用 Safari 16.4+</p>
-    <p class="note">如您想要访问旧版页面，请 <a href="#" id="oldSiteLink" style="color:#00897b; text-decoration:none;">点击这里</a></p>
   </div>
 
   <!-- 旧版页面弹窗 -->
   <div class="dialog-overlay" id="oldSiteDialog">
+    <span class="dialog-helper"></span>
     <div class="dialog">
       <h2>建议安装新浏览器</h2>
       <p>为了获得最佳浏览体验，我们强烈建议您安装现代浏览器。旧版页面可能无法正常显示部分功能。<br><br>您确定仍然前往旧版页面吗？</p>
@@ -126,19 +154,116 @@
   </div>
 
   <script>
-    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('oldSiteDialog').classList.add('active');
+    // 浏览器与操作系统检测
+    (function() {
+      var ua = navigator.userAgent || '';
+      var browser = '未知浏览器';
+      var os = '未知操作系统';
+      var ver = '';
+
+      // 浏览器检测（顺序重要，某些 UA 包含多个关键字）
+      if (ua.indexOf('Edge/') > -1) {
+        ver = ua.match(/Edge\/([\d.]+)/);
+        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('Edg/') > -1) {
+        ver = ua.match(/Edg\/([\d.]+)/);
+        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('OPR/') > -1 || ua.indexOf('Opera/') > -1) {
+        ver = ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);
+        browser = 'Opera ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('Chrome/') > -1) {
+        ver = ua.match(/Chrome\/([\d.]+)/);
+        browser = 'Google Chrome ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('Firefox/') > -1) {
+        ver = ua.match(/Firefox\/([\d.]+)/);
+        browser = 'Mozilla Firefox ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('Safari/') > -1 && ua.indexOf('Chrome') < 0) {
+        ver = ua.match(/Version\/([\d.]+)/);
+        browser = 'Apple Safari ' + (ver ? ver[1] : '');
+      } else if (ua.indexOf('MSIE') > -1) {
+        ver = ua.match(/MSIE ([\d.]+)/);
+        browser = 'Internet Explorer ' + (ver ? ver[1] : '');
+      } else if (document.documentMode) {
+        browser = 'Internet Explorer ' + document.documentMode;
+      }
+
+      // 操作系统检测
+      if (ua.indexOf('Windows NT 10') > -1) os = 'Windows 10/11';
+      else if (ua.indexOf('Windows NT 6.3') > -1) os = 'Windows 8.1';
+      else if (ua.indexOf('Windows NT 6.2') > -1) os = 'Windows 8';
+      else if (ua.indexOf('Windows NT 6.1') > -1) os = 'Windows 7';
+      else if (ua.indexOf('Windows NT 6.0') > -1) os = 'Windows Vista';
+      else if (ua.indexOf('Windows NT 5.1') > -1) os = 'Windows XP';
+      else if (ua.indexOf('Windows NT 5.0') > -1) os = 'Windows 2000';
+      else if (ua.indexOf('Windows') > -1) os = 'Windows';
+      else if (ua.indexOf('Mac OS X') > -1) {
+        ver = ua.match(/Mac OS X ([\d_]+)/);
+        os = 'macOS ' + (ver ? ver[1].replace(/_/g, '.') : '');
+      }
+      else if (ua.indexOf('Android') > -1) {
+        ver = ua.match(/Android ([\d.]+)/);
+        os = 'Android ' + (ver ? ver[1] : '');
+      }
+      else if (ua.indexOf('iPhone OS') > -1 || ua.indexOf('iPad') > -1) {
+        ver = ua.match(/OS ([\d_]+)/);
+        os = 'iOS ' + (ver ? ver[1].replace(/_/g, '.') : '');
+      }
+      else if (ua.indexOf('Linux') > -1) os = 'Linux';
+
+      var el = document.getElementById('uaInfo');
+      if (el) {
+        el.innerHTML = '您目前使用的浏览器是：' + browser + '<br>您目前使用的操作系统是：' + os;
+      }
+    })();
+
+    // 兼容 IE8+ 的事件绑定
+    function addEvent(el, evt, fn) {
+      if (el.addEventListener) {
+        el.addEventListener(evt, fn, false);
+      } else if (el.attachEvent) {
+        el.attachEvent('on' + evt, fn);
+      }
+    }
+    // 兼容 IE8+ 的 className 操作
+    function addClass(el, cls) {
+      if (el.classList) { el.classList.add(cls); return; }
+      var cur = ' ' + el.className + ' ';
+      if (cur.indexOf(' ' + cls + ' ') < 0) {
+        el.className = el.className + ' ' + cls;
+      }
+    }
+    function removeClass(el, cls) {
+      if (el.classList) { el.classList.remove(cls); return; }
+      var cur = ' ' + el.className + ' ';
+      var rep = ' ' + cls + ' ';
+      while (cur.indexOf(rep) >= 0) {
+        cur = cur.replace(rep, ' ');
+      }
+      el.className = cur.replace(/^\s+|\s+$/g, '');
+    }
+
+    // 打开弹窗
+    addEvent(document.getElementById('oldSiteLink'), 'click', function(e) {
+      if (e.preventDefault) { e.preventDefault(); }
+      else { e.returnValue = false; } // IE8
+      addClass(document.getElementById('oldSiteDialog'), 'active');
     });
-    document.getElementById('dialogCancel').addEventListener('click', function() {
-      document.getElementById('oldSiteDialog').classList.remove('active');
+
+    // 取消
+    addEvent(document.getElementById('dialogCancel'), 'click', function() {
+      removeClass(document.getElementById('oldSiteDialog'), 'active');
     });
-    document.getElementById('dialogConfirm').addEventListener('click', function() {
+
+    // 确认前往
+    addEvent(document.getElementById('dialogConfirm'), 'click', function() {
       window.open('http://www.jnyuyingmc.top/original/', '_blank');
-      document.getElementById('oldSiteDialog').classList.remove('active');
+      removeClass(document.getElementById('oldSiteDialog'), 'active');
     });
-    document.getElementById('oldSiteDialog').addEventListener('click', function(e) {
-      if (e.target === this) this.classList.remove('active');
+
+    // 点击遮罩关闭
+    addEvent(document.getElementById('oldSiteDialog'), 'click', function(e) {
+      var target = e.target || e.srcElement; // IE8
+      if (target === this) removeClass(this, 'active');
     });
   </script>
 </body>
