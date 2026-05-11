@@ -62,6 +62,32 @@
     .note a { color: #00897b; text-decoration: none; }
     .note a:hover { text-decoration: underline; }
 
+    /* 支持提示 */
+    .supported-card {
+      max-width: 520px;
+      width: 100%;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .supported-card .icon { color: #00897b; }
+    .supported-card .go-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 2rem;
+      border-radius: 20px;
+      background: #00897b;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    .supported-card .go-link:hover { background: #00796b; }
+    .unsupported-hidden { display: none !important; }
+
     /* 响应式 */
     @media (max-width: 480px) {
       .card { padding: 1.5rem; border-radius: 16px; }
@@ -137,6 +163,14 @@
         <p class="note">如您正在使用 Windows XP / 2003 / Vista / 7 / 8.x，请下载 <a href="https://github.com/win32ss/supermium" target="_blank" rel="noopener">Supermium Browser</a></p>
         <p class="note">如您想要访问旧版页面，请 <a href="#" id="oldSiteLink">点击这里</a></p>
       </div>
+
+      <!-- 浏览器受支持提示 -->
+      <div class="supported-card unsupported-hidden" id="supportedCard">
+        <div class="icon">&#10004;</div>
+        <h1>您的浏览器受支持</h1>
+        <p id="supportedInfo" style="line-height:1.8;"></p>
+        <a href="index.html" class="go-link">前往主站</a>
+      </div>
     </div>
   </div>
 
@@ -162,30 +196,68 @@
       var ver = '';
 
       // 浏览器检测（顺序重要，某些 UA 包含多个关键字）
-      if (ua.indexOf('Edge/') > -1) {
-        ver = ua.match(/Edge\/([\d.]+)/);
-        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('Edg/') > -1) {
-        ver = ua.match(/Edg\/([\d.]+)/);
-        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('OPR/') > -1 || ua.indexOf('Opera/') > -1) {
-        ver = ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);
-        browser = 'Opera ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('Chrome/') > -1) {
-        ver = ua.match(/Chrome\/([\d.]+)/);
-        browser = 'Google Chrome ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('Firefox/') > -1) {
-        ver = ua.match(/Firefox\/([\d.]+)/);
-        browser = 'Mozilla Firefox ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('Safari/') > -1 && ua.indexOf('Chrome') < 0) {
-        ver = ua.match(/Version\/([\d.]+)/);
-        browser = 'Apple Safari ' + (ver ? ver[1] : '');
-      } else if (ua.indexOf('MSIE') > -1) {
+      // 1) IE — 始终不受支持
+      var isIE = false;
+      if (ua.indexOf('MSIE') > -1) {
         ver = ua.match(/MSIE ([\d.]+)/);
         browser = 'Internet Explorer ' + (ver ? ver[1] : '');
+        isIE = true;
       } else if (document.documentMode) {
         browser = 'Internet Explorer ' + document.documentMode;
+        isIE = true;
       }
+      // 2) 旧版 Edge（EdgeHTML 内核）
+      else if (ua.indexOf('Edge/') > -1) {
+        ver = ua.match(/Edge\/([\d.]+)/);
+        browser = '旧版 Microsoft Edge ' + (ver ? ver[1] : '');
+      }
+      // 3) 新版 Chromium Edge
+      else if (ua.indexOf('Edg/') > -1) {
+        ver = ua.match(/Edg\/([\d.]+)/);
+        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
+      }
+      // 4) Opera
+      else if (ua.indexOf('OPR/') > -1 || ua.indexOf('Opera/') > -1) {
+        ver = ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);
+        browser = 'Opera ' + (ver ? ver[1] : '');
+      }
+      // 5) Firefox
+      else if (ua.indexOf('Firefox/') > -1) {
+        ver = ua.match(/Firefox\/([\d.]+)/);
+        browser = 'Mozilla Firefox ' + (ver ? ver[1] : '');
+      }
+      // 6) Safari（排除已包含 Chrome 的 UA）
+      else if (ua.indexOf('Safari/') > -1 && ua.indexOf('Chrome') < 0) {
+        ver = ua.match(/Version\/([\d.]+)/);
+        browser = 'Apple Safari ' + (ver ? ver[1] : '');
+      }
+      // 7) 所有 Chromium 内核浏览器（Chrome、Samsung Internet、Android WebView、UC、QQ、百度等）
+      //    统一提取 Chrome/ 版本号进行版本判定
+      else if (ua.indexOf('Chrome/') > -1) {
+        ver = ua.match(/Chrome\/([\d.]+)/);
+        var chromeVer = ver ? ver[1] : '';
+        // 尝试识别具体浏览器名称
+        if (ua.indexOf('SamsungBrowser/') > -1) {
+          browser = 'Samsung Internet (Chromium 内核) ' + chromeVer;
+        } else if (ua.indexOf('wv)') > -1 || ua.indexOf('; wv') > -1) {
+          browser = 'Android System WebView ' + chromeVer;
+        } else if (ua.indexOf('UCBrowser/') > -1) {
+          browser = 'UC Browser (Chromium 内核) ' + chromeVer;
+        } else if (ua.indexOf('QQBrowser/') > -1) {
+          browser = 'QQ 浏览器 (Chromium 内核) ' + chromeVer;
+        } else if (ua.indexOf('BIDUBrowser/') > -1) {
+          browser = '百度浏览器 (Chromium 内核) ' + chromeVer;
+        } else if (ua.indexOf('LBBROWSER') > -1) {
+          browser = '猎豹浏览器 (Chromium 内核) ' + chromeVer;
+        } else if (ua.indexOf('MetaSr') > -1 || ua.indexOf('SE ') === 0) {
+          browser = '搜狗浏览器 (Chromium 内核) ' + chromeVer;
+        } else {
+          browser = 'Chromium 内核浏览器 ' + chromeVer;
+        }
+      }
+
+      // 保存浏览器版本号，防止被 OS 检测覆盖
+      var browserVer = ver ? ver[1] : '';
 
       // 操作系统检测
       if (ua.indexOf('Windows NT 10') > -1) os = 'Windows 10/11';
@@ -213,6 +285,40 @@
       var el = document.getElementById('uaInfo');
       if (el) {
         el.innerHTML = '您目前使用的浏览器是：' + browser + '<br>您目前使用的操作系统是：' + os;
+      }
+
+      // 浏览器版本判定
+      var supported = false;
+      var verNum = parseFloat(browserVer || '0');
+
+      if (isIE) {
+        // IE 始终不受支持
+        supported = false;
+      } else if (browser.indexOf('Chromium 内核') > -1 || browser.indexOf('Android System WebView') === 0) {
+        // 所有 Chromium 内核浏览器：统一按 Chrome 版本判定（>= 102）
+        supported = verNum >= 102;
+      } else if (browser.indexOf('Microsoft Edge') === 0) {
+        supported = verNum >= 102;
+      } else if (browser.indexOf('Opera') === 0) {
+        supported = verNum >= 88;
+      } else if (browser.indexOf('Mozilla Firefox') === 0) {
+        supported = verNum >= 106;
+      } else if (browser.indexOf('Apple Safari') === 0) {
+        supported = verNum >= 16.4;
+      }
+
+      if (supported) {
+        // 隐藏不受支持的卡片，显示受支持的卡片
+        var warnCard = document.querySelector('.card');
+        var supCard = document.getElementById('supportedCard');
+        if (warnCard) warnCard.className += ' unsupported-hidden';
+        if (supCard) {
+          supCard.className = supCard.className.replace(/\s*unsupported-hidden/g, '');
+          var infoEl = document.getElementById('supportedInfo');
+          if (infoEl) {
+            infoEl.innerHTML = '您当前使用的 <strong>' + browser + '</strong> 可以正常浏览本网站。<br>点击下方按钮前往主站：';
+          }
+        }
       }
     })();
 

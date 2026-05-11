@@ -24,7 +24,7 @@
 - **旧版 VR 美化 / Legacy VR Page**: 曾为 `vrview/examples/yuying/index.html` 引入主站配色、主题切换、导航按钮、Footer，现已随 VR 模块移除 / Legacy VR page was styled with main-site theme; now removed with VR module
 - **YouTube 视频 / YouTube Video**: 视频板块新增 YouTube 嵌入版本 / Added YouTube embed to video section
 - **视频自动暂停 / Video Auto-pause**: 本地视频切换选项卡或离开屏幕时自动暂停 / Local video auto-pauses on tab switch or scroll out of view
-- **浏览器兼容检测 / Browser Compatibility**: IE11 及以下自动跳转至不支持提示页 (`unsupported.html`) / IE11 and below auto-redirect to unsupported browser page
+- **浏览器兼容检测 / Browser Compatibility**: IE、旧版 Edge、低版本 Chrome/Firefox/Opera/Safari 及未知浏览器自动跳转至不支持提示页 (`unsupported.html`)；Chromium 系（含 Samsung Internet、Android WebView 等）统一按 Chrome 版本判定；受支持浏览器在提示页显示"受支持"并提供前往主站按钮 / IE, old Edge, outdated Chrome/Firefox/Opera/Safari, and unknown browsers auto-redirect; Chromium variants checked via Chrome version; supported browsers see "supported" card with link to main site
 - **旧版页面入口 / Legacy Site Link**: 全站 footer 新增旧版页面链接，附确认弹窗；不支持提示页亦提供旧版入口 / Old site link added to footer with confirmation dialog and to unsupported page
 - **正片下拉 / Video Dropdown**: Hero 区"正片"按钮改为悬停下拉，含 Bilibili / YouTube 两项 / Hero "正片" button changed to hover dropdown with Bilibili / YouTube
 - **移动端适配 / Mobile Responsive**: 全站 5 页移动端布局优化——主题切换仅图标、栅格列宽缩小、字号与内边距适配、380px 极窄断点 / All 5 pages optimized: icon-only theme toggle, smaller grid columns, scaled typography, 380px breakpoint

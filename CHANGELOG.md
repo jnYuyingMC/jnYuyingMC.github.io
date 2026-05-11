@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-05-11 — Enhanced Browser Compatibility Detection / 增强浏览器兼容检测
+
+Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
+
+- `unsupported.html`: Added supported browser detection — browsers meeting version requirements now see a "your browser is supported, go to main site" card with link to `index.html` / 达到版本要求的浏览器显示"受支持"提示卡片，附前往主站按钮
+- `unsupported.html`: Comprehensive browser identification — IE (all versions), old Edge (EdgeHTML), Chromium variants (Samsung Internet, Android WebView, UC Browser, QQ, Baidu, Liebao, Sogou), Firefox, Safari, Opera / 全面的浏览器识别：IE、旧版 Edge、Chromium 系（Samsung / WebView / UC / QQ / 百度 / 猎豹 / 搜狗）、Firefox、Safari、Opera
+- `unsupported.html`: Chromium-based browsers (including Samsung Internet, Android WebView, UC, etc.) unified under Chrome minimum version check (>= 102) via `Chrome/` UA token / Chromium 系浏览器统一按 `Chrome/` 版本号 >= 102 判定
+- All 4 main pages (`index.html`, `photo.html`, `vr.html`, `credits.html`): Replaced IE-only detection with full browser version check — unsupported browsers redirect to `unsupported.html` before page renders / 全站 4 页替换 IE 检测为完整版本判定，不兼容浏览器在渲染前跳转
+- Main site detection covers: IE (MSIE/document.documentMode), old Edge (EdgeHTML), Chrome/Chromium < 102, Firefox < 106, Opera < 88, Safari < 16.4, unknown browsers / 检测覆盖：IE、旧版 Edge、Chrome/Chromium < 102、Firefox < 106、Opera < 88、Safari < 16.4、未知浏览器
+- `unsupported.html`: File structure entry added to CHANGELOG root listing / 文件结构中补充 `unsupported.html`
+
 ## 2026-05-09 — Remove VR Module / 移除 VR 模块
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
@@ -156,6 +167,7 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 ├── credits.html        # Open source credits / 开源引用
 ├── photo.html          # Photo gallery / 图片库
 ├── vr.html             # VR panorama (external links) / VR 全景
+├── unsupported.html    # Browser compatibility warning / 浏览器不支持提示
 ├── README.md           # Project description / 项目说明
 ├── CHANGELOG.md        # Changelog (this file) / 变更日志
 ├── favicon.ico         # Site icon / 网站图标
@@ -168,5 +180,6 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 - All CSS/JS dependencies loaded via CDN, no npm or local library download required / 所有依赖通过 CDN 加载
 - MDUI v2 components used as Web Components (`<mdui-*>` custom elements) / Web Components 自定义元素
 - Dark mode implemented by toggling `mdui-theme-dark` class on `<html>` / 暗色模式 class 方案
-- Theme toggle script independently exists in each of the three HTML pages (not shared module) / 各页面独立实现
+- Theme toggle script independently exists in each of the four HTML pages (not shared module) / 各页面独立实现
+- Browser compatibility detection script independently exists in each of the four HTML pages and `unsupported.html` / 浏览器兼容检测脚本在各页面独立实现
 - Icon names use Material Icons `name` values, requires Google Fonts CSS / 需引入 Google Fonts CSS
