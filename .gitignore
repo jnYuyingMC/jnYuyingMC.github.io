@@ -50,3 +50,6 @@ Session.vim
 *.tmp
 *.bak
 node_modules/
+
+# === MDUI Documentation ===
+mdui-full.md

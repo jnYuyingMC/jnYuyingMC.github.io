@@ -130,9 +130,34 @@
       background: rgba(255,255,255,0.85);
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .mdui-theme-dark .theme-toggle {
       background: rgba(40,40,40,0.85);
+    }
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 4rem;
+      z-index: 1000;
+      overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mdui-theme-dark .lang-toggle {
+      background: rgba(40,40,40,0.85);
+    }
+    .lang-dropdown mdui-menu {
+      min-width: 120px;
     }
     /* FAB 导航 */
     .fab-nav {
@@ -183,8 +208,7 @@
       .credit-card p { font-size: 0.9rem; margin-bottom: 0.5rem; }
       .credit-meta { gap: 0.5rem; margin-top: 0.5rem; }
       .site-footer { padding: 1.5rem 1rem; }
-      .theme-toggle #themeLabel { display: none; }
-      .theme-toggle mdui-button { min-width: auto; }
+      .theme-toggle mdui-button, .lang-toggle mdui-button { min-width: 0; width: 2.2rem; height: 2.2rem; padding: 0; display: flex; align-items: center; justify-content: center; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
     }
   </style>
@@ -216,14 +240,26 @@
   <!-- Theme Toggle -->
   <div class="theme-toggle">
     <mdui-dropdown placement="bottom-end">
-      <mdui-button slot="trigger" variant="text" title="切换主题">
+      <mdui-button slot="trigger" variant="text" title="切换主题" data-i18n-title="theme.toggleTitle">
         <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
-        <span id="themeLabel">跟随系统</span>
       </mdui-button>
       <mdui-menu selects="single" value="system" id="themeMenu">
-        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
-        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
-        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+        <mdui-menu-item value="light" icon="light_mode" data-i18n="theme.light">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode" data-i18n="theme.dark">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest" data-i18n="theme.system">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <mdui-dropdown class="lang-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="Language">
+        <mdui-icon name="language" slot="icon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="zh" id="langMenu">
+        <mdui-menu-item value="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en">English</mdui-menu-item>
       </mdui-menu>
     </mdui-dropdown>
   </div>
@@ -231,7 +267,7 @@
   <!-- Header -->
   <section class="page-header">
     <div class="page-header-content">
-      <h1>开源引用</h1>
+      <h1 data-i18n="page.title">开源引用</h1>
     </div>
   </section>
 
@@ -239,59 +275,59 @@
   <div class="credits-section">
 
     <div class="section-title">
-      <mdui-icon name="code"></mdui-icon> 项目依赖
+      <mdui-icon name="code"></mdui-icon> <span data-i18n="credits.sectionTitle">项目依赖</span>
     </div>
 
     <div class="credit-card">
       <h3>MDUI v2</h3>
-      <p>Material Design 3 前端框架，基于 Web Components，提供按钮、卡片、对话框、菜单等 UI 组件，是本站所有页面的核心框架。</p>
+      <p data-i18n="credits.mdui.desc">Material Design 3 前端框架，基于 Web Components，提供按钮、卡片、对话框、菜单等 UI 组件，是本站所有页面的核心框架。</p>
       <div class="credit-meta">
         <span class="license-badge">MIT</span>
-        <span class="usage-badge">全站</span>
-        <a href="https://www.mdui.org" target="_blank" style="color:#00897b; text-decoration:none;">官网 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <span class="usage-badge" data-i18n="credits.badge.all">全站</span>
+        <a href="https://www.mdui.org" target="_blank" style="color:#00897b; text-decoration:none;"><span data-i18n="credits.link.official">官网</span> <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
         <a href="https://github.com/zdhxiong/mdui" target="_blank" style="color:#00897b; text-decoration:none;">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
     <div class="credit-card">
       <h3>GLightbox</h3>
-      <p>纯 JavaScript 图片灯箱库，支持响应式缩放、键盘导航和触摸滑动，用于本站图片库的点击放大浏览。</p>
+      <p data-i18n="credits.glightbox.desc">纯 JavaScript 图片灯箱库，支持响应式缩放、键盘导航和触摸滑动，用于本站图片库的点击放大浏览。</p>
       <div class="credit-meta">
         <span class="license-badge">MIT</span>
         <span class="usage-badge">index.html · photo.html</span>
-        <a href="https://biati-digital.github.io/glightbox/" target="_blank" style="color:#00897b; text-decoration:none;">官网 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <a href="https://biati-digital.github.io/glightbox/" target="_blank" style="color:#00897b; text-decoration:none;"><span data-i18n="credits.link.official">官网</span> <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
         <a href="https://github.com/biati-digital/glightbox" target="_blank" style="color:#00897b; text-decoration:none;">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
     <div class="credit-card">
       <h3>Noto Sans SC</h3>
-      <p>Google 开源的中文无衬线字体，覆盖简体中文常用汉字，字重从 100 到 900，本站使用该字体作为全站默认字体以获得统一、清晰的中文排版效果。</p>
+      <p data-i18n="credits.noto.desc">Google 开源的中文无衬线字体，覆盖简体中文常用汉字，字重从 100 到 900，本站使用该字体作为全站默认字体以获得统一、清晰的中文排版效果。</p>
       <div class="credit-meta">
         <span class="license-badge">SIL OFL 1.1</span>
-        <span class="usage-badge">全站</span>
-        <a href="https://fonts.google.com/noto/specimen/Noto+Sans+SC" target="_blank" style="color:#00897b; text-decoration:none;">字体预览 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <span class="usage-badge" data-i18n="credits.badge.all">全站</span>
+        <a href="https://fonts.google.com/noto/specimen/Noto+Sans+SC" target="_blank" style="color:#00897b; text-decoration:none;"><span data-i18n="credits.link.fontPreview">字体预览</span> <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
         <a href="https://github.com/notofonts/noto-cjk" target="_blank" style="color:#00897b; text-decoration:none;">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
     <div class="credit-card">
       <h3>Material Icons</h3>
-      <p>Google 提供的开源图标集，涵盖 2000+ 遵循 Material Design 规范的图标，本站通过 Google Fonts CSS 加载并在各页面中使用。</p>
+      <p data-i18n="credits.icons.desc">Google 提供的开源图标集，涵盖 2000+ 遵循 Material Design 规范的图标，本站通过 Google Fonts CSS 加载并在各页面中使用。</p>
       <div class="credit-meta">
         <span class="license-badge">Apache 2.0</span>
-        <span class="usage-badge">全站</span>
-        <a href="https://fonts.google.com/icons" target="_blank" style="color:#00897b; text-decoration:none;">图标库 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <span class="usage-badge" data-i18n="credits.badge.all">全站</span>
+        <a href="https://fonts.google.com/icons" target="_blank" style="color:#00897b; text-decoration:none;"><span data-i18n="credits.link.iconLib">图标库</span> <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
 
     <div class="credit-card">
       <h3>Google VR View</h3>
-      <p>Google 开源的 360° 全景浏览框架，可将全景图片和视频转化为交互式 VR 体验。该框架自 2018 年 12 月起停止维护，本站保留了基于此框架的旧版 VR 页面作为遗留资源。</p>
+      <p data-i18n="credits.vrview.desc">Google 开源的 360° 全景浏览框架，可将全景图片和视频转化为交互式 VR 体验。该框架自 2018 年 12 月起停止维护，本站保留了基于此框架的旧版 VR 页面作为遗留资源。</p>
       <div class="credit-meta">
         <span class="license-badge">Apache 2.0</span>
         <span class="usage-badge">vrview/ (Legacy)</span>
-        <a href="https://support.google.com/cardboard/answer/6383058" target="_blank" style="color:#00897b; text-decoration:none;">官方文档 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+        <a href="https://support.google.com/cardboard/answer/6383058" target="_blank" style="color:#00897b; text-decoration:none;"><span data-i18n="credits.link.docs">官方文档</span> <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
         <a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">GitHub (Archived) <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
       </div>
     </div>
@@ -300,63 +336,164 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;">
+    <div style="font-size: 1rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="footer.org">
       大育英帝国学生会 宣传部 × 辣条视频工作室
     </div>
-    <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div data-i18n="footer.copyright">Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
       <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
         <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
       </a>
     </div>
-    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
-      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem;">
-      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;">联系我们</a>
+      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
     </div>
   </footer>
 
   <!-- Old Site Dialog -->
-  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面">
-    您即将离开当前网站，前往旧版页面。旧版页面可能已停止维护，体验与当前版本不同。
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false">取消</mdui-button>
-    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm">确定</mdui-button>
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面" data-i18n-headline="dialog.oldSite.title">
+    <span data-i18n="dialog.oldSite.body">您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。</span>
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false" data-i18n="dialog.oldSite.cancel">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm" data-i18n="dialog.oldSite.confirm">确定</mdui-button>
   </mdui-dialog>
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
-    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="photo.html" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="index.html" title="首页" data-i18n-title="fab.home"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="photo.html" title="图片库" data-i18n-title="fab.photos"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景" data-i18n-title="fab.vr"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script>
+    // --- i18n Dictionary ---
+    const i18nDict = {
+      zh: {
+        title: '开源引用 - 大育英帝国 Minecraft 计划',
+        'theme.toggleTitle': '切换主题',
+        'theme.light': '亮色模式',
+        'theme.dark': '暗色模式',
+        'theme.system': '跟随系统',
+        'fab.home': '首页',
+        'fab.photos': '图片库',
+        'fab.vr': 'VR 全景',
+        'page.title': '开源引用',
+        'credits.sectionTitle': '项目依赖',
+        'credits.mdui.desc': 'Material Design 3 前端框架，基于 Web Components，提供按钮、卡片、对话框、菜单等 UI 组件，是本站所有页面的核心框架。',
+        'credits.glightbox.desc': '纯 JavaScript 图片灯箱库，支持响应式缩放、键盘导航和触摸滑动，用于本站图片库的点击放大浏览。',
+        'credits.noto.desc': 'Google 开源的中文无衬线字体，覆盖简体中文常用汉字，字重从 100 到 900，本站使用该字体作为全站默认字体以获得统一、清晰的中文排版效果。',
+        'credits.icons.desc': 'Google 提供的开源图标集，涵盖 2000+ 遵循 Material Design 规范的图标，本站通过 Google Fonts CSS 加载并在各页面中使用。',
+        'credits.vrview.desc': 'Google 开源的 360° 全景浏览框架，可将全景图片和视频转化为交互式 VR 体验。该框架自 2018 年 12 月起停止维护，本站保留了基于此框架的旧版 VR 页面作为遗留资源。',
+        'credits.badge.all': '全站',
+        'credits.link.official': '官网',
+        'credits.link.fontPreview': '字体预览',
+        'credits.link.iconLib': '图标库',
+        'credits.link.docs': '官方文档',
+        'footer.org': '大育英帝国学生会 宣传部 × 辣条视频工作室',
+        'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>',
+        'footer.ipv6': '本站支持 IPv6 访问',
+        'footer.contact': '联系我们',
+        'dialog.oldSite.title': '即将前往旧版页面',
+        'dialog.oldSite.body': '您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。',
+        'dialog.oldSite.cancel': '取消',
+        'dialog.oldSite.confirm': '确定'
+      },
+      en: {
+        title: 'Open Source Credits - Our Great Yuying Minecraft Project',
+        'theme.toggleTitle': 'Switch Theme',
+        'theme.light': 'Light Mode',
+        'theme.dark': 'Dark Mode',
+        'theme.system': 'Follow System',
+        'fab.home': 'Home',
+        'fab.photos': 'Photos',
+        'fab.vr': 'VR Panorama',
+        'page.title': 'Open Source Credits',
+        'credits.sectionTitle': 'Project Dependencies',
+        'credits.mdui.desc': 'Material Design 3 frontend framework based on Web Components, providing buttons, cards, dialogs, menus and other UI components. It is the core framework for all pages on this site.',
+        'credits.glightbox.desc': 'A pure JavaScript image lightbox library supporting responsive zoom, keyboard navigation and touch swipe, used for click-to-enlarge browsing in the photo gallery.',
+        'credits.noto.desc': 'An open-source Chinese sans-serif font by Google, covering common simplified Chinese characters with weights from 100 to 900. Used as the default font across the entire site for unified, clear Chinese typography.',
+        'credits.icons.desc': 'An open-source icon set by Google with 2000+ icons following Material Design guidelines, loaded via Google Fonts CSS and used across all pages.',
+        'credits.vrview.desc': 'An open-source 360° panorama viewer framework by Google that transforms panoramic images and videos into interactive VR experiences. Discontinued since December 2018; this site retains a legacy VR page based on this framework.',
+        'credits.badge.all': 'All Pages',
+        'credits.link.official': 'Website',
+        'credits.link.fontPreview': 'Font Preview',
+        'credits.link.iconLib': 'Icon Library',
+        'credits.link.docs': 'Official Docs',
+        'footer.org': 'Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio',
+        'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>',
+        'footer.ipv6': 'This site supports IPv6 access',
+        'footer.contact': 'Contact Us',
+        'dialog.oldSite.title': 'Leaving for Legacy Page',
+        'dialog.oldSite.body': 'You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version.',
+        'dialog.oldSite.cancel': 'Cancel',
+        'dialog.oldSite.confirm': 'OK'
+      }
+    };
+
+    // --- i18n Functions ---
+    function detectLanguage() {
+      var saved = localStorage.getItem('site-lang');
+      if (saved && i18nDict[saved]) return saved;
+      var nav = navigator.language || navigator.userLanguage || '';
+      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    }
+
+    function applyLanguage(lang) {
+      var dict = i18nDict[lang];
+      if (!dict) return;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      if (dict.title) document.title = dict.title;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-title');
+        if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-headline]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-headline');
+        if (dict[key] !== undefined) el.setAttribute('headline', dict[key]);
+      });
+      var langMenu = document.getElementById('langMenu');
+      if (langMenu) langMenu.value = lang;
+      if (typeof applyTheme === 'function') {
+        var savedMode = localStorage.getItem('theme-mode') || 'system';
+        applyTheme(savedMode);
+      }
+      localStorage.setItem('site-lang', lang);
+    }
+
     // Dark mode
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
     const themeMenu = document.getElementById('themeMenu');
+    let currentLang = detectLanguage();
 
     function applyTheme(mode) {
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      const themeLabel = document.getElementById('themeLabel');
       let dark;
       if (mode === 'system') {
         dark = mq.matches;
         themeIcon.setAttribute('name', 'settings_suggest');
-        themeLabel.textContent = '跟随系统';
       } else if (mode === 'dark') {
         dark = true;
         themeIcon.setAttribute('name', 'dark_mode');
-        themeLabel.textContent = '暗色模式';
       } else {
         dark = false;
         themeIcon.setAttribute('name', 'light_mode');
-        themeLabel.textContent = '亮色模式';
       }
       html.classList.toggle('mdui-theme-dark', dark);
     }
@@ -384,6 +521,16 @@
       window.open('http://www.jnyuyingmc.top/original/', '_blank');
       document.getElementById('oldSiteDialog').open = false;
     });
+
+    // Initialize language
+    applyLanguage(currentLang);
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      langMenu.addEventListener('change', () => {
+        currentLang = langMenu.value;
+        applyLanguage(currentLang);
+      });
+    }
   </script>
 </body>
 </html>

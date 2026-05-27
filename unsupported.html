@@ -88,12 +88,29 @@
     .supported-card .go-link:hover { background: #00796b; }
     .unsupported-hidden { display: none !important; }
 
+    /* 语言选择器 */
+    .lang-select-wrap {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+    }
+    .lang-select-wrap select {
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #fff;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
     /* 响应式 */
     @media (max-width: 480px) {
       .card { padding: 1.5rem; border-radius: 16px; }
       .icon { font-size: 40px; }
       h1 { font-size: 1.2rem; }
       .browser-link { font-size: 0.85rem; padding: 0.6rem 0.8rem; }
+      .lang-select-wrap select { font-size: 0.78rem; padding: 0.3rem 0.4rem; }
     }
 
     /* 弹窗遮罩 */
@@ -143,33 +160,41 @@
   </style>
 </head>
 <body>
+  <!-- 语言选择器 -->
+  <div class="lang-select-wrap">
+    <select id="langSelect">
+      <option value="zh">中文</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
   <!-- 居中容器 -->
   <div class="center-wrap">
     <div class="center-cell">
       <!-- 浏览器警告卡片 -->
       <div class="card">
         <div class="icon">&#9888;</div>
-        <h1>浏览器不受支持</h1>
-        <p>您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：</p>
+        <h1 data-i18n="warnTitle">浏览器不受支持</h1>
+        <p data-i18n-html="warnDesc">您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：</p>
         <p id="uaInfo" style="font-size:0.85rem; color:#999; margin-bottom:1rem;"></p>
         <div style="margin-bottom:1.5rem;">
           <a href="https://www.google.com/chrome/" target="_blank" rel="noopener" class="browser-link">Chrome 102+</a>
           <a href="https://www.microsoft.com/edge" target="_blank" rel="noopener" class="browser-link">Edge 102+</a>
           <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener" class="browser-link">Firefox 106+</a>
           <a href="https://www.opera.com/" target="_blank" rel="noopener" class="browser-link">Opera 88+</a>
-          <a href="https://browser.360.cn/" target="_blank" rel="noopener" class="browser-link">360 极速浏览器</a>
+          <a href="https://browser.360.cn/" target="_blank" rel="noopener" class="browser-link" data-i18n="browser360">360 极速浏览器</a>
         </div>
-        <p class="note">macOS 用户也可使用 Safari 16.4+</p>
-        <p class="note">如您正在使用 Windows XP / 2003 / Vista / 7 / 8.x，请下载 <a href="https://github.com/win32ss/supermium" target="_blank" rel="noopener">Supermium Browser</a></p>
-        <p class="note">如您想要访问旧版页面，请 <a href="#" id="oldSiteLink">点击这里</a></p>
+        <p class="note" data-i18n="noteMac">macOS 用户也可使用 Safari 16.4+</p>
+        <p class="note"><span data-i18n="noteWin">如您正在使用 Windows XP / 2003 / Vista / 7 / 8.x，请下载</span> <a href="https://github.com/win32ss/supermium" target="_blank" rel="noopener">Supermium Browser</a></p>
+        <p class="note"><span data-i18n="noteOld">如您想要访问旧版页面，请</span> <a href="#" id="oldSiteLink" data-i18n="clickHere">点击这里</a></p>
       </div>
 
       <!-- 浏览器受支持提示 -->
       <div class="supported-card unsupported-hidden" id="supportedCard">
         <div class="icon">&#10004;</div>
-        <h1>您的浏览器受支持</h1>
+        <h1 data-i18n="supTitle">您的浏览器受支持</h1>
         <p id="supportedInfo" style="line-height:1.8;"></p>
-        <a href="index.html" class="go-link">前往主站</a>
+        <a href="index.html" class="go-link" data-i18n="goMain">前往主站</a>
       </div>
     </div>
   </div>
@@ -178,197 +203,276 @@
   <div class="dialog-overlay" id="oldSiteDialog">
     <span class="dialog-helper"></span>
     <div class="dialog">
-      <h2>建议安装新浏览器</h2>
-      <p>为了获得最佳浏览体验，我们强烈建议您安装现代浏览器。旧版页面可能无法正常显示部分功能。<br><br>您确定仍然前往旧版页面吗？</p>
+      <h2 data-i18n="dialogTitle">建议安装新浏览器</h2>
+      <p data-i18n-html="dialogDesc">为了获得最佳浏览体验，我们强烈建议您安装现代浏览器。旧版页面可能无法正常显示部分功能。<br><br>您确定仍然前往旧版页面吗？</p>
       <div class="dialog-actions">
-        <button class="btn-cancel" id="dialogCancel">取消</button>
-        <button class="btn-confirm" id="dialogConfirm">仍然前往</button>
+        <button class="btn-cancel" id="dialogCancel" data-i18n="cancel">取消</button>
+        <button class="btn-confirm" id="dialogConfirm" data-i18n="confirm">仍然前往</button>
       </div>
     </div>
   </div>
 
   <script>
-    // 浏览器与操作系统检测
+    // === i18n 翻译字典 ===
+    var i18nDict = {
+      zh: {
+        title: '浏览器不受支持 — 大育英帝国 Minecraft 计划',
+        warnTitle: '浏览器不受支持',
+        warnDesc: '您当前使用的浏览器版本过低，无法正常浏览本网站。<br>请使用以下现代浏览器访问：',
+        browser360: '360 极速浏览器',
+        noteMac: 'macOS 用户也可使用 Safari 16.4+',
+        noteWin: '如您正在使用 Windows XP / 2003 / Vista / 7 / 8.x，请下载',
+        noteOld: '如您想要访问旧版页面，请',
+        clickHere: '点击这里',
+        supTitle: '您的浏览器受支持',
+        supInfo: '您当前使用的 <strong>{0}</strong> 可以正常浏览本网站。<br>点击下方按钮前往主站：',
+        goMain: '前往主站',
+        dialogTitle: '建议安装新浏览器',
+        dialogDesc: '为了获得最佳浏览体验，我们强烈建议您安装现代浏览器。旧版页面可能无法正常显示部分功能。<br><br>您确定仍然前往旧版页面吗？',
+        cancel: '取消',
+        confirm: '仍然前往',
+        uaLabel: '您目前使用的浏览器是：{0}<br>您目前使用的操作系统是：{1}',
+        brUnknown: '未知浏览器',
+        osUnknown: '未知操作系统',
+        brIE: 'Internet Explorer {0}',
+        brEdgeLegacy: '旧版 Microsoft Edge {0}',
+        brEdge: 'Microsoft Edge {0}',
+        brOpera: 'Opera {0}',
+        brFirefox: 'Mozilla Firefox {0}',
+        brSafari: 'Apple Safari {0}',
+        brSamsung: 'Samsung Internet (Chromium 内核) {0}',
+        brWebview: 'Android System WebView {0}',
+        brUC: 'UC Browser (Chromium 内核) {0}',
+        brQQ: 'QQ 浏览器 (Chromium 内核) {0}',
+        brBaidu: '百度浏览器 (Chromium 内核) {0}',
+        brLiebao: '猎豹浏览器 (Chromium 内核) {0}',
+        brSogou: '搜狗浏览器 (Chromium 内核) {0}',
+        brChromium: 'Chromium 内核浏览器 {0}',
+        osWin10: 'Windows 10/11', osWin81: 'Windows 8.1', osWin8: 'Windows 8',
+        osWin7: 'Windows 7', osVista: 'Windows Vista', osXP: 'Windows XP',
+        osWin2k: 'Windows 2000', osWin: 'Windows',
+        osMac: 'macOS {0}', osAndroid: 'Android {0}', osIos: 'iOS {0}', osLinux: 'Linux'
+      },
+      en: {
+        title: 'Browser Not Supported — Our Great Yuying Minecraft Project',
+        warnTitle: 'Browser Not Supported',
+        warnDesc: 'Your current browser version is too old to browse this site properly.<br>Please use one of these modern browsers:',
+        browser360: '360 Secure Browser',
+        noteMac: 'macOS users can also use Safari 16.4+',
+        noteWin: 'If you are using Windows XP / 2003 / Vista / 7 / 8.x, please download',
+        noteOld: 'If you want to visit the old site,',
+        clickHere: 'click here',
+        supTitle: 'Your Browser is Supported',
+        supInfo: 'Your <strong>{0}</strong> can browse this site normally.<br>Click the button below to go to the main site:',
+        goMain: 'Go to Main Site',
+        dialogTitle: 'Recommend Installing a New Browser',
+        dialogDesc: 'For the best browsing experience, we strongly recommend installing a modern browser. The legacy page may not display some features properly.<br><br>Are you sure you want to go to the old site?',
+        cancel: 'Cancel',
+        confirm: 'Still Go',
+        uaLabel: 'Browser: {0}<br>Operating System: {1}',
+        brUnknown: 'Unknown Browser',
+        osUnknown: 'Unknown OS',
+        brIE: 'Internet Explorer {0}',
+        brEdgeLegacy: 'Legacy Microsoft Edge {0}',
+        brEdge: 'Microsoft Edge {0}',
+        brOpera: 'Opera {0}',
+        brFirefox: 'Mozilla Firefox {0}',
+        brSafari: 'Apple Safari {0}',
+        brSamsung: 'Samsung Internet (Chromium) {0}',
+        brWebview: 'Android System WebView {0}',
+        brUC: 'UC Browser (Chromium) {0}',
+        brQQ: 'QQ Browser (Chromium) {0}',
+        brBaidu: 'Baidu Browser (Chromium) {0}',
+        brLiebao: 'Liebao Browser (Chromium) {0}',
+        brSogou: 'Sogou Browser (Chromium) {0}',
+        brChromium: 'Chromium-based Browser {0}',
+        osWin10: 'Windows 10/11', osWin81: 'Windows 8.1', osWin8: 'Windows 8',
+        osWin7: 'Windows 7', osVista: 'Windows Vista', osXP: 'Windows XP',
+        osWin2k: 'Windows 2000', osWin: 'Windows',
+        osMac: 'macOS {0}', osAndroid: 'Android {0}', osIos: 'iOS {0}', osLinux: 'Linux'
+      }
+    };
+
+    // === 语言检测 ===
+    function detectLanguage() {
+      var saved = null;
+      try { saved = localStorage.getItem('site-lang'); } catch(e) {}
+      if (saved === 'zh' || saved === 'en') return saved;
+      var nav = (navigator.language || navigator.userLanguage || 'zh').toLowerCase();
+      return nav.indexOf('zh') === 0 ? 'zh' : 'en';
+    }
+
+    // === 字符串格式化 ===
+    function fmt(s) {
+      for (var i = 1; i < arguments.length; i++) {
+        s = s.replace('{' + (i - 1) + '}', arguments[i]);
+      }
+      return s;
+    }
+
+    // === 浏览器与操作系统检测 ===
+    var detectedBrowser, detectedBrowserKey, detectedOs, detectedOsKey;
+    var browserVer = '';
+    var isSupported = false;
     (function() {
       var ua = navigator.userAgent || '';
-      var browser = '未知浏览器';
-      var os = '未知操作系统';
       var ver = '';
-
-      // 浏览器检测（顺序重要，某些 UA 包含多个关键字）
-      // 1) IE — 始终不受支持
       var isIE = false;
+      var browserKey = 'brUnknown';
+      var osKey = 'osUnknown';
+      var verNum = 0;
+
+      // 浏览器检测
       if (ua.indexOf('MSIE') > -1) {
         ver = ua.match(/MSIE ([\d.]+)/);
-        browser = 'Internet Explorer ' + (ver ? ver[1] : '');
-        isIE = true;
+        browserKey = 'brIE'; isIE = true;
       } else if (document.documentMode) {
-        browser = 'Internet Explorer ' + document.documentMode;
-        isIE = true;
-      }
-      // 2) 旧版 Edge（EdgeHTML 内核）
-      else if (ua.indexOf('Edge/') > -1) {
-        ver = ua.match(/Edge\/([\d.]+)/);
-        browser = '旧版 Microsoft Edge ' + (ver ? ver[1] : '');
-      }
-      // 3) 新版 Chromium Edge
-      else if (ua.indexOf('Edg/') > -1) {
-        ver = ua.match(/Edg\/([\d.]+)/);
-        browser = 'Microsoft Edge ' + (ver ? ver[1] : '');
-      }
-      // 4) Opera
-      else if (ua.indexOf('OPR/') > -1 || ua.indexOf('Opera/') > -1) {
-        ver = ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);
-        browser = 'Opera ' + (ver ? ver[1] : '');
-      }
-      // 5) Firefox
-      else if (ua.indexOf('Firefox/') > -1) {
-        ver = ua.match(/Firefox\/([\d.]+)/);
-        browser = 'Mozilla Firefox ' + (ver ? ver[1] : '');
-      }
-      // 6) Safari（排除已包含 Chrome 的 UA）
-      else if (ua.indexOf('Safari/') > -1 && ua.indexOf('Chrome') < 0) {
-        ver = ua.match(/Version\/([\d.]+)/);
-        browser = 'Apple Safari ' + (ver ? ver[1] : '');
-      }
-      // 7) 所有 Chromium 内核浏览器（Chrome、Samsung Internet、Android WebView、UC、QQ、百度等）
-      //    统一提取 Chrome/ 版本号进行版本判定
-      else if (ua.indexOf('Chrome/') > -1) {
+        browserKey = 'brIE'; isIE = true;
+        ver = [null, String(document.documentMode)];
+      } else if (ua.indexOf('Edge/') > -1) {
+        ver = ua.match(/Edge\/([\d.]+)/); browserKey = 'brEdgeLegacy';
+      } else if (ua.indexOf('Edg/') > -1) {
+        ver = ua.match(/Edg\/([\d.]+)/); browserKey = 'brEdge';
+      } else if (ua.indexOf('OPR/') > -1 || ua.indexOf('Opera/') > -1) {
+        ver = ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/); browserKey = 'brOpera';
+      } else if (ua.indexOf('Firefox/') > -1) {
+        ver = ua.match(/Firefox\/([\d.]+)/); browserKey = 'brFirefox';
+      } else if (ua.indexOf('Safari/') > -1 && ua.indexOf('Chrome') < 0) {
+        ver = ua.match(/Version\/([\d.]+)/); browserKey = 'brSafari';
+      } else if (ua.indexOf('Chrome/') > -1) {
         ver = ua.match(/Chrome\/([\d.]+)/);
-        var chromeVer = ver ? ver[1] : '';
-        // 尝试识别具体浏览器名称
-        if (ua.indexOf('SamsungBrowser/') > -1) {
-          browser = 'Samsung Internet (Chromium 内核) ' + chromeVer;
-        } else if (ua.indexOf('wv)') > -1 || ua.indexOf('; wv') > -1) {
-          browser = 'Android System WebView ' + chromeVer;
-        } else if (ua.indexOf('UCBrowser/') > -1) {
-          browser = 'UC Browser (Chromium 内核) ' + chromeVer;
-        } else if (ua.indexOf('QQBrowser/') > -1) {
-          browser = 'QQ 浏览器 (Chromium 内核) ' + chromeVer;
-        } else if (ua.indexOf('BIDUBrowser/') > -1) {
-          browser = '百度浏览器 (Chromium 内核) ' + chromeVer;
-        } else if (ua.indexOf('LBBROWSER') > -1) {
-          browser = '猎豹浏览器 (Chromium 内核) ' + chromeVer;
-        } else if (ua.indexOf('MetaSr') > -1 || ua.indexOf('SE ') === 0) {
-          browser = '搜狗浏览器 (Chromium 内核) ' + chromeVer;
-        } else {
-          browser = 'Chromium 内核浏览器 ' + chromeVer;
-        }
+        if (ua.indexOf('SamsungBrowser/') > -1) browserKey = 'brSamsung';
+        else if (ua.indexOf('wv)') > -1 || ua.indexOf('; wv') > -1) browserKey = 'brWebview';
+        else if (ua.indexOf('UCBrowser/') > -1) browserKey = 'brUC';
+        else if (ua.indexOf('QQBrowser/') > -1) browserKey = 'brQQ';
+        else if (ua.indexOf('BIDUBrowser/') > -1) browserKey = 'brBaidu';
+        else if (ua.indexOf('LBBROWSER') > -1) browserKey = 'brLiebao';
+        else if (ua.indexOf('MetaSr') > -1 || ua.indexOf('SE ') === 0) browserKey = 'brSogou';
+        else browserKey = 'brChromium';
       }
 
-      // 保存浏览器版本号，防止被 OS 检测覆盖
-      var browserVer = ver ? ver[1] : '';
+      browserVer = ver ? ver[1] : '';
+      verNum = parseFloat(browserVer || '0');
+      detectedBrowserKey = browserKey;
 
       // 操作系统检测
-      if (ua.indexOf('Windows NT 10') > -1) os = 'Windows 10/11';
-      else if (ua.indexOf('Windows NT 6.3') > -1) os = 'Windows 8.1';
-      else if (ua.indexOf('Windows NT 6.2') > -1) os = 'Windows 8';
-      else if (ua.indexOf('Windows NT 6.1') > -1) os = 'Windows 7';
-      else if (ua.indexOf('Windows NT 6.0') > -1) os = 'Windows Vista';
-      else if (ua.indexOf('Windows NT 5.1') > -1) os = 'Windows XP';
-      else if (ua.indexOf('Windows NT 5.0') > -1) os = 'Windows 2000';
-      else if (ua.indexOf('Windows') > -1) os = 'Windows';
+      if (ua.indexOf('Windows NT 10') > -1) osKey = 'osWin10';
+      else if (ua.indexOf('Windows NT 6.3') > -1) osKey = 'osWin81';
+      else if (ua.indexOf('Windows NT 6.2') > -1) osKey = 'osWin8';
+      else if (ua.indexOf('Windows NT 6.1') > -1) osKey = 'osWin7';
+      else if (ua.indexOf('Windows NT 6.0') > -1) osKey = 'osVista';
+      else if (ua.indexOf('Windows NT 5.1') > -1) osKey = 'osXP';
+      else if (ua.indexOf('Windows NT 5.0') > -1) osKey = 'osWin2k';
+      else if (ua.indexOf('Windows') > -1) osKey = 'osWin';
       else if (ua.indexOf('Mac OS X') > -1) {
-        ver = ua.match(/Mac OS X ([\d_]+)/);
-        os = 'macOS ' + (ver ? ver[1].replace(/_/g, '.') : '');
-      }
-      else if (ua.indexOf('Android') > -1) {
-        ver = ua.match(/Android ([\d.]+)/);
-        os = 'Android ' + (ver ? ver[1] : '');
-      }
-      else if (ua.indexOf('iPhone OS') > -1 || ua.indexOf('iPad') > -1) {
-        ver = ua.match(/OS ([\d_]+)/);
-        os = 'iOS ' + (ver ? ver[1].replace(/_/g, '.') : '');
-      }
-      else if (ua.indexOf('Linux') > -1) os = 'Linux';
+        var m = ua.match(/Mac OS X ([\d_]+)/);
+        osKey = 'osMac'; detectedOs = m ? m[1].replace(/_/g, '.') : '';
+      } else if (ua.indexOf('Android') > -1) {
+        var m = ua.match(/Android ([\d.]+)/);
+        osKey = 'osAndroid'; detectedOs = m ? m[1] : '';
+      } else if (ua.indexOf('iPhone OS') > -1 || ua.indexOf('iPad') > -1) {
+        var m = ua.match(/OS ([\d_]+)/);
+        osKey = 'osIos'; detectedOs = m ? m[1].replace(/_/g, '.') : '';
+      } else if (ua.indexOf('Linux') > -1) osKey = 'osLinux';
+      detectedOsKey = osKey;
 
-      var el = document.getElementById('uaInfo');
-      if (el) {
-        el.innerHTML = '您目前使用的浏览器是：' + browser + '<br>您目前使用的操作系统是：' + os;
-      }
-
-      // 浏览器版本判定
-      var supported = false;
-      var verNum = parseFloat(browserVer || '0');
-
-      if (isIE) {
-        // IE 始终不受支持
-        supported = false;
-      } else if (browser.indexOf('Chromium 内核') > -1 || browser.indexOf('Android System WebView') === 0) {
-        // 所有 Chromium 内核浏览器：统一按 Chrome 版本判定（>= 102）
-        supported = verNum >= 102;
-      } else if (browser.indexOf('Microsoft Edge') === 0) {
-        supported = verNum >= 102;
-      } else if (browser.indexOf('Opera') === 0) {
-        supported = verNum >= 88;
-      } else if (browser.indexOf('Mozilla Firefox') === 0) {
-        supported = verNum >= 106;
-      } else if (browser.indexOf('Apple Safari') === 0) {
-        supported = verNum >= 16.4;
-      }
-
-      if (supported) {
-        // 隐藏不受支持的卡片，显示受支持的卡片
-        var warnCard = document.querySelector('.card');
-        var supCard = document.getElementById('supportedCard');
-        if (warnCard) warnCard.className += ' unsupported-hidden';
-        if (supCard) {
-          supCard.className = supCard.className.replace(/\s*unsupported-hidden/g, '');
-          var infoEl = document.getElementById('supportedInfo');
-          if (infoEl) {
-            infoEl.innerHTML = '您当前使用的 <strong>' + browser + '</strong> 可以正常浏览本网站。<br>点击下方按钮前往主站：';
-          }
-        }
-      }
+      // 版本判定
+      if (isIE) isSupported = false;
+      else if (browserKey === 'brChromium' || browserKey === 'brWebview') isSupported = verNum >= 102;
+      else if (browserKey === 'brEdge') isSupported = verNum >= 102;
+      else if (browserKey === 'brOpera') isSupported = verNum >= 88;
+      else if (browserKey === 'brFirefox') isSupported = verNum >= 106;
+      else if (browserKey === 'brSafari') isSupported = verNum >= 16.4;
     })();
 
-    // 兼容 IE8+ 的事件绑定
-    function addEvent(el, evt, fn) {
-      if (el.addEventListener) {
-        el.addEventListener(evt, fn, false);
-      } else if (el.attachEvent) {
-        el.attachEvent('on' + evt, fn);
+    // === 应用语言 ===
+    var currentLang = detectLanguage();
+
+    function applyLanguage(lang) {
+      var dict = i18nDict[lang] || i18nDict.zh;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      document.title = dict.title;
+      var els = document.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < els.length; i++) {
+        var key = els[i].getAttribute('data-i18n');
+        if (dict[key] !== undefined) els[i].textContent = dict[key];
+      }
+      var htmlEls = document.querySelectorAll('[data-i18n-html]');
+      for (var i = 0; i < htmlEls.length; i++) {
+        var key = htmlEls[i].getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) htmlEls[i].innerHTML = dict[key];
+      }
+      // 动态生成浏览器/操作系统信息
+      var browserName = fmt(dict[detectedBrowserKey] || dict.brUnknown, browserVer);
+      var osName;
+      if (detectedOsKey === 'osMac' || detectedOsKey === 'osAndroid' || detectedOsKey === 'osIos') {
+        osName = fmt(dict[detectedOsKey], detectedOs);
+      } else {
+        osName = dict[detectedOsKey] || dict.osUnknown;
+      }
+      var uaEl = document.getElementById('uaInfo');
+      if (uaEl) uaEl.innerHTML = fmt(dict.uaLabel, browserName, osName);
+      // 受支持卡片信息
+      var supEl = document.getElementById('supportedInfo');
+      if (supEl) supEl.innerHTML = fmt(dict.supInfo, browserName);
+      try { localStorage.setItem('site-lang', lang); } catch(e) {}
+    }
+
+    // 初始应用
+    applyLanguage(currentLang);
+
+    // 如果浏览器受支持，更新 UI
+    if (isSupported) {
+      var warnCard = document.querySelector('.card');
+      var supCard = document.getElementById('supportedCard');
+      if (warnCard) warnCard.className += ' unsupported-hidden';
+      if (supCard) {
+        supCard.className = supCard.className.replace(/\s*unsupported-hidden/g, '');
       }
     }
-    // 兼容 IE8+ 的 className 操作
+
+    // 语言切换事件
+    var langSelect = document.getElementById('langSelect');
+    if (langSelect) {
+      langSelect.value = currentLang;
+      addEvent(langSelect, 'change', function() {
+        currentLang = langSelect.value;
+        applyLanguage(currentLang);
+      });
+    }
+
+    // === 兼容 IE8+ 的事件绑定 ===
+    function addEvent(el, evt, fn) {
+      if (el.addEventListener) { el.addEventListener(evt, fn, false); }
+      else if (el.attachEvent) { el.attachEvent('on' + evt, fn); }
+    }
     function addClass(el, cls) {
       if (el.classList) { el.classList.add(cls); return; }
       var cur = ' ' + el.className + ' ';
-      if (cur.indexOf(' ' + cls + ' ') < 0) {
-        el.className = el.className + ' ' + cls;
-      }
+      if (cur.indexOf(' ' + cls + ' ') < 0) el.className = el.className + ' ' + cls;
     }
     function removeClass(el, cls) {
       if (el.classList) { el.classList.remove(cls); return; }
       var cur = ' ' + el.className + ' ';
       var rep = ' ' + cls + ' ';
-      while (cur.indexOf(rep) >= 0) {
-        cur = cur.replace(rep, ' ');
-      }
+      while (cur.indexOf(rep) >= 0) cur = cur.replace(rep, ' ');
       el.className = cur.replace(/^\s+|\s+$/g, '');
     }
 
-    // 打开弹窗
+    // 弹窗事件
     addEvent(document.getElementById('oldSiteLink'), 'click', function(e) {
-      if (e.preventDefault) { e.preventDefault(); }
-      else { e.returnValue = false; } // IE8
+      if (e.preventDefault) { e.preventDefault(); } else { e.returnValue = false; }
       addClass(document.getElementById('oldSiteDialog'), 'active');
     });
-
-    // 取消
     addEvent(document.getElementById('dialogCancel'), 'click', function() {
       removeClass(document.getElementById('oldSiteDialog'), 'active');
     });
-
-    // 确认前往
     addEvent(document.getElementById('dialogConfirm'), 'click', function() {
       window.open('http://www.jnyuyingmc.top/original/', '_blank');
       removeClass(document.getElementById('oldSiteDialog'), 'active');
     });
-
-    // 点击遮罩关闭
     addEvent(document.getElementById('oldSiteDialog'), 'click', function(e) {
-      var target = e.target || e.srcElement; // IE8
+      var target = e.target || e.srcElement;
       if (target === this) removeClass(this, 'active');
     });
   </script>

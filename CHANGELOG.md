@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-05-27 — Bilingual Support (Chinese/English) / 双语支持
+
+Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。
+
+- All 5 pages now support Chinese and English with a language toggle (globe icon dropdown on MDUI pages, plain `<select>` on `unsupported.html`) / 全站 5 页支持中英文切换，MDUI 页面使用地球图标下拉菜单，不支持页使用原生 `<select>`
+- Browser language auto-detection: checks `localStorage('site-lang')` first, falls back to `navigator.language` (zh prefix → Chinese, else → English) / 浏览器语言自动检测：优先 localStorage，回退至 navigator.language
+- Language choice persisted across pages via `localStorage('site-lang')` / 语言选择通过 localStorage 跨页面持久化
+- `data-i18n` attribute pattern: each translatable element marked with `data-i18n="key"`, inline `i18nDict` per page provides zh/en translations / 使用 data-i18n 属性标记可翻译元素，每页内嵌翻译字典
+- Dynamic strings in `unsupported.html` (browser names, OS names) translated via dictionary keys / 不支持页的动态字符串（浏览器名、操作系统名）通过字典键翻译
+- `<html lang>` set dynamically to `zh-CN` or `en` / `<html lang>` 动态设置
+- `<title>` updated on language switch / 页面标题随语言切换更新
+- Language toggle icon-only (globe icon, no text label) to prevent overlap with theme toggle on desktop and ensure mobile compatibility / 语言切换仅显示地球图标，避免与主题切换重叠并确保移动端兼容
+
 ## 2026-05-11 — Enhanced Browser Compatibility Detection / 增强浏览器兼容检测
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。

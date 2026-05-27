@@ -105,12 +105,37 @@
       background: rgba(255,255,255,0.85);
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .mdui-theme-dark .theme-toggle {
       background: rgba(40,40,40,0.85);
     }
     .theme-dropdown mdui-menu {
       min-width: 160px;
+    }
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 4rem;
+      z-index: 1000;
+      overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mdui-theme-dark .lang-toggle {
+      background: rgba(40,40,40,0.85);
+    }
+    .lang-dropdown mdui-menu {
+      min-width: 120px;
     }
     /* FAB 导航 */
     .fab-nav {
@@ -153,8 +178,7 @@
       .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.6rem; }
       .photo-card .photo-overlay { font-size: 0.75rem; padding: 0.4rem 0.6rem; }
       .site-footer { padding: 1.5rem 1rem; }
-      .theme-toggle #themeLabel { display: none; }
-      .theme-toggle mdui-button { min-width: auto; }
+      .theme-toggle mdui-button, .lang-toggle mdui-button { min-width: 0; width: 2.2rem; height: 2.2rem; padding: 0; display: flex; align-items: center; justify-content: center; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
     }
     @media (max-width: 380px) {
@@ -189,14 +213,26 @@
   <!-- Theme Toggle -->
   <div class="theme-toggle">
     <mdui-dropdown class="theme-dropdown" placement="bottom-end">
-      <mdui-button slot="trigger" variant="text" title="切换主题">
+      <mdui-button slot="trigger" variant="text" title="切换主题" data-i18n-title="theme.toggleTitle">
         <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
-        <span id="themeLabel">跟随系统</span>
       </mdui-button>
       <mdui-menu selects="single" value="system" id="themeMenu">
-        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
-        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
-        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+        <mdui-menu-item value="light" icon="light_mode" data-i18n="theme.light">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode" data-i18n="theme.dark">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest" data-i18n="theme.system">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <mdui-dropdown class="lang-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="Language">
+        <mdui-icon name="language" slot="icon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="zh" id="langMenu">
+        <mdui-menu-item value="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en">English</mdui-menu-item>
       </mdui-menu>
     </mdui-dropdown>
   </div>
@@ -204,9 +240,9 @@
   <!-- Header -->
   <section class="page-header">
     <div class="page-header-content">
-      <h1>图片库</h1>
+      <h1 data-i18n="page.title">图片库</h1>
       <div style="margin-top:1rem;">
-        <mdui-button href="index.html" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">返回首页</mdui-button>
+        <mdui-button href="index.html" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)" data-i18n="page.backHome">返回首页</mdui-button>
       </div>
     </div>
   </section>
@@ -214,13 +250,13 @@
   <!-- Photo Gallery -->
   <div class="photo-section">
     <div class="photo-grid">
-      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
-        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy">
-        <div class="photo-overlay">俯视渲染图 · 2017-08-04</div>
+      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04" data-i18n-desc="photos.p1.desc">
+        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy" data-i18n-alt="photos.p1.alt">
+        <div class="photo-overlay" data-i18n="photos.p1.overlay">俯视渲染图 · 2017-08-04</div>
       </a>
-      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22">
-        <img src="photolib/snow.jpg" alt="雪" loading="lazy">
-        <div class="photo-overlay">雪 · 2017-08-22</div>
+      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22" data-i18n-desc="photos.p2.desc">
+        <img src="photolib/snow.jpg" alt="雪" loading="lazy" data-i18n-alt="photos.p2.alt">
+        <div class="photo-overlay" data-i18n="photos.p2.overlay">雪 · 2017-08-22</div>
       </a>
       <a class="photo-card glightbox" href="photolib/4K-garden.jpg" data-gallery="photos" data-desc="4K Garden · 2017-07-25">
         <img src="photolib/4K-garden.jpg" alt="4K Garden" loading="lazy">
@@ -279,59 +315,160 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div data-i18n="footer.copyright">Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
-      <a href="index.html">返回首页</a> &middot; <a href="https://github.com/jnYuyingMC" target="_blank">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
+      <a href="index.html" data-i18n="footer.backHome">返回首页</a> &middot; <a href="https://github.com/jnYuyingMC" target="_blank">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
     </div>
-    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
-      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem;">
-      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;">联系我们</a>
+      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
     </div>
   </footer>
 
   <!-- Old Site Dialog -->
-  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面">
-    您即将离开当前网站，前往旧版页面。旧版页面可能已停止维护，体验与当前版本不同。
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false">取消</mdui-button>
-    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm">确定</mdui-button>
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面" data-i18n-headline="dialog.oldSite.title">
+    <span data-i18n="dialog.oldSite.body">您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。</span>
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false" data-i18n="dialog.oldSite.cancel">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm" data-i18n="dialog.oldSite.confirm">确定</mdui-button>
   </mdui-dialog>
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
-    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="#" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="index.html" title="首页" data-i18n-title="fab.home"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="#" title="图片库" data-i18n-title="fab.photos"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景" data-i18n-title="fab.vr"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
+    // --- i18n Dictionary ---
+    const i18nDict = {
+      zh: {
+        title: '图片库 - 大育英帝国 Minecraft 计划',
+        'theme.toggleTitle': '切换主题',
+        'theme.light': '亮色模式',
+        'theme.dark': '暗色模式',
+        'theme.system': '跟随系统',
+        'fab.home': '首页',
+        'fab.photos': '图片库',
+        'fab.vr': 'VR 全景',
+        'page.title': '图片库',
+        'page.backHome': '返回首页',
+        'photos.p1.desc': '俯视渲染图 · 2017-08-04',
+        'photos.p1.alt': '俯视渲染图',
+        'photos.p1.overlay': '俯视渲染图 · 2017-08-04',
+        'photos.p2.desc': '雪 · 2017-08-22',
+        'photos.p2.alt': '雪',
+        'photos.p2.overlay': '雪 · 2017-08-22',
+        'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
+        'footer.backHome': '返回首页',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>',
+        'footer.ipv6': '本站支持 IPv6 访问',
+        'footer.contact': '联系我们',
+        'dialog.oldSite.title': '即将前往旧版页面',
+        'dialog.oldSite.body': '您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。',
+        'dialog.oldSite.cancel': '取消',
+        'dialog.oldSite.confirm': '确定'
+      },
+      en: {
+        title: 'Photo Gallery - Our Great Yuying Minecraft Project',
+        'theme.toggleTitle': 'Switch Theme',
+        'theme.light': 'Light Mode',
+        'theme.dark': 'Dark Mode',
+        'theme.system': 'Follow System',
+        'fab.home': 'Home',
+        'fab.photos': 'Photos',
+        'fab.vr': 'VR Panorama',
+        'page.title': 'Photo Gallery',
+        'page.backHome': 'Back to Home',
+        'photos.p1.desc': 'Top-down Render · 2017-08-04',
+        'photos.p1.alt': 'Top-down Render',
+        'photos.p1.overlay': 'Top-down Render · 2017-08-04',
+        'photos.p2.desc': 'Snow · 2017-08-22',
+        'photos.p2.alt': 'Snow',
+        'photos.p2.overlay': 'Snow · 2017-08-22',
+        'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
+        'footer.backHome': 'Back to Home',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>',
+        'footer.ipv6': 'This site supports IPv6 access',
+        'footer.contact': 'Contact Us',
+        'dialog.oldSite.title': 'Leaving for Legacy Page',
+        'dialog.oldSite.body': 'You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version.',
+        'dialog.oldSite.cancel': 'Cancel',
+        'dialog.oldSite.confirm': 'OK'
+      }
+    };
+
+    // --- i18n Functions ---
+    function detectLanguage() {
+      var saved = localStorage.getItem('site-lang');
+      if (saved && i18nDict[saved]) return saved;
+      var nav = navigator.language || navigator.userLanguage || '';
+      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    }
+
+    function applyLanguage(lang) {
+      var dict = i18nDict[lang];
+      if (!dict) return;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      if (dict.title) document.title = dict.title;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-title');
+        if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-headline]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-headline');
+        if (dict[key] !== undefined) el.setAttribute('headline', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-desc]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-desc');
+        if (dict[key] !== undefined) el.setAttribute('data-desc', dict[key]);
+      });
+      var langMenu = document.getElementById('langMenu');
+      if (langMenu) langMenu.value = lang;
+      if (typeof applyTheme === 'function') {
+        var savedMode = localStorage.getItem('theme-mode') || 'system';
+        applyTheme(savedMode);
+      }
+      localStorage.setItem('site-lang', lang);
+    }
+
     // Theme toggle
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
     const themeMenu = document.getElementById('themeMenu');
+    let currentLang = detectLanguage();
 
     function applyTheme(mode) {
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      const themeLabel = document.getElementById('themeLabel');
       let dark;
       if (mode === 'system') {
         dark = mq.matches;
         themeIcon.setAttribute('name', 'settings_suggest');
-        themeLabel.textContent = '跟随系统';
       } else if (mode === 'dark') {
         dark = true;
         themeIcon.setAttribute('name', 'dark_mode');
-        themeLabel.textContent = '暗色模式';
       } else {
         dark = false;
         themeIcon.setAttribute('name', 'light_mode');
-        themeLabel.textContent = '亮色模式';
       }
       html.classList.toggle('mdui-theme-dark', dark);
     }
@@ -362,6 +499,16 @@
       window.open('http://www.jnyuyingmc.top/original/', '_blank');
       document.getElementById('oldSiteDialog').open = false;
     });
+
+    // Initialize language
+    applyLanguage(currentLang);
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      langMenu.addEventListener('change', () => {
+        currentLang = langMenu.value;
+        applyLanguage(currentLang);
+      });
+    }
   </script>
 </body>
 </html>

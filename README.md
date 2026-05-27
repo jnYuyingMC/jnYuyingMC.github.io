@@ -28,6 +28,7 @@
 - **旧版页面入口 / Legacy Site Link**: 全站 footer 新增旧版页面链接，附确认弹窗；不支持提示页亦提供旧版入口 / Old site link added to footer with confirmation dialog and to unsupported page
 - **正片下拉 / Video Dropdown**: Hero 区"正片"按钮改为悬停下拉，含 Bilibili / YouTube 两项 / Hero "正片" button changed to hover dropdown with Bilibili / YouTube
 - **移动端适配 / Mobile Responsive**: 全站 5 页移动端布局优化——主题切换仅图标、栅格列宽缩小、字号与内边距适配、380px 极窄断点 / All 5 pages optimized: icon-only theme toggle, smaller grid columns, scaled typography, 380px breakpoint
+- **双语支持 / Bilingual Support**: 全站 5 页支持中英文切换（地球图标下拉 / 原生 select），浏览器语言自动检测，localStorage 跨页面持久化 / All 5 pages support Chinese/English switching with browser language auto-detection and localStorage persistence
 
 ## 技术栈 / Tech Stack
 
@@ -37,6 +38,6 @@
 
 ## 开发方式 / Development
 
-本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code)（AI Agent）辅助完成，底层模型为小米 MiMo V2 Pro。
+本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code)（AI Agent）辅助完成，底层模型为小米 MiMo V2 Pro / V2.5 Pro。
 
-The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code) (AI Agent), powered by Xiaomi MiMo V2 Pro.
+The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code) (AI Agent), powered by Xiaomi MiMo V2 Pro / V2.5 Pro.

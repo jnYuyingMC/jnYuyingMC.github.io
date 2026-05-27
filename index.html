@@ -294,8 +294,7 @@
       .embed-grid { grid-template-columns: 1fr; }
       .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
       .site-footer { padding: 1.5rem 1rem; }
-      .theme-toggle #themeLabel { display: none; }
-      .theme-toggle mdui-button { min-width: auto; }
+      .theme-toggle mdui-button, .lang-toggle mdui-button { min-width: 0; width: 2.2rem; height: 2.2rem; padding: 0; display: flex; align-items: center; justify-content: center; }
       .fab-nav { bottom: 1rem; right: 0.75rem; }
     }
     @media (max-width: 380px) {
@@ -343,12 +342,38 @@
       background: rgba(255,255,255,0.85);
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .mdui-theme-dark .theme-toggle {
       background: rgba(40,40,40,0.85);
     }
     .theme-dropdown mdui-menu {
       min-width: 160px;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 4rem;
+      z-index: 1000;
+      overflow: visible;
+      background: rgba(255,255,255,0.85);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      width: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mdui-theme-dark .lang-toggle {
+      background: rgba(40,40,40,0.85);
+    }
+    .lang-dropdown mdui-menu {
+      min-width: 120px;
     }
 
     /* FAB navigation */
@@ -426,14 +451,26 @@
   <!-- Theme Toggle -->
   <div class="theme-toggle">
     <mdui-dropdown class="theme-dropdown" placement="bottom-end">
-      <mdui-button slot="trigger" variant="text" title="切换主题">
+      <mdui-button slot="trigger" variant="text" title="切换主题" data-i18n-title="theme.toggleTitle">
         <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
-        <span id="themeLabel">跟随系统</span>
       </mdui-button>
       <mdui-menu selects="single" value="system" id="themeMenu">
-        <mdui-menu-item value="light" icon="light_mode">亮色模式</mdui-menu-item>
-        <mdui-menu-item value="dark" icon="dark_mode">暗色模式</mdui-menu-item>
-        <mdui-menu-item value="system" icon="settings_suggest">跟随系统</mdui-menu-item>
+        <mdui-menu-item value="light" icon="light_mode" data-i18n="theme.light">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode" data-i18n="theme.dark">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest" data-i18n="theme.system">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <mdui-dropdown class="lang-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="Language">
+        <mdui-icon name="language" slot="icon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="zh" id="langMenu">
+        <mdui-menu-item value="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en">English</mdui-menu-item>
       </mdui-menu>
     </mdui-dropdown>
   </div>
@@ -442,19 +479,19 @@
   <section class="hero">
     <div class="hero-content">
       <img class="hero-logo" src="images/logo.png" alt="Logo">
-      <h1>大育英帝国 Minecraft 计划</h1>
-      <p>用像素方块重建百年校园，以热爱致敬母校济南育英中学</p>
+      <h1 data-i18n="hero.title">大育英帝国 Minecraft 计划</h1>
+      <p data-i18n="hero.subtitle">用像素方块重建百年校园，以热爱致敬母校济南育英中学</p>
       <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <mdui-button href="#about" variant="tonal">了解项目</mdui-button>
-        <mdui-button href="#photos" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">查看图片</mdui-button>
+        <mdui-button href="#about" variant="tonal" data-i18n="hero.about">了解项目</mdui-button>
+        <mdui-button href="#photos" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)" data-i18n="hero.photos">查看图片</mdui-button>
         <mdui-dropdown trigger="hover" placement="bottom-start">
-          <mdui-button slot="trigger" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">正片 <mdui-icon name="arrow_drop_down" slot="icon"></mdui-icon></mdui-button>
+          <mdui-button slot="trigger" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)"><span data-i18n="hero.mainVideo">正片</span> <mdui-icon name="arrow_drop_down" slot="icon"></mdui-icon></mdui-button>
           <mdui-menu>
             <mdui-menu-item href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank">Bilibili <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
             <mdui-menu-item href="https://youtu.be/KZ5w7Looohk" target="_blank">YouTube <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
           </mdui-menu>
         </mdui-dropdown>
-        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)">重制版 <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)"><span data-i18n="hero.remaster">重制版</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
   </section>
@@ -462,81 +499,77 @@
   <!-- About -->
   <div class="section" id="about">
     <div class="section-title">
-      <mdui-icon name="info"></mdui-icon> 项目简介
+      <mdui-icon name="info"></mdui-icon> <span data-i18n="about.title">项目简介</span>
     </div>
     <div class="desc-card">
-      本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。
-      目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。
-      感谢所有人对本项目的支持与帮助。
+      <span data-i18n="about.p1">本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。</span>
     </div>
     <div class="desc-card">
-      济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。
-      作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。
-      <span class="author">—— David_ryh</span>
+      <span data-i18n="about.p2">济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。</span>
+      <span class="author" data-i18n="about.a2">—— David_ryh</span>
     </div>
     <div class="desc-card">
-      谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。
-      <span class="author">—— 神经元</span>
+      <span data-i18n="about.p3">谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。</span>
+      <span class="author" data-i18n="about.a3">—— 神经元</span>
     </div>
     <div class="desc-card">
-      他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。
-      小小的一张地图，凝聚了无数育英学子对他们母校的热爱。
-      <span class="author">—— 张司旻</span>
+      <span data-i18n="about.p4">他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。小小的一张地图，凝聚了无数育英学子对他们母校的热爱。</span>
+      <span class="author" data-i18n="about.a4">—— 张司旻</span>
     </div>
   </div>
 
   <!-- Team -->
   <div class="section" id="team">
     <div class="section-title">
-      <mdui-icon name="group"></mdui-icon> 核心成员
+      <mdui-icon name="group"></mdui-icon> <span data-i18n="team.title">核心成员</span>
     </div>
     <div class="member-grid">
       <div class="member-card">
         <mdui-avatar style="background:#e0f2f1; color:#00897b; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">N</mdui-avatar>
-        <div class="name">Neuron（神经元）</div>
-        <div class="role">导演 / 万能</div>
-        <div class="status">高二</div>
+        <div class="name" data-i18n="team.n1.name">Neuron（神经元）</div>
+        <div class="role" data-i18n="team.n1.role">导演 / 万能</div>
+        <div class="status" data-i18n="team.n1.status">高二</div>
         <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:lizliyuan123456@yeah.net" style="color:#00897b; text-decoration:none;">lizliyuan123456@yeah.net</a></div>
       </div>
       <div class="member-card">
         <mdui-avatar style="background:#fce4ec; color:#c62828; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">D</mdui-avatar>
         <div class="name">David_ryh</div>
-        <div class="role">服务器管理 / 建筑 / 美术</div>
-        <div class="status">高一，住校</div>
+        <div class="role" data-i18n="team.n2.role">服务器管理 / 建筑 / 美术</div>
+        <div class="status" data-i18n="team.n2.status">高一，住校</div>
         <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:neskdavid123@163.com" style="color:#00897b; text-decoration:none;">neskdavid123@163.com</a></div>
       </div>
       <div class="member-card">
         <mdui-avatar style="background:#e8eaf6; color:#283593; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">乐</mdui-avatar>
-        <div class="name">于小乐</div>
-        <div class="role">服务器管理 / 建筑 / 美术</div>
-        <div class="status">准备中考</div>
+        <div class="name" data-i18n="team.n3.name">于小乐</div>
+        <div class="role" data-i18n="team.n3.role">服务器管理 / 建筑 / 美术</div>
+        <div class="status" data-i18n="team.n3.status">准备中考</div>
         <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:yulele28@126.com" style="color:#00897b; text-decoration:none;">yulele28@126.com</a></div>
       </div>
     </div>
     <!-- Team Structure -->
     <div class="section-title" style="margin-top:2rem;">
-      <mdui-icon name="account_tree"></mdui-icon> 团队架构
+      <mdui-icon name="account_tree"></mdui-icon> <span data-i18n="team.structure">团队架构</span>
     </div>
     <div class="team-structure-grid">
       <div class="desc-card" style="margin-bottom:0;">
         <div style="margin-bottom:0.8rem;">
-          <strong style="color:var(--mdui-color-primary);">核心组</strong>
-          <span style="color:#666;"> — 导演、服务器维护</span>
+          <strong style="color:var(--mdui-color-primary);" data-i18n="team.core">核心组</strong>
+          <span style="color:#666;" data-i18n="team.core.desc"> — 导演、服务器维护</span>
         </div>
         <div style="margin-bottom:0.8rem;">
-          <strong style="color:var(--mdui-color-primary);">建筑组</strong>
+          <strong style="color:var(--mdui-color-primary);" data-i18n="team.build">建筑组</strong>
         </div>
         <div style="margin-bottom:0.8rem;">
-          <strong style="color:var(--mdui-color-primary);">美术组</strong>
-          <span style="color:#666;"> — 分镜、贴图（包括皮肤及物品）、动画</span>
+          <strong style="color:var(--mdui-color-primary);" data-i18n="team.art">美术组</strong>
+          <span style="color:#666;" data-i18n="team.art.desc"> — 分镜、贴图（包括皮肤及物品）、动画</span>
         </div>
         <div>
-          <strong style="color:var(--mdui-color-primary);">渲染组</strong>
+          <strong style="color:var(--mdui-color-primary);" data-i18n="team.render">渲染组</strong>
         </div>
       </div>
       <div style="text-align:center;">
-        <img src="images/qrcode.jpg" alt="项目组群二维码" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg">
-        <div style="font-size:0.8rem; color:#888; margin-top:0.4rem;">扫码加入交流群</div>
+        <img src="images/qrcode.jpg" alt="项目组群二维码" data-i18n-alt="team.qr.alt" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg">
+        <div style="font-size:0.8rem; color:#888; margin-top:0.4rem;" data-i18n="team.qr.caption">扫码加入交流群</div>
       </div>
     </div>
   </div>
@@ -544,37 +577,37 @@
   <!-- Timeline -->
   <div class="section" id="timeline">
     <div class="section-title">
-      <mdui-icon name="timeline"></mdui-icon> 项目时间线
+      <mdui-icon name="timeline"></mdui-icon> <span data-i18n="timeline.title">项目时间线</span>
     </div>
     <div class="timeline">
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.1</div><div class="event">计划启动 — 服务器启动，建筑开始</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.16</div><div class="event">建筑工作大范围开始</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.27</div><div class="event">域名注册，网站开放访问</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.28</div><div class="event">核心组成员于小乐"跑路" 🫠</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.31</div><div class="event">建筑组按(卡)时(点)完成任务</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.3</div><div class="event">存档导出，服务器关闭</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.13</div><div class="event">于小乐回归，开始后期制作</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.22</div><div class="event">航拍计划开始</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.9.10</div><div class="event">算力大幅升级，全面渲染开始</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.4</div><div class="event">VR 平台上线</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.12</div><div class="event">渲染全部完成</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.11.5</div><div class="event">正片发布</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2018.11.2</div><div class="event">60FPS 21:9 重制版发布</div></div></div>
-      <div class="timeline-item"><div class="timeline-card"><div class="date">2026.4.1</div><div class="event">AI Agent 辅助完成网页革新（David_ryh）</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.1</div><div class="event" data-i18n="timeline.e1">计划启动 — 服务器启动，建筑开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.16</div><div class="event" data-i18n="timeline.e2">建筑工作大范围开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.27</div><div class="event" data-i18n="timeline.e3">域名注册，网站开放访问</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.28</div><div class="event" data-i18n="timeline.e4">核心组成员于小乐"跑路" 🫠</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.7.31</div><div class="event" data-i18n="timeline.e5">建筑组按(卡)时(点)完成任务</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.3</div><div class="event" data-i18n="timeline.e6">存档导出，服务器关闭</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.13</div><div class="event" data-i18n="timeline.e7">于小乐回归，开始后期制作</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.8.22</div><div class="event" data-i18n="timeline.e8">航拍计划开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.9.10</div><div class="event" data-i18n="timeline.e9">算力大幅升级，全面渲染开始</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.4</div><div class="event" data-i18n="timeline.e10">VR 平台上线</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.10.12</div><div class="event" data-i18n="timeline.e11">渲染全部完成</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2017.11.5</div><div class="event" data-i18n="timeline.e12">正片发布</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2018.11.2</div><div class="event" data-i18n="timeline.e13">60FPS 21:9 重制版发布</div></div></div>
+      <div class="timeline-item"><div class="timeline-card"><div class="date">2026.4.1</div><div class="event" data-i18n="timeline.e14">AI Agent 辅助完成网页革新（David_ryh）</div></div></div>
     </div>
   </div>
 
   <!-- Videos -->
   <div class="section" id="media">
     <div class="section-title">
-      <mdui-icon name="play_circle"></mdui-icon> 视频
+      <mdui-icon name="play_circle"></mdui-icon> <span data-i18n="video.title">视频</span>
     </div>
     <div style="margin-bottom: 1rem; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch;">
       <mdui-segmented-button-group selects="single" id="videoSelector" style="display:inline-flex; min-width:max-content;">
-        <mdui-segmented-button value="v1">Bilibili 先发版本</mdui-segmented-button>
-        <mdui-segmented-button value="v4">YouTube 先发版本</mdui-segmented-button>
-        <mdui-segmented-button value="v2">60FPS 21:9 重制版</mdui-segmented-button>
-        <mdui-segmented-button value="v3">施工纪录</mdui-segmented-button>
+        <mdui-segmented-button value="v1" data-i18n="video.v1">Bilibili 先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v4" data-i18n="video.v4">YouTube 先发版本</mdui-segmented-button>
+        <mdui-segmented-button value="v2" data-i18n="video.v2">60FPS 21:9 重制版</mdui-segmented-button>
+        <mdui-segmented-button value="v3" data-i18n="video.v3">施工纪录</mdui-segmented-button>
       </mdui-segmented-button-group>
     </div>
     <div class="embed-card" id="videoCard" style="display:none;">
@@ -584,7 +617,7 @@
       <div id="localVideoWrapper" style="display:none;">
         <video id="localVideo" controls controlsList="nodownload noremoteplayback" disablePictureInPicture style="width:100%; display:block; border-radius:16px 16px 0 0;">
           <source src="photolib/2017-7-13-video.mp4" type="video/mp4">
-          您的浏览器不支持视频播放。
+          <span data-i18n="video.fallback">您的浏览器不支持视频播放。</span>
         </video>
       </div>
       <div id="youtubeWrapper" style="display:none;">
@@ -597,16 +630,16 @@
   <!-- Photos -->
   <div class="section" id="photos">
     <div class="section-title">
-      <mdui-icon name="photo_library"></mdui-icon> <a href="photo.html" style="color:inherit; text-decoration:none;">图片库</a>
+      <mdui-icon name="photo_library"></mdui-icon> <a href="photo.html" style="color:inherit; text-decoration:none;" data-i18n="photos.title">图片库</a>
     </div>
     <div class="photo-grid" id="gallery">
-      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04">
-        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy">
-        <div class="photo-overlay">俯视渲染图 · 2017-08-04</div>
+      <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04" data-i18n-desc="photos.p1.desc">
+        <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy" data-i18n-alt="photos.p1.alt">
+        <div class="photo-overlay" data-i18n="photos.p1.overlay">俯视渲染图 · 2017-08-04</div>
       </a>
-      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22">
-        <img src="photolib/snow.jpg" alt="雪" loading="lazy">
-        <div class="photo-overlay">雪 · 2017-08-22</div>
+      <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22" data-i18n-desc="photos.p2.desc">
+        <img src="photolib/snow.jpg" alt="雪" loading="lazy" data-i18n-alt="photos.p2.alt">
+        <div class="photo-overlay" data-i18n="photos.p2.overlay">雪 · 2017-08-22</div>
       </a>
       <a class="photo-card glightbox" href="photolib/4K-garden.jpg" data-gallery="photos" data-desc="4K Garden · 2017-07-25">
         <img src="photolib/4K-garden.jpg" alt="4K Garden" loading="lazy">
@@ -664,71 +697,284 @@
   </div>
 
   <!-- QR Code Dialog -->
-  <mdui-dialog id="qrDialog" headline="QQ群：652369699" style="--md-dialog-headline-size: 1rem;">
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('qrDialog').open = false">取消</mdui-button>
-    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank'); document.getElementById('qrDialog').open = false;">打开群链接</mdui-button>
+  <mdui-dialog id="qrDialog" headline="QQ群：652369699" data-i18n-headline="qr.headline" style="--md-dialog-headline-size: 1rem;">
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('qrDialog').open = false" data-i18n="qr.cancel">取消</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank'); document.getElementById('qrDialog').open = false;" data-i18n="qr.openLink">打开群链接</mdui-button>
   </mdui-dialog>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <div style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">
+    <div style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="footer.org">
       大育英帝国学生会 宣传部 × 辣条视频工作室
     </div>
-    <div>Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div data-i18n="footer.copyright">Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
       <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
         <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
       </a>
     </div>
-    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
+      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
-      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> 本站支持 IPv6 访问
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem;">
-      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;">联系我们</a>
+      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
     </div>
   </footer>
 
   <!-- Old Site Dialog -->
-  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面">
-    您即将离开当前网站，前往旧版页面。旧版页面可能已停止维护，体验与当前版本不同。
-    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false">取消</mdui-button>
-    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm">确定</mdui-button>
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面" data-i18n-headline="dialog.oldSite.title">
+    <span data-i18n="dialog.oldSite.body">您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。</span>
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false" data-i18n="dialog.oldSite.cancel">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm" data-i18n="dialog.oldSite.confirm">确定</mdui-button>
   </mdui-dialog>
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
-    <mdui-button-icon href="index.html" title="首页"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="photo.html" title="图片库"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
-    <mdui-button-icon href="vr.html" title="VR 全景"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="index.html" title="首页" data-i18n-title="fab.home"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="photo.html" title="图片库" data-i18n-title="fab.photos"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景" data-i18n-title="fab.vr"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <script>
-    // Dark mode: dropdown with light/dark/system
+    // --- i18n Dictionary ---
+    const i18nDict = {
+      zh: {
+        title: '大育英帝国 Minecraft 计划',
+        'theme.toggleTitle': '切换主题',
+        'theme.label': '跟随系统',
+        'theme.light': '亮色模式',
+        'theme.dark': '暗色模式',
+        'theme.system': '跟随系统',
+        'fab.home': '首页',
+        'fab.photos': '图片库',
+        'fab.vr': 'VR 全景',
+        'hero.title': '大育英帝国 Minecraft 计划',
+        'hero.subtitle': '用像素方块重建百年校园，以热爱致敬母校济南育英中学',
+        'hero.about': '了解项目',
+        'hero.photos': '查看图片',
+        'hero.mainVideo': '正片',
+        'hero.remaster': '重制版',
+        'about.title': '项目简介',
+        'about.p1': '本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。',
+        'about.p2': '济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。',
+        'about.a2': '—— David_ryh',
+        'about.p3': '谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。',
+        'about.a3': '—— 神经元',
+        'about.p4': '他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。小小的一张地图，凝聚了无数育英学子对他们母校的热爱。',
+        'about.a4': '—— 张司旻',
+        'team.title': '核心成员',
+        'team.n1.name': 'Neuron（神经元）',
+        'team.n1.role': '导演 / 万能',
+        'team.n1.status': '高二',
+        'team.n2.role': '服务器管理 / 建筑 / 美术',
+        'team.n2.status': '高一，住校',
+        'team.n3.name': '于小乐',
+        'team.n3.role': '服务器管理 / 建筑 / 美术',
+        'team.n3.status': '准备中考',
+        'team.structure': '团队架构',
+        'team.core': '核心组',
+        'team.core.desc': ' — 导演、服务器维护',
+        'team.build': '建筑组',
+        'team.art': '美术组',
+        'team.art.desc': ' — 分镜、贴图（包括皮肤及物品）、动画',
+        'team.render': '渲染组',
+        'team.qr.alt': '项目组群二维码',
+        'team.qr.caption': '扫码加入交流群',
+        'timeline.title': '项目时间线',
+        'timeline.e1': '计划启动 — 服务器启动，建筑开始',
+        'timeline.e2': '建筑工作大范围开始',
+        'timeline.e3': '域名注册，网站开放访问',
+        'timeline.e4': '核心组成员于小乐"跑路" 🫠',
+        'timeline.e5': '建筑组按(卡)时(点)完成任务',
+        'timeline.e6': '存档导出，服务器关闭',
+        'timeline.e7': '于小乐回归，开始后期制作',
+        'timeline.e8': '航拍计划开始',
+        'timeline.e9': '算力大幅升级，全面渲染开始',
+        'timeline.e10': 'VR 平台上线',
+        'timeline.e11': '渲染全部完成',
+        'timeline.e12': '正片发布',
+        'timeline.e13': '60FPS 21:9 重制版发布',
+        'timeline.e14': 'AI Agent 辅助完成网页革新（David_ryh）',
+        'video.title': '视频',
+        'video.v1': 'Bilibili 先发版本',
+        'video.v4': 'YouTube 先发版本',
+        'video.v2': '60FPS 21:9 重制版',
+        'video.v3': '施工纪录',
+        'video.fallback': '您的浏览器不支持视频播放。',
+        'photos.title': '图片库',
+        'photos.p1.desc': '俯视渲染图 · 2017-08-04',
+        'photos.p1.alt': '俯视渲染图',
+        'photos.p1.overlay': '俯视渲染图 · 2017-08-04',
+        'photos.p2.desc': '雪 · 2017-08-22',
+        'photos.p2.alt': '雪',
+        'photos.p2.overlay': '雪 · 2017-08-22',
+        'qr.headline': 'QQ群：652369699',
+        'qr.cancel': '取消',
+        'qr.openLink': '打开群链接',
+        'footer.org': '大育英帝国学生会 宣传部 × 辣条视频工作室',
+        'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>',
+        'footer.ipv6': '本站支持 IPv6 访问',
+        'footer.contact': '联系我们',
+        'dialog.oldSite.title': '即将前往旧版页面',
+        'dialog.oldSite.body': '您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。',
+        'dialog.oldSite.cancel': '取消',
+        'dialog.oldSite.confirm': '确定'
+      },
+      en: {
+        title: 'Our Great Yuying Minecraft Project',
+        'theme.toggleTitle': 'Switch Theme',
+        'theme.label': 'Follow System',
+        'theme.light': 'Light Mode',
+        'theme.dark': 'Dark Mode',
+        'theme.system': 'Follow System',
+        'fab.home': 'Home',
+        'fab.photos': 'Photos',
+        'fab.vr': 'VR Panorama',
+        'hero.title': 'Our Great Yuying Minecraft Project',
+        'hero.subtitle': 'Rebuilding a century-old campus with pixel blocks, paying tribute to our alma mater Jinan Yuying Middle School with passion',
+        'hero.about': 'About Project',
+        'hero.photos': 'View Photos',
+        'hero.mainVideo': 'Main Video',
+        'hero.remaster': 'Remaster',
+        'about.title': 'About the Project',
+        'about.p1': 'This project started during the production of a motivational video for the 2016 grade\'s high school entrance exam, and kept growing beyond expectations. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help.',
+        'about.p2': 'Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift to our middle school life.',
+        'about.a2': '— David_ryh',
+        'about.p3': 'Dedicated to our most beautiful three years of youth, and wishing our Great Yuying a happy 104th birthday.',
+        'about.a3': '— Neuron',
+        'about.p4': 'Using Minecraft as their canvas, they spent nearly three months perfectly recreating their alma mater Yuying in the game. This small map embodies the love countless Yuying students have for their school.',
+        'about.a4': '— Zhang Simin',
+        'team.title': 'Core Members',
+        'team.n1.name': 'Neuron',
+        'team.n1.role': 'Director / All-rounder',
+        'team.n1.status': '11th Grade',
+        'team.n2.role': 'Server Admin / Building / Art',
+        'team.n2.status': '10th Grade, Boarding',
+        'team.n3.name': 'Yu Xiaole',
+        'team.n3.role': 'Server Admin / Building / Art',
+        'team.n3.status': 'Preparing for Exam',
+        'team.structure': 'Team Structure',
+        'team.core': 'Core Team',
+        'team.core.desc': ' — Director, Server Maintenance',
+        'team.build': 'Building Team',
+        'team.art': 'Art Team',
+        'team.art.desc': ' — Storyboard, Textures (incl. skins & items), Animation',
+        'team.render': 'Rendering Team',
+        'team.qr.alt': 'Project Group QR Code',
+        'team.qr.caption': 'Scan to join the group chat',
+        'timeline.title': 'Project Timeline',
+        'timeline.e1': 'Project Launch — Server started, building begins',
+        'timeline.e2': 'Large-scale building work begins',
+        'timeline.e3': 'Domain registered, website goes live',
+        'timeline.e4': 'Core member Yu Xiaole "ran away" 🫠',
+        'timeline.e5': 'Building team completes tasks right on deadline',
+        'timeline.e6': 'Save exported, server shut down',
+        'timeline.e7': 'Yu Xiaole returns, post-production begins',
+        'timeline.e8': 'Aerial cinematography plan begins',
+        'timeline.e9': 'Major compute upgrade, full rendering begins',
+        'timeline.e10': 'VR platform goes live',
+        'timeline.e11': 'All rendering completed',
+        'timeline.e12': 'Main video released',
+        'timeline.e13': '60FPS 21:9 Remaster released',
+        'timeline.e14': 'AI Agent assists website overhaul (David_ryh)',
+        'video.title': 'Videos',
+        'video.v1': 'Bilibili First Release',
+        'video.v4': 'YouTube First Release',
+        'video.v2': '60FPS 21:9 Remaster',
+        'video.v3': 'Construction Record',
+        'video.fallback': 'Your browser does not support video playback.',
+        'photos.title': 'Photo Gallery',
+        'photos.p1.desc': 'Top-down Render · 2017-08-04',
+        'photos.p1.alt': 'Top-down Render',
+        'photos.p1.overlay': 'Top-down Render · 2017-08-04',
+        'photos.p2.desc': 'Snow · 2017-08-22',
+        'photos.p2.alt': 'Snow',
+        'photos.p2.overlay': 'Snow · 2017-08-22',
+        'qr.headline': 'QQ Group: 652369699',
+        'qr.cancel': 'Cancel',
+        'qr.openLink': 'Open Group Link',
+        'footer.org': 'Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio',
+        'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
+        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>',
+        'footer.ipv6': 'This site supports IPv6 access',
+        'footer.contact': 'Contact Us',
+        'dialog.oldSite.title': 'Leaving for Legacy Page',
+        'dialog.oldSite.body': 'You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version.',
+        'dialog.oldSite.cancel': 'Cancel',
+        'dialog.oldSite.confirm': 'OK'
+      }
+    };
+
+    // --- i18n Functions ---
+    function detectLanguage() {
+      var saved = localStorage.getItem('site-lang');
+      if (saved && i18nDict[saved]) return saved;
+      var nav = navigator.language || navigator.userLanguage || '';
+      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    }
+
+    function applyLanguage(lang) {
+      var dict = i18nDict[lang];
+      if (!dict) return;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      if (dict.title) document.title = dict.title;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-title');
+        if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-alt');
+        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-headline]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-headline');
+        if (dict[key] !== undefined) el.setAttribute('headline', dict[key]);
+      });
+      document.querySelectorAll('[data-i18n-desc]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-desc');
+        if (dict[key] !== undefined) el.setAttribute('data-desc', dict[key]);
+      });
+      var langMenu = document.getElementById('langMenu');
+      if (langMenu) langMenu.value = lang;
+      if (typeof applyTheme === 'function') {
+        var savedMode = localStorage.getItem('theme-mode') || 'system';
+        applyTheme(savedMode);
+      }
+      localStorage.setItem('site-lang', lang);
+    }
+
+    // --- Dark mode: dropdown with light/dark/system ---
     const html = document.documentElement;
     const themeIcon = document.getElementById('themeIcon');
     const themeMenu = document.getElementById('themeMenu');
+    let currentLang = detectLanguage();
 
     function applyTheme(mode) {
       const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      const themeLabel = document.getElementById('themeLabel');
       let dark;
       if (mode === 'system') {
         dark = mq.matches;
         themeIcon.setAttribute('name', 'settings_suggest');
-        themeLabel.textContent = '跟随系统';
       } else if (mode === 'dark') {
         dark = true;
         themeIcon.setAttribute('name', 'dark_mode');
-        themeLabel.textContent = '暗色模式';
       } else {
         dark = false;
         themeIcon.setAttribute('name', 'light_mode');
-        themeLabel.textContent = '亮色模式';
       }
       html.classList.toggle('mdui-theme-dark', dark);
     }
@@ -747,6 +993,16 @@
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
       if (savedMode === 'system') applyTheme('system');
     });
+
+    // Initialize language
+    applyLanguage(currentLang);
+    const langMenu = document.getElementById('langMenu');
+    if (langMenu) {
+      langMenu.addEventListener('change', () => {
+        currentLang = langMenu.value;
+        applyLanguage(currentLang);
+      });
+    }
 
     // GLightbox
     const lightbox = GLightbox({ selector: '.glightbox', loop: true });
