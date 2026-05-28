@@ -29,6 +29,39 @@
 - **正片下拉 / Video Dropdown**: Hero 区"正片"按钮改为悬停下拉，含 Bilibili / YouTube 两项 / Hero "正片" button changed to hover dropdown with Bilibili / YouTube
 - **移动端适配 / Mobile Responsive**: 全站 5 页移动端布局优化——主题切换仅图标、栅格列宽缩小、字号与内边距适配、380px 极窄断点 / All 5 pages optimized: icon-only theme toggle, smaller grid columns, scaled typography, 380px breakpoint
 - **双语支持 / Bilingual Support**: 全站 5 页支持中英文切换（地球图标下拉 / 原生 select），浏览器语言自动检测，localStorage 跨页面持久化 / All 5 pages support Chinese/English switching with browser language auto-detection and localStorage persistence
+- **前端重构与可访问性 / Frontend Refactoring & Accessibility**: 将 4 页约 954 行重复 CSS/JS 提取为共享模块（`css/`、`js/`），HTML 体积缩减 64–69%；新增跳至内容链接、`rel="noopener noreferrer"`、`aria-hidden`、`lang` 属性、键盘导航等 WCAG 可访问性改进；背景图预加载、`font-display=swap`、移除未使用的 GLightbox 加载等性能优化 / Extracted ~954 lines of duplicated CSS/JS into shared modules, HTML sizes reduced 64–69%; added skip-to-content, rel="noopener noreferrer", aria-hidden, lang attrs, keyboard navigation for WCAG; background preload, font-display=swap, removed unused GLightbox for performance
+
+## 文件结构 / File Structure
+
+```
+├── index.html              # 主页面（385 行，原 1077）/ Main page
+├── photo.html              # 图片库（170 行，原 516）/ Photo gallery
+├── vr.html                 # VR 全景（159 行，原 516）/ VR panorama
+├── credits.html            # 开源引用（164 行，原 538）/ Open source credits
+├── unsupported.html        # 浏览器不支持提示 / Browser compat warning
+├── css/
+│   ├── shared.css          # 公共样式 / Common styles
+│   ├── index.css           # 首页样式 / Index-specific
+│   ├── photo.css           # 图片库样式 / Photo-specific
+│   ├── vr.css              # VR 样式 / VR-specific
+│   └── credits.css         # 引用页样式 / Credits-specific
+├── js/
+│   ├── browser-check.js    # 浏览器检测跳转 / Browser compat redirect
+│   ├── i18n.js             # i18n 引擎 + 共享字典 / i18n engine + shared dict
+│   ├── i18n-index.js       # 首页翻译 / Index translations
+│   ├── i18n-photo.js       # 图片库翻译 / Photo translations
+│   ├── i18n-vr.js          # VR 翻译 / VR translations
+│   ├── i18n-credits.js     # 引用页翻译 / Credits translations
+│   ├── theme.js            # 主题切换 / Theme toggle
+│   ├── site-ui.js          # 共享 UI 逻辑 / Shared UI wiring
+│   └── app.js              # 入口编排 / Orchestrator
+├── images/                 # 背景图、Logo、二维码等 / Background, logo, QR
+├── photolib/               # 图片库资源 / Photo gallery assets
+├── favicon.ico
+├── README.md
+├── CHANGELOG.md
+└── CLAUDE.md
+```
 
 ## 技术栈 / Tech Stack
 
@@ -41,3 +74,12 @@
 本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code)（AI Agent）辅助完成，底层模型为小米 MiMo V2 Pro / V2.5 Pro。
 
 The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code) (AI Agent), powered by Xiaomi MiMo V2 Pro / V2.5 Pro.
+
+## 注意事项 / Notes
+
+- 所有依赖通过 CDN 加载，无需 npm 或本地库 / All dependencies loaded via CDN, no npm or local libraries needed
+- CSS/JS 已提取为共享模块，各页面通过 `<link>` 和 ES Modules (`<script type="module">`) 引入 / CSS/JS extracted into shared modules, imported via `<link>` and ES Modules
+- 浏览器兼容检测 (`browser-check.js`) 作为经典脚本同步加载，在页面渲染前执行 / Browser check loaded as classic script for synchronous execution before rendering
+- MDUI v2 组件以 Web Components (`<mdui-*>`) 形式使用 / MDUI v2 components used as Web Components
+- 暗色模式通过在 `<html>` 上切换 `mdui-theme-dark` 类实现 / Dark mode via toggling `mdui-theme-dark` class on `<html>`
+- 图标使用 Material Icons `name` 值，需引入 Google Fonts CSS / Icon names use Material Icons `name` values, requires Google Fonts CSS

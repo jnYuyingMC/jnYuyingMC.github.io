@@ -1,5 +1,66 @@
 # Changelog
 
+## 2026-05-28 — Frontend Refactoring & Accessibility / 前端重构与可访问性改进
+
+Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。
+
+### Code Deduplication / 代码去重
+
+- Extracted ~954 lines of duplicated CSS/JS across 4 HTML pages into shared modules / 将 4 个 HTML 页面中约 954 行重复的 CSS/JS 代码提取为共享模块
+- Created `css/` directory with `shared.css` (common styles) + 4 page-specific CSS files / 创建 `css/` 目录，含 `shared.css` 公共样式及 4 个页面专属样式文件
+- Created `js/` directory with ES Modules: `browser-check.js`, `i18n.js` (engine + shared dict), `theme.js`, `site-ui.js`, `app.js`, and 4 page-specific i18n dictionaries / 创建 `js/` 目录，使用 ES Modules：浏览器检测、i18n 引擎与共享字典、主题切换、共享 UI、入口编排器及 4 个页面翻译文件
+- Each page's inline `<script>` reduced from ~330 lines to ~30 lines (page-specific logic only) / 各页面内联脚本从约 330 行降至约 30 行
+- HTML file sizes reduced by 64–69%: `index.html` 1077→385, `photo.html` 516→170, `vr.html` 516→159, `credits.html` 538→164 / HTML 文件体积缩减 64–69%
+- i18n `applyLanguage` function consolidated: now uniformly handles all 6 `data-i18n-*` attribute types across all pages (previously inconsistent) / i18n applyLanguage 函数统一：现在所有页面一致处理全部 6 种 data-i18n 属性类型
+
+### Accessibility / 可访问性
+
+- Added skip-to-content links on all 4 main pages (WCAG 2.4.1) / 全站 4 页添加"跳至主要内容"链接
+- Added `rel="noopener noreferrer"` to all `target="_blank"` links (35 occurrences across 8 files) / 所有外链添加 noopener noreferrer（35 处）
+- Added `aria-hidden="true"` to photo overlay divs to prevent duplicate screen reader announcements (30 occurrences) / 图片遮罩添加 aria-hidden 防止屏幕阅读器重复朗读（30 处）
+- Added `lang="zh"` / `lang="en"` to language menu items for correct screen reader pronunciation / 语言菜单项添加 lang 属性确保屏幕阅读器正确发音
+- Added `role="button"`, `tabindex="0"`, and keyboard handler (Enter/Space) to QR code image / QR 码图片添加按钮角色、tab 索引和键盘事件
+- Added meaningful `title` attributes to video iframes / 视频 iframe 添加有意义的 title 属性
+
+### Performance / 性能
+
+- Added `<link rel="preload" href="images/background.jpg" as="image">` on all pages for LCP optimization / 全站添加背景图预加载优化 LCP
+- Added `font-display=swap` to Material Icons Google Fonts URL / Material Icons 添加 font-display=swap
+- Removed unused GLightbox CSS/JS from `credits.html` and `vr.html` (they don't use it) / 从 credits.html 和 vr.html 移除未使用的 GLightbox 加载
+- Changed legacy site link from `http://` to `https://` / 旧版页面链接从 http 升级为 https
+
+### File Structure / 文件结构
+
+```
+├── index.html              # Main page (385 lines, was 1077) / 主页面
+├── photo.html              # Photo gallery (170 lines, was 516) / 图片库
+├── vr.html                 # VR panorama (159 lines, was 516) / VR 全景
+├── credits.html            # Open source credits (164 lines, was 538) / 开源引用
+├── unsupported.html        # Browser compat warning (unchanged) / 浏览器不支持提示
+├── css/
+│   ├── shared.css          # Common styles (145 lines) / 公共样式
+│   ├── index.css           # Index-specific (297 lines) / 首页样式
+│   ├── photo.css           # Photo-specific (55 lines) / 图片库样式
+│   ├── vr.css              # VR-specific (50 lines) / VR 样式
+│   └── credits.css         # Credits-specific (85 lines) / 引用页样式
+├── js/
+│   ├── browser-check.js    # Browser compat redirect (20 lines) / 浏览器检测
+│   ├── i18n.js             # i18n engine + shared dict (83 lines) / i18n 引擎
+│   ├── i18n-index.js       # Index translations (141 lines) / 首页翻译
+│   ├── i18n-photo.js       # Photo translations (29 lines) / 图片库翻译
+│   ├── i18n-vr.js          # VR translations (53 lines) / VR 翻译
+│   ├── i18n-credits.js     # Credits translations (37 lines) / 引用页翻译
+│   ├── theme.js            # Theme toggle (40 lines) / 主题切换
+│   ├── site-ui.js          # Shared UI wiring (19 lines) / 共享 UI
+│   └── app.js              # Orchestrator (32 lines) / 入口编排
+├── images/
+├── photolib/
+├── favicon.ico
+├── README.md
+├── CHANGELOG.md
+└── CLAUDE.md
+```
+
 ## 2026-05-27 — Bilingual Support (Chinese/English) / 双语支持
 
 Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。

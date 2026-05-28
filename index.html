@@ -5,448 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大育英帝国 Minecraft 计划</title>
   <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/index.css">
   <link rel="icon" href="favicon.ico">
-  <style>
-    /* Variables */
-    :root {
-      --mdui-color-primary: #00897b;
-      --mdui-color-on-primary: #ffffff;
-      --mdui-color-primary-container: #a7f3d0;
-      --mdui-color-surface: #fdfcff;
-      --mdui-color-surface-variant: #ece4e0;
-    }
-
-    /* Body styles */
-    html, body {
-      overflow-x: hidden;
-      max-width: 100%;
-    }
-    body {
-      background: #f5f5f5;
-      font-family: "Noto Sans SC", sans-serif;
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('images/background.jpg') center/cover no-repeat;
-      filter: brightness(0.45);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      padding: 2rem;
-      max-width: 800px;
-    }
-    .hero-content h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-    }
-    .hero-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      opacity: 0.9;
-    }
-    .hero-logo {
-      width: 100px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      margin-bottom: 1.5rem;
-    }
-
-    /* Sections */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
-    .section-title {
-      font-size: 1.6rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--mdui-color-primary);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Description cards */
-    .desc-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-      margin-bottom: 1.5rem;
-      line-height: 1.9;
-      font-size: 1rem;
-      color: #333;
-    }
-    .desc-card .author {
-      display: block;
-      margin-top: 1rem;
-      color: #888;
-      font-style: italic;
-    }
-
-    /* Member cards */
-    .member-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .member-card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 1.8rem;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .member-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-    }
-    .member-card mdui-avatar {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 1rem;
-    }
-    .member-card .name {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-    .member-card .role {
-      font-size: 0.9rem;
-      color: #888;
-      margin-bottom: 0.8rem;
-    }
-    .member-card .status {
-      display: inline-block;
-      padding: 0.25rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      background: #e0f2f1;
-      color: #00897b;
-    }
-
-    /* Timeline */
-    .timeline {
-      position: relative;
-      padding-left: 40px;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 15px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, #00897b, #a7f3d0);
-      border-radius: 2px;
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 2rem;
-    }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -33px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #00897b;
-      border: 3px solid #a7f3d0;
-      box-shadow: 0 0 0 3px rgba(0,137,123,0.15);
-    }
-    .timeline-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.2rem 1.5rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .timeline-card .date {
-      font-size: 0.85rem;
-      color: #00897b;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-    .timeline-card .event {
-      font-size: 1rem;
-      color: #333;
-    }
-
-    /* Embeds section */
-    .embed-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-    .embed-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-    }
-    .embed-card iframe {
-      width: 100%;
-      border: none;
-    }
-    .embed-card .embed-label {
-      padding: 1rem 1.2rem;
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    /* Photo gallery */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-    }
-    .photo-card {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      position: relative;
-      aspect-ratio: 16/10;
-      background: #eee;
-      text-decoration: none;
-      color: inherit;
-    }
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .photo-card:hover img {
-      transform: scale(1.05);
-    }
-    .photo-card .photo-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0.6rem 0.8rem;
-      background: linear-gradient(transparent, rgba(0,0,0,0.6));
-      color: #fff;
-      font-size: 0.85rem;
-    }
-
-    /* Footer */
-    .site-footer {
-      background: #263238;
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      line-height: 2;
-    }
-    .site-footer a {
-      color: #a7f3d0;
-      text-decoration: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .section, .hero-content, .photo-grid, .member-grid, .embed-grid, .timeline {
-        max-width: 100%;
-      }
-      .hero { min-height: 50vh; }
-      .hero-content h1 { font-size: 1.8rem; letter-spacing: 0; margin-bottom: 0.5rem; }
-      .hero-content p { font-size: 0.95rem; }
-      .hero-logo { width: 64px; margin-bottom: 1rem; }
-      .section { padding: 1.5rem 1rem; }
-      .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
-      .desc-card { padding: 1rem; font-size: 0.95rem; margin-bottom: 1rem; }
-      .member-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .member-card { padding: 1.2rem; }
-      .member-card mdui-avatar, .member-card [style*="width:64px"] { width: 48px !important; height: 48px !important; font-size: 1.1rem !important; }
-      .timeline { padding-left: 28px; }
-      .timeline-item { margin-bottom: 1.2rem; }
-      .timeline-item::before { left: -21px; width: 10px; height: 10px; }
-      .timeline-card { padding: 0.8rem 1rem; }
-      .embed-grid { grid-template-columns: 1fr; }
-      .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-      .site-footer { padding: 1.5rem 1rem; }
-      .theme-toggle mdui-button, .lang-toggle mdui-button { min-width: 0; width: 2.2rem; height: 2.2rem; padding: 0; display: flex; align-items: center; justify-content: center; }
-      .fab-nav { bottom: 1rem; right: 0.75rem; }
-    }
-    @media (max-width: 380px) {
-      .hero-content h1 { font-size: 1.5rem; }
-      .hero-content p { font-size: 0.9rem; }
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    /* Dark mode overrides */
-    .mdui-theme-dark {
-      --mdui-color-surface: #1c1b1f;
-      --mdui-color-surface-variant: #49454f;
-      overflow-x: hidden;
-    }
-    .mdui-theme-dark body { background: #121212; }
-    .mdui-theme-dark .desc-card,
-    .mdui-theme-dark .member-card,
-    .mdui-theme-dark .timeline-card,
-    .mdui-theme-dark .embed-card {
-      background: #1e1e1e;
-      color: #e0e0e0;
-    }
-    .mdui-theme-dark .desc-card .author,
-    .mdui-theme-dark .member-card .role,
-    .mdui-theme-dark .member-card .status,
-    .mdui-theme-dark .timeline-card .date {
-      color: #aaa;
-    }
-    .mdui-theme-dark .timeline-card .event {
-      color: #e0e0e0;
-    }
-    .mdui-theme-dark .embed-card .embed-label {
-      color: #ccc;
-    }
-    .mdui-theme-dark .member-card .status { background: #2e3b3a; }
-    .mdui-theme-dark .site-footer { background: #0d1117; }
-
-    /* Theme toggle */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1000;
-      overflow: visible;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      width: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mdui-theme-dark .theme-toggle {
-      background: rgba(40,40,40,0.85);
-    }
-    .theme-dropdown mdui-menu {
-      min-width: 160px;
-    }
-
-    /* Language toggle */
-    .lang-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 4rem;
-      z-index: 1000;
-      overflow: visible;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      width: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mdui-theme-dark .lang-toggle {
-      background: rgba(40,40,40,0.85);
-    }
-    .lang-dropdown mdui-menu {
-      min-width: 120px;
-    }
-
-    /* FAB navigation */
-    .fab-nav {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1rem;
-      z-index: 1000;
-      display: flex;
-      gap: 0.25rem;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      padding: 0.25rem;
-    }
-    .mdui-theme-dark .fab-nav {
-      background: rgba(40,40,40,0.85);
-    }
-
-    /* Tabs */
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-
-    /* Team structure grid */
-    .team-structure-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1.5rem;
-      align-items: start;
-    }
-    @media (max-width: 600px) {
-      .team-structure-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .team-structure-grid .desc-card { text-align: left; }
-    }
-  </style>
-  <!--[if IE]><script>window.location.href='unsupported.html';</script><![endif]-->
-  <script>
-  (function(){
-    var ua=navigator.userAgent||'';
-    // IE
-    if(ua.indexOf('MSIE')>-1||document.documentMode){window.location.href='unsupported.html';return;}
-    // 旧版 Edge (EdgeHTML)
-    if(ua.indexOf('Edge/')>-1&&ua.indexOf('Edg/')<0){window.location.href='unsupported.html';return;}
-    var ver,browserVer;
-    // Firefox
-    if(ua.indexOf('Firefox/')>-1){
-      ver=ua.match(/Firefox\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<106){window.location.href='unsupported.html';return;}
-    }
-    // Safari (排除 Chrome UA)
-    else if(ua.indexOf('Safari/')>-1&&ua.indexOf('Chrome')<0){
-      ver=ua.match(/Version\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<16.4){window.location.href='unsupported.html';return;}
-    }
-    // Opera
-    else if(ua.indexOf('OPR/')>-1||ua.indexOf('Opera/')>-1){
-      ver=ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<88){window.location.href='unsupported.html';return;}
-    }
-    // Chromium 系（Chrome / Edge Chromium / Samsung / WebView / UC / QQ / 百度 等）
-    else if(ua.indexOf('Chrome/')>-1){
-      ver=ua.match(/Chrome\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<102){window.location.href='unsupported.html';return;}
-    }
-    // 未知浏览器
-    else{window.location.href='unsupported.html';return;}
-  })();
-  </script>
+  <link rel="preload" href="images/background.jpg" as="image">
+  <script src="js/browser-check.js"></script>
 </head>
 <body>
+
+  <!-- Skip to content -->
+  <a class="skip-link" href="#about">跳至主要内容</a>
 
   <!-- Theme Toggle -->
   <div class="theme-toggle">
@@ -469,8 +42,8 @@
         <mdui-icon name="language" slot="icon"></mdui-icon>
       </mdui-button>
       <mdui-menu selects="single" value="zh" id="langMenu">
-        <mdui-menu-item value="zh">中文</mdui-menu-item>
-        <mdui-menu-item value="en">English</mdui-menu-item>
+        <mdui-menu-item value="zh" lang="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en" lang="en">English</mdui-menu-item>
       </mdui-menu>
     </mdui-dropdown>
   </div>
@@ -487,11 +60,11 @@
         <mdui-dropdown trigger="hover" placement="bottom-start">
           <mdui-button slot="trigger" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)"><span data-i18n="hero.mainVideo">正片</span> <mdui-icon name="arrow_drop_down" slot="icon"></mdui-icon></mdui-button>
           <mdui-menu>
-            <mdui-menu-item href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank">Bilibili <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
-            <mdui-menu-item href="https://youtu.be/KZ5w7Looohk" target="_blank">YouTube <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
+            <mdui-menu-item href="https://www.bilibili.com/video/BV17x411j7Uu/" target="_blank" rel="noopener noreferrer">Bilibili <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
+            <mdui-menu-item href="https://youtu.be/KZ5w7Looohk" target="_blank" rel="noopener noreferrer">YouTube <mdui-icon name="open_in_new" slot="icon"></mdui-icon></mdui-menu-item>
           </mdui-menu>
         </mdui-dropdown>
-        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)"><span data-i18n="hero.remaster">重制版</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="https://www.bilibili.com/video/BV1Fb411w7Bn/" target="_blank" rel="noopener noreferrer" variant="outlined" style="color:#fff; border-color:rgba(255,255,255,0.5)"><span data-i18n="hero.remaster">重制版</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
   </section>
@@ -568,7 +141,7 @@
         </div>
       </div>
       <div style="text-align:center;">
-        <img src="images/qrcode.jpg" alt="项目组群二维码" data-i18n-alt="team.qr.alt" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg">
+        <img src="images/qrcode.jpg" alt="项目组群二维码" data-i18n-alt="team.qr.alt" style="width:140px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.12); cursor:pointer;" id="qrCodeImg" role="button" tabindex="0">
         <div style="font-size:0.8rem; color:#888; margin-top:0.4rem;" data-i18n="team.qr.caption">扫码加入交流群</div>
       </div>
     </div>
@@ -612,7 +185,7 @@
     </div>
     <div class="embed-card" id="videoCard" style="display:none;">
       <div id="bilibiliWrapper">
-        <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen></iframe>
+        <iframe id="videoFrame" height="450" src="" scrolling="no" frameborder="no" framespacing="0" allowfullscreen title="Bilibili 视频播放器"></iframe>
       </div>
       <div id="localVideoWrapper" style="display:none;">
         <video id="localVideo" controls controlsList="nodownload noremoteplayback" disablePictureInPicture style="width:100%; display:block; border-radius:16px 16px 0 0;">
@@ -621,7 +194,7 @@
         </video>
       </div>
       <div id="youtubeWrapper" style="display:none;">
-        <iframe id="youtubeFrame" width="100%" height="450" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; border-radius:16px 16px 0 0;"></iframe>
+        <iframe id="youtubeFrame" width="100%" height="450" src="" title="YouTube 视频播放器" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; border-radius:16px 16px 0 0;"></iframe>
       </div>
     </div>
   </div>
@@ -635,63 +208,63 @@
     <div class="photo-grid" id="gallery">
       <a class="photo-card glightbox" href="photolib/yuying.jpg" data-gallery="photos" data-desc="俯视渲染图 · 2017-08-04" data-i18n-desc="photos.p1.desc">
         <img src="photolib/yuying.jpg" alt="俯视渲染图" loading="lazy" data-i18n-alt="photos.p1.alt">
-        <div class="photo-overlay" data-i18n="photos.p1.overlay">俯视渲染图 · 2017-08-04</div>
+        <div class="photo-overlay" aria-hidden="true" data-i18n="photos.p1.overlay">俯视渲染图 · 2017-08-04</div>
       </a>
       <a class="photo-card glightbox" href="photolib/snow.jpg" data-gallery="photos" data-desc="雪 · 2017-08-22" data-i18n-desc="photos.p2.desc">
         <img src="photolib/snow.jpg" alt="雪" loading="lazy" data-i18n-alt="photos.p2.alt">
-        <div class="photo-overlay" data-i18n="photos.p2.overlay">雪 · 2017-08-22</div>
+        <div class="photo-overlay" aria-hidden="true" data-i18n="photos.p2.overlay">雪 · 2017-08-22</div>
       </a>
       <a class="photo-card glightbox" href="photolib/4K-garden.jpg" data-gallery="photos" data-desc="4K Garden · 2017-07-25">
         <img src="photolib/4K-garden.jpg" alt="4K Garden" loading="lazy">
-        <div class="photo-overlay">4K Garden · 2017-07-25</div>
+        <div class="photo-overlay" aria-hidden="true">4K Garden · 2017-07-25</div>
       </a>
       <a class="photo-card glightbox" href="photolib/4K-4.jpg" data-gallery="photos" data-desc="4K-4 · 2017-07-25">
         <img src="photolib/4K-4.jpg" alt="4K-4" loading="lazy">
-        <div class="photo-overlay">4K-4 · 2017-07-25</div>
+        <div class="photo-overlay" aria-hidden="true">4K-4 · 2017-07-25</div>
       </a>
       <a class="photo-card glightbox" href="photolib/4K-3.jpg" data-gallery="photos" data-desc="4K-3 · 2017-07-25">
         <img src="photolib/4K-3.jpg" alt="4K-3" loading="lazy">
-        <div class="photo-overlay">4K-3 · 2017-07-25</div>
+        <div class="photo-overlay" aria-hidden="true">4K-3 · 2017-07-25</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-31.png" data-gallery="photos" data-desc="2017-07-31">
         <img src="photolib/2017-07-31.png" alt="07-31" loading="lazy">
-        <div class="photo-overlay">2017-07-31</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-31</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-27.png" data-gallery="photos" data-desc="2017-07-27">
         <img src="photolib/2017-07-27.png" alt="07-27" loading="lazy">
-        <div class="photo-overlay">2017-07-27</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-27</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-21.png" data-gallery="photos" data-desc="2017-07-21">
         <img src="photolib/2017-07-21.png" alt="07-21" loading="lazy">
-        <div class="photo-overlay">2017-07-21</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-21</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-19.png" data-gallery="photos" data-desc="2017-07-19">
         <img src="photolib/2017-07-19.png" alt="07-19" loading="lazy">
-        <div class="photo-overlay">2017-07-19</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-19</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-14.png" data-gallery="photos" data-desc="2017-07-14">
         <img src="photolib/2017-07-14.png" alt="07-14" loading="lazy">
-        <div class="photo-overlay">2017-07-14</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-14</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-13.png" data-gallery="photos" data-desc="2017-07-13">
         <img src="photolib/2017-07-13.png" alt="07-13" loading="lazy">
-        <div class="photo-overlay">2017-07-13</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-13</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-13 (2).png" data-gallery="photos" data-desc="2017-07-13 (2)">
         <img src="photolib/2017-07-13 (2).png" alt="07-13 (2)" loading="lazy">
-        <div class="photo-overlay">2017-07-13 (2)</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-13 (2)</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-13 (3).png" data-gallery="photos" data-desc="2017-07-13 (3)">
         <img src="photolib/2017-07-13 (3).png" alt="07-13 (3)" loading="lazy">
-        <div class="photo-overlay">2017-07-13 (3)</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-13 (3)</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-14 (2).png" data-gallery="photos" data-desc="2017-07-14 (2)">
         <img src="photolib/2017-07-14 (2).png" alt="07-14 (2)" loading="lazy">
-        <div class="photo-overlay">2017-07-14 (2)</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-14 (2)</div>
       </a>
       <a class="photo-card glightbox" href="photolib/2017-07-11.png" data-gallery="photos" data-desc="2017-07-11">
         <img src="photolib/2017-07-11.png" alt="07-11" loading="lazy">
-        <div class="photo-overlay">2017-07-11</div>
+        <div class="photo-overlay" aria-hidden="true">2017-07-11</div>
       </a>
     </div>
   </div>
@@ -699,7 +272,7 @@
   <!-- QR Code Dialog -->
   <mdui-dialog id="qrDialog" headline="QQ群：652369699" data-i18n-headline="qr.headline" style="--md-dialog-headline-size: 1rem;">
     <mdui-button slot="action" variant="text" onclick="document.getElementById('qrDialog').open = false" data-i18n="qr.cancel">取消</mdui-button>
-    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank'); document.getElementById('qrDialog').open = false;" data-i18n="qr.openLink">打开群链接</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('https://jq.qq.com/?_wv=1027&k=4EpgoX4','_blank','noopener,noreferrer'); document.getElementById('qrDialog').open = false;" data-i18n="qr.openLink">打开群链接</mdui-button>
   </mdui-dialog>
 
   <!-- Footer -->
@@ -709,12 +282,12 @@
     </div>
     <div data-i18n="footer.copyright">Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
     <div style="margin-top: 0.5rem;">
-      <a href="https://github.com/jnYuyingMC" target="_blank" style="display:inline-flex; align-items:center; gap:0.4rem;">
+      <a href="https://github.com/jnYuyingMC" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.4rem;">
         <img src="images/github.png" alt="GitHub" style="width:20px; height:20px;"> GitHub <mdui-icon name="open_in_new" style="font-size:16px;"></mdui-icon>
       </a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+      Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
       <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
@@ -740,269 +313,11 @@
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    // --- i18n Dictionary ---
-    const i18nDict = {
-      zh: {
-        title: '大育英帝国 Minecraft 计划',
-        'theme.toggleTitle': '切换主题',
-        'theme.label': '跟随系统',
-        'theme.light': '亮色模式',
-        'theme.dark': '暗色模式',
-        'theme.system': '跟随系统',
-        'fab.home': '首页',
-        'fab.photos': '图片库',
-        'fab.vr': 'VR 全景',
-        'hero.title': '大育英帝国 Minecraft 计划',
-        'hero.subtitle': '用像素方块重建百年校园，以热爱致敬母校济南育英中学',
-        'hero.about': '了解项目',
-        'hero.photos': '查看图片',
-        'hero.mainVideo': '正片',
-        'hero.remaster': '重制版',
-        'about.title': '项目简介',
-        'about.p1': '本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。',
-        'about.p2': '济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。',
-        'about.a2': '—— David_ryh',
-        'about.p3': '谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。',
-        'about.a3': '—— 神经元',
-        'about.p4': '他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。小小的一张地图，凝聚了无数育英学子对他们母校的热爱。',
-        'about.a4': '—— 张司旻',
-        'team.title': '核心成员',
-        'team.n1.name': 'Neuron（神经元）',
-        'team.n1.role': '导演 / 万能',
-        'team.n1.status': '高二',
-        'team.n2.role': '服务器管理 / 建筑 / 美术',
-        'team.n2.status': '高一，住校',
-        'team.n3.name': '于小乐',
-        'team.n3.role': '服务器管理 / 建筑 / 美术',
-        'team.n3.status': '准备中考',
-        'team.structure': '团队架构',
-        'team.core': '核心组',
-        'team.core.desc': ' — 导演、服务器维护',
-        'team.build': '建筑组',
-        'team.art': '美术组',
-        'team.art.desc': ' — 分镜、贴图（包括皮肤及物品）、动画',
-        'team.render': '渲染组',
-        'team.qr.alt': '项目组群二维码',
-        'team.qr.caption': '扫码加入交流群',
-        'timeline.title': '项目时间线',
-        'timeline.e1': '计划启动 — 服务器启动，建筑开始',
-        'timeline.e2': '建筑工作大范围开始',
-        'timeline.e3': '域名注册，网站开放访问',
-        'timeline.e4': '核心组成员于小乐"跑路" 🫠',
-        'timeline.e5': '建筑组按(卡)时(点)完成任务',
-        'timeline.e6': '存档导出，服务器关闭',
-        'timeline.e7': '于小乐回归，开始后期制作',
-        'timeline.e8': '航拍计划开始',
-        'timeline.e9': '算力大幅升级，全面渲染开始',
-        'timeline.e10': 'VR 平台上线',
-        'timeline.e11': '渲染全部完成',
-        'timeline.e12': '正片发布',
-        'timeline.e13': '60FPS 21:9 重制版发布',
-        'timeline.e14': 'AI Agent 辅助完成网页革新（David_ryh）',
-        'video.title': '视频',
-        'video.v1': 'Bilibili 先发版本',
-        'video.v4': 'YouTube 先发版本',
-        'video.v2': '60FPS 21:9 重制版',
-        'video.v3': '施工纪录',
-        'video.fallback': '您的浏览器不支持视频播放。',
-        'photos.title': '图片库',
-        'photos.p1.desc': '俯视渲染图 · 2017-08-04',
-        'photos.p1.alt': '俯视渲染图',
-        'photos.p1.overlay': '俯视渲染图 · 2017-08-04',
-        'photos.p2.desc': '雪 · 2017-08-22',
-        'photos.p2.alt': '雪',
-        'photos.p2.overlay': '雪 · 2017-08-22',
-        'qr.headline': 'QQ群：652369699',
-        'qr.cancel': '取消',
-        'qr.openLink': '打开群链接',
-        'footer.org': '大育英帝国学生会 宣传部 × 辣条视频工作室',
-        'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
-        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>',
-        'footer.ipv6': '本站支持 IPv6 访问',
-        'footer.contact': '联系我们',
-        'dialog.oldSite.title': '即将前往旧版页面',
-        'dialog.oldSite.body': '您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。',
-        'dialog.oldSite.cancel': '取消',
-        'dialog.oldSite.confirm': '确定'
-      },
-      en: {
-        title: 'Our Great Yuying Minecraft Project',
-        'theme.toggleTitle': 'Switch Theme',
-        'theme.label': 'Follow System',
-        'theme.light': 'Light Mode',
-        'theme.dark': 'Dark Mode',
-        'theme.system': 'Follow System',
-        'fab.home': 'Home',
-        'fab.photos': 'Photos',
-        'fab.vr': 'VR Panorama',
-        'hero.title': 'Our Great Yuying Minecraft Project',
-        'hero.subtitle': 'Rebuilding a century-old campus with pixel blocks, paying tribute to our alma mater Jinan Yuying Middle School with passion',
-        'hero.about': 'About Project',
-        'hero.photos': 'View Photos',
-        'hero.mainVideo': 'Main Video',
-        'hero.remaster': 'Remaster',
-        'about.title': 'About the Project',
-        'about.p1': 'This project started during the production of a motivational video for the 2016 grade\'s high school entrance exam, and kept growing beyond expectations. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help.',
-        'about.p2': 'Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift to our middle school life.',
-        'about.a2': '— David_ryh',
-        'about.p3': 'Dedicated to our most beautiful three years of youth, and wishing our Great Yuying a happy 104th birthday.',
-        'about.a3': '— Neuron',
-        'about.p4': 'Using Minecraft as their canvas, they spent nearly three months perfectly recreating their alma mater Yuying in the game. This small map embodies the love countless Yuying students have for their school.',
-        'about.a4': '— Zhang Simin',
-        'team.title': 'Core Members',
-        'team.n1.name': 'Neuron',
-        'team.n1.role': 'Director / All-rounder',
-        'team.n1.status': '11th Grade',
-        'team.n2.role': 'Server Admin / Building / Art',
-        'team.n2.status': '10th Grade, Boarding',
-        'team.n3.name': 'Yu Xiaole',
-        'team.n3.role': 'Server Admin / Building / Art',
-        'team.n3.status': 'Preparing for Exam',
-        'team.structure': 'Team Structure',
-        'team.core': 'Core Team',
-        'team.core.desc': ' — Director, Server Maintenance',
-        'team.build': 'Building Team',
-        'team.art': 'Art Team',
-        'team.art.desc': ' — Storyboard, Textures (incl. skins & items), Animation',
-        'team.render': 'Rendering Team',
-        'team.qr.alt': 'Project Group QR Code',
-        'team.qr.caption': 'Scan to join the group chat',
-        'timeline.title': 'Project Timeline',
-        'timeline.e1': 'Project Launch — Server started, building begins',
-        'timeline.e2': 'Large-scale building work begins',
-        'timeline.e3': 'Domain registered, website goes live',
-        'timeline.e4': 'Core member Yu Xiaole "ran away" 🫠',
-        'timeline.e5': 'Building team completes tasks right on deadline',
-        'timeline.e6': 'Save exported, server shut down',
-        'timeline.e7': 'Yu Xiaole returns, post-production begins',
-        'timeline.e8': 'Aerial cinematography plan begins',
-        'timeline.e9': 'Major compute upgrade, full rendering begins',
-        'timeline.e10': 'VR platform goes live',
-        'timeline.e11': 'All rendering completed',
-        'timeline.e12': 'Main video released',
-        'timeline.e13': '60FPS 21:9 Remaster released',
-        'timeline.e14': 'AI Agent assists website overhaul (David_ryh)',
-        'video.title': 'Videos',
-        'video.v1': 'Bilibili First Release',
-        'video.v4': 'YouTube First Release',
-        'video.v2': '60FPS 21:9 Remaster',
-        'video.v3': 'Construction Record',
-        'video.fallback': 'Your browser does not support video playback.',
-        'photos.title': 'Photo Gallery',
-        'photos.p1.desc': 'Top-down Render · 2017-08-04',
-        'photos.p1.alt': 'Top-down Render',
-        'photos.p1.overlay': 'Top-down Render · 2017-08-04',
-        'photos.p2.desc': 'Snow · 2017-08-22',
-        'photos.p2.alt': 'Snow',
-        'photos.p2.overlay': 'Snow · 2017-08-22',
-        'qr.headline': 'QQ Group: 652369699',
-        'qr.cancel': 'Cancel',
-        'qr.openLink': 'Open Group Link',
-        'footer.org': 'Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio',
-        'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
-        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>',
-        'footer.ipv6': 'This site supports IPv6 access',
-        'footer.contact': 'Contact Us',
-        'dialog.oldSite.title': 'Leaving for Legacy Page',
-        'dialog.oldSite.body': 'You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version.',
-        'dialog.oldSite.cancel': 'Cancel',
-        'dialog.oldSite.confirm': 'OK'
-      }
-    };
+  <script type="module">
+    import { pageDict } from './js/i18n-index.js';
+    import { initApp } from './js/app.js';
 
-    // --- i18n Functions ---
-    function detectLanguage() {
-      var saved = localStorage.getItem('site-lang');
-      if (saved && i18nDict[saved]) return saved;
-      var nav = navigator.language || navigator.userLanguage || '';
-      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
-    }
-
-    function applyLanguage(lang) {
-      var dict = i18nDict[lang];
-      if (!dict) return;
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-      if (dict.title) document.title = dict.title;
-      document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (dict[key] !== undefined) el.textContent = dict[key];
-      });
-      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-html');
-        if (dict[key] !== undefined) el.innerHTML = dict[key];
-      });
-      document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-title');
-        if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
-      });
-      document.querySelectorAll('[data-i18n-alt]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-alt');
-        if (dict[key] !== undefined) el.setAttribute('alt', dict[key]);
-      });
-      document.querySelectorAll('[data-i18n-headline]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-headline');
-        if (dict[key] !== undefined) el.setAttribute('headline', dict[key]);
-      });
-      document.querySelectorAll('[data-i18n-desc]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-desc');
-        if (dict[key] !== undefined) el.setAttribute('data-desc', dict[key]);
-      });
-      var langMenu = document.getElementById('langMenu');
-      if (langMenu) langMenu.value = lang;
-      if (typeof applyTheme === 'function') {
-        var savedMode = localStorage.getItem('theme-mode') || 'system';
-        applyTheme(savedMode);
-      }
-      localStorage.setItem('site-lang', lang);
-    }
-
-    // --- Dark mode: dropdown with light/dark/system ---
-    const html = document.documentElement;
-    const themeIcon = document.getElementById('themeIcon');
-    const themeMenu = document.getElementById('themeMenu');
-    let currentLang = detectLanguage();
-
-    function applyTheme(mode) {
-      const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      let dark;
-      if (mode === 'system') {
-        dark = mq.matches;
-        themeIcon.setAttribute('name', 'settings_suggest');
-      } else if (mode === 'dark') {
-        dark = true;
-        themeIcon.setAttribute('name', 'dark_mode');
-      } else {
-        dark = false;
-        themeIcon.setAttribute('name', 'light_mode');
-      }
-      html.classList.toggle('mdui-theme-dark', dark);
-    }
-
-    // Load saved preference
-    let savedMode = localStorage.getItem('theme-mode') || 'system';
-    themeMenu.value = savedMode;
-    applyTheme(savedMode);
-
-    themeMenu.addEventListener('change', () => {
-      savedMode = themeMenu.value;
-      localStorage.setItem('theme-mode', savedMode);
-      applyTheme(savedMode);
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (savedMode === 'system') applyTheme('system');
-    });
-
-    // Initialize language
-    applyLanguage(currentLang);
-    const langMenu = document.getElementById('langMenu');
-    if (langMenu) {
-      langMenu.addEventListener('change', () => {
-        currentLang = langMenu.value;
-        applyLanguage(currentLang);
-      });
-    }
+    initApp(pageDict);
 
     // GLightbox
     const lightbox = GLightbox({ selector: '.glightbox', loop: true });
@@ -1010,6 +325,12 @@
     // QR code dialog
     document.getElementById('qrCodeImg').addEventListener('click', () => {
       document.getElementById('qrDialog').open = true;
+    });
+    document.getElementById('qrCodeImg').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        document.getElementById('qrDialog').open = true;
+      }
     });
 
     // Video source selector
@@ -1025,7 +346,6 @@
     const youtubeWrapper = document.getElementById('youtubeWrapper');
     const youtubeFrame = document.getElementById('youtubeFrame');
     const youtubeUrl = 'https://www.youtube.com/embed/KZ5w7Looohk?si=sJm1Pw4CEBI11F2r';
-
     const localVideo = document.getElementById('localVideo');
 
     videoSelector.addEventListener('change', () => {
@@ -1052,16 +372,6 @@
       if (!entry.isIntersecting) localVideo.pause();
     }, { threshold: 0 });
     videoObserver.observe(localVideo);
-
-    // Old site link
-    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('oldSiteDialog').open = true;
-    });
-    document.getElementById('oldSiteConfirm').addEventListener('click', function() {
-      window.open('http://www.jnyuyingmc.top/original/', '_blank');
-      document.getElementById('oldSiteDialog').open = false;
-    });
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {

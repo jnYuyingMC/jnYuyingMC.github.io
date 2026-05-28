@@ -1,0 +1,145 @@
+/* === Shared CSS — extracted from all 4 pages === */
+
+/* CSS Custom Properties */
+:root {
+  --mdui-color-primary: #00897b;
+  --mdui-color-on-primary: #ffffff;
+  --mdui-color-primary-container: #a7f3d0;
+  --mdui-color-surface: #fdfcff;
+  --mdui-color-surface-variant: #ece4e0;
+}
+
+/* Reset */
+html, body { overflow-x: hidden; max-width: 100%; }
+body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
+
+/* Page header (shared by photo, vr, credits) */
+.page-header {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/background.jpg') center/cover no-repeat;
+  filter: brightness(0.45);
+}
+.page-header-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 2rem;
+}
+.page-header-content h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Theme toggle (top-right) */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  overflow: visible;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mdui-theme-dark .theme-toggle {
+  background: rgba(40,40,40,0.85);
+}
+.theme-dropdown mdui-menu {
+  min-width: 160px;
+}
+
+/* Language toggle (top-right, left of theme) */
+.lang-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 4rem;
+  z-index: 1000;
+  overflow: visible;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mdui-theme-dark .lang-toggle {
+  background: rgba(40,40,40,0.85);
+}
+.lang-dropdown mdui-menu {
+  min-width: 120px;
+}
+.theme-toggle mdui-button, .lang-toggle mdui-button { --mdui-button-padding-inline: 0; min-width: 0; width: 2.2rem; height: 2.2rem; }
+.theme-toggle mdui-button::part(button), .lang-toggle mdui-button::part(button) { padding: 0; display: flex; align-items: center; justify-content: center; }
+
+/* FAB navigation (bottom-right) */
+.fab-nav {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.25rem;
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  padding: 0.25rem;
+}
+.mdui-theme-dark .fab-nav {
+  background: rgba(40,40,40,0.85);
+}
+
+/* Footer */
+.site-footer {
+  background: #263238;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  line-height: 2;
+}
+.site-footer a { color: #a7f3d0; text-decoration: none; }
+
+/* Dark mode overrides */
+.mdui-theme-dark { --mdui-color-surface: #1c1b1f; --mdui-color-surface-variant: #49454f; overflow-x: hidden; }
+.mdui-theme-dark body { background: #121212; }
+.mdui-theme-dark .site-footer { background: #0d1117; }
+
+/* Skip-to-content link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--mdui-color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { top: 0; }
+
+/* Responsive: shared elements */
+@media (max-width: 600px) {
+  .page-header-content h1 { font-size: 1.6rem; }
+  .page-header { min-height: 25vh; }
+  .site-footer { padding: 1.5rem 1rem; }
+  .fab-nav { bottom: 1rem; right: 0.75rem; }
+}

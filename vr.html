@@ -5,204 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VR 全景 - 大育英帝国 Minecraft 计划</title>
   <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/vr.css">
   <link rel="icon" href="favicon.ico">
-  <style>
-    /* 变量 */
-    :root {
-      --mdui-color-primary: #00897b;
-      --mdui-color-on-primary: #ffffff;
-      --mdui-color-primary-container: #a7f3d0;
-      --mdui-color-surface: #fdfcff;
-      --mdui-color-surface-variant: #ece4e0;
-    }
-    /* 页面主体 */
-    html, body { overflow-x: hidden; max-width: 100%; }
-    body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
-
-    /* 页面头部 */
-    .page-header {
-      position: relative;
-      min-height: 40vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    .page-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('images/background.jpg') center/cover no-repeat;
-      filter: brightness(0.45);
-    }
-    .page-header-content {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      padding: 2rem;
-    }
-    .page-header-content h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
-
-    /* VR 区域 */
-    .vr-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-
-    /* VR 卡片 */
-    .vr-card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: column;
-    }
-    .vr-card-body {
-      padding: 1.5rem 2rem 2rem;
-    }
-    .vr-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin: 0 0 0.5rem;
-      color: #333;
-    }
-    .vr-card p {
-      color: #666;
-      line-height: 1.7;
-      margin: 0 0 1rem;
-    }
-    .vr-card mdui-button {
-      margin-right: 0.5rem;
-    }
-
-    /* 主题切换 */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1000;
-      overflow: visible;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      width: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mdui-theme-dark .theme-toggle {
-      background: rgba(40,40,40,0.85);
-    }
-    .theme-dropdown mdui-menu {
-      min-width: 160px;
-    }
-    /* Language toggle */
-    .lang-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 4rem;
-      z-index: 1000;
-      overflow: visible;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      width: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mdui-theme-dark .lang-toggle {
-      background: rgba(40,40,40,0.85);
-    }
-    .lang-dropdown mdui-menu {
-      min-width: 120px;
-    }
-    /* FAB 导航 */
-    .fab-nav {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1rem;
-      z-index: 1000;
-      display: flex;
-      gap: 0.25rem;
-      background: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      padding: 0.25rem;
-    }
-    .mdui-theme-dark .fab-nav {
-      background: rgba(40,40,40,0.85);
-    }
-
-    /* 页脚 */
-    .site-footer {
-      background: #263238;
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      line-height: 2;
-    }
-    .site-footer a { color: #a7f3d0; text-decoration: none; }
-
-    /* 暗色模式覆盖 */
-    .mdui-theme-dark { background: #121212; overflow-x: hidden; }
-    .mdui-theme-dark body { background: #121212; }
-    .mdui-theme-dark .vr-card { background: #1e1e1e; }
-    .mdui-theme-dark .vr-card h3 { color: #e0e0e0; }
-    .mdui-theme-dark .vr-card p { color: #aaa; }
-    .mdui-theme-dark .site-footer { background: #0d1117; }
-
-    /* 响应式 */
-    @media (max-width: 600px) {
-      .page-header-content h1 { font-size: 1.6rem; }
-      .page-header { min-height: 25vh; }
-      .vr-section { padding: 1.2rem 1rem; }
-      .vr-card-body { padding: 1rem 1.2rem 1.2rem; }
-      .vr-card { margin-bottom: 1rem; }
-      .vr-card h3 { font-size: 1.1rem; }
-      .vr-card p { font-size: 0.9rem; margin-bottom: 0.8rem; }
-      .site-footer { padding: 1.5rem 1rem; }
-      .theme-toggle mdui-button, .lang-toggle mdui-button { min-width: 0; width: 2.2rem; height: 2.2rem; padding: 0; display: flex; align-items: center; justify-content: center; }
-      .fab-nav { bottom: 1rem; right: 0.75rem; }
-    }
-  </style>
-  <!--[if IE]><script>window.location.href='unsupported.html';</script><![endif]-->
-  <script>
-  (function(){
-    var ua=navigator.userAgent||'';
-    if(ua.indexOf('MSIE')>-1||document.documentMode){window.location.href='unsupported.html';return;}
-    if(ua.indexOf('Edge/')>-1&&ua.indexOf('Edg/')<0){window.location.href='unsupported.html';return;}
-    var ver,browserVer;
-    if(ua.indexOf('Firefox/')>-1){
-      ver=ua.match(/Firefox\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<106){window.location.href='unsupported.html';return;}
-    }else if(ua.indexOf('Safari/')>-1&&ua.indexOf('Chrome')<0){
-      ver=ua.match(/Version\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<16.4){window.location.href='unsupported.html';return;}
-    }else if(ua.indexOf('OPR/')>-1||ua.indexOf('Opera/')>-1){
-      ver=ua.match(/(?:OPR|Opera)[/ ]([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<88){window.location.href='unsupported.html';return;}
-    }else if(ua.indexOf('Chrome/')>-1){
-      ver=ua.match(/Chrome\/([\d.]+)/);browserVer=ver?ver[1]:'';
-      if(parseFloat(browserVer)<102){window.location.href='unsupported.html';return;}
-    }else{window.location.href='unsupported.html';return;}
-  })();
-  </script>
+  <link rel="preload" href="images/background.jpg" as="image">
+  <script src="js/browser-check.js"></script>
 </head>
 <body>
+
+  <!-- Skip to content -->
+  <a class="skip-link" href="#vr-content">跳至 VR 内容</a>
 
   <!-- Theme Toggle -->
   <div class="theme-toggle">
@@ -225,8 +41,8 @@
         <mdui-icon name="language" slot="icon"></mdui-icon>
       </mdui-button>
       <mdui-menu selects="single" value="zh" id="langMenu">
-        <mdui-menu-item value="zh">中文</mdui-menu-item>
-        <mdui-menu-item value="en">English</mdui-menu-item>
+        <mdui-menu-item value="zh" lang="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en" lang="en">English</mdui-menu-item>
       </mdui-menu>
     </mdui-dropdown>
   </div>
@@ -242,13 +58,13 @@
   </section>
 
   <!-- VR Content -->
-  <div class="vr-section">
+  <div class="vr-section" id="vr-content">
 
     <div class="vr-card">
       <div class="vr-card-body">
         <h3 data-i18n="vr.720yun.title">720云 VR 全景</h3>
         <p data-i18n="vr.720yun.desc">在线沉浸式浏览育英校园全景，支持鼠标拖拽、手机陀螺仪交互。</p>
-        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" variant="tonal"><span data-i18n="vr.720yun.btn">前往 720云</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="http://720yun.com/t/85o8ljnaercdxln604" target="_blank" rel="noopener noreferrer" variant="tonal"><span data-i18n="vr.720yun.btn">前往 720云</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
 
@@ -256,7 +72,7 @@
       <div class="vr-card-body">
         <h3 data-i18n="vr.youtube.title">YouTube VR 视频</h3>
         <p data-i18n="vr.youtube.desc">育英 Minecraft 计划 VR 演示视频，支持 360° 全景播放。</p>
-        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" variant="tonal"><span data-i18n="vr.youtube.btn">前往 YouTube</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
+        <mdui-button href="https://youtu.be/l9ow1rA80oY" target="_blank" rel="noopener noreferrer" variant="tonal"><span data-i18n="vr.youtube.btn">前往 YouTube</span> <mdui-icon name="open_in_new" slot="icon" style="margin-left:0.3rem;"></mdui-icon></mdui-button>
       </div>
     </div>
 
@@ -271,7 +87,7 @@
     <div class="vr-card">
       <div class="vr-card-body">
         <h3>GitHub VR</h3>
-        <p data-i18n-html="vr.github.desc">基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架的 GitHub Pages 部署版本。VR View 可将 360° 图片和视频转化为交互式体验：手机倾斜切换视角、Cardboard 眼镜沉浸式浏览、电脑端鼠标拖拽旋转。开源仓库：<a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">googlearchive/vrview <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a></p>
+        <p data-i18n-html="vr.github.desc">基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" rel="noopener noreferrer" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架的 GitHub Pages 部署版本。VR View 可将 360° 图片和视频转化为交互式体验：手机倾斜切换视角、Cardboard 眼镜沉浸式浏览、电脑端鼠标拖拽旋转。开源仓库：<a href="https://github.com/googlearchive/vrview" target="_blank" rel="noopener noreferrer" style="color:#00897b; text-decoration:none;">googlearchive/vrview <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a></p>
         <mdui-button variant="tonal" id="btnGithubVr" data-i18n="vr.github.btn">前往 GitHub VR</mdui-button>
       </div>
     </div>
@@ -286,9 +102,9 @@
 
   <!-- GitHub VR Dialog -->
   <mdui-dialog id="githubVrDialog" heading="兼容性提示" data-i18n-headline="dialog.github.title">
-    <span data-i18n-html="dialog.github.body">该页面基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架构建，此框架自 2018 年 12 月起已停止维护。我们无法保证您的浏览体验，建议使用上方的 720云或 YouTube VR 替代。</span>
+    <span data-i18n-html="dialog.github.body">该页面基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" rel="noopener noreferrer" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架构建，此框架自 2018 年 12 月起已停止维护。我们无法保证您的浏览体验，建议使用上方的 720云或 YouTube VR 替代。</span>
     <mdui-button slot="action" variant="text" onclick="document.getElementById('githubVrDialog').open = false" data-i18n="dialog.github.cancel">取消</mdui-button>
-    <mdui-button slot="action" variant="text" onclick="window.open('vrview/examples/yuying/index.html','_blank'); document.getElementById('githubVrDialog').open = false;" data-i18n="dialog.github.confirm">仍然前往</mdui-button>
+    <mdui-button slot="action" variant="text" onclick="window.open('vrview/examples/yuying/index.html','_blank','noopener,noreferrer'); document.getElementById('githubVrDialog').open = false;" data-i18n="dialog.github.confirm">仍然前往</mdui-button>
   </mdui-dialog>
 
   <!-- Footer -->
@@ -298,7 +114,7 @@
       <a href="index.html" data-i18n="footer.backHome">返回首页</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
-      Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+      Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
       <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
@@ -323,162 +139,11 @@
   </div>
 
   <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
-  <script>
-    // --- i18n Dictionary ---
-    const i18nDict = {
-      zh: {
-        title: 'VR 全景 - 大育英帝国 Minecraft 计划',
-        'theme.toggleTitle': '切换主题',
-        'theme.light': '亮色模式',
-        'theme.dark': '暗色模式',
-        'theme.system': '跟随系统',
-        'fab.home': '首页',
-        'fab.photos': '图片库',
-        'fab.vr': 'VR 全景',
-        'page.title': 'VR 全景',
-        'page.backHome': '返回首页',
-        'vr.720yun.title': '720云 VR 全景',
-        'vr.720yun.desc': '在线沉浸式浏览育英校园全景，支持鼠标拖拽、手机陀螺仪交互。',
-        'vr.720yun.btn': '前往 720云',
-        'vr.youtube.title': 'YouTube VR 视频',
-        'vr.youtube.desc': '育英 Minecraft 计划 VR 演示视频，支持 360° 全景播放。',
-        'vr.youtube.btn': '前往 YouTube',
-        'vr.self.title': '自建源',
-        'vr.self.desc': '原自建 VR 服务器托管的全景浏览。',
-        'vr.self.btn': '查看自建源',
-        'vr.github.desc': '基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架的 GitHub Pages 部署版本。VR View 可将 360° 图片和视频转化为交互式体验：手机倾斜切换视角、Cardboard 眼镜沉浸式浏览、电脑端鼠标拖拽旋转。开源仓库：<a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">googlearchive/vrview <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>',
-        'vr.github.btn': '前往 GitHub VR',
-        'dialog.selfHosted.title': '自建源不可用',
-        'dialog.selfHosted.body': '由于原始服务器已停止维护，该访问源已不再可用。',
-        'dialog.selfHosted.ok': '知道了',
-        'dialog.github.title': '兼容性提示',
-        'dialog.github.body': '该页面基于 <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> 框架构建，此框架自 2018 年 12 月起已停止维护。我们无法保证您的浏览体验，建议使用上方的 720云或 YouTube VR 替代。',
-        'dialog.github.cancel': '取消',
-        'dialog.github.confirm': '仍然前往',
-        'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
-        'footer.backHome': '返回首页',
-        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>',
-        'footer.ipv6': '本站支持 IPv6 访问',
-        'footer.contact': '联系我们',
-        'dialog.oldSite.title': '即将前往旧版页面',
-        'dialog.oldSite.body': '您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。',
-        'dialog.oldSite.cancel': '取消',
-        'dialog.oldSite.confirm': '确定'
-      },
-      en: {
-        title: 'VR Panorama - Our Great Yuying Minecraft Project',
-        'theme.toggleTitle': 'Switch Theme',
-        'theme.light': 'Light Mode',
-        'theme.dark': 'Dark Mode',
-        'theme.system': 'Follow System',
-        'fab.home': 'Home',
-        'fab.photos': 'Photos',
-        'fab.vr': 'VR Panorama',
-        'page.title': 'VR Panorama',
-        'page.backHome': 'Back to Home',
-        'vr.720yun.title': '720yun VR Panorama',
-        'vr.720yun.desc': 'Immersive online browsing of Yuying campus panorama, supporting mouse drag and phone gyroscope interaction.',
-        'vr.720yun.btn': 'Visit 720yun',
-        'vr.youtube.title': 'YouTube VR Video',
-        'vr.youtube.desc': 'Yuying Minecraft Project VR demo video, supporting 360° panoramic playback.',
-        'vr.youtube.btn': 'Visit YouTube',
-        'vr.self.title': 'Self-hosted',
-        'vr.self.desc': 'Panorama browsing hosted on our original VR server.',
-        'vr.self.btn': 'View Self-hosted',
-        'vr.github.desc': 'Based on <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> framework, deployed on GitHub Pages. VR View transforms 360° images and videos into interactive experiences: tilt your phone to change perspective, use Cardboard glasses for immersive viewing, or drag to rotate on desktop. Open source repo: <a href="https://github.com/googlearchive/vrview" target="_blank" style="color:#00897b; text-decoration:none;">googlearchive/vrview <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>',
-        'vr.github.btn': 'Visit GitHub VR',
-        'dialog.selfHosted.title': 'Self-hosted Source Unavailable',
-        'dialog.selfHosted.body': 'The original server has been shut down and this source is no longer available.',
-        'dialog.selfHosted.ok': 'Got it',
-        'dialog.github.title': 'Compatibility Notice',
-        'dialog.github.body': 'This page is built on the <a href="https://support.google.com/cardboard/answer/6383058?visit_id=639106579234913622-217896838&p=vrview&rd=1" target="_blank" style="color:#00897b; text-decoration:none;">Google VR View <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> framework, which has been discontinued since December 2018. We cannot guarantee your browsing experience. We recommend using 720yun or YouTube VR above instead.',
-        'dialog.github.cancel': 'Cancel',
-        'dialog.github.confirm': 'Continue Anyway',
-        'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
-        'footer.backHome': 'Back to Home',
-        'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>',
-        'footer.ipv6': 'This site supports IPv6 access',
-        'footer.contact': 'Contact Us',
-        'dialog.oldSite.title': 'Leaving for Legacy Page',
-        'dialog.oldSite.body': 'You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version.',
-        'dialog.oldSite.cancel': 'Cancel',
-        'dialog.oldSite.confirm': 'OK'
-      }
-    };
+  <script type="module">
+    import { pageDict } from './js/i18n-vr.js';
+    import { initApp } from './js/app.js';
 
-    // --- i18n Functions ---
-    function detectLanguage() {
-      var saved = localStorage.getItem('site-lang');
-      if (saved && i18nDict[saved]) return saved;
-      var nav = navigator.language || navigator.userLanguage || '';
-      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
-    }
-
-    function applyLanguage(lang) {
-      var dict = i18nDict[lang];
-      if (!dict) return;
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-      if (dict.title) document.title = dict.title;
-      document.querySelectorAll('[data-i18n]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n');
-        if (dict[key] !== undefined) el.textContent = dict[key];
-      });
-      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-html');
-        if (dict[key] !== undefined) el.innerHTML = dict[key];
-      });
-      document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-title');
-        if (dict[key] !== undefined) el.setAttribute('title', dict[key]);
-      });
-      document.querySelectorAll('[data-i18n-headline]').forEach(function(el) {
-        var key = el.getAttribute('data-i18n-headline');
-        if (dict[key] !== undefined) el.setAttribute('headline', dict[key]);
-      });
-      var langMenu = document.getElementById('langMenu');
-      if (langMenu) langMenu.value = lang;
-      if (typeof applyTheme === 'function') {
-        var savedMode = localStorage.getItem('theme-mode') || 'system';
-        applyTheme(savedMode);
-      }
-      localStorage.setItem('site-lang', lang);
-    }
-
-    // Dark mode
-    const html = document.documentElement;
-    const themeIcon = document.getElementById('themeIcon');
-    const themeMenu = document.getElementById('themeMenu');
-    let currentLang = detectLanguage();
-
-    function applyTheme(mode) {
-      const mq = window.matchMedia('(prefers-color-scheme: dark)');
-      let dark;
-      if (mode === 'system') {
-        dark = mq.matches;
-        themeIcon.setAttribute('name', 'settings_suggest');
-      } else if (mode === 'dark') {
-        dark = true;
-        themeIcon.setAttribute('name', 'dark_mode');
-      } else {
-        dark = false;
-        themeIcon.setAttribute('name', 'light_mode');
-      }
-      html.classList.toggle('mdui-theme-dark', dark);
-    }
-
-    let savedMode = localStorage.getItem('theme-mode') || 'system';
-    themeMenu.value = savedMode;
-    applyTheme(savedMode);
-
-    themeMenu.addEventListener('change', () => {
-      savedMode = themeMenu.value;
-      localStorage.setItem('theme-mode', savedMode);
-      applyTheme(savedMode);
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (savedMode === 'system') applyTheme('system');
-    });
+    initApp(pageDict);
 
     // Self-hosted VR dialog
     document.getElementById('btnSelfHosted').addEventListener('click', () => {
@@ -489,26 +154,6 @@
     document.getElementById('btnGithubVr').addEventListener('click', () => {
       document.getElementById('githubVrDialog').open = true;
     });
-
-    // Old site link
-    document.getElementById('oldSiteLink').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('oldSiteDialog').open = true;
-    });
-    document.getElementById('oldSiteConfirm').addEventListener('click', function() {
-      window.open('http://www.jnyuyingmc.top/original/', '_blank');
-      document.getElementById('oldSiteDialog').open = false;
-    });
-
-    // Initialize language
-    applyLanguage(currentLang);
-    const langMenu = document.getElementById('langMenu');
-    if (langMenu) {
-      langMenu.addEventListener('change', () => {
-        currentLang = langMenu.value;
-        applyLanguage(currentLang);
-      });
-    }
   </script>
 </body>
 </html>
