@@ -31,7 +31,7 @@ export const pageDict = {
     'credits.link.fontPreview': 'Font Preview',
     'credits.link.iconLib': 'Icon Library',
     'credits.link.docs': 'Official Docs',
-    'footer.org': 'Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio',
+    'footer.org': 'Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio',
     'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>'
   }
 };

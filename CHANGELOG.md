@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-05-28 — Translation Corrections / 翻译修正
+
+Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。
+
+- Corrected English translations in i18n dictionaries / 修正 i18n 字典中的英文翻译
+
 ## 2026-05-28 — Frontend Refactoring & Accessibility / 前端重构与可访问性改进
 
 Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。

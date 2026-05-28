@@ -39,9 +39,9 @@
 | `hero.remaster` | 重制版 | Remaster |
 | `about.title` | 项目简介 | About the Project |
 | `about.p1` | 本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。 | This project started during the production of a motivational video for the 2016 grade's high school entrance exam, and kept growing beyond expectations. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help. |
-| `about.p2` | 济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。 | Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift to our middle school life. |
+| `about.p2` | 济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。 | Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift for our middle school years. |
 | `about.a2` | —— David_ryh | — David_ryh |
-| `about.p3` | 谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。 | Dedicated to our most beautiful three years of youth, and wishing our Great Yuying a happy 104th birthday. |
+| `about.p3` | 谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。 | Dedicated to our most beautiful three years of youth, and wishing Our Great Yuying a happy 104th birthday. |
 | `about.a3` | —— 神经元 | — Neuron |
 | `about.p4` | 他们以Minecraft为载体，耗时近三个月，最终将母校育英完美地展现在游戏中。小小的一张地图，凝聚了无数育英学子对他们母校的热爱。 | Using Minecraft as their canvas, they spent nearly three months perfectly recreating their alma mater Yuying in the game. This small map embodies the love countless Yuying students have for their school. |
 | `about.a4` | —— 张司旻 | — Zhang Simin |
@@ -53,7 +53,7 @@
 | `team.n2.status` | 高一，住校 | 10th Grade, Boarding |
 | `team.n3.name` | 于小乐 | Yu Xiaole |
 | `team.n3.role` | 服务器管理 / 建筑 / 美术 | Server Admin / Building / Art |
-| `team.n3.status` | 准备中考 | Preparing for Exam |
+| `team.n3.status` | 准备中考 | Preparing for the Zhongkao |
 | `team.structure` | 团队架构 | Team Structure |
 | `team.core` | 核心组 | Core Team |
 | `team.core.desc` | — 导演、服务器维护 | — Director, Server Maintenance |
@@ -68,11 +68,11 @@
 | `timeline.e2` | 建筑工作大范围开始 | Large-scale building work begins |
 | `timeline.e3` | 域名注册，网站开放访问 | Domain registered, website goes live |
 | `timeline.e4` | 核心组成员于小乐"跑路" 🫠 | Core member Yu Xiaole "ran away" 🫠 |
-| `timeline.e5` | 建筑组按(卡)时(点)完成任务 | Building team completes tasks right on deadline |
+| `timeline.e5` | 建筑组按(卡)时(点)完成任务 | Building team barely meets the deadline |
 | `timeline.e6` | 存档导出，服务器关闭 | Save exported, server shut down |
 | `timeline.e7` | 于小乐回归，开始后期制作 | Yu Xiaole returns, post-production begins |
-| `timeline.e8` | 航拍计划开始 | Aerial cinematography plan begins |
-| `timeline.e9` | 算力大幅升级，全面渲染开始 | Major compute upgrade, full rendering begins |
+| `timeline.e8` | 航拍计划开始 | Aerial filming plan begins |
+| `timeline.e9` | 算力大幅升级，全面渲染开始 | Major computing power upgrade, full rendering begins |
 | `timeline.e10` | VR 平台上线 | VR platform goes live |
 | `timeline.e11` | 渲染全部完成 | All rendering completed |
 | `timeline.e12` | 正片发布 | Main video released |
@@ -94,7 +94,7 @@
 | `qr.headline` | QQ群：652369699 | QQ Group: 652369699 |
 | `qr.cancel` | 取消 | Cancel |
 | `qr.openLink` | 打开群链接 | Open Group Link |
-| `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio |
+| `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
 | `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code · Legacy Site |
 
 ---
@@ -161,7 +161,7 @@
 | `credits.link.fontPreview` | 字体预览 | Font Preview |
 | `credits.link.iconLib` | 图标库 | Icon Library |
 | `credits.link.docs` | 官方文档 | Official Docs |
-| `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Propaganda Dept. × Latiao Video Studio |
+| `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
 | `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · Legacy Site |
 
 ---
