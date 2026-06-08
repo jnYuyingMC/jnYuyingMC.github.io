@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-06-08 — Region Selection & CDN Switching / 地区选择与 CDN 切换
+
+Assisted by OpenCode (Xiaomi MiMo V2.5 Pro). 由 OpenCode (Xiaomi MiMo V2.5 Pro) 辅助完成。
+
+- Created `region.html` region selection page with two options: Global and Mainland China / 新建地区选择页面，支持"国际"和"中国内地"两个选项
+- Region selection supports bilingual (Chinese/English) with language auto-detection / 地区选择支持双语，自动检测浏览器语言
+- Global mode uses unpkg, jsDelivr, Google Fonts CDN / 国际模式使用 unpkg、jsDelivr、Google Fonts CDN
+- Mainland China mode uses BootCDN and fonts.font.im for better accessibility / 中国内地模式使用 BootCDN 和 fonts.font.im 加速
+- Image preload (`images/background.jpg`) disabled in China mode to improve load speed / 中国内地模式禁用图片预加载以提升加载速度
+- Region choice persisted via `localStorage('site-region')` / 地区选择通过 localStorage 持久化
+- First-time visitors without region setting auto-redirect to region.html / 首次访问无地区设置时自动跳转至地区选择页
+- Added region toggle button (globe icon) to FAB navigation on all pages / 所有页面 FAB 导航添加地区切换按钮
+- Created `css/region.css` for region page styling / 新建地区选择页样式文件
+- Updated `translations-review.md` with region page translations / 更新翻译审校表
+
 ## 2026-05-28 — Translation Corrections / 翻译修正
 
 Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。

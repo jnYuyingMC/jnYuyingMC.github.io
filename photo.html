@@ -4,16 +4,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>图片库 - 大育英帝国 Minecraft 计划</title>
-  <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <script>
+    (function() {
+      var region = localStorage.getItem('site-region');
+      if (!region) {
+        window.location.href = 'region.html';
+        return;
+      }
+      var config = region === 'china' ? {
+        mdui: 'https://cdn.bootcdn.net/ajax/libs/mdui/2.1.4/mdui.css',
+        icons: 'https://fonts.font.im/icon?family=Material+Icons&display=swap',
+        preconnect: ['https://fonts.font.im', 'https://fonts.gstatic.font.im'],
+        font: 'https://fonts.font.im/css2?family=Noto+Sans+SC:wght@100..900&display=swap',
+        glightbox: 'https://cdn.bootcdn.net/ajax/libs/glightbox/3.3.1/css/glightbox.min.css'
+      } : {
+        mdui: 'https://unpkg.com/mdui@2/mdui.css',
+        icons: 'https://fonts.googleapis.com/icon?family=Material+Icons&display=swap',
+        preconnect: ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'],
+        font: 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap',
+        glightbox: 'https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css'
+      };
+      var head = document.head;
+      function addCSS(href) { var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = href; head.appendChild(l); }
+      function addPreconnect(h) { var l = document.createElement('link'); l.rel = 'preconnect'; l.href = h; if (h.includes('gstatic')) l.crossOrigin = 'anonymous'; head.appendChild(l); }
+      addCSS(config.mdui);
+      addCSS(config.icons);
+      addPreconnect(config.preconnect[0]);
+      addPreconnect(config.preconnect[1]);
+      addCSS(config.font);
+      addCSS(config.glightbox);
+      if (region !== 'china') {
+        var l = document.createElement('link');
+        l.rel = 'preload';
+        l.href = 'images/background.jpg';
+        l.as = 'image';
+        head.appendChild(l);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/photo.css">
   <link rel="icon" href="favicon.ico">
-  <link rel="preload" href="images/background.jpg" as="image">
   <script src="js/browser-check.js"></script>
 </head>
 <body>
@@ -131,7 +162,7 @@
       <a href="index.html" data-i18n="footer.backHome">返回首页</a> &middot; <a href="https://github.com/jnYuyingMC" target="_blank" rel="noopener noreferrer">GitHub <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
-      Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+      Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; <a href="credits.html">开源引用</a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
       <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
@@ -150,13 +181,34 @@
 
   <!-- FAB Navigation -->
   <div class="fab-nav">
+    <mdui-button-icon href="region.html" title="切换地区" data-i18n-title="fab.region"><mdui-icon name="public"></mdui-icon></mdui-button-icon>
     <mdui-button-icon href="index.html" title="首页" data-i18n-title="fab.home"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
     <mdui-button-icon href="#" title="图片库" data-i18n-title="fab.photos"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
     <mdui-button-icon href="vr.html" title="VR 全景" data-i18n-title="fab.vr"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
   </div>
 
-  <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    (function() {
+      var region = localStorage.getItem('site-region');
+      var config = region === 'china' ? {
+        mduiJs: 'https://cdn.bootcdn.net/ajax/libs/mdui/2.1.4/mdui.global.js',
+        glightboxJs: 'https://cdn.bootcdn.net/ajax/libs/glightbox/3.3.1/js/glightbox.min.js'
+      } : {
+        mduiJs: 'https://unpkg.com/mdui@2/mdui.global.js',
+        glightboxJs: 'https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js'
+      };
+      var s1 = document.createElement('script');
+      s1.type = 'module';
+      s1.src = config.mduiJs;
+      document.head.appendChild(s1);
+      var s2 = document.createElement('script');
+      s2.src = config.glightboxJs;
+      s2.onload = function() {
+        window.dispatchEvent(new Event('glightbox-loaded'));
+      };
+      document.head.appendChild(s2);
+    })();
+  </script>
   <script type="module">
     import { pageDict } from './js/i18n-photo.js';
     import { initApp } from './js/app.js';
@@ -164,7 +216,14 @@
     initApp(pageDict);
 
     // GLightbox
-    const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+    function initGLightbox() {
+      const lightbox = GLightbox({ selector: '.glightbox', loop: true });
+    }
+    if (typeof GLightbox !== 'undefined') {
+      initGLightbox();
+    } else {
+      window.addEventListener('glightbox-loaded', initGLightbox);
+    }
   </script>
 </body>
 </html>

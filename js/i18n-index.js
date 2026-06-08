@@ -67,20 +67,20 @@ export const pageDict = {
     'qr.cancel': '取消',
     'qr.openLink': '打开群链接',
     'footer.org': '大育英帝国学生会 宣传部 × 辣条视频工作室',
-    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>'
+    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>'
   },
   en: {
     title: 'Our Great Yuying Minecraft Project',
     'theme.label': 'Follow System',
     'hero.title': 'Our Great Yuying Minecraft Project',
-    'hero.subtitle': 'Rebuilding a century-old campus with pixel blocks, paying tribute to our alma mater Jinan Yuying Middle School with passion',
+    'hero.subtitle': 'Rebuilding a century-old campus block by block — a tribute to our alma mater, Jinan Yuying Middle School.',
     'hero.about': 'About Project',
     'hero.photos': 'View Photos',
     'hero.mainVideo': 'Main Video',
     'hero.remaster': 'Remaster',
     'about.title': 'About the Project',
-    'about.p1': 'This project started during the production of a motivational video for the 2016 grade\'s high school entrance exam, and kept growing beyond expectations. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help.',
-    'about.p2': 'Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift for our middle school years.',
+    'about.p1': 'This project was "born" during the production of a motivational video for the Class of 2016\'s high school entrance exam — and before we knew it, it snowballed into something far bigger than imagined. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help.',
+    'about.p2': 'Founded in 1913, Jinan Yuying Middle School boasts a history spanning over a century. It is the largest and top-performing middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift for our middle school years.',
     'about.a2': '— David_ryh',
     'about.p3': 'Dedicated to our most beautiful three years of youth, and wishing Our Great Yuying a happy 104th birthday.',
     'about.a3': '— Neuron',
@@ -109,7 +109,7 @@ export const pageDict = {
     'timeline.e2': 'Large-scale building work begins',
     'timeline.e3': 'Domain registered, website goes live',
     'timeline.e4': 'Core member Yu Xiaole "ran away" 🫠',
-    'timeline.e5': 'Building team barely meets the deadline',
+    'timeline.e5': 'Building team delivers — just barely ⏰',
     'timeline.e6': 'Save exported, server shut down',
     'timeline.e7': 'Yu Xiaole returns, post-production begins',
     'timeline.e8': 'Aerial filming plan begins',
@@ -136,6 +136,6 @@ export const pageDict = {
     'qr.cancel': 'Cancel',
     'qr.openLink': 'Open Group Link',
     'footer.org': 'Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio',
-    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>'
+    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="https://biati-digital.github.io/glightbox/" target="_blank" rel="noopener noreferrer">GLightbox <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>'
   }
 };

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>选择地区 - 大育英帝国 Minecraft 计划</title>
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/region.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preload" href="images/background.jpg" as="image">
+</head>
+<body class="region-page">
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <mdui-dropdown class="lang-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="Language">
+        <mdui-icon name="language" slot="icon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="zh" id="langMenu">
+        <mdui-menu-item value="zh" lang="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en" lang="en">English</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <div class="region-container">
+    <div class="region-header">
+      <img src="images/logo.png" alt="Logo" class="region-logo">
+      <h1 data-i18n="region.title">大育英帝国 Minecraft 计划</h1>
+      <p class="region-subtitle" data-i18n="region.subtitle">请选择您所在的地区以获得最佳访问体验</p>
+    </div>
+
+    <div class="region-cards">
+      <div class="region-card" onclick="selectRegion('international')" tabindex="0" role="button" aria-label="国际及港澳台 / Global">
+        <div class="region-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+        </div>
+        <h2 data-i18n="region.international">国际及港澳台</h2>
+        <p data-i18n-html="region.internationalDesc">使用国际 CDN 服务<br>unpkg · jsDelivr · Google Fonts</p>
+        <mdui-button variant="filled" class="region-btn" data-i18n="region.select">选择此地区</mdui-button>
+      </div>
+
+      <div class="region-card" onclick="selectRegion('china')" tabindex="0" role="button" aria-label="中国内地">
+        <div class="region-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="64" height="64">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/>
+          </svg>
+        </div>
+        <h2 data-i18n="region.china">中国内地</h2>
+        <p data-i18n-html="region.chinaDesc">使用国内 CDN 加速<br>BootCDN · fonts.font.im</p>
+        <mdui-button variant="filled" class="region-btn" data-i18n="region.select">选择此地区</mdui-button>
+      </div>
+    </div>
+
+    <div class="region-footer">
+      <p data-i18n="region.saveHint">此设置将保存在您的浏览器中，您可以随时在页面右下角更改</p>
+      <mdui-button href="index.html" variant="text" class="skip-btn" data-i18n="region.skip">跳过，使用默认设置</mdui-button>
+    </div>
+  </div>
+
+  <script>
+    var regionDict = {
+      zh: {
+        'title': '选择地区',
+        'region.title': '大育英帝国 Minecraft 计划',
+        'region.subtitle': '请选择您所在的地区以获得最佳访问体验',
+        'region.international': '国际及港澳台',
+        'region.internationalDesc': '使用国际 CDN 服务<br>unpkg · jsDelivr · Google Fonts',
+        'region.china': '中国内地',
+        'region.chinaDesc': '使用国内 CDN 加速<br>BootCDN · fonts.font.im',
+        'region.select': '选择此地区',
+        'region.saveHint': '此设置将保存在您的浏览器中，您可以随时在页面右下角更改',
+        'region.skip': '跳过，使用默认设置'
+      },
+      en: {
+        'title': 'Select Region',
+        'region.title': 'Our Great Yuying Minecraft Project',
+        'region.subtitle': 'Please select your region for the best experience',
+        'region.international': 'Global',
+        'region.internationalDesc': 'Using international CDN services<br>unpkg · jsDelivr · Google Fonts',
+        'region.china': 'Mainland China',
+        'region.chinaDesc': 'Using domestic CDN acceleration<br>BootCDN · fonts.font.im',
+        'region.select': 'Select this region',
+        'region.saveHint': 'This setting will be saved in your browser and can be changed anytime via the bottom-right button',
+        'region.skip': 'Skip, use default settings'
+      }
+    };
+
+    function detectLanguage() {
+      var saved = localStorage.getItem('site-lang');
+      if (saved && regionDict[saved]) return saved;
+      var nav = navigator.language || navigator.userLanguage || '';
+      return nav.toLowerCase().startsWith('zh') ? 'zh' : 'en';
+    }
+
+    function applyLanguage(lang) {
+      var d = regionDict[lang];
+      if (!d) return;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      if (d.title) document.title = d.title;
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (d[key] !== undefined) el.textContent = d[key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (d[key] !== undefined) el.innerHTML = d[key];
+      });
+
+      var langMenu = document.getElementById('langMenu');
+      if (langMenu) langMenu.value = lang;
+      localStorage.setItem('site-lang', lang);
+    }
+
+    var currentLang = detectLanguage();
+    applyLanguage(currentLang);
+
+    document.getElementById('langMenu').addEventListener('change', function(e) {
+      applyLanguage(e.target.value);
+    });
+
+    function selectRegion(region) {
+      localStorage.setItem('site-region', region);
+      window.location.href = 'index.html';
+    }
+
+    document.querySelectorAll('.region-card').forEach(function(card) {
+      card.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.click();
+        }
+      });
+    });
+  </script>
+  <script type="module" src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+
+</body>
+</html>

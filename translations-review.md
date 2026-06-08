@@ -32,14 +32,14 @@
 | Key | 中文 | English |
 |-----|------|---------|
 | `hero.title` | 大育英帝国 Minecraft 计划 | Our Great Yuying Minecraft Project |
-| `hero.subtitle` | 用像素方块重建百年校园，以热爱致敬母校济南育英中学 | Rebuilding a century-old campus with pixel blocks, paying tribute to our alma mater Jinan Yuying Middle School with passion |
+| `hero.subtitle` | 用像素方块重建百年校园，以热爱致敬母校济南育英中学 | Rebuilding a century-old campus block by block — a tribute to our alma mater, Jinan Yuying Middle School. |
 | `hero.about` | 了解项目 | About Project |
 | `hero.photos` | 查看图片 | View Photos |
 | `hero.mainVideo` | 正片 | Main Video |
 | `hero.remaster` | 重制版 | Remaster |
 | `about.title` | 项目简介 | About the Project |
-| `about.p1` | 本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。 | This project started during the production of a motivational video for the 2016 grade's high school entrance exam, and kept growing beyond expectations. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help. |
-| `about.p2` | 济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。 | Jinan Yuying Middle School was founded in 1913, with over a century of history. It is the largest and most academically excellent middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift for our middle school years. |
+| `about.p1` | 本计划开坑于2016级中考加油视频制作期间，随后越挖越大一发不可收拾。目前主线任务是制作一个育英的短片，支线任务有育英周边模型手办、VR全景等。感谢所有人对本项目的支持与帮助。 | This project was "born" during the production of a motivational video for the Class of 2016's high school entrance exam — and before we knew it, it snowballed into something far bigger than imagined. The current main task is producing a Yuying short film, with side projects including Yuying-themed models, figurines, VR panoramas, and more. Thank you to everyone for your support and help. |
+| `about.p2` | 济南育英中学创建于1913年，至今已有百年之久，是济南市规模最大、教育成绩最卓越的初级中学。作为已经毕业的育英学子，将育英校园的光景记录在MC中，当做初中生活的一份礼物。 | Founded in 1913, Jinan Yuying Middle School boasts a history spanning over a century. It is the largest and top-performing middle school in Jinan. As graduated Yuying students, we recorded the campus scenery in Minecraft as a gift for our middle school years. |
 | `about.a2` | —— David_ryh | — David_ryh |
 | `about.p3` | 谨以此献给我们最美好的三年青春，并祝我们的大育英帝国104岁生日快乐。 | Dedicated to our most beautiful three years of youth, and wishing Our Great Yuying a happy 104th birthday. |
 | `about.a3` | —— 神经元 | — Neuron |
@@ -68,7 +68,7 @@
 | `timeline.e2` | 建筑工作大范围开始 | Large-scale building work begins |
 | `timeline.e3` | 域名注册，网站开放访问 | Domain registered, website goes live |
 | `timeline.e4` | 核心组成员于小乐"跑路" 🫠 | Core member Yu Xiaole "ran away" 🫠 |
-| `timeline.e5` | 建筑组按(卡)时(点)完成任务 | Building team barely meets the deadline |
+| `timeline.e5` | 建筑组按(卡)时(点)完成任务 | Building team delivers — just barely ⏰ |
 | `timeline.e6` | 存档导出，服务器关闭 | Save exported, server shut down |
 | `timeline.e7` | 于小乐回归，开始后期制作 | Yu Xiaole returns, post-production begins |
 | `timeline.e8` | 航拍计划开始 | Aerial filming plan begins |
@@ -163,6 +163,23 @@
 | `credits.link.docs` | 官方文档 | Official Docs |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
 | `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · Legacy Site |
+
+---
+
+## region.html — Region Selection / 地区选择
+
+| Key | 中文 | English |
+|-----|------|---------|
+| `title` | 选择地区 | Select Region |
+| `region.title` | 大育英帝国 Minecraft 计划 | Our Great Yuying Minecraft Project |
+| `region.subtitle` | 请选择您所在的地区以获得最佳访问体验 | Please select your region for the best experience |
+| `region.international` | 国际及港澳台 | Global |
+| `region.internationalDesc` | 使用国际 CDN 服务\<br\>unpkg · jsDelivr · Google Fonts | Using international CDN services\<br\>unpkg · jsDelivr · Google Fonts |
+| `region.china` | 中国内地 | Mainland China |
+| `region.chinaDesc` | 使用国内 CDN 加速\<br\>BootCDN · fonts.font.im | Using domestic CDN acceleration\<br\>BootCDN · fonts.font.im |
+| `region.select` | 选择此地区 | Select this region |
+| `region.saveHint` | 此设置将保存在您的浏览器中，您可以随时在页面右下角更改 | This setting will be saved in your browser and can be changed anytime via the bottom-right button |
+| `region.skip` | 跳过，使用默认设置 | Skip, use default settings |
 
 ---
 

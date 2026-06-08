@@ -23,7 +23,7 @@ export const pageDict = {
     'dialog.github.cancel': '取消',
     'dialog.github.confirm': '仍然前往',
     'footer.backHome': '返回首页',
-    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>'
+    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">开源引用</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">旧版页面</a>'
   },
   en: {
     title: 'VR Panorama - Our Great Yuying Minecraft Project',
@@ -48,6 +48,6 @@ export const pageDict = {
     'dialog.github.cancel': 'Cancel',
     'dialog.github.confirm': 'Continue Anyway',
     'footer.backHome': 'Back to Home',
-    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>'
+    'footer.builtWith': 'Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> · <a href="credits.html">Open Source Credits</a> · Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro) · <a href="#" id="oldSiteLink">Legacy Site</a>'
   }
 };
