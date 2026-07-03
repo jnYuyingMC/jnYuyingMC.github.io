@@ -1,5 +1,40 @@
 # Changelog
 
+## 2026-07-03 — Refactoring, Bugfixes, SEO & Tooling / 重构、Bug 修复、SEO 与工程化
+
+Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
+
+- Removed region selection page (`region.html`), Mainland China CDN config, and unused `js/cdn-loader.js`; all pages now use the official CDN directly (unpkg / jsDelivr / Google Fonts) / 移除地区选择页、国内 CDN 配置及未使用的 cdn-loader.js，全部页面统一使用官方 CDN
+- Replaced dynamic per-page CDN injection scripts with static `<link>`/`<script>` tags in `index.html` / `photo.html` / `vr.html` / `credits.html`, eliminating duplicated loader logic / 各页面动态 CDN 注入脚本替换为静态标签，消除重复加载逻辑
+- Removed region toggle button from FAB navigation on all 4 pages and dropped `fab.region` i18n key / 4 页 FAB 移除地区切换按钮，删除 fab.region 翻译键
+- Deleted `region.html`, `css/region.css`, `js/cdn-loader.js` / 删除相关文件
+- Fixed video audio leak: switching video sources now clears Bilibili/YouTube iframe `src` to stop playback / 修复视频切换音频泄漏：切换视频源时清空 Bilibili/YouTube iframe src 停止播放
+- Fixed `heading=` → `headline=` typo on the GitHub VR compatibility dialog in `vr.html` so i18n (`data-i18n-headline`) applies correctly; the card, dialog, and the GitHub VR link are kept as-is — the link is an absolute path `/vrview/examples/yuying/index.html` referencing the separate `jnYuyingMC/vrview` repository's GitHub Pages (cross-repo slash reference), not a relative path / 修复 vr.html GitHub VR 兼容性弹窗的 heading→headline 拼写错误使 i18n 生效；卡片、弹窗及 GitHub VR 链接保持原样——该链接为绝对路径 /vrview/examples/yuying/index.html，指向独立 jnYuyingMC/vrview 仓库的 GitHub Pages（跨仓库斜杠引用），非相对路径
+- Added missing `class="theme-dropdown"` to credits.html theme dropdown so menu width matches other pages / credits.html 主题下拉补齐 theme-dropdown class，菜单宽度与其它页一致
+- Removed orphaned `vr.github.*` and `dialog.github.*` i18n keys from `js/i18n-vr.js` / 清理 i18n-vr.js 中孤立的 github 翻译键
+- Updated `README.md`: removed region selection What's New entry, refreshed file structure table (dropped `region.html`/`region.css`/`cdn-loader.js`/`CLAUDE.md`, added `AGENTS.md`/`translations-review.md`, updated line counts) / 更新 README：删除地区选择条目，刷新文件结构表
+- Updated `AGENTS.md`: pages 4→5 (added `unsupported.html`), corrected dark-mode/CSS/JS descriptions to reflect shared modules, documented unified official CDN strategy (BootCDN/fonts.font.im removed) / 更新 AGENTS.md：页面 4→5，修正主题/CSS/JS 描述为共享模块，记录统一官方 CDN 策略
+- Cleaned `translations-review.md`: deleted region.html section and orphaned `vr.github.*`/`dialog.github.*` rows / 清理 translations-review.md：删除 region.html 区块及孤立 github 翻译行
+- Added GLM-5.2 to README development attribution alongside MiMo V2 Pro / V2.5 Pro / README 开发说明并列追加 GLM-5.2
+- Pinned CDN versions: `mdui@2` → `mdui@2.1.4`, `glightbox` → `glightbox@3.3.1` across all 4 MDUI pages / 钉死 CDN 版本，所有页面统一
+- Added SRI `integrity` hash + `crossorigin="anonymous"` to all CDN resources (`mdui.css`, `mdui.global.js`, `glightbox.min.css`, `glightbox.min.js`) for supply-chain integrity / 为所有 CDN 资源添加 SRI 完整性校验
+- Appended GLM-5.2 to `footer.builtWith` model attribution (12 places: 4 i18n files × 2 langs + 4 HTML fallbacks); updated `translations-review.md` footer rows to include OpenCode + GLM-5.2 / 页脚技术栈模型署名追加 GLM-5.2（12 处），translations-review 页脚行同步补充 OpenCode + GLM-5.2
+
+### SEO & Accessibility / SEO 与可访问性
+
+- Added `<meta name="description">` + Open Graph + Twitter Card tags to all 5 pages (i18n-driven `data-i18n-content` on MDUI pages, static on `unsupported.html`) / 全站 5 页添加 meta description 与 OG/Twitter Card 标签
+- Extended i18n engine (`js/i18n.js`): new `data-i18n-content` and `data-i18n-aria-label` attribute handlers; `data-i18n-title` now mirrors to `aria-label` so icon-only buttons are screen-reader friendly / i18n 引擎扩展：新增 content/aria-label 处理，title 自动镜像到 aria-label
+- Added `lang.toggleTitle` key + `data-i18n-title` to language toggle button (was hardcoded "Language") / 语言切换按钮补 i18n
+- GLightbox now stores instance to `window._lightbox` and rebuilds on language switch so image descriptions follow the active language / GLightbox 切语言时重建，图片描述跟随语言
+- Generated 180/192/512px PNG icons from `logo.png` (center-cropped) + `manifest.json` + `apple-touch-icon` / `icon` / `manifest` link tags on all 5 pages / 从 logo 生成多尺寸图标与 manifest.json，5 页添加现代 favicon 标签
+- Converted all 15 photos in `photolib/` to WebP (quality 85; PNG ~85–97% smaller, JPG ~46–89% smaller) and updated `index.html` / `photo.html` references; deleted originals. Total `photolib/` size dropped from ~43 MB to ~5.5 MB / 将 photolib 全部 15 张照片转为 WebP，体积缩减 85–97%，更新引用并删除原图，总大小从 ~43 MB 降至 ~5.5 MB
+
+### Engineering / 工程化
+
+- Added lint/format config: `.eslintrc.json`, `.prettierrc`, `.stylelintrc.json`, and `package.json` with `lint` / `lint:css` / `format` / `check` scripts / 添加 lint/格式化配置与 package.json 脚本
+- Added `.github/workflows/check.yml`: ESLint + Stylelint on `js/` and `css/`, plus lychee link check across HTML/JS/MD (non-blocking) / 添加 GitHub Actions 校验工作流
+- Updated `AGENTS.md` Development section with lint instructions and tooling history / AGENTS.md 开发段补充 lint 说明与工具链历史
+
 ## 2026-06-08 — Region Selection & CDN Switching / 地区选择与 CDN 切换
 
 Assisted by OpenCode (Xiaomi MiMo V2.5 Pro). 由 OpenCode (Xiaomi MiMo V2.5 Pro) 辅助完成。

@@ -24,6 +24,8 @@ export function initApp(pageDict) {
       if (window._applyTheme) {
         window._applyTheme(localStorage.getItem('theme-mode') || 'system');
       }
+      // Rebuild GLightbox so image descriptions follow the new language
+      if (window._rebuildLightbox) window._rebuildLightbox();
     });
   }
 

@@ -95,7 +95,7 @@
 | `qr.cancel` | 取消 | Cancel |
 | `qr.openLink` | 打开群链接 | Open Group Link |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -112,7 +112,7 @@
 | `photos.p2.alt` | 雪 | Snow |
 | `photos.p2.overlay` | 雪 · 2017-08-22 | Snow · 2017-08-22 |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -131,17 +131,13 @@
 | `vr.self.title` | 自建源 | Self-hosted |
 | `vr.self.desc` | 原自建 VR 服务器托管的全景浏览。 | Panorama browsing hosted on our original VR server. |
 | `vr.self.btn` | 查看自建源 | View Self-hosted |
-| `vr.github.desc` | *(contains HTML links)* 基于 Google VR View 框架的 GitHub Pages 部署版本… | *(contains HTML links)* Based on Google VR View framework, deployed on GitHub Pages… |
-| `vr.github.btn` | 前往 GitHub VR | Visit GitHub VR |
+| `vr.github.desc` | *(contains HTML links)* 基于 Google VR View 框架的旧版 GitHub Pages 部署。框架已停止维护，按钮跳转归档仓库… | *(contains HTML links)* Legacy GitHub Pages deployment based on Google VR View framework. Unmaintained; button opens archived repo… |
+| `vr.github.btn` | 前往 GitHub 仓库 | Visit GitHub Repo |
 | `dialog.selfHosted.title` | 自建源不可用 | Self-hosted Source Unavailable |
 | `dialog.selfHosted.body` | 由于原始服务器已停止维护，该访问源已不再可用。 | The original server has been shut down and this source is no longer available. |
 | `dialog.selfHosted.ok` | 知道了 | Got it |
-| `dialog.github.title` | 兼容性提示 | Compatibility Notice |
-| `dialog.github.body` | *(contains HTML links)* 该页面基于 Google VR View 框架构建，此框架自 2018 年 12 月起已停止维护… | *(contains HTML links)* This page is built on the Google VR View framework, which has been discontinued since December 2018… |
-| `dialog.github.cancel` | 取消 | Cancel |
-| `dialog.github.confirm` | 仍然前往 | Continue Anyway |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -162,24 +158,7 @@
 | `credits.link.iconLib` | 图标库 | Icon Library |
 | `credits.link.docs` | 官方文档 | Official Docs |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code · Legacy Site |
-
----
-
-## region.html — Region Selection / 地区选择
-
-| Key | 中文 | English |
-|-----|------|---------|
-| `title` | 选择地区 | Select Region |
-| `region.title` | 大育英帝国 Minecraft 计划 | Our Great Yuying Minecraft Project |
-| `region.subtitle` | 请选择您所在的地区以获得最佳访问体验 | Please select your region for the best experience |
-| `region.international` | 国际及港澳台 | Global |
-| `region.internationalDesc` | 使用国际 CDN 服务\<br\>unpkg · jsDelivr · Google Fonts | Using international CDN services\<br\>unpkg · jsDelivr · Google Fonts |
-| `region.china` | 中国内地 | Mainland China |
-| `region.chinaDesc` | 使用国内 CDN 加速\<br\>BootCDN · fonts.font.im | Using domestic CDN acceleration\<br\>BootCDN · fonts.font.im |
-| `region.select` | 选择此地区 | Select this region |
-| `region.saveHint` | 此设置将保存在您的浏览器中，您可以随时在页面右下角更改 | This setting will be saved in your browser and can be changed anytime via the bottom-right button |
-| `region.skip` | 跳过，使用默认设置 | Skip, use default settings |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 

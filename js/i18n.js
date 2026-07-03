@@ -6,10 +6,11 @@ export const sharedDict = {
     'theme.light': '亮色模式',
     'theme.dark': '暗色模式',
     'theme.system': '跟随系统',
+    'lang.toggleTitle': '切换语言',
+    'meta.desc': '大育英帝国 Minecraft 计划 — 用像素方块重建百年校园，致敬济南育英中学。包含项目简介、团队、时间线、视频与图片库。',
     'fab.home': '首页',
     'fab.photos': '图片库',
     'fab.vr': 'VR 全景',
-    'fab.region': '切换地区',
     'footer.copyright': 'Copyright © 2017 大育英帝国 Minecraft 计划项目组',
     'footer.ipv6': '本站支持 IPv6 访问',
     'footer.contact': '联系我们',
@@ -23,10 +24,11 @@ export const sharedDict = {
     'theme.light': 'Light Mode',
     'theme.dark': 'Dark Mode',
     'theme.system': 'Follow System',
+    'lang.toggleTitle': 'Switch Language',
+    'meta.desc': 'Our Great Yuying Minecraft Project — rebuilding a century-old campus block by block, a tribute to Jinan Yuying Middle School. Includes project intro, team, timeline, videos and photo gallery.',
     'fab.home': 'Home',
     'fab.photos': 'Photos',
     'fab.vr': 'VR Panorama',
-    'fab.region': 'Switch Region',
     'footer.copyright': 'Copyright © 2017 Our Great Yuying Minecraft Project Team',
     'footer.ipv6': 'This site supports IPv6 access',
     'footer.contact': 'Contact Us',
@@ -64,7 +66,9 @@ export function applyLanguage(lang, dict) {
     'data-i18n-title': 'title',
     'data-i18n-alt': 'alt',
     'data-i18n-headline': 'headline',
-    'data-i18n-desc': 'data-desc'
+    'data-i18n-desc': 'data-desc',
+    'data-i18n-content': 'content',
+    'data-i18n-aria-label': 'aria-label'
   };
 
   Object.keys(attrs).forEach(function(attr) {
@@ -74,7 +78,10 @@ export function applyLanguage(lang, dict) {
       if (d[key] !== undefined) {
         if (prop === 'innerHTML') el.innerHTML = d[key];
         else if (prop === 'textContent') el.textContent = d[key];
-        else el.setAttribute(prop, d[key]);
+        else {
+          el.setAttribute(prop, d[key]);
+          if (attr === 'data-i18n-title') el.setAttribute('aria-label', d[key]);
+        }
       }
     });
   });
