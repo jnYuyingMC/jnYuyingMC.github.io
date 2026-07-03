@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>更新日志 - 大育英帝国 Minecraft 计划</title>
+  <meta name="description" data-i18n-content="meta.desc">
+  <meta property="og:title" data-i18n-content="title">
+  <meta property="og:description" data-i18n-content="meta.desc">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.jnyuyingmc.top/changelog.html">
+  <meta property="og:image" content="https://www.jnyuyingmc.top/images/background.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" data-i18n-content="title">
+  <meta name="twitter:description" data-i18n-content="meta.desc">
+  <meta name="twitter:image" content="https://www.jnyuyingmc.top/images/background.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2.1.4/mdui.css" integrity="sha384-ut/hfzOW6boH2zfGcGWiW1JpbmJlAs7VC030JLRmIgQm4nz16aNSKe2EhyYXG/g8" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap">
+  <link rel="preload" href="images/background.webp" as="image">
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/changelog.css">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="images/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="images/icon-180.png">
+  <link rel="manifest" href="manifest.json">
+  <script src="js/browser-check.js"></script>
+</head>
+<body>
+
+  <!-- Skip to content -->
+  <a class="skip-link" href="#changelog-content">跳至更新日志</a>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <mdui-dropdown class="theme-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="切换主题" data-i18n-title="theme.toggleTitle">
+        <mdui-icon name="settings_suggest" slot="icon" id="themeIcon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="system" id="themeMenu">
+        <mdui-menu-item value="light" icon="light_mode" data-i18n="theme.light">亮色模式</mdui-menu-item>
+        <mdui-menu-item value="dark" icon="dark_mode" data-i18n="theme.dark">暗色模式</mdui-menu-item>
+        <mdui-menu-item value="system" icon="settings_suggest" data-i18n="theme.system">跟随系统</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <mdui-dropdown class="lang-dropdown" placement="bottom-end">
+      <mdui-button slot="trigger" variant="text" title="Language" data-i18n-title="lang.toggleTitle">
+        <mdui-icon name="language" slot="icon"></mdui-icon>
+      </mdui-button>
+      <mdui-menu selects="single" value="zh" id="langMenu">
+        <mdui-menu-item value="zh" lang="zh">中文</mdui-menu-item>
+        <mdui-menu-item value="en" lang="en">English</mdui-menu-item>
+      </mdui-menu>
+    </mdui-dropdown>
+  </div>
+
+  <!-- Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1 data-i18n="page.title">更新日志</h1>
+    </div>
+  </section>
+
+  <!-- Changelog -->
+  <div class="changelog-section" id="changelog-content">
+
+    <!-- New Era Section -->
+    <div class="section-title">
+      <mdui-icon name="auto_awesome"></mdui-icon> <span data-i18n="changelog.newSection">新版重制 (2026 Remaster)</span>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.6.0 · 2026-07-03</span>
+        <span class="type-badge type-badge-refactor" data-i18n="changelog.badge.refactor">重构</span>
+      </div>
+      <h3 data-i18n="changelog.v20260703.title">重构、Bug 修复、SEO 与工程化</h3>
+      <div class="changelog-model" data-i18n="changelog.model.glm">由 OpenCode (GLM-5.2) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260703.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.5.0 · 2026-06-08</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260608.title">地区选择与 CDN 切换</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo25">由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260608.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.4.1 · 2026-05-28</span>
+        <span class="type-badge type-badge-fixed" data-i18n="changelog.badge.fixed">修复</span>
+      </div>
+      <h3 data-i18n="changelog.v20260528b.title">翻译修正</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo25">由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260528b.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.4.0 · 2026-05-28</span>
+        <span class="type-badge type-badge-refactor" data-i18n="changelog.badge.refactor">重构</span>
+      </div>
+      <h3 data-i18n="changelog.v20260528a.title">前端重构与可访问性</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo25">由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260528a.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.3.0 · 2026-05-27</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260527.title">双语支持</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo25">由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260527.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.2.0 · 2026-05-11</span>
+        <span class="type-badge type-badge-changed" data-i18n="changelog.badge.changed">变更</span>
+      </div>
+      <h3 data-i18n="changelog.v20260511.title">增强浏览器兼容检测</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260511.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.2.1 · 2026-05-11</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260511b.title">添加联系方式</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260511b.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.1.3 · 2026-05-10</span>
+        <span class="type-badge type-badge-fixed" data-i18n="changelog.badge.fixed">修复</span>
+      </div>
+      <h3 data-i18n="changelog.v20260510.title">IE7-9 兼容与 .gitignore</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260510.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.1.2 · 2026-05-09</span>
+        <span class="type-badge type-badge-removed" data-i18n="changelog.badge.removed">移除</span>
+      </div>
+      <h3 data-i18n="changelog.v20260509c.title">移除 VR 模块</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260509c.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.1.1 · 2026-05-09</span>
+        <span class="type-badge type-badge-changed" data-i18n="changelog.badge.changed">变更</span>
+      </div>
+      <h3 data-i18n="changelog.v20260509b.title">移动端适配</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260509b.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.1.0 · 2026-05-09</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260509a.title">浏览器兼容 & 视频更新</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260509a.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.0.4 · 2026-04-02</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260402c.title">开源引用页</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260402c.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.0.3 · 2026-04-02</span>
+        <span class="type-badge type-badge-changed" data-i18n="changelog.badge.changed">变更</span>
+      </div>
+      <h3 data-i18n="changelog.v20260402b.title">本地视频 & 旧版 VR 页面</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260402b.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.0.2 · 2026-04-02</span>
+        <span class="type-badge type-badge-changed" data-i18n="changelog.badge.changed">变更</span>
+      </div>
+      <h3 data-i18n="changelog.v20260402a.title">团队架构 & UI 迭代</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260402a.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.0.1 · 2026-04-01</span>
+        <span class="type-badge type-badge-launch" data-i18n="changelog.badge.launch">上线</span>
+      </div>
+      <h3 data-i18n="changelog.v20260401c.title">AI Agent 网页革新</h3>
+      <div class="changelog-model" data-i18n="changelog.model.led">由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260401c.body"></div>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.0.0 · 2026-04-01</span>
+        <span class="type-badge type-badge-refactor" data-i18n="changelog.badge.refactor">重构</span>
+      </div>
+      <h3 data-i18n="changelog.v20260401b.title">网页重制</h3>
+      <div class="changelog-model" data-i18n="changelog.model.mimo2">由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260401b.body"></div>
+    </div>
+
+    <!-- Legacy Era Section -->
+    <div class="section-title mt-section">
+      <mdui-icon name="history"></mdui-icon> <span data-i18n="changelog.oldSection">旧版原始 (2017–2020)</span>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-10-16</span>
+        <span class="type-badge type-badge-fixed" data-i18n="changelog.badge.fixed">修复</span>
+      </div>
+      <h3 data-i18n="changelog.v20171016.title">VR 模块维护收尾</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20171016.body"></div>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-10-05</span>
+        <span class="type-badge type-badge-launch" data-i18n="changelog.badge.launch">上线</span>
+      </div>
+      <h3 data-i18n="changelog.v20171005.title">VR 全景模块上线</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20171005.body"></div>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-09-27</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20170927.title">访问计数与内容更新</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20170927.body"></div>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-08-03</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20170803.title">时间线与图片库扩充</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20170803.body"></div>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-07-30</span>
+        <span class="type-badge type-badge-launch" data-i18n="changelog.badge.launch">上线</span>
+      </div>
+      <h3 data-i18n="changelog.v20170730.title">v1.0 / v2.0 / v2.1 发布</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20170730.body"></div>
+    </div>
+
+    <div class="changelog-card changelog-card-legacy">
+      <div class="changelog-card-header">
+        <span class="changelog-version">2017-07-27</span>
+        <span class="type-badge type-badge-launch" data-i18n="changelog.badge.launch">上线</span>
+      </div>
+      <h3 data-i18n="changelog.v20170727.title">项目启动</h3>
+      <div class="changelog-body" data-i18n-html="changelog.v20170727.body"></div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div data-i18n="footer.copyright">Copyright &copy; 2017 大育英帝国 Minecraft 计划项目组</div>
+    <div style="margin-top: 0.5rem;">
+      <a href="index.html" data-i18n="footer.backHome">返回首页</a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;" data-i18n-html="footer.builtWith">
+      Built with <a href="https://www.mdui.org" target="_blank" rel="noopener noreferrer">MDUI v2 <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> &middot; Assisted by <a href="https://claude.ai/code" target="_blank" rel="noopener noreferrer">Claude Code <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> & <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer">OpenCode <mdui-icon name="open_in_new" style="font-size:14px;"></mdui-icon></a> (Xiaomi MiMo V2 Pro / V2.5 Pro & GLM-5.2) &middot; <a href="#" id="oldSiteLink">旧版页面</a>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.4;">
+      <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
+    </div>
+    <div style="margin-top: 0.5rem; font-size: 0.8rem;">
+      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
+    </div>
+  </footer>
+
+  <!-- Old Site Dialog -->
+  <mdui-dialog id="oldSiteDialog" headline="即将前往旧版页面" data-i18n-headline="dialog.oldSite.title">
+    <span data-i18n="dialog.oldSite.body">您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。</span>
+    <mdui-button slot="action" variant="text" onclick="document.getElementById('oldSiteDialog').open = false" data-i18n="dialog.oldSite.cancel">取消</mdui-button>
+    <mdui-button slot="action" variant="tonal" id="oldSiteConfirm" data-i18n="dialog.oldSite.confirm">确定</mdui-button>
+  </mdui-dialog>
+
+  <!-- FAB Navigation -->
+  <div class="fab-nav">
+    <mdui-button-icon href="index.html" title="首页" data-i18n-title="fab.home"><mdui-icon name="home"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="photo.html" title="图片库" data-i18n-title="fab.photos"><mdui-icon name="photo_library"></mdui-icon></mdui-button-icon>
+    <mdui-button-icon href="vr.html" title="VR 全景" data-i18n-title="fab.vr"><mdui-icon name="panorama"></mdui-icon></mdui-button-icon>
+  </div>
+
+  <script type="module" src="https://unpkg.com/mdui@2.1.4/mdui.global.js" integrity="sha384-mVYBLRoXjnnU+uVIxvKARqzZPuh3oN5Lh7OpV9RD3UPEFc/WsPcwIMt2mtNlkZee" crossorigin="anonymous"></script>
+  <script type="module">
+    import { pageDict } from './js/i18n-changelog.js';
+    import { initApp } from './js/app.js';
+
+    initApp(pageDict);
+  </script>
+</body>
+</html>

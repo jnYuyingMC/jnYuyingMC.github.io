@@ -1,0 +1,173 @@
+// i18n dictionary — changelog.html page-specific keys
+export const pageDict = {
+  zh: {
+    title: '更新日志 - 大育英帝国 Minecraft 计划',
+    'page.title': '更新日志',
+    'meta.desc': '大育英帝国 Minecraft 计划更新日志 — 记录旧版原始（2017–2020）与新版重制（2026 Remaster）的全部版本变更。',
+    'changelog.newSection': '新版重制 (2026 Remaster)',
+    'changelog.oldSection': '旧版原始 (2017–2020)',
+    'changelog.badge.added': '新增',
+    'changelog.badge.changed': '变更',
+    'changelog.badge.fixed': '修复',
+    'changelog.badge.removed': '移除',
+    'changelog.badge.launch': '上线',
+    'changelog.badge.refactor': '重构',
+    'changelog.model.glm': '由 OpenCode (GLM-5.2) 辅助完成。',
+    'changelog.model.mimo25': '由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。',
+    'changelog.model.mimo2': '由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。',
+    'changelog.model.led': '由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。',
+
+    'changelog.v20260703.title': '重构、Bug 修复、SEO 与工程化',
+    'changelog.v20260703.body': '<div class="changelog-subgroup">移除地区选择与统一 CDN</div><ul><li>移除 region.html 地区选择页、css/region.css、js/cdn-loader.js（死代码）</li><li>移除国内 CDN 配置（BootCDN / fonts.font.im），全部页面统一使用官方 CDN（unpkg / jsDelivr / Google Fonts）</li><li>4 个页面 head 里的动态 CDN 注入脚本替换为静态 &lt;link&gt;/&lt;script&gt; 标签，消除约 80 行×4 的重复加载逻辑</li><li>4 页 FAB 导航移除地区切换按钮，删除 fab.region 翻译键</li></ul><div class="changelog-subgroup">Bug 修复</div><ul><li>修复视频切换音频泄漏：切换视频源时清空 Bilibili/YouTube iframe src 停止播放</li><li>修复 vr.html GitHub VR 弹窗 heading→headline 拼写错误使 i18n 生效</li><li>credits.html 主题下拉补齐 theme-dropdown class，菜单宽度与其它页一致</li><li>清理 i18n-vr.js 中孤立的 vr.github.*/dialog.github.* 翻译键</li></ul><div class="changelog-subgroup">CDN 版本锁定与 SRI</div><ul><li>钉死 CDN 版本：mdui@2 → mdui@2.1.4，glightbox → glightbox@3.3.1</li><li>为所有 CDN 资源（mdui.css / mdui.global.js / glightbox.min.css / glightbox.min.js）添加 SRI integrity 哈希 + crossorigin="anonymous"</li></ul><div class="changelog-subgroup">SEO 与可访问性</div><ul><li>全站 5 页添加 meta description、Open Graph、Twitter Card 标签（i18n 驱动，unsupported.html 静态）</li><li>i18n 引擎扩展：新增 data-i18n-content / data-i18n-aria-label 处理器；data-i18n-title 自动镜像到 aria-label</li><li>语言切换按钮补 i18n（原硬编码 "Language"）</li><li>GLightbox 实例存入 window._lightbox，切语言时 destroy() 重建，图片描述跟随语言</li></ul><div class="changelog-subgroup">Favicon 与 PWA</div><ul><li>从 logo.png 裁正方形生成 180/192/512px PNG 图标</li><li>新建 manifest.json（name/short_name/theme_color/icons）</li><li>5 页添加 apple-touch-icon / icon / manifest link 标签</li></ul><div class="changelog-subgroup">图片优化</div><ul><li>photolib 全部 15 张照片转为 WebP（quality 85），总大小 ~43MB → ~5.5MB（减 87%）</li><li>PNG 减重 85–97%，JPG 减重 46–89%，删除原文件</li></ul><div class="changelog-subgroup">GLM-5.2 声明</div><ul><li>页脚 footer.builtWith 模型署名追加 GLM-5.2（12 处：4 i18n × 双语 + 4 HTML fallback）</li><li>README 开发说明并列追加 GLM-5.2</li><li>translations-review.md 页脚行同步补充 OpenCode + GLM-5.2</li></ul><div class="changelog-subgroup">工程化</div><ul><li>添加 .eslintrc.json（eslint:recommended + browser env）、.prettierrc、.stylelintrc.json</li><li>新建 package.json（lint / lint:css / format / check 脚本）</li><li>新建 .github/workflows/check.yml：ESLint + Stylelint + lychee 链接检查</li><li>更新 README / AGENTS.md / translations-review.md / CHANGELOG.md</li></ul>',
+
+    'changelog.v20260608.title': '地区选择与 CDN 切换',
+    'changelog.v20260608.body': '<ul><li>新建 region.html 地区选择页面，支持"国际"和"中国内地"两种 CDN 配置</li><li>地区选择支持双语，自动检测浏览器语言</li><li>国际模式使用 unpkg、jsDelivr、Google Fonts CDN</li><li>中国内地模式使用 BootCDN 和 fonts.font.im 加速</li><li>中国内地模式禁用图片预加载以提升加载速度</li><li>地区选择通过 localStorage 持久化</li><li>首次访问无地区设置时自动跳转至 region.html</li><li>所有页面 FAB 导航添加地区切换按钮（地球图标）</li><li>新建 css/region.css 地区选择页样式</li><li>更新 translations-review.md 补充地区页翻译</li></ul>',
+
+    'changelog.v20260528b.title': '翻译修正',
+    'changelog.v20260528b.body': '<ul><li>修正 i18n 字典中的英文翻译</li></ul>',
+
+    'changelog.v20260528a.title': '前端重构与可访问性',
+    'changelog.v20260528a.body': '<div class="changelog-subgroup">代码去重</div><ul><li>将 4 个 HTML 页面中约 954 行重复的 CSS/JS 代码提取为共享模块</li><li>创建 css/ 目录，含 shared.css（公共样式）及 4 个页面专属样式文件</li><li>创建 js/ 目录，使用 ES Modules：browser-check.js、i18n.js（引擎+共享字典）、theme.js、site-ui.js、app.js 及 4 个页面翻译文件</li><li>各页面内联脚本从约 330 行降至约 30 行</li><li>HTML 文件体积缩减 64–69%：index.html 1077→385，photo.html 516→170，vr.html 516→159，credits.html 538→164</li><li>i18n applyLanguage 函数统一：所有页面一致处理全部 6 种 data-i18n-* 属性类型</li></ul><div class="changelog-subgroup">可访问性</div><ul><li>全站 4 页添加"跳至主要内容"链接（WCAG 2.4.1）</li><li>所有外链添加 rel="noopener noreferrer"（35 处，8 个文件）</li><li>图片遮罩添加 aria-hidden 防止屏幕阅读器重复朗读（30 处）</li><li>语言菜单项添加 lang 属性确保屏幕阅读器正确发音</li><li>QR 码图片添加 role="button"、tabindex="0" 和键盘事件（Enter/Space）</li><li>视频 iframe 添加有意义的 title 属性</li></ul><div class="changelog-subgroup">性能优化</div><ul><li>全站添加 &lt;link rel="preload" href="images/background.jpg" as="image"&gt; 优化 LCP</li><li>Material Icons 添加 font-display=swap</li><li>从 credits.html 和 vr.html 移除未使用的 GLightbox 加载</li><li>旧版页面链接从 http:// 升级为 https://</li></ul>',
+
+    'changelog.v20260527.title': '双语支持',
+    'changelog.v20260527.body': '<ul><li>全站 5 页支持中英文切换，MDUI 页面使用地球图标下拉菜单，不支持页使用原生 &lt;select&gt;</li><li>浏览器语言自动检测：优先 localStorage("site-lang")，回退至 navigator.language（zh 前缀→中文，否则→英文）</li><li>语言选择通过 localStorage 跨页面持久化</li><li>使用 data-i18n 属性标记可翻译元素，每页内嵌翻译字典提供 zh/en 翻译</li><li>不支持页的动态字符串（浏览器名、操作系统名）通过字典键翻译</li><li>&lt;html lang&gt; 动态设置为 zh-CN 或 en</li><li>页面标题随语言切换更新</li><li>语言切换仅显示地球图标（无文字标签），避免与主题切换重叠并确保移动端兼容</li></ul>',
+
+    'changelog.v20260511.title': '增强浏览器兼容检测',
+    'changelog.v20260511.body': '<ul><li>unsupported.html 添加受支持浏览器检测——达到版本要求的浏览器显示"受支持"提示卡片，附前往主站按钮</li><li>全面的浏览器识别：IE（所有版本）、旧版 Edge（EdgeHTML）、Chromium 系（Samsung Internet / Android WebView / UC / QQ / 百度 / 猎豹 / 搜狗）、Firefox、Safari、Opera</li><li>Chromium 系浏览器统一按 Chrome/ 版本号 ≥ 102 判定</li><li>全站 4 页替换 IE 检测为完整浏览器版本判定，不兼容浏览器在渲染前跳转</li><li>主站检测覆盖：IE（MSIE/document.documentMode）、旧版 Edge（EdgeHTML）、Chrome/Chromium &lt; 102、Firefox &lt; 106、Opera &lt; 88、Safari &lt; 16.4、未知浏览器</li></ul>',
+
+    'changelog.v20260511b.title': '添加联系方式',
+    'changelog.v20260511b.body': '<ul><li>全站 footer 新增联系我们邮箱链接（mailto:jnyuyingmc@jnyuyingmc.top）</li></ul>',
+
+    'changelog.v20260510.title': 'IE7-9 兼容与 .gitignore',
+    'changelog.v20260510.body': '<ul><li>修复 unsupported.html 使其兼容 IE7-9（使用 display:table 布局、attachEvent、条件注释等 IE8+ 兼容方案）</li><li>更新 .gitignore 支持跨平台开发（macOS / Windows / Linux / 各 IDE）</li></ul>',
+
+    'changelog.v20260509c.title': '移除 VR 模块',
+    'changelog.v20260509c.body': '<ul><li>删除 vrview/ 目录全部 41 个文件（约 43 MB）：Google VR View 框架、Three.js、全景图片（.webp）及相关资源</li><li>VR 内容已迁移至独立仓库维护</li></ul>',
+
+    'changelog.v20260509b.title': '移动端适配',
+    'changelog.v20260509b.body': '<ul><li>移动端主题切换隐藏文字，仅显示图标以节省横向空间</li><li>index.html：hero logo/文字、小节标题、描述卡片、时间线、图片网格、视频选择器全部缩小</li><li>index.html：团队成员网格与团队架构网格移动端改为单列</li><li>index.html：视频分段按钮缩小字号 + 横向滚动</li><li>photo.html：图片网格列宽从 260px 缩至 140px</li><li>vr.html：VR 卡片内边距与字号缩小</li><li>credits.html：引用卡片内边距与字号缩小</li><li>unsupported.html：浏览器网格小屏改为两列</li><li>新增 380px 断点适配极窄设备（index.html、photo.html）</li><li>FAB 导航移动端间距收紧</li><li>修复移动端横向溢出：html/body 添加 overflow-x: hidden</li><li>全站纵向间距精简（hero、sections、cards、timeline、footer）</li><li>视频分段按钮包裹滚动容器修复移动端溢出</li><li>视频按钮顺序：YouTube 移至 Bilibili 旁（同一视频不同平台）</li><li>全站 4 页 footer 新增 IPv6 支持提醒</li></ul>',
+
+    'changelog.v20260509a.title': '浏览器兼容 & 视频更新',
+    'changelog.v20260509a.body': '<ul><li>视频板块新增 YouTube 嵌入版本，分段按钮切换</li><li>本地视频（施工纪录）切换选项卡或滚出屏幕时自动暂停</li><li>新建 unsupported.html 独立浏览器兼容提示页</li><li>IE11 检测：通过 &lt;head&gt; 中的 document.documentMode，跳转至 unsupported.html</li><li>IE10 及以下检测：通过条件注释 &lt;!--[if IE]&gt;</li><li>最低支持浏览器：Chrome 102+ / Edge 102+ / Firefox 106+ / Opera 88+ / Safari 16.4+</li><li>全站 4 个页面 footer 添加旧版页面链接，附确认弹窗</li><li>unsupported.html 新增旧版页面入口供 IE 用户使用</li></ul>',
+
+    'changelog.v20260402c.title': '开源引用页',
+    'changelog.v20260402c.body': '<ul><li>新建 credits.html 独立开源引用页，列出所有依赖项目及许可证（MDUI v2 / GLightbox / Noto Sans SC / Material Icons / Google VR View）</li><li>全站 4 个页面 footer 添加"开源引用"链接</li><li>旧版 VR 页 footer 修正为直接链接至 Google VR View archive 仓库</li></ul>',
+
+    'changelog.v20260402b.title': '本地视频 & 旧版 VR 页面',
+    'changelog.v20260402b.body': '<ul><li>视频板块新增本地施工纪录视频（photolib/2017-7-13-video.mp4），通过原生 &lt;video&gt; 播放，禁用下载</li><li>视频板块支持 B 站 iframe 与本地视频切换（分段按钮）</li><li>旧版 VR 页面（vrview/examples/yuying/index.html）引入主站配色与整体设计重构</li><li>旧版 VR 页添加 Logo、使用说明卡片及 Google VR View 官方文档链接</li><li>旧版 VR 页添加暗色模式切换按钮，localStorage 持久化</li><li>旧版 VR 页添加与主站一致的 FAB 导航（Home / VR）</li><li>旧版 VR 页 Footer 与主站统一（组织名、版权、GitHub Logo、技术栈）</li><li>导航按钮改为 tonal 风格 + Material Icons</li><li>所有外链添加 open_in_new 图标</li><li>保留 Google VR View 框架文件（style.css / vrview.js / index.js）不动</li></ul>',
+
+    'changelog.v20260402a.title': '团队架构 & UI 迭代',
+    'changelog.v20260402a.body': '<ul><li>新增团队架构板块（核心组 / 建筑组 / 美术组 / 渲染组），结构化卡片布局</li><li>团队板块添加群二维码，点击弹出 QQ 群链接对话框</li><li>Footer GitHub 链接旁添加 GitHub 图标</li><li>Hero 区链接替换为 B 站正片与重制版</li><li>VR 页恢复自建源与 GitHub VR 选项，附弃用提示弹窗</li><li>GitHub VR 卡片引用 Google VR View 官方说明</li><li>统一所有 VR 卡片按钮为 variant="tonal" 风格</li><li>三个页面所有外链添加 open_in_new 图标</li><li>Timeline 新增 2017.11.5 正片发布条目</li><li>创建 CHANGELOG.md 供未来 AI Agent 参考</li><li>更新 README.md 补充 VR 移除与旧版清理说明</li></ul>',
+
+    'changelog.v20260401c.title': 'AI Agent 网页革新',
+    'changelog.v20260401c.body': '<ul><li>完整重写 index.html：MDUI v2 单页布局，整合 About / Team / Timeline / Videos / Photos</li><li>重写 photo.html：MDUI v2 + GLightbox 灯箱 + 暗色模式</li><li>创建 vr.html：VR 全景独立页（720yun + YouTube 外链）</li><li>实现暗色模式：系统偏好自动检测 + 手动切换（mdui-theme-dark class）</li><li>团队成员邮箱超链接、时间线新增 AI Agent 条目</li><li>Hero 区 VR 直达按钮、图片库超链接导航</li><li>Footer 技术栈引用："Built with MDUI v2 · GLightbox · Assisted by Claude Code"</li><li>本地化尝试：下载 MDUI v2 CSS/JS + GLightbox 到 lib/，尝试 importmap 重定向图标依赖 → 因兼容性回退为 CDN</li><li>修复 CSS 语法错误（.theme-toggle 后多余 } 破坏后续样式）</li><li>修复 .hero-logo 竖长方形比例（height: auto; border-radius: 12px）</li><li>导航链接优化：VR/图片库按钮跳转独立页面</li></ul>',
+
+    'changelog.v20260401b.title': '网页重制',
+    'changelog.v20260401b.body': '<div class="changelog-subgroup">框架迁移</div><ul><li>MDUI v1 → MDUI v2（Material Design 3, Web Components）</li><li>所有依赖改为 CDN 加载（unpkg.com/mdui@2, jsdelivr GLightbox, Google Fonts Material Icons）</li><li>删除本地 lib/、css/、js/、fonts/、icons/ 目录</li></ul><div class="changelog-subgroup">页面结构</div><ul><li>index.html：主页面，整合原 About / Team / Timeline / Videos / Photos 为单页滚动布局</li><li>photo.html：图片库独立页（GLightbox 灯箱 + 暗色模式）</li><li>vr.html：VR 全景页（外链导航，原自建 VR 下线）</li></ul><div class="changelog-subgroup">自建 VR 下线</div><ul><li>删除 vrview/ 目录和 vr.js（Google VR View 框架已停止维护）</li><li>替换为 YouTube VR 和 720yun VR 外链按钮</li></ul><div class="changelog-subgroup">UI 功能</div><ul><li>全屏 Hero 区（背景图 + 遮罩）</li><li>卡片布局（项目简介、成员卡片）</li><li>项目时间线（2017.7 — 2026.4）</li><li>视频源切换（&lt;mdui-segmented-button-group&gt;，两个 B 站源，不自动播放）</li><li>GLightbox 图片灯箱（photo.html 和 index.html 图片板块）</li><li>团队架构板块（核心 / 建筑 / 美术 / 渲染）+ 群二维码</li><li>GitHub Logo + 链接（Footer）</li></ul><div class="changelog-subgroup">主题切换</div><ul><li>固定右上角，&lt;mdui-dropdown&gt; + &lt;mdui-menu&gt; 单选</li><li>三种模式：亮色 / 暗色 / 跟随系统</li><li>localStorage key theme-mode，跨页面持久化</li><li>系统暗色模式监听：window.matchMedia(\x27(prefers-color-scheme: dark)\x27)</li></ul><div class="changelog-subgroup">导航</div><ul><li>右下角固定 &lt;div class="fab-nav"&gt;，三个 &lt;mdui-button-icon&gt;（首页 / 图片库 / VR）</li><li>半透明背景 + 阴影，适配亮/暗色模式</li></ul><div class="changelog-subgroup">图标</div><ul><li>使用 &lt;mdui-icon name="xxx"&gt; + Google Fonts Material Icons CSS</li><li>不使用 MDUI v2 自带图标模块</li></ul>',
+
+    'changelog.v20171016.title': 'VR 模块维护收尾',
+    'changelog.v20171016.body': '<ul><li>VR 全景模块后续维护：vr.js 脚本调整与 VR 源信息修正</li><li>10 月 16 日对 vr.js 进行两次更新（commit 1671281, 1b79070）</li><li>这是旧版原始阶段的最后一次功能更新</li></ul>',
+
+    'changelog.v20171005.title': 'VR 全景模块上线',
+    'changelog.v20171005.body': '<ul><li>10 月 5 日：引入 Google VR View 框架，部署 360° 校园全景图片（commit 455929c "add vrview!"）</li><li>10 月 6 日：更换 VR 源（commit 0203614）</li><li>10 月 7 日：尝试添加 VR 源选择功能（commit cd6d879），更新 VR 源（commit 47a2dd9）</li><li>10 月 8 日：多次修复 VR 跳转错误、调整 VR 源信息、添加回 vr.html、更新 vr.js（commit 4f41a09 ~ 4917889，共 7 个 commit）</li><li>10 月 12 日：更新项目时间线（commit 2005b98）</li><li>10 月 14 日：合并分支（commit 12e7657）</li><li>10 月 15 日：VR 全景正式发布（commit f795460 "vr release"）</li><li>VR 全景于 10 月 4 日正式上线（见项目时间线），是旧版阶段最重要的功能更新</li></ul>',
+
+    'changelog.v20170927.title': '访问计数与内容更新',
+    'changelog.v20170927.body': '<ul><li>9 月 27 日：更新首页内容（commit 2680fb1, a38b82d）</li><li>9 月 28 日：继续更新首页（commit a38b82d）</li><li>9 月 29 日：添加访问计数器（commit 56f8b56 "add count", ae68582 "add count"）</li><li>9 月 29 日：更新首页与图片库内容（commit 168bf69, 228930f）</li></ul>',
+
+    'changelog.v20170803.title': '时间线与图片库扩充',
+    'changelog.v20170803.body': '<ul><li>8 月 3 日：新增项目时间线模块（commit 87407da "add timeline"）</li><li>8 月 4 日：补充俯视渲染图等图片（commit 53c1f73 "add photo"）</li><li>8 月 5 日：更新首页（commit 623ac45）</li><li>8 月 22 日：更新首页数据（commit cc48bf0 "update data"）</li></ul>',
+
+    'changelog.v20170730.title': 'v1.0 / v2.0 / v2.1 发布',
+    'changelog.v20170730.body': '<ul><li>7 月 30 日：发布 v1.0 首版（commit 19c6b6d "release v1.0"）</li><li>7 月 30 日：发布 v2.0，修复跳转问题、优化界面（commit 70ea87e "v2.0 release"，b6ae252 "fix jump"，cfb59f2 "change a little"，多次更新 index.html / photo.html）</li><li>7 月 31 日：发布 v2.1（commit 58d9415 "release v2.1"，3b5b7b8 "20170731update"）</li><li>7 月 31 日：添加 GitHub 入口（commit f24cf08 "add github"）</li></ul>',
+
+    'changelog.v20170727.title': '项目启动',
+    'changelog.v20170727.body': '<ul><li>7 月 27 日：创建 GitHub 仓库，Initial commit（commit c519cbd）</li><li>7 月 27 日：创建 index.html 首页（commit 1d1308d "Create index.html"）</li><li>7 月 27 日：上传首批资源文件（commit c2e2645 "Add files via upload"）</li><li>7 月 28 日：多次修复与更新首页（commit 9860fd0, 271dbee, cc35a12, d75c5eb, 692d89f, c31aba8, 54dff09, 3614d41, 87b71a4, 0d71a50, affe6c0，共 11 个 commit）</li><li>项目正式启动，完成基础搭建</li></ul>',
+
+    'footer.backHome': '返回首页'
+  },
+  en: {
+    title: 'Changelog - Our Great Yuying Minecraft Project',
+    'page.title': 'Changelog',
+    'meta.desc': 'Changelog for Our Great Yuying Minecraft Project — documenting all version changes across the Original (2017–2020) and 2026 Remaster eras.',
+    'changelog.newSection': '2026 Remaster',
+    'changelog.oldSection': 'Original (2017–2020)',
+    'changelog.badge.added': 'Added',
+    'changelog.badge.changed': 'Changed',
+    'changelog.badge.fixed': 'Fixed',
+    'changelog.badge.removed': 'Removed',
+    'changelog.badge.launch': 'Launch',
+    'changelog.badge.refactor': 'Refactor',
+    'changelog.model.glm': 'Assisted by OpenCode (GLM-5.2).',
+    'changelog.model.mimo25': 'Assisted by Claude Code (Xiaomi MiMo V2.5 Pro).',
+    'changelog.model.mimo2': 'Assisted by Claude Code (Xiaomi MiMo V2 Pro).',
+    'changelog.model.led': 'Led by Claude Code (Xiaomi MiMo V2 Pro).',
+
+    'changelog.v20260703.title': 'Refactoring, Bugfixes, SEO & Tooling',
+    'changelog.v20260703.body': '<div class="changelog-subgroup">Remove Region Selection & Unify CDN</div><ul><li>Removed region.html, css/region.css, js/cdn-loader.js (dead code)</li><li>Removed domestic CDN config (BootCDN / fonts.font.im); all pages unified to official CDN (unpkg / jsDelivr / Google Fonts)</li><li>Replaced dynamic CDN injection scripts in 4 pages with static &lt;link&gt;/&lt;script&gt; tags, eliminating ~80 lines×4 duplicated loader logic</li><li>Removed region toggle button from FAB navigation on all 4 pages; dropped fab.region i18n key</li></ul><div class="changelog-subgroup">Bug Fixes</div><ul><li>Fixed video audio leak: switching video sources now clears Bilibili/YouTube iframe src to stop playback</li><li>Fixed vr.html GitHub VR dialog heading→headline typo so i18n applies correctly</li><li>Added missing theme-dropdown class to credits.html theme dropdown so menu width matches other pages</li><li>Cleaned orphaned vr.github.*/dialog.github.* i18n keys from i18n-vr.js</li></ul><div class="changelog-subgroup">CDN Version Pinning & SRI</div><ul><li>Pinned CDN versions: mdui@2 → mdui@2.1.4, glightbox → glightbox@3.3.1</li><li>Added SRI integrity hashes + crossorigin="anonymous" to all CDN resources (mdui.css / mdui.global.js / glightbox.min.css / glightbox.min.js)</li></ul><div class="changelog-subgroup">SEO & Accessibility</div><ul><li>Added meta description, Open Graph, Twitter Card tags to all 5 pages (i18n-driven on MDUI pages, static on unsupported.html)</li><li>i18n engine extended: new data-i18n-content / data-i18n-aria-label handlers; data-i18n-title now mirrors to aria-label</li><li>Language toggle button given i18n (was hardcoded "Language")</li><li>GLightbox instance stored to window._lightbox, destroys and rebuilds on language switch so image descriptions follow language</li></ul><div class="changelog-subgroup">Favicon & PWA</div><ul><li>Generated 180/192/512px PNG icons from logo.png (center-cropped)</li><li>Created manifest.json (name/short_name/theme_color/icons)</li><li>Added apple-touch-icon / icon / manifest link tags to all 5 pages</li></ul><div class="changelog-subgroup">Image Optimization</div><ul><li>Converted all 15 photolib photos to WebP (quality 85); total size ~43MB → ~5.5MB (-87%)</li><li>PNG reduced 85–97%, JPG reduced 46–89%; originals deleted</li></ul><div class="changelog-subgroup">GLM-5.2 Attribution</div><ul><li>Appended GLM-5.2 to footer.builtWith model attribution (12 places: 4 i18n × 2 langs + 4 HTML fallbacks)</li><li>Added GLM-5.2 to README development attribution</li><li>Updated translations-review.md footer rows to include OpenCode + GLM-5.2</li></ul><div class="changelog-subgroup">Engineering</div><ul><li>Added .eslintrc.json (eslint:recommended + browser env), .prettierrc, .stylelintrc.json</li><li>Created package.json (lint / lint:css / format / check scripts)</li><li>Created .github/workflows/check.yml: ESLint + Stylelint + lychee link check</li><li>Updated README / AGENTS.md / translations-review.md / CHANGELOG.md</li></ul>',
+
+    'changelog.v20260608.title': 'Region Selection & CDN Switching',
+    'changelog.v20260608.body': '<ul><li>Created region.html region selection page with Global and Mainland China CDN options</li><li>Region selection supports bilingual (Chinese/English) with language auto-detection</li><li>Global mode uses unpkg, jsDelivr, Google Fonts CDN</li><li>Mainland China mode uses BootCDN and fonts.font.im acceleration</li><li>Image preload disabled in China mode to improve load speed</li><li>Region choice persisted via localStorage("site-region")</li><li>First-time visitors without region setting auto-redirect to region.html</li><li>Region toggle button (globe icon) added to FAB navigation on all pages</li><li>Created css/region.css for region page styling</li><li>Updated translations-review.md with region page translations</li></ul>',
+
+    'changelog.v20260528b.title': 'Translation Corrections',
+    'changelog.v20260528b.body': '<ul><li>Corrected English translations in i18n dictionaries</li></ul>',
+
+    'changelog.v20260528a.title': 'Frontend Refactoring & Accessibility',
+    'changelog.v20260528a.body': '<div class="changelog-subgroup">Code Deduplication</div><ul><li>Extracted ~954 lines of duplicated CSS/JS across 4 HTML pages into shared modules</li><li>Created css/ directory with shared.css (common styles) + 4 page-specific CSS files</li><li>Created js/ directory with ES Modules: browser-check.js, i18n.js (engine + shared dict), theme.js, site-ui.js, app.js, and 4 page-specific i18n dictionaries</li><li>Each page inline script reduced from ~330 lines to ~30 lines</li><li>HTML file sizes reduced 64–69%: index.html 1077→385, photo.html 516→170, vr.html 516→159, credits.html 538→164</li><li>i18n applyLanguage function consolidated: uniformly handles all 6 data-i18n-* attribute types across all pages</li></ul><div class="changelog-subgroup">Accessibility</div><ul><li>Added skip-to-content links on all 4 main pages (WCAG 2.4.1)</li><li>Added rel="noopener noreferrer" to all target="_blank" links (35 occurrences across 8 files)</li><li>Added aria-hidden="true" to photo overlay divs to prevent duplicate screen reader announcements (30 occurrences)</li><li>Added lang="zh"/lang="en" to language menu items for correct screen reader pronunciation</li><li>Added role="button", tabindex="0", and keyboard handler (Enter/Space) to QR code image</li><li>Added meaningful title attributes to video iframes</li></ul><div class="changelog-subgroup">Performance</div><ul><li>Added &lt;link rel="preload" href="images/background.jpg" as="image"&gt; on all pages for LCP optimization</li><li>Added font-display=swap to Material Icons Google Fonts URL</li><li>Removed unused GLightbox CSS/JS from credits.html and vr.html</li><li>Changed legacy site link from http:// to https://</li></ul>',
+
+    'changelog.v20260527.title': 'Bilingual Support',
+    'changelog.v20260527.body': '<ul><li>All 5 pages support Chinese/English switching; MDUI pages use globe-icon dropdown, unsupported page uses native &lt;select&gt;</li><li>Browser language auto-detection: checks localStorage("site-lang") first, falls back to navigator.language (zh prefix → Chinese, else → English)</li><li>Language choice persisted across pages via localStorage("site-lang")</li><li>data-i18n attribute pattern: each translatable element marked with data-i18n="key", inline i18nDict per page provides zh/en translations</li><li>Dynamic strings in unsupported.html (browser names, OS names) translated via dictionary keys</li><li>&lt;html lang&gt; set dynamically to zh-CN or en</li><li>&lt;title&gt; updated on language switch</li><li>Language toggle icon-only (globe icon, no text label) to prevent overlap with theme toggle on desktop and ensure mobile compatibility</li></ul>',
+
+    'changelog.v20260511.title': 'Enhanced Browser Compatibility Detection',
+    'changelog.v20260511.body': '<ul><li>unsupported.html: added supported-browser detection — browsers meeting version requirements see a "supported" card with link to index.html</li><li>Comprehensive browser identification: IE (all versions), old Edge (EdgeHTML), Chromium variants (Samsung Internet / Android WebView / UC / QQ / Baidu / Liebao / Sogou), Firefox, Safari, Opera</li><li>Chromium-based browsers unified under Chrome/ version token ≥ 102 check</li><li>All 4 main pages: replaced IE-only detection with full browser version check; unsupported browsers redirect before render</li><li>Detection covers: IE (MSIE/document.documentMode), old Edge (EdgeHTML), Chrome/Chromium &lt; 102, Firefox &lt; 106, Opera &lt; 88, Safari &lt; 16.4, unknown browsers</li></ul>',
+
+    'changelog.v20260511b.title': 'Add Contact',
+    'changelog.v20260511b.body': '<ul><li>Added contact email link (mailto:jnyuyingmc@jnyuyingmc.top) to footer of all pages</li></ul>',
+
+    'changelog.v20260510.title': 'IE7-9 Compat & .gitignore',
+    'changelog.v20260510.body': '<ul><li>Fixed unsupported.html for IE7-9 compatibility (display:table layout, attachEvent, conditional comments for IE8+ compat)</li><li>Updated .gitignore for cross-platform development (macOS / Windows / Linux / various IDEs)</li></ul>',
+
+    'changelog.v20260509c.title': 'Remove VR Module',
+    'changelog.v20260509c.body': '<ul><li>Deleted entire vrview/ directory (41 files, ~43 MB): Google VR View framework, Three.js, panoramic images (.webp), and related assets</li><li>VR content moved to a separate dedicated repository</li></ul>',
+
+    'changelog.v20260509b.title': 'Mobile Responsive',
+    'changelog.v20260509b.body': '<ul><li>Theme toggle hides label text on mobile, icon-only saves horizontal space</li><li>index.html: hero logo/text, section titles, description cards, timeline, photo grid, video selector all scaled down</li><li>index.html: team member grid and team structure grid switch to single column on mobile</li><li>index.html: segmented video buttons shrink font + horizontal scroll</li><li>photo.html: photo grid column min-width reduced from 260px to 140px</li><li>vr.html: VR card padding and text sizes reduced</li><li>credits.html: credit card padding and text sizes reduced</li><li>unsupported.html: card/browser-grid adapts to 2-column on small screens</li><li>Added 380px breakpoint for very narrow devices (index.html, photo.html)</li><li>FAB navigation tightened spacing on mobile</li><li>Fixed horizontal scroll overflow on mobile: overflow-x: hidden on html/body + all pages</li><li>Vertical spacing reduced across all pages (hero, sections, cards, timeline, footer)</li><li>Video segmented buttons wrapped in scrollable container to fix mobile overflow</li><li>Video button order: YouTube moved next to Bilibili (same video, different platform)</li><li>IPv6 support notice added to footer of all 4 pages</li></ul>',
+
+    'changelog.v20260509a.title': 'Browser Compatibility & Video Update',
+    'changelog.v20260509a.body': '<ul><li>Added YouTube video embed to video section in index.html (segmented button switching)</li><li>Local video (construction record) auto-pauses when switching tabs or scrolling out of view</li><li>Created unsupported.html standalone browser compatibility warning page</li><li>IE11 detection via document.documentMode in &lt;head&gt;, redirects to unsupported.html</li><li>IE10 and below detection via conditional comments &lt;!--[if IE]&gt;</li><li>Minimum supported browsers: Chrome 102+, Edge 102+, Firefox 106+, Opera 88+, Safari 16.4+</li><li>Added "legacy site" link to footer of all 4 pages with confirmation dialog</li><li>Added old site link to unsupported.html for IE users</li></ul>',
+
+    'changelog.v20260402c.title': 'Credits Page',
+    'changelog.v20260402c.body': '<ul><li>Created credits.html listing all open source dependencies with license info and links (MDUI v2 / GLightbox / Noto Sans SC / Material Icons / Google VR View)</li><li>Added "Open Source Credits" link to footer of all 4 pages</li><li>Fixed legacy VR footer to link directly to Google VR View archive repo</li></ul>',
+
+    'changelog.v20260402b.title': 'Local Video & Legacy VR Page',
+    'changelog.v20260402b.body': '<ul><li>Added local construction-record video (photolib/2017-7-13-video.mp4) via native &lt;video&gt; with nodownload</li><li>Video section supports Bilibili iframe + local video switching via segmented buttons</li><li>Redesigned legacy VR page (vrview/examples/yuying/index.html) with full main-site theming</li><li>Added project logo, info card with usage instructions and Google VR View docs link to legacy VR page</li><li>Added theme toggle (light/dark) to legacy VR page, persisted via localStorage</li><li>Added FAB navigation (Home / VR) matching main site to legacy VR page</li><li>Added footer consistent with main site (org name, copyright, GitHub logo, tech stack)</li><li>Navigation buttons upgraded to variant="tonal" with Material Icons</li><li>All external links marked with open_in_new icon</li><li>Preserved Google VR View dependencies (style.css / vrview.js / index.js) untouched</li></ul>',
+
+    'changelog.v20260402a.title': 'Team Structure & UI Refinements',
+    'changelog.v20260402a.body': '<ul><li>Added team structure section (Core / Building / Art / Rendering) with structured card layout</li><li>Added group QR code in team section with dialog popup</li><li>Added GitHub logo icon next to footer GitHub link</li><li>Hero section: replaced VR links with Bilibili video links (main video + remaster)</li><li>VR page: restored self-hosted source and GitHub VR options with deprecation dialogs</li><li>Added Google VR View official reference and link in GitHub VR card</li><li>Unified all VR card buttons to variant="tonal" style</li><li>Added open_in_new icon to all external links across three pages</li><li>Added timeline entry: 2017.11.5 main video release</li><li>Created CHANGELOG.md for future AI agent reference</li><li>Updated README.md with VR removal and legacy cleanup notes</li></ul>',
+
+    'changelog.v20260401c.title': 'AI Agent Site Overhaul',
+    'changelog.v20260401c.body': '<ul><li>Rewrote index.html: MDUI v2 single-page layout integrating About / Team / Timeline / Videos / Photos</li><li>Rewrote photo.html: MDUI v2 + GLightbox lightbox + dark mode</li><li>Created vr.html: standalone VR panorama page (720yun + YouTube external links)</li><li>Implemented dark mode: system preference auto-detection + manual toggle via mdui-theme-dark class</li><li>Team member email hyperlinks, timeline entry for 2026.4.1 AI Agent renovation</li><li>Hero section VR direct buttons, photo gallery hyperlink navigation</li><li>Footer tech stack attribution: "Built with MDUI v2 · GLightbox · Assisted by Claude Code"</li><li>Localization attempt: downloaded MDUI v2 CSS/JS + GLightbox to lib/, tried importmap to redirect icon dependencies → reverted to CDN due to compatibility issues</li><li>Fixed CSS syntax error (extra } after .theme-toggle broke subsequent styles)</li><li>Fixed .hero-logo vertical rectangle aspect ratio (height: auto; border-radius: 12px)</li><li>Navigation link optimization: VR/photo buttons navigate to standalone pages</li></ul>',
+
+    'changelog.v20260401b.title': 'Site Remaster',
+    'changelog.v20260401b.body': '<div class="changelog-subgroup">Framework Migration</div><ul><li>MDUI v1 → MDUI v2 (Material Design 3, Web Components)</li><li>All dependencies loaded via CDN (unpkg.com/mdui@2, jsdelivr GLightbox, Google Fonts Material Icons)</li><li>Removed local lib/, css/, js/, fonts/, icons/ directories</li></ul><div class="changelog-subgroup">Page Structure</div><ul><li>index.html: main page, merged original About / Team / Timeline / Videos / Photos into single-page scroll layout</li><li>photo.html: standalone photo gallery page (GLightbox lightbox + dark mode)</li><li>vr.html: VR panorama page (external link navigation, original self-hosted VR taken offline)</li></ul><div class="changelog-subgroup">Self-hosted VR Removed</div><ul><li>Deleted vrview/ directory and vr.js (Google VR View framework discontinued)</li><li>Replaced with YouTube VR and 720yun VR external link buttons</li></ul><div class="changelog-subgroup">UI Features</div><ul><li>Full-screen Hero section (background image + overlay)</li><li>Card layout (project intro, member cards)</li><li>Project timeline (2017.7 — 2026.4)</li><li>Video source switch (&lt;mdui-segmented-button-group&gt;, two Bilibili sources, no autoplay)</li><li>GLightbox image lightbox (photo.html and index.html photo section)</li><li>Team structure section (Core / Building / Art / Rendering) + group QR code</li><li>GitHub logo + link (Footer)</li></ul><div class="changelog-subgroup">Theme Toggle</div><ul><li>Fixed position top-right, &lt;mdui-dropdown&gt; + &lt;mdui-menu&gt; single select</li><li>Three modes: Light / Dark / Follow System</li><li>localStorage key theme-mode, cross-page persistence</li><li>System dark mode listener: window.matchMedia(\x27(prefers-color-scheme: dark)\x27)</li></ul><div class="changelog-subgroup">Navigation</div><ul><li>Fixed bottom-right &lt;div class="fab-nav"&gt;, three &lt;mdui-button-icon&gt; (Home / Photos / VR)</li><li>Semi-transparent background + shadow, adaptive to light/dark mode</li></ul><div class="changelog-subgroup">Icons</div><ul><li>Using &lt;mdui-icon name="xxx"&gt; + Google Fonts Material Icons CSS</li><li>Not using MDUI v2 built-in icon module</li></ul>',
+
+    'changelog.v20171016.title': 'VR Module Maintenance Wrap-up',
+    'changelog.v20171016.body': '<ul><li>Follow-up maintenance to the VR panorama module: vr.js script adjustments and VR source info corrections</li><li>Oct 16: two updates to vr.js (commit 1671281, 1b79070)</li><li>This was the last feature update in the original era</li></ul>',
+
+    'changelog.v20171005.title': 'VR Panorama Module Launch',
+    'changelog.v20171005.body': '<ul><li>Oct 5: Introduced Google VR View framework, deployed 360° campus panoramic images (commit 455929c "add vrview!")</li><li>Oct 6: Changed VR source (commit 0203614)</li><li>Oct 7: Attempted VR source selector feature (commit cd6d879), updated VR source (commit 47a2dd9)</li><li>Oct 8: Multiple fixes for VR jump errors, VR source info adjustments, restored vr.html, updated vr.js (commit 4f41a09 ~ 4917889, 7 commits)</li><li>Oct 12: Updated project timeline (commit 2005b98)</li><li>Oct 14: Merged branch (commit 12e7657)</li><li>Oct 15: Official VR release (commit f795460 "vr release")</li><li>VR panorama went live on October 4 (see project timeline) — the most significant feature update of the original era</li></ul>',
+
+    'changelog.v20170927.title': 'Visit Counter & Content Updates',
+    'changelog.v20170927.body': '<ul><li>Sep 27: Updated homepage content (commit 2680fb1, a38b82d)</li><li>Sep 28: Continued homepage updates (commit a38b82d)</li><li>Sep 29: Added visit counter (commit 56f8b56 "add count", ae68582 "add count")</li><li>Sep 29: Updated homepage and photo gallery content (commit 168bf69, 228930f)</li></ul>',
+
+    'changelog.v20170803.title': 'Timeline & Photo Gallery Expansion',
+    'changelog.v20170803.body': '<ul><li>Aug 3: Added project timeline module (commit 87407da "add timeline")</li><li>Aug 4: Supplemented top-down render and other photos (commit 53c1f73 "add photo")</li><li>Aug 5: Updated homepage (commit 623ac45)</li><li>Aug 22: Updated homepage data (commit cc48bf0 "update data")</li></ul>',
+
+    'changelog.v20170730.title': 'v1.0 / v2.0 / v2.1 Release',
+    'changelog.v20170730.body': '<ul><li>Jul 30: Released v1.0 first version (commit 19c6b6d "release v1.0")</li><li>Jul 30: Released v2.0 with jump fixes and UI polish (commit 70ea87e "v2.0 release", b6ae252 "fix jump", cfb59f2 "change a little", multiple index.html / photo.html updates)</li><li>Jul 31: Released v2.1 (commit 58d9415 "release v2.1", 3b5b7b8 "20170731update")</li><li>Jul 31: Added GitHub link (commit f24cf08 "add github")</li></ul>',
+
+    'changelog.v20170727.title': 'Project Launch',
+    'changelog.v20170727.body': '<ul><li>Jul 27: Created GitHub repository, Initial commit (commit c519cbd)</li><li>Jul 27: Created index.html homepage (commit 1d1308d "Create index.html")</li><li>Jul 27: Uploaded first batch of resource files (commit c2e2645 "Add files via upload")</li><li>Jul 28: Multiple fixes and homepage updates (commit 9860fd0, 271dbee, cc35a12, d75c5eb, 692d89f, c31aba8, 54dff09, 3614d41, 87b71a4, 0d71a50, affe6c0 — 11 commits total)</li><li>Project officially launched, basic setup completed</li></ul>',
+
+    'footer.backHome': 'Back to Home'
+  }
+};

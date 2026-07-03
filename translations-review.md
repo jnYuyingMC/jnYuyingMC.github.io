@@ -210,3 +210,50 @@
 | `osAndroid` | Android {0} | Android {0} |
 | `osIos` | iOS {0} | iOS {0} |
 | `osLinux` | Linux | Linux |
+
+---
+
+## changelog.html — Changelog / 更新日志
+
+| Key | 中文 | English |
+|-----|------|---------|
+| `title` | 更新日志 - 大育英帝国 Minecraft 计划 | Changelog - Our Great Yuying Minecraft Project |
+| `page.title` | 更新日志 | Changelog |
+| `meta.desc` | 大育英帝国 Minecraft 计划更新日志 — 记录旧版原始（2017–2020）与新版重制（2026 Remaster）的全部版本变更。 | Changelog for Our Great Yuying Minecraft Project — documenting all version changes across the Original (2017–2020) and 2026 Remaster eras. |
+| `changelog.newSection` | 新版重制 (2026 Remaster) | 2026 Remaster |
+| `changelog.oldSection` | 旧版原始 (2017–2020) | Original (2017–2020) |
+| `changelog.badge.added` | 新增 | Added |
+| `changelog.badge.changed` | 变更 | Changed |
+| `changelog.badge.fixed` | 修复 | Fixed |
+| `changelog.badge.removed` | 移除 | Removed |
+| `changelog.badge.launch` | 上线 | Launch |
+| `changelog.badge.refactor` | 重构 | Refactor |
+| `changelog.model.glm` | 由 OpenCode (GLM-5.2) 辅助完成。 | Assisted by OpenCode (GLM-5.2). |
+| `changelog.model.mimo25` | 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). |
+| `changelog.model.mimo2` | 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2 Pro). |
+| `changelog.model.led` | 由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。 | Led by Claude Code (Xiaomi MiMo V2 Pro). |
+| `changelog.v20260703.title` | 重构、Bug 修复、SEO 与工程化 | Refactoring, Bugfixes, SEO & Tooling |
+| `changelog.v20260703.body` | *(contains HTML)* 移除 region…统一 CDN…修复 4 Bug…SRI…SEO…WebP…lint/CI | *(contains HTML)* Removed region... unified CDN... fixed 4 bugs... SRI... SEO... WebP... lint/CI |
+| `changelog.v20260608.title` | 地区选择与 CDN 切换 | Region Selection & CDN Switching |
+| `changelog.v20260608.body` | *(contains HTML)* 新建地区选择页面…BootCDN…FAB 导航 | *(contains HTML)* New region selection page... BootCDN... FAB navigation |
+| `changelog.v20260528b.title` | 翻译修正 | Translation Corrections |
+| `changelog.v20260528a.title` | 前端重构与可访问性 | Frontend Refactoring & Accessibility |
+| `changelog.v20260527.title` | 双语支持 | Bilingual Support |
+| `changelog.v20260511.title` | 增强浏览器兼容检测 | Enhanced Browser Compatibility Detection |
+| `changelog.v20260511b.title` | 添加联系方式 | Add Contact |
+| `changelog.v20260510.title` | IE7-9 兼容与 .gitignore | IE7-9 Compat & .gitignore |
+| `changelog.v20260509c.title` | 移除 VR 模块 | Remove VR Module |
+| `changelog.v20260509b.title` | 移动端适配 | Mobile Responsive |
+| `changelog.v20260509a.title` | 浏览器兼容 & 视频更新 | Browser Compatibility & Video Update |
+| `changelog.v20260402c.title` | 开源引用页 | Credits Page |
+| `changelog.v20260402b.title` | 本地视频 & 旧版 VR 页面 | Local Video & Legacy VR Page |
+| `changelog.v20260402a.title` | 团队架构 & UI 迭代 | Team Structure & UI Refinements |
+| `changelog.v20260401c.title` | AI Agent 网页革新 | AI Agent Site Overhaul |
+| `changelog.v20260401b.title` | 网页重制 | Site Remaster |
+| `changelog.v20171016.title` | VR 模块维护收尾 | VR Module Maintenance Wrap-up |
+| `changelog.v20171005.title` | VR 全景模块上线 | VR Panorama Module Launch |
+| `changelog.v20170927.title` | 访问计数与内容更新 | Visit Counter & Content Updates |
+| `changelog.v20170803.title` | 时间线与图片库扩充 | Timeline & Photo Gallery Expansion |
+| `changelog.v20170730.title` | v1.0 / v2.0 / v2.1 发布 | v1.0 / v2.0 / v2.1 Release |
+| `changelog.v20170727.title` | 项目启动 | Project Launch |
+| `footer.backHome` | 返回首页 | Back to Home |

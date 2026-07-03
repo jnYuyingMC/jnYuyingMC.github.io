@@ -1,0 +1,128 @@
+/* === changelog.html page-specific styles === */
+
+/* Changelog section */
+.changelog-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+/* Section title (shared with credits, redefined for self-containment) */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--mdui-color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-title.mt-section { margin-top: 3rem; }
+
+/* Changelog cards */
+.changelog-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+  margin-bottom: 1.2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.changelog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Legacy cards: left teal border to distinguish from new-era cards */
+.changelog-card-legacy {
+  border-left: 4px solid var(--mdui-color-primary);
+}
+
+/* Card header */
+.changelog-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+.changelog-version {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--mdui-color-primary);
+  font-family: "SF Mono", Consolas, "Courier New", monospace;
+}
+.changelog-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: #333;
+}
+.changelog-card p {
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Type badges */
+.type-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.type-badge-added { background: #e0f2f1; color: #00897b; }
+.type-badge-changed { background: #fff3e0; color: #ef6c00; }
+.type-badge-fixed { background: #e3f2fd; color: #1565c0; }
+.type-badge-removed { background: #ffebee; color: #c62828; }
+.type-badge-launch { background: #e8f5e9; color: #2e7d32; }
+.type-badge-refactor { background: #f3e5f5; color: #7b1fa2; }
+
+/* Model attribution */
+.changelog-model {
+  font-size: 0.82rem;
+  color: #999;
+  margin-bottom: 0.6rem;
+  font-style: italic;
+}
+
+/* Body content (lists) */
+.changelog-body ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #666;
+  line-height: 1.7;
+}
+.changelog-body li { margin-bottom: 0.3rem; }
+.changelog-body li strong { color: #444; }
+
+/* Sub-group headings within a card (e.g. "Framework Migration") */
+.changelog-subgroup {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--mdui-color-primary);
+  margin: 1rem 0 0.4rem;
+  padding-left: 0;
+}
+.changelog-subgroup:first-child { margin-top: 0; }
+
+/* Dark mode */
+.mdui-theme-dark .changelog-card { background: #1e1e1e; }
+.mdui-theme-dark .changelog-card h3 { color: #e0e0e0; }
+.mdui-theme-dark .changelog-card p { color: #aaa; }
+.mdui-theme-dark .changelog-body ul { color: #aaa; }
+.mdui-theme-dark .changelog-body li strong { color: #ccc; }
+.mdui-theme-dark .changelog-subgroup { color: #80cbc4; }
+.mdui-theme-dark .changelog-model { color: #666; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .changelog-section { padding: 1.2rem 1rem; }
+  .section-title { font-size: 1.3rem; margin-bottom: 1rem; }
+  .changelog-card { padding: 1rem; margin-bottom: 0.8rem; }
+  .changelog-card h3 { font-size: 1.05rem; }
+  .changelog-card p { font-size: 0.9rem; }
+  .changelog-version { font-size: 1rem; }
+  .changelog-card-header { gap: 0.5rem; }
+}

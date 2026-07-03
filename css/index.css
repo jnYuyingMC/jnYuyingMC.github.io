@@ -14,7 +14,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../images/background.jpg') center/cover no-repeat;
+  background: url('../images/background.webp') center/cover no-repeat;
   filter: brightness(0.45);
 }
 .hero-content {

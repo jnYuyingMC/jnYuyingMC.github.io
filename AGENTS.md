@@ -13,6 +13,7 @@ Static HTML website for "大育英帝国 Minecraft 计划" (Da Yuying Empire Min
 - To preview changes locally, use any static file server (Live Server, `python -m http.server`, etc.).
 - **Lint/format**: `npm install` then `npm run check` (ESLint + Stylelint) or `npm run format` (Prettier). CI runs the same via `.github/workflows/check.yml`.
 - **Tooling history**: iterations assisted by Claude Code / OpenCode (Xiaomi MiMo V2 Pro / V2.5 Pro, GLM-5.2).
+- **Versioning**: Era-based SemVer. Original era (2017–2020) reached v2.1; the 2026 Remaster starts at v3.0.0. Rules: **major** = framework-level change (e.g. MDUI v1→v2), **minor** = new feature/page (e.g. bilingual support, new page), **patch** = bug fix, style tweak, content update. Version history is documented in `CHANGELOG.md` and displayed on `changelog.html`.
 
 ## Architecture
 

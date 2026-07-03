@@ -27,7 +27,7 @@ body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
   content: '';
   position: absolute;
   inset: 0;
-  background: url('../images/background.jpg') center/cover no-repeat;
+  background: url('../images/background.webp') center/cover no-repeat;
   filter: brightness(0.45);
 }
 .page-header-content {
