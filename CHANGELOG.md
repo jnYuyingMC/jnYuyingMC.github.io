@@ -39,7 +39,7 @@ Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
 - Added Umami privacy-friendly analytics tracker (`cloud.umami.is`) to 5 MDUI pages via `defer` script in `<head>` after `browser-check.js`; `unsupported.html` kept self-contained / 5 个 MDUI 页面 head 添加 Umami 无 cookie 隐私分析追踪器（defer 脚本，browser-check.js 之后），unsupported.html 保持自包含
 - Created `changelog.html` page with bilingual (zh/en) version history: 7 legacy milestones (2017–2020, summarized from Original branch commits) + 12 new-era entries (2026-04-01 ~ 2026-07-03, from CHANGELOG.md); card-based layout styled after credits.html, legacy cards distinguished by left teal border; new files `css/changelog.css` + `js/i18n-changelog.js`; updated `translations-review.md` with changelog section / 新建 changelog.html 更新日志页，双语，旧版 7 里程碑（2017–2020，从 Original 分支 commit 归纳）+ 新版 12 条目（2026-04-01 ~ 2026-07-03，取自 CHANGELOG.md）；仿 credits.html 卡片布局，旧版卡片左侧 teal 竖线区分；新增 css/changelog.css 与 js/i18n-changelog.js；translations-review.md 同步
 
-## v3.5.0 — 2026-06-08 — Region Selection & CDN Switching / 地区选择与 CDN 切换
+## v3.5.0 — 2026-06-08 — Region Selection & CDN Switching (deprecated) / 地区选择与 CDN 切换 (deprecated)
 
 Assisted by OpenCode (Xiaomi MiMo V2.5 Pro). 由 OpenCode (Xiaomi MiMo V2.5 Pro) 辅助完成。
 
@@ -204,14 +204,14 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 
 Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。
 
-- Redesigned `vrview/examples/yuying/index.html` with full main-site theming / 旧版 VR 页面引入主站配色与整体设计
-- Added project logo, info card with usage instructions and Google VR View docs link / 添加 Logo、使用说明卡片及官方文档链接
-- Added theme toggle (light/dark), persisted via localStorage / 添加暗色模式切换按钮，localStorage 持久化
-- Added FAB navigation (Home / VR) matching main site / 添加与主站一致的 FAB 导航
-- Added footer consistent with main site (org name, copyright, GitHub logo, tech stack) / Footer 与主站统一
-- Navigation buttons upgraded to `variant="tonal"` with Material Icons / 导航按钮改为 tonal 风格 + 图标
-- All external links marked with `open_in_new` icon / 所有外链添加新窗口图标
-- Preserved Google VR View dependencies (`../style.css`, `vrview.js`, `index.js`) untouched / 未改动 VR View 框架文件
+- Redesigned `vrview/examples/yuying/index.html` with full main-site theming (deprecated) / 旧版 VR 页面引入主站配色与整体设计 (deprecated)
+- Added project logo, info card with usage instructions and Google VR View docs link (deprecated) / 添加 Logo、使用说明卡片及官方文档链接 (deprecated)
+- Added theme toggle (light/dark), persisted via localStorage (deprecated) / 添加暗色模式切换按钮，localStorage 持久化 (deprecated)
+- Added FAB navigation (Home / VR) matching main site (deprecated) / 添加与主站一致的 FAB 导航 (deprecated)
+- Added footer consistent with main site (org name, copyright, GitHub logo, tech stack) (deprecated) / Footer 与主站统一 (deprecated)
+- Navigation buttons upgraded to `variant="tonal"` with Material Icons (deprecated) / 导航按钮改为 tonal 风格 + 图标 (deprecated)
+- All external links marked with `open_in_new` icon (deprecated) / 所有外链添加新窗口图标 (deprecated)
+- Preserved Google VR View dependencies (`../style.css`, `vrview.js`, `index.js`) untouched (deprecated) / 未改动 VR View 框架文件 (deprecated)
 
 ## v3.0.2 — 2026-04-01 (Evening) — UI Refinements / UI 迭代优化
 
@@ -221,7 +221,7 @@ Assisted by Claude Code (Xiaomi MiMo V2 Pro). 由 Claude Code (Xiaomi MiMo V2 Pr
 - Added group QR code in team section with dialog popup / 群二维码 + 弹窗
 - Added GitHub logo icon next to footer GitHub link / Footer GitHub 链接旁添加图标
 - Hero section: replaced VR links with Bilibili video links (正片 + 重制版) / Hero 区链接替换为 B 站正片与重制版
-- VR page: restored self-hosted source and GitHub VR options with deprecation dialogs / VR 页恢复自建源与 GitHub VR，附弃用提示弹窗
+- VR page: restored self-hosted source and GitHub VR options with deprecation dialogs (deprecated) / VR 页恢复自建源与 GitHub VR，附弃用提示弹窗 (deprecated)
 - Added Google VR View official reference and link in GitHub VR card / GitHub VR 卡片引用 Google 官方说明
 - Unified all VR card buttons to `variant="tonal"` style / 统一 VR 卡片按钮风格
 - Added `open_in_new` icon to all external links across three pages / 所有外链添加新窗口图标

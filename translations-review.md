@@ -234,7 +234,7 @@
 | `changelog.model.led` | 由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。 | Led by Claude Code (Xiaomi MiMo V2 Pro). |
 | `changelog.v20260703.title` | 重构、Bug 修复、SEO 与工程化 | Refactoring, Bugfixes, SEO & Tooling |
 | `changelog.v20260703.body` | *(contains HTML)* 移除 region…统一 CDN…修复 4 Bug…SRI…SEO…WebP…lint/CI | *(contains HTML)* Removed region... unified CDN... fixed 4 bugs... SRI... SEO... WebP... lint/CI |
-| `changelog.v20260608.title` | 地区选择与 CDN 切换 | Region Selection & CDN Switching |
+| `changelog.v20260608.title` | 地区选择与 CDN 切换 (deprecated) | Region Selection & CDN Switching (deprecated) |
 | `changelog.v20260608.body` | *(contains HTML)* 新建地区选择页面…BootCDN…FAB 导航 | *(contains HTML)* New region selection page... BootCDN... FAB navigation |
 | `changelog.v20260528b.title` | 翻译修正 | Translation Corrections |
 | `changelog.v20260528a.title` | 前端重构与可访问性 | Frontend Refactoring & Accessibility |
@@ -248,6 +248,7 @@
 | `changelog.v20260402c.title` | 开源引用页 | Credits Page |
 | `changelog.v20260402b.title` | 本地视频 & 旧版 VR 页面 | Local Video & Legacy VR Page |
 | `changelog.v20260402a.title` | 团队架构 & UI 迭代 | Team Structure & UI Refinements |
+| `changelog.v20260402a.body` | *(contains HTML; self-hosted VR source li marked deprecated)* 团队架构 + UI 迭代，含"VR 页恢复自建源 (deprecated)" | *(contains HTML; self-hosted VR source li marked deprecated)* Team structure + UI refinements, incl. "VR page restored self-hosted source (deprecated)" |
 | `changelog.v20260401c.title` | AI Agent 网页革新 | AI Agent Site Overhaul |
 | `changelog.v20260401b.title` | 网页重制 | Site Remaster |
 | `changelog.v20171016.title` | VR 模块维护收尾 | VR Module Maintenance Wrap-up |
