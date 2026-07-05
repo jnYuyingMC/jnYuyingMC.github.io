@@ -28,6 +28,17 @@
   <link rel="manifest" href="manifest.json">
   <script src="js/browser-check.js"></script>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="2b34bec1-4c19-431b-9259-7b9f24941290"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://cdn.jsdelivr.net/npm/react@19.2.7/+esm",
+      "react/jsx-runtime": "https://cdn.jsdelivr.net/npm/react@19.2.7/jsx-runtime/+esm",
+      "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.2.7/+esm",
+      "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19.2.7/client/+esm",
+      "motion/react": "https://cdn.jsdelivr.net/npm/motion@12.42.2/react/+esm"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -74,6 +85,16 @@
     <!-- New Era Section -->
     <div class="section-title">
       <mdui-icon name="auto_awesome"></mdui-icon> <span data-i18n="changelog.newSection">新版重制 (2026 Remaster)</span>
+    </div>
+
+    <div class="changelog-card">
+      <div class="changelog-card-header">
+        <span class="changelog-version">v3.7.0 · 2026-07-05</span>
+        <span class="type-badge type-badge-added" data-i18n="changelog.badge.added">新增</span>
+      </div>
+      <h3 data-i18n="changelog.v20260705.title">邮箱隐藏与抓娃娃验证</h3>
+      <div class="changelog-model" data-i18n="changelog.model.glm">由 OpenCode (GLM-5.2) 辅助完成。</div>
+      <div class="changelog-body" data-i18n-html="changelog.v20260705.body"></div>
     </div>
 
     <div class="changelog-card">
@@ -310,7 +331,7 @@
       <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem;">
-      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
+      <button class="email-reveal email-reveal--footer" data-email="am55dXlpbmdtY0Bqbnl1eWluZ21jLnRvcA==" data-i18n="footer.contact" style="font-size:0.8rem;">联系我们</button>
     </div>
   </footer>
 
@@ -332,8 +353,10 @@
   <script type="module">
     import { pageDict } from './js/i18n-changelog.js';
     import { initApp } from './js/app.js';
+    import { initEmailCaptcha } from './js/email-captcha.js';
 
     initApp(pageDict);
+    initEmailCaptcha();
   </script>
 </body>
 </html>

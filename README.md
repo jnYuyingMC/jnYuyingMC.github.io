@@ -30,14 +30,22 @@
 - **移动端适配 / Mobile Responsive**: 全站 5 页移动端布局优化——主题切换仅图标、栅格列宽缩小、字号与内边距适配、380px 极窄断点 / All 5 pages optimized: icon-only theme toggle, smaller grid columns, scaled typography, 380px breakpoint
 - **双语支持 / Bilingual Support**: 全站 5 页支持中英文切换（地球图标下拉 / 原生 select），浏览器语言自动检测，localStorage 跨页面持久化 / All 5 pages support Chinese/English switching with browser language auto-detection and localStorage persistence
 - **前端重构与可访问性 / Frontend Refactoring & Accessibility**: 将 4 页约 954 行重复 CSS/JS 提取为共享模块（`css/`、`js/`），HTML 体积缩减 64–69%；新增跳至内容链接、`rel="noopener noreferrer"`、`aria-hidden`、`lang` 属性、键盘导航等 WCAG 可访问性改进；背景图预加载、`font-display=swap`、移除未使用的 GLightbox 加载等性能优化 / Extracted ~954 lines of duplicated CSS/JS into shared modules, HTML sizes reduced 64–69%; added skip-to-content, rel="noopener noreferrer", aria-hidden, lang attrs, keyboard navigation for WCAG; background preload, font-display=swap, removed unused GLightbox for performance
+- **移除地区选择 / Region Selection Removed**: 删除 `region.html` 与国内 CDN 配置，全站统一使用官方 CDN（unpkg / jsDelivr / Google Fonts）静态标签 / Removed region.html and domestic CDN, unified to official CDN via static tags
+- **SEO 与可访问性 / SEO & Accessibility**: 全站 5 页添加 meta description / Open Graph / Twitter Card；i18n 引擎扩展 aria-label 处理；GLightbox 切语言重建；现代 favicon（180/192/512 图标 + manifest.json）/ meta description / Open Graph / Twitter Card on all 5 pages; aria-label mirror in i18n; GLightbox rebuild on lang switch; modern favicon + manifest.json
+- **图片优化 / Image Optimization**: 全站 15 张照片 + 3 张 images 图（background/logo/qrcode）转 WebP，总体积 ~46MB → ~5.7MB（减 87%）/ Converted 15 photos + 3 images to WebP, total ~46MB → ~5.7MB (-87%)
+- **工程化 / Tooling**: ESLint + Prettier + Stylelint 配置 + `package.json` + GitHub Actions CI（`.github/workflows/check.yml`）/ ESLint + Prettier + Stylelint config + package.json + GitHub Actions CI
+- **更新日志页 / Changelog Page**: 新建 `changelog.html`，双语版本历史（旧版 7 里程碑 + 新版 17 条目），era-based SemVer 从 v3.0.0 起 / New changelog.html page with bilingual version history (7 legacy milestones + 17 new-era entries), era-based SemVer starting at v3.0.0
+- **邮箱隐藏与抓娃娃验证 / Email Hiding & PlayCaptcha**: 全站邮箱默认隐藏（Base64 编码），点击后弹出 PlayCaptcha 抓娃娃机人机验证（React 19 + Motion 12，懒加载），验证通过后揭示邮箱；响应式 zoom 适配手机与桌面 / All emails hidden by default (Base64-encoded), click to open PlayCaptcha claw-machine verification (React 19 + Motion 12, lazy-loaded), responsive zoom for mobile & desktop
+- **数据统计 / Analytics**: 5 个 MDUI 页面集成 Umami 无 cookie 隐私分析（`defer` 脚本） / Umami cookieless analytics on 5 MDUI pages via defer script
 
 ## 文件结构 / File Structure
 
 ```
-├── index.html              # 主页面（395 行，原 1077）/ Main page
-├── photo.html              # 图片库（177 行，原 516）/ Photo gallery
-├── vr.html                 # VR 全景（139 行，原 516）/ VR panorama
-├── credits.html            # 开源引用（164 行，原 538）/ Credits
+├── index.html              # 主页面（411 行，原 1077）/ Main page
+├── photo.html              # 图片库（185 行，原 516）/ Photo gallery
+├── vr.html                 # VR 全景（155 行，原 516）/ VR panorama
+├── credits.html            # 开源引用（180 行，原 538）/ Credits
+├── changelog.html          # 更新日志 / Changelog
 ├── unsupported.html        # 浏览器不支持提示 / Browser compat warning
 ├── css/
 │   ├── shared.css          # 公共样式 / Common styles
@@ -52,11 +60,14 @@
 │   ├── i18n-photo.js       # 图片库翻译 / Photo translations
 │   ├── i18n-vr.js          # VR 翻译 / VR translations
 │   ├── i18n-credits.js     # 引用页翻译 / Credits translations
+│   ├── i18n-changelog.js   # 更新日志翻译 / Changelog translations
 │   ├── theme.js            # 主题切换 / Theme toggle
 │   ├── site-ui.js          # 共享 UI 逻辑 / Shared UI wiring
+│   ├── email-captcha.js    # 邮箱验证（PlayCaptcha 懒加载）/ Email captcha (lazy-load)
 │   └── app.js              # 入口编排 / Orchestrator
 ├── images/                 # 背景图、Logo、二维码等 / Background, logo, QR
 ├── photolib/               # 图片库资源 / Photo gallery assets
+├── manifest.json           # PWA manifest
 ├── favicon.ico
 ├── README.md
 ├── CHANGELOG.md
@@ -69,6 +80,8 @@
 - [MDUI v2](https://www.mdui.org) — Material Design 3 前端框架（Web Components）
 - [GLightbox](https://biati-digital.github.io/glightbox/) — 图片灯箱
 - [Material Icons](https://fonts.google.com/icons) — 图标（Google Fonts CSS）
+- [PlayCaptcha](https://github.com/mortspace/playcaptcha) — 邮箱抓娃娃机人机验证（React 19 + Motion 12，懒加载）
+- [Umami](https://umami.is) — 无 cookie 隐私分析
 
 ## 开发方式 / Development
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.7.0 — 2026-07-05 — Email Hiding & PlayCaptcha / 邮箱隐藏与抓娃娃验证
+
+Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
+
+- All email addresses across the site are now hidden by default; replaced plaintext `mailto:` links with `.email-reveal` buttons storing Base64-encoded addresses in `data-email` (anti-crawler) / 全站邮箱默认隐藏，明文 mailto 链接替换为 .email-reveal 按钮，邮箱地址以 Base64 编码存入 data-email 属性（防爬虫）
+- Clicking an email-reveal button opens an MDUI dialog with a PlayCaptcha claw-machine verification (React 19 + Motion 12 + playcaptcha@0.1.0, lazy-loaded via importmap only on first click) / 点击显示邮箱按钮弹出 MDUI 对话框，内嵌 PlayCaptcha 抓娃娃机人机验证（React 19 + Motion 12 + playcaptcha@0.1.0，通过 importmap 懒加载，仅首次点击时加载约 300KB）
+- On successful verification, the button is replaced with a real `<a href="mailto:">` link revealing the decoded email / 验证通过后按钮替换为真实的 mailto 链接，显示解码后的邮箱
+- Added `js/email-captcha.js` shared module (lazy-loads React/ReactDOM/Motion/playcaptcha, mounts React root into dialog, handles verify + reveal) / 新增 js/email-captcha.js 共享模块（懒加载 React/ReactDOM/Motion/playcaptcha，挂载 React root 到对话框，处理验证与揭示）
+- Added `importmap` to all 5 MDUI pages' `<head>` mapping `react`, `react/jsx-runtime`, `react-dom`, `react-dom/client`, `motion/react` to jsDelivr CDN ESM URLs / 5 个 MDUI 页面 head 添加 importmap，映射 react 系列 + motion/react 到 jsDelivr CDN ESM URL
+- Added i18n keys: `email.reveal`, `captcha.title/loading/cancel/error` (zh/en) / 新增 i18n 键
+- Added `.email-reveal` button styles (dotted underline, teal color, footer variant) to `css/shared.css` / shared.css 添加 .email-reveal 按钮样式
+- Captcha dialog responsive scaling: dynamic `zoom` calculated from `window.innerHeight`/`innerWidth` on the `.captcha-container` element, fitting the 708px-tall claw-machine into 75% of viewport height (mobile address bar safe) / 验证码对话框响应式缩放：根据 window.innerHeight/innerWidth 动态计算 zoom 并应用到 .captcha-container，将 708px 高的抓娃娃机适配到视口高度的 75%（兼容手机地址栏）
+- Updated `js/i18n-changelog.js` v3.2.1 entry to mask plaintext email as `[邮箱已隐藏]` / i18n-changelog.js v3.2.1 条目的邮箱明文替换为 [邮箱已隐藏]
+
 ## v3.6.0 — 2026-07-03 — Refactoring, Bugfixes, SEO & Tooling / 重构、Bug 修复、SEO 与工程化
 
 Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。

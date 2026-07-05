@@ -24,6 +24,11 @@
 | `dialog.oldSite.body` | 您即将离开当前网站，前往旧版页面。旧版页面已停止维护，体验与当前版本不同。 | You are about to leave the current website and visit the legacy page. The legacy page is no longer maintained and the experience may differ from the current version. |
 | `dialog.oldSite.cancel` | 取消 | Cancel |
 | `dialog.oldSite.confirm` | 确定 | OK |
+| `email.reveal` | 点击显示 | Click to reveal |
+| `captcha.title` | 人机验证 | Verification |
+| `captcha.loading` | 加载中... | Loading... |
+| `captcha.cancel` | 取消 | Cancel |
+| `captcha.error` | 加载失败，请刷新重试。 | Failed to load. Please refresh. |
 
 ---
 

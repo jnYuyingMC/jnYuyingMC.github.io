@@ -116,6 +116,33 @@ body { background: #f5f5f5; font-family: "Noto Sans SC", sans-serif; }
 }
 .site-footer a { color: #a7f3d0; text-decoration: none; }
 
+/* Email reveal button (anti-crawler, captcha-protected) */
+.email-reveal {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #00897b;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+.email-reveal--footer {
+  color: #a7f3d0;
+  text-decoration: none;
+}
+.email-reveal:hover { text-decoration-style: solid; }
+.email-reveal:focus-visible { outline: 2px solid var(--mdui-color-primary); outline-offset: 2px; }
+
+/* PlayCaptcha dialog — zoom set dynamically by JS on .captcha-container */
+.captcha-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
 /* Dark mode overrides */
 .mdui-theme-dark { --mdui-color-surface: #1c1b1f; --mdui-color-surface-variant: #49454f; overflow-x: hidden; }
 .mdui-theme-dark body { background: #121212; }

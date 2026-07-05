@@ -29,6 +29,17 @@
   <link rel="manifest" href="manifest.json">
   <script src="js/browser-check.js"></script>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="2b34bec1-4c19-431b-9259-7b9f24941290"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://cdn.jsdelivr.net/npm/react@19.2.7/+esm",
+      "react/jsx-runtime": "https://cdn.jsdelivr.net/npm/react@19.2.7/jsx-runtime/+esm",
+      "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@19.2.7/+esm",
+      "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@19.2.7/client/+esm",
+      "motion/react": "https://cdn.jsdelivr.net/npm/motion@12.42.2/react/+esm"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -116,21 +127,21 @@
         <div class="name" data-i18n="team.n1.name">Neuron（神经元）</div>
         <div class="role" data-i18n="team.n1.role">导演 / 万能</div>
         <div class="status" data-i18n="team.n1.status">高二</div>
-        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:lizliyuan123456@yeah.net" style="color:#00897b; text-decoration:none;">lizliyuan123456@yeah.net</a></div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><button class="email-reveal" data-email="bGl6bGl5dWFuMTIzNDU2QHllYWgubmV0" data-i18n="email.reveal">点击显示</button></div>
       </div>
       <div class="member-card">
         <mdui-avatar style="background:#fce4ec; color:#c62828; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">D</mdui-avatar>
         <div class="name">David_ryh</div>
         <div class="role" data-i18n="team.n2.role">服务器管理 / 建筑 / 美术</div>
         <div class="status" data-i18n="team.n2.status">高一，住校</div>
-        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:neskdavid123@163.com" style="color:#00897b; text-decoration:none;">neskdavid123@163.com</a></div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><button class="email-reveal" data-email="bmVza2RhdmlkMTIzQDE2My5jb20=" data-i18n="email.reveal">点击显示</button></div>
       </div>
       <div class="member-card">
         <mdui-avatar style="background:#e8eaf6; color:#283593; display:flex; align-items:center; justify-content:center; width:64px; height:64px; border-radius:50%; margin:0 auto 1rem; font-size:1.5rem;">乐</mdui-avatar>
         <div class="name" data-i18n="team.n3.name">于小乐</div>
         <div class="role" data-i18n="team.n3.role">服务器管理 / 建筑 / 美术</div>
         <div class="status" data-i18n="team.n3.status">准备中考</div>
-        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><a href="mailto:yulele28@126.com" style="color:#00897b; text-decoration:none;">yulele28@126.com</a></div>
+        <div style="margin-top:0.5rem; font-size:0.85rem; color:#888;"><button class="email-reveal" data-email="eXVsZWxlMjhAMTI2LmNvbQ==" data-i18n="email.reveal">点击显示</button></div>
       </div>
     </div>
     <!-- Team Structure -->
@@ -307,7 +318,7 @@
       <mdui-icon name="lan" style="font-size:14px; vertical-align:middle;"></mdui-icon> <span data-i18n="footer.ipv6">本站支持 IPv6 访问</span>
     </div>
     <div style="margin-top: 0.5rem; font-size: 0.8rem;">
-      <a href="mailto:jnyuyingmc@jnyuyingmc.top" style="color:#a7f3d0; text-decoration:none;" data-i18n="footer.contact">联系我们</a>
+      <button class="email-reveal email-reveal--footer" data-email="am55dXlpbmdtY0Bqbnl1eWluZ21jLnRvcA==" data-i18n="footer.contact" style="font-size:0.8rem;">联系我们</button>
     </div>
   </footer>
 
@@ -330,8 +341,10 @@
   <script type="module">
     import { pageDict } from './js/i18n-index.js';
     import { initApp } from './js/app.js';
+    import { initEmailCaptcha } from './js/email-captcha.js';
 
     initApp(pageDict);
+    initEmailCaptcha();
 
     // GLightbox
     function initGLightbox() {
