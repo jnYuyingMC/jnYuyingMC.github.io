@@ -157,11 +157,16 @@
 | `credits.noto.desc` | Google 开源的中文无衬线字体，覆盖简体中文常用汉字，字重从 100 到 900，本站使用该字体作为全站默认字体以获得统一、清晰的中文排版效果。 | An open-source Chinese sans-serif font by Google, covering common simplified Chinese characters with weights from 100 to 900. Used as the default font across the entire site for unified, clear Chinese typography. |
 | `credits.icons.desc` | Google 提供的开源图标集，涵盖 2000+ 遵循 Material Design 规范的图标，本站通过 Google Fonts CSS 加载并在各页面中使用。 | An open-source icon set by Google with 2000+ icons following Material Design guidelines, loaded via Google Fonts CSS and used across all pages. |
 | `credits.vrview.desc` | Google 开源的 360° 全景浏览框架，可将全景图片和视频转化为交互式 VR 体验。该框架自 2018 年 12 月起停止维护，本站保留了基于此框架的旧版 VR 页面作为遗留资源。 | An open-source 360° panorama viewer framework by Google that transforms panoramic images and videos into interactive VR experiences. Discontinued since December 2018; this site retains a legacy VR page based on this framework. |
+| `credits.playcaptcha.desc` | 抓娃娃机人机验证库，基于 React，通过操控虚拟抓娃娃机的抓爪抓取指定玩具来验证人类身份。本站用于邮箱揭示前的趣味人机验证，懒加载。 | A claw-machine captcha library built on React. Verify humanity by operating a virtual claw to grab a specific toy. Used on this site for fun human verification before revealing emails, lazy-loaded. |
+| `credits.react.desc` | Meta 开源的 UI 构建库，本站作为 PlayCaptcha 的运行时依赖通过 CDN 懒加载，仅在用户点击显示邮箱时加载。 | Open-source UI library by Meta. Used on this site as a runtime dependency of PlayCaptcha via CDN lazy-loading, only loaded when a user clicks to reveal an email. |
+| `credits.motion.desc` | 开源动画库（framer-motion 新版），提供声明式动画 API。本站作为 PlayCaptcha 的动画依赖通过 CDN 懒加载。 | Open-source animation library (the new version of framer-motion), providing declarative animation APIs. Used on this site as an animation dependency of PlayCaptcha via CDN lazy-loading. |
 | `credits.badge.all` | 全站 | All Pages |
+| `credits.badge.captcha` | 邮箱验证（懒加载） | Email captcha (lazy) |
 | `credits.link.official` | 官网 | Website |
 | `credits.link.fontPreview` | 字体预览 | Font Preview |
 | `credits.link.iconLib` | 图标库 | Icon Library |
 | `credits.link.docs` | 官方文档 | Official Docs |
+| `credits.link.repo` | 仓库 | Repo |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
 | `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 

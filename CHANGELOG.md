@@ -13,6 +13,7 @@ Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
 - Added `.email-reveal` button styles (dotted underline, teal color, footer variant) to `css/shared.css` / shared.css 添加 .email-reveal 按钮样式
 - Captcha dialog responsive scaling: dynamic `zoom` calculated from `window.innerHeight`/`innerWidth` on the `.captcha-container` element, fitting the 708px-tall claw-machine into 75% of viewport height (mobile address bar safe) / 验证码对话框响应式缩放：根据 window.innerHeight/innerWidth 动态计算 zoom 并应用到 .captcha-container，将 708px 高的抓娃娃机适配到视口高度的 75%（兼容手机地址栏）
 - Updated `js/i18n-changelog.js` v3.2.1 entry to mask plaintext email as `[邮箱已隐藏]` / i18n-changelog.js v3.2.1 条目的邮箱明文替换为 [邮箱已隐藏]
+- Added 3 new dependency cards to `credits.html`: PlayCaptcha (MIT, github.com/mortspace/playcaptcha), React 19 (MIT, react.dev), Motion 12 (MIT, motion.dev); updated `js/i18n-credits.js` + `translations-review.md` with new keys / credits.html 新增 3 张依赖卡片：PlayCaptcha、React 19、Motion 12（均 MIT 协议）；i18n-credits.js + translations-review.md 同步
 
 ## v3.6.0 — 2026-07-03 — Refactoring, Bugfixes, SEO & Tooling / 重构、Bug 修复、SEO 与工程化
 
