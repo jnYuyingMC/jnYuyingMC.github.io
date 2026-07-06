@@ -1,0 +1,10 @@
+# robots.txt — 大育英帝国 Minecraft 计划
+# https://www.jnyuyingmc.top
+
+User-agent: *
+Disallow: /unsupported.html
+Disallow: /photolib/*.mp4
+
+Allow: /
+
+Sitemap: https://www.jnyuyingmc.top/sitemap.xml

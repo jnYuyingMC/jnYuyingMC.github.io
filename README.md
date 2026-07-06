@@ -68,6 +68,8 @@
 ├── images/                 # 背景图、Logo、二维码等 / Background, logo, QR
 ├── photolib/               # 图片库资源 / Photo gallery assets
 ├── manifest.json           # PWA manifest
+├── robots.txt              # 爬虫规则 / Crawler rules
+├── sitemap.xml             # 站点地图 / Sitemap
 ├── favicon.ico
 ├── README.md
 ├── CHANGELOG.md
