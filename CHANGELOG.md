@@ -15,6 +15,7 @@ Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
 - Updated `js/i18n-changelog.js` v3.2.1 entry to mask plaintext email as `[邮箱已隐藏]` / i18n-changelog.js v3.2.1 条目的邮箱明文替换为 [邮箱已隐藏]
 - Added 3 new dependency cards to `credits.html`: PlayCaptcha (MIT, github.com/mortspace/playcaptcha), React 19 (MIT, react.dev), Motion 12 (MIT, motion.dev); updated `js/i18n-credits.js` + `translations-review.md` with new keys / credits.html 新增 3 张依赖卡片：PlayCaptcha、React 19、Motion 12（均 MIT 协议）；i18n-credits.js + translations-review.md 同步
 - Created `robots.txt` (disallow `unsupported.html` and `photolib/*.mp4`, allow all else, reference sitemap) and `sitemap.xml` (5 crawlable pages with priority weighting) for SEO / 新建 robots.txt（屏蔽 unsupported.html 和 mp4 视频，允许其余，引用 sitemap）与 sitemap.xml（5 个可收录页面，按权重分级）用于 SEO
+- Added Mojang/Microsoft EULA disclaimer to footer of all 6 pages (i18n-driven on 5 MDUI pages via `footer.disclaimer` key, static English on `unsupported.html`) per Mojang Brand Guidelines / 按 Mojang 品牌指引在 6 个页面 footer 添加 Mojang/Microsoft EULA 免责声明（5 个 MDUI 页面走 i18n footer.disclaimer 键，unsupported.html 静态英文）
 
 ## v3.6.0 — 2026-07-03 — Refactoring, Bugfixes, SEO & Tooling / 重构、Bug 修复、SEO 与工程化
 

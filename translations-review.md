@@ -18,6 +18,7 @@
 | `fab.photos` | 图片库 | Photos |
 | `fab.vr` | VR 全景 | VR Panorama |
 | `footer.copyright` | Copyright © 2017 大育英帝国 Minecraft 计划项目组 | Copyright © 2017 Our Great Yuying Minecraft Project Team |
+| `footer.disclaimer` | 本作品非官方 Minecraft 产品。未经 Mojang 或 Microsoft 批准或关联。 | NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT. |
 | `footer.ipv6` | 本站支持 IPv6 访问 | This site supports IPv6 access |
 | `footer.contact` | 联系我们 | Contact Us |
 | `dialog.oldSite.title` | 即将前往旧版页面 | Leaving for Legacy Page |
