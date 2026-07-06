@@ -99,3 +99,9 @@ The 2026 remaster and subsequent iterations were assisted by [Claude Code](https
 - MDUI v2 组件以 Web Components (`<mdui-*>`) 形式使用 / MDUI v2 components used as Web Components
 - 暗色模式通过在 `<html>` 上切换 `mdui-theme-dark` 类实现 / Dark mode via toggling `mdui-theme-dark` class on `<html>`
 - 图标使用 Material Icons `name` 值，需引入 Google Fonts CSS / Icon names use Material Icons `name` values, requires Google Fonts CSS
+
+## 免责声明 / Disclaimer
+
+本作品非官方 Minecraft 产品。未经 Mojang 或 Microsoft 批准或关联。
+
+NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
