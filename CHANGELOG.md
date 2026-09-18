@@ -1,5 +1,9 @@
 # Changelog
 
+## [Unreleased] / 未发布
+
+- Added a bilingual design specification for the v3.8.0 site resource acceleration work, covering hybrid Catbox media hosting, ZStatic CDN migration, MDUI 2.1.5, rollback boundaries, and verification requirements / 新增 v3.8.0 网站资源加速双语设计规范，涵盖 Catbox 混合媒体托管、ZStatic CDN 迁移、MDUI 2.1.5、回滚边界与验证要求
+
 ## v3.7.0 — 2026-07-05 — Email Hiding & PlayCaptcha / 邮箱隐藏与抓娃娃验证
 
 Assisted by OpenCode (GLM-5.2). 由 OpenCode (GLM-5.2) 辅助完成。
