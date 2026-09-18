@@ -2,7 +2,15 @@
 
 ## [Unreleased] / 未发布
 
-- Added a bilingual design specification and implementation plan for the v3.8.0 site resource acceleration work, covering hybrid Catbox media hosting, ZStatic CDN migration, MDUI 2.1.5, rollback boundaries, and verification requirements / 新增 v3.8.0 网站资源加速双语设计规范与实施计划，涵盖 Catbox 混合媒体托管、ZStatic CDN 迁移、MDUI 2.1.5、回滚边界与验证要求
+## v3.8.0 — 2026-09-18 — Resource Acceleration / 资源加速
+
+Assisted by Codex. 由 Codex 辅助完成。
+
+- Migrated fifteen gallery images, the shared background, hero logo, QR code, and construction-record video to the Catbox accelerator while retaining every local source file for rollback / 将十五张图库图片、共享背景、首页 Logo、二维码和施工纪录视频迁移至 Catbox 加速域名，同时保留全部本地源文件用于回滚
+- Kept the Open Graph image, favicon/PWA icons, GitHub icon, and legacy favicon locally hosted to avoid adding third-party failure points for small critical assets / Open Graph 图片、favicon/PWA 图标、GitHub 图标与传统 favicon 继续本地托管，避免小型关键资源增加第三方故障点
+- Upgraded MDUI 2.1.4 to 2.1.5 and migrated MDUI and GLightbox delivery to ZStatic with pinned versions and verified SHA-384 SRI / 将 MDUI 2.1.4 升级至 2.1.5，并将 MDUI 与 GLightbox 迁移至 ZStatic，保持固定版本和经验证的 SHA-384 SRI
+- Added Catbox/ZStatic preconnect hints and updated the shared background preload to reduce connection setup latency / 新增 Catbox/ZStatic 预连接提示并更新共享背景预加载，降低连接建立延迟
+- Added the resource-acceleration design specification, implementation plan, and current project status documentation / 新增资源加速设计规范、实施计划与当前项目状态文档
 
 ## v3.7.0 — 2026-07-05 — Email Hiding & PlayCaptcha / 邮箱隐藏与抓娃娃验证
 

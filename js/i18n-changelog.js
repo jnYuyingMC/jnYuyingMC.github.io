@@ -12,10 +12,14 @@ export const pageDict = {
     'changelog.badge.removed': '移除',
     'changelog.badge.launch': '上线',
     'changelog.badge.refactor': '重构',
+    'changelog.model.codex': '由 Codex 辅助完成。',
     'changelog.model.glm': '由 OpenCode (GLM-5.2) 辅助完成。',
     'changelog.model.mimo25': '由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。',
     'changelog.model.mimo2': '由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。',
     'changelog.model.led': '由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。',
+
+    'changelog.v20260918.title': '资源加速',
+    'changelog.v20260918.body': '<ul><li>十五张图库图片、共享背景、首页 Logo、二维码和施工纪录视频改用 Catbox 加速域名，同时保留全部本地文件用于回滚</li><li>Open Graph 图片、favicon/PWA 图标、GitHub 图标与传统 favicon 继续本地托管</li><li>MDUI 由 2.1.4 升级至 2.1.5；MDUI 与 GLightbox 改由 ZStatic 分发，保持固定版本与 SHA-384 SRI</li><li>新增 Catbox/ZStatic 预连接提示并更新共享背景预加载</li></ul>',
 
     'changelog.v20260705.title': '邮箱隐藏与抓娃娃验证',
     'changelog.v20260705.body': '<ul><li>全站邮箱默认隐藏，明文 mailto 链接替换为 .email-reveal 按钮，邮箱以 Base64 编码存入 data-email 属性（防爬虫）</li><li>点击显示邮箱按钮弹出 MDUI 对话框，内嵌 PlayCaptcha 抓娃娃机人机验证（React 19 + Motion 12 + playcaptcha@0.1.0，通过 importmap 懒加载，仅首次点击时加载约 300KB）</li><li>验证通过后按钮替换为真实 mailto 链接，显示解码后的邮箱</li><li>新建 js/email-captcha.js 共享模块：懒加载 React/ReactDOM/Motion/playcaptcha，挂载 React root 到对话框，处理验证与揭示</li><li>5 个 MDUI 页面 head 添加 importmap，映射 react 系列 + motion/react 到 jsDelivr CDN ESM URL</li><li>新增 i18n 键：email.reveal、captcha.title/loading/cancel/error（中英）</li><li>shared.css 添加 .email-reveal 按钮样式（虚线下划线、teal 色、footer 变体）</li><li>验证码对话框响应式缩放：根据 window.innerHeight/innerWidth 动态计算 zoom 并应用到 .captcha-container，将 708px 高的抓娃娃机适配到视口高度的 75%（兼容手机地址栏）</li><li>i18n-changelog.js v3.2.1 条目邮箱明文替换为 [邮箱已隐藏]</li></ul>',
@@ -100,10 +104,14 @@ export const pageDict = {
     'changelog.badge.removed': 'Removed',
     'changelog.badge.launch': 'Launch',
     'changelog.badge.refactor': 'Refactor',
+    'changelog.model.codex': 'Assisted by Codex.',
     'changelog.model.glm': 'Assisted by OpenCode (GLM-5.2).',
     'changelog.model.mimo25': 'Assisted by Claude Code (Xiaomi MiMo V2.5 Pro).',
     'changelog.model.mimo2': 'Assisted by Claude Code (Xiaomi MiMo V2 Pro).',
     'changelog.model.led': 'Led by Claude Code (Xiaomi MiMo V2 Pro).',
+
+    'changelog.v20260918.title': 'Resource Acceleration',
+    'changelog.v20260918.body': '<ul><li>Moved fifteen gallery images, the shared background, hero logo, QR code, and construction-record video to the Catbox accelerator while retaining all local files for rollback</li><li>Kept the Open Graph image, favicon/PWA icons, GitHub icon, and legacy favicon locally hosted</li><li>Upgraded MDUI from 2.1.4 to 2.1.5 and moved MDUI and GLightbox delivery to ZStatic with pinned versions and SHA-384 SRI</li><li>Added Catbox/ZStatic preconnect hints and updated the shared background preload</li></ul>',
 
     'changelog.v20260705.title': 'Email Hiding & PlayCaptcha',
     'changelog.v20260705.body': '<ul><li>All emails hidden by default; plaintext mailto links replaced with .email-reveal buttons storing Base64-encoded addresses in data-email (anti-crawler)</li><li>Clicking an email-reveal button opens an MDUI dialog with PlayCaptcha claw-machine verification (React 19 + Motion 12 + playcaptcha@0.1.0, lazy-loaded via importmap only on first click, ~300KB)</li><li>On successful verification, button is replaced with a real mailto link revealing the decoded email</li><li>New js/email-captcha.js shared module: lazy-loads React/ReactDOM/Motion/playcaptcha, mounts React root into dialog, handles verify + reveal</li><li>Added importmap to all 5 MDUI pages head mapping react, react/jsx-runtime, react-dom, react-dom/client, motion/react to jsDelivr CDN ESM URLs</li><li>Added i18n keys: email.reveal, captcha.title/loading/cancel/error (zh/en)</li><li>Added .email-reveal button styles (dotted underline, teal color, footer variant) to css/shared.css</li><li>Captcha dialog responsive scaling: dynamic zoom calculated from window.innerHeight/innerWidth on .captcha-container, fitting 708px-tall claw-machine into 75% of viewport height (mobile address bar safe)</li><li>Updated i18n-changelog.js v3.2.1 entry to mask plaintext email as [邮箱已隐藏]</li></ul>',
