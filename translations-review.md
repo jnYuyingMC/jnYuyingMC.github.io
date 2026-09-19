@@ -101,7 +101,7 @@
 | `qr.cancel` | 取消 | Cancel |
 | `qr.openLink` | 打开群链接 | Open Group Link |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -118,7 +118,7 @@
 | `photos.p2.alt` | 雪 | Snow |
 | `photos.p2.overlay` | 雪 · 2017-08-22 | Snow · 2017-08-22 |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -143,7 +143,7 @@
 | `dialog.selfHosted.body` | 由于原始服务器已停止维护，该访问源已不再可用。 | The original server has been shut down and this source is no longer available. |
 | `dialog.selfHosted.ok` | 知道了 | Got it |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -169,7 +169,7 @@
 | `credits.link.docs` | 官方文档 | Official Docs |
 | `credits.link.repo` | 仓库 | Repo |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -239,13 +239,10 @@
 | `changelog.badge.removed` | 移除 | Removed |
 | `changelog.badge.launch` | 上线 | Launch |
 | `changelog.badge.refactor` | 重构 | Refactor |
-| `changelog.model.codex` | 由 Codex（GPT-5.6 Sol）辅助完成。 | Assisted by Codex (GPT-5.6 Sol). |
 | `changelog.model.glm` | 由 OpenCode (GLM-5.2) 辅助完成。 | Assisted by OpenCode (GLM-5.2). |
 | `changelog.model.mimo25` | 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). |
 | `changelog.model.mimo2` | 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2 Pro). |
 | `changelog.model.led` | 由 Claude Code (Xiaomi MiMo V2 Pro) 主导完成。 | Led by Claude Code (Xiaomi MiMo V2 Pro). |
-| `changelog.v20260918.title` | 资源加速 | Resource Acceleration |
-| `changelog.v20260918.body` | `<ul><li>十五张图库图片、共享背景、首页 Logo、二维码和施工纪录视频改用 Catbox 加速域名，同时保留全部本地文件用于回滚</li><li>Open Graph 图片、favicon/PWA 图标、GitHub 图标与传统 favicon 继续本地托管</li><li>MDUI 由 2.1.4 升级至 2.1.5；MDUI 与 GLightbox 改由 ZStatic 分发，保持固定版本与 SHA-384 SRI</li><li>新增 Catbox/ZStatic 预连接提示并更新共享背景预加载</li></ul>` | `<ul><li>Moved fifteen gallery images, the shared background, hero logo, QR code, and construction-record video to the Catbox accelerator while retaining all local files for rollback</li><li>Kept the Open Graph image, favicon/PWA icons, GitHub icon, and legacy favicon locally hosted</li><li>Upgraded MDUI from 2.1.4 to 2.1.5 and moved MDUI and GLightbox delivery to ZStatic with pinned versions and SHA-384 SRI</li><li>Added Catbox/ZStatic preconnect hints and updated the shared background preload</li></ul>` |
 | `changelog.v20260703.title` | 重构、Bug 修复、SEO 与工程化 | Refactoring, Bugfixes, SEO & Tooling |
 | `changelog.v20260703.body` | *(contains HTML)* 移除 region…统一 CDN…修复 4 Bug…SRI…SEO…WebP…lint/CI | *(contains HTML)* Removed region... unified CDN... fixed 4 bugs... SRI... SEO... WebP... lint/CI |
 | `changelog.v20260608.title` | 地区选择与 CDN 切换 (deprecated) | Region Selection & CDN Switching (deprecated) |

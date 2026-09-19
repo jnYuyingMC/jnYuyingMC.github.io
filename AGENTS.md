@@ -28,13 +28,13 @@ Static HTML website for "大育英帝国 Minecraft 计划" (Da Yuying Empire Min
 | `changelog.html` | Bilingual version history (legacy milestones + new-era SemVer entries) |
 | `unsupported.html` | Browser compatibility warning (IE8+ self-contained, no ES Modules, no MDUI) |
 
-### Dependencies & Resource Delivery
+### Dependencies (all CDN)
 
-- **MDUI v2** (`s4.zstatic.net/npm/mdui@2.1.5`) — Material Design 3 Web Components (`<mdui-button>`, `<mdui-dialog>`, `<mdui-dropdown>`, etc.)
-- **GLightbox** (`s4.zstatic.net/ajax/libs/glightbox/3.3.1`) — Image lightbox (index.html, photo.html)
+- **MDUI v2** (`unpkg.com/mdui@2`) — Material Design 3 Web Components (`<mdui-button>`, `<mdui-dialog>`, `<mdui-dropdown>`, etc.)
+- **GLightbox** (`cdn.jsdelivr.net/npm/glightbox/`) — Image lightbox (index.html, photo.html)
 - **Material Icons** — via Google Fonts CSS, used as `<mdui-icon name="xxx">`
 - **Noto Sans SC** — Chinese font via Google Fonts
-- **Hybrid delivery strategy**: Catbox accelerates gallery images, the shared WebP background, hero logo, QR code, and construction-record video. ZStatic distributes pinned `mdui@2.1.5` and GLightbox 3.3.1 URLs with SHA-384 SRI. Google Fonts, Umami, React, ReactDOM, Motion, and PlayCaptcha remain on their existing providers. Open Graph JPG, favicon/PWA icons, GitHub icon, traditional favicon, and all local media copies stay locally hosted; retain those copies for rollback. No region switching. (Earlier `region.html` + BootCDN/fonts.font.im setup was removed.)
+- **CDN strategy**: All pages use official CDNs (unpkg / jsDelivr / Google Fonts) loaded via static `<link>`/`<script>` tags in each page's `<head>`. No region switching. (Earlier `region.html` + BootCDN/fonts.font.im setup was removed.) CDN versions are pinned (`mdui@2.1.4`, `glightbox@3.3.1`) with SRI integrity hashes.
 
 ### Key Patterns
 
