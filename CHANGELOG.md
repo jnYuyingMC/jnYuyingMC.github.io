@@ -2,9 +2,11 @@
 
 ## [Unreleased] / 未发布
 
+暂无 / None yet.
+
 ## v3.8.0 — 2026-09-18 — Resource Acceleration / 资源加速
 
-Assisted by Codex. 由 Codex 辅助完成。
+Assisted by Codex (GPT-5.6 Sol). 由 Codex（GPT-5.6 Sol）辅助完成。
 
 - Migrated fifteen gallery images, the shared background, hero logo, QR code, and construction-record video to the Catbox accelerator while retaining every local source file for rollback / 将十五张图库图片、共享背景、首页 Logo、二维码和施工纪录视频迁移至 Catbox 加速域名，同时保留全部本地源文件用于回滚
 - Kept the Open Graph image, favicon/PWA icons, GitHub icon, and legacy favicon locally hosted to avoid adding third-party failure points for small critical assets / Open Graph 图片、favicon/PWA 图标、GitHub 图标与传统 favicon 继续本地托管，避免小型关键资源增加第三方故障点

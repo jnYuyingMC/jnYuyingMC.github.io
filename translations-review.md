@@ -101,7 +101,7 @@
 | `qr.cancel` | 取消 | Cancel |
 | `qr.openLink` | 打开群链接 | Open Group Link |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -118,7 +118,7 @@
 | `photos.p2.alt` | 雪 | Snow |
 | `photos.p2.overlay` | 雪 · 2017-08-22 | Snow · 2017-08-22 |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -143,7 +143,7 @@
 | `dialog.selfHosted.body` | 由于原始服务器已停止维护，该访问源已不再可用。 | The original server has been shut down and this source is no longer available. |
 | `dialog.selfHosted.ok` | 知道了 | Got it |
 | `footer.backHome` | 返回首页 | Back to Home |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · 开源引用 · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · Open Source Credits · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -169,7 +169,7 @@
 | `credits.link.docs` | 官方文档 | Official Docs |
 | `credits.link.repo` | 仓库 | Repo |
 | `footer.org` | 大育英帝国学生会 宣传部 × 辣条视频工作室 | Our Great Yuying Student Council Publicity Dept. × Latiao Video Studio |
-| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode (MiMo / GLM-5.2) · Legacy Site |
+| `footer.builtWith` | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · 旧版页面 | *(contains HTML links)* Built with MDUI v2 · GLightbox · Assisted by Claude Code & OpenCode & Codex (GPT-5.6 Sol & MiMo / GLM-5.2) · Legacy Site |
 
 ---
 
@@ -239,7 +239,7 @@
 | `changelog.badge.removed` | 移除 | Removed |
 | `changelog.badge.launch` | 上线 | Launch |
 | `changelog.badge.refactor` | 重构 | Refactor |
-| `changelog.model.codex` | 由 Codex 辅助完成。 | Assisted by Codex. |
+| `changelog.model.codex` | 由 Codex（GPT-5.6 Sol）辅助完成。 | Assisted by Codex (GPT-5.6 Sol). |
 | `changelog.model.glm` | 由 OpenCode (GLM-5.2) 辅助完成。 | Assisted by OpenCode (GLM-5.2). |
 | `changelog.model.mimo25` | 由 Claude Code (Xiaomi MiMo V2.5 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2.5 Pro). |
 | `changelog.model.mimo2` | 由 Claude Code (Xiaomi MiMo V2 Pro) 辅助完成。 | Assisted by Claude Code (Xiaomi MiMo V2 Pro). |

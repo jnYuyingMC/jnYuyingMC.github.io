@@ -88,9 +88,9 @@
 
 ## 开发方式 / Development
 
-本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code) 和 [OpenCode](https://opencode.ai)（AI Agent）辅助完成，底层模型包括小米 MiMo V2 Pro / V2.5 Pro 与 GLM-5.2。
+本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code)、[OpenCode](https://opencode.ai) 和 [Codex](https://openai.com/codex/)（AI Agent）辅助完成，底层模型包括 GPT-5.6 Sol、小米 MiMo V2 Pro / V2.5 Pro 与 GLM-5.2。
 
-The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code) and [OpenCode](https://opencode.ai) (AI Agent), powered by Xiaomi MiMo V2 Pro / V2.5 Pro and GLM-5.2.
+The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code), [OpenCode](https://opencode.ai), and [Codex](https://openai.com/codex/) (AI Agent), powered by GPT-5.6 Sol & Xiaomi MiMo V2 Pro / V2.5 Pro & GLM-5.2.
 
 ## 注意事项 / Notes
 
