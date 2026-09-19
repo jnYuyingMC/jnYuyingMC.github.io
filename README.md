@@ -4,6 +4,7 @@
 
 ## 更新内容 / What's New
 
+- **资源加速 / Resource Acceleration**: 大图、背景、Logo、二维码与施工视频改用 Catbox 加速域名；MDUI 2.1.5 与 GLightbox 3.3.1 改由 ZStatic 分发并保留 SRI，本地媒体继续保留用于回滚 / Large images, backgrounds, logo, QR code, and construction video now use the Catbox accelerator; MDUI 2.1.5 and GLightbox 3.3.1 are distributed through ZStatic with SRI, while local media remains available for rollback
 - **框架升级 / Framework**: MDUI v1 → MDUI v2（Material Design 3）
 - **页面整合 / Single Page**: `index.html` 整合原三页内容，`photo.html` 独立保留 / Merged into single page, photo gallery kept as standalone
 - **图片灯箱 / Lightbox**: GLightbox 替代新窗口打开 / GLightbox replaces new-tab image viewing
@@ -87,13 +88,14 @@
 
 ## 开发方式 / Development
 
-本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code) 和 [OpenCode](https://opencode.ai)（AI Agent）辅助完成，底层模型包括小米 MiMo V2 Pro / V2.5 Pro 与 GLM-5.2。
+本次重制及后续迭代优化由 [Claude Code](https://claude.ai/code)、[OpenCode](https://opencode.ai) 和 [Codex](https://openai.com/codex/)（AI Agent）辅助完成，底层模型包括 GPT-5.6 Sol、小米 MiMo V2 Pro / V2.5 Pro 与 GLM-5.2。
 
-The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code) and [OpenCode](https://opencode.ai) (AI Agent), powered by Xiaomi MiMo V2 Pro / V2.5 Pro and GLM-5.2.
+The 2026 remaster and subsequent iterations were assisted by [Claude Code](https://claude.ai/code), [OpenCode](https://opencode.ai), and [Codex](https://openai.com/codex/) (AI Agent), powered by GPT-5.6 Sol & Xiaomi MiMo V2 Pro / V2.5 Pro & GLM-5.2.
 
 ## 注意事项 / Notes
 
 - 所有依赖通过 CDN 加载，无需 npm 或本地库 / All dependencies loaded via CDN, no npm or local libraries needed
+- **混合资源分发 / Hybrid Resource Delivery**: Catbox 加速图库图片、共享背景、首页 Logo、二维码与施工纪录视频；ZStatic 以固定 URL 和 SHA-384 SRI 分发 MDUI 2.1.5 与 GLightbox 3.3.1；Google Fonts、Umami、React、ReactDOM、Motion 与 PlayCaptcha 继续使用既有提供方；Open Graph 图片、favicon/PWA 图标、GitHub 图标、传统 favicon 及全部本地媒体副本保留本地托管用于回滚 / Catbox accelerates gallery images, the shared background, hero logo, QR code, and construction-record video; ZStatic distributes MDUI 2.1.5 and GLightbox 3.3.1 with pinned URLs and SHA-384 SRI; Google Fonts, Umami, React, ReactDOM, Motion, and PlayCaptcha remain on their existing providers; the Open Graph image, favicon/PWA icons, GitHub icon, traditional favicon, and all local media copies remain locally hosted for rollback
 - CSS/JS 已提取为共享模块，各页面通过 `<link>` 和 ES Modules (`<script type="module">`) 引入 / CSS/JS extracted into shared modules, imported via `<link>` and ES Modules
 - 浏览器兼容检测 (`browser-check.js`) 作为经典脚本同步加载，在页面渲染前执行 / Browser check loaded as classic script for synchronous execution before rendering
 - MDUI v2 组件以 Web Components (`<mdui-*>`) 形式使用 / MDUI v2 components used as Web Components
